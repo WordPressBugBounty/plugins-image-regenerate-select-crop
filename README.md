@@ -1,0 +1,1 @@
+# plugins-image-regenerate-select-crop

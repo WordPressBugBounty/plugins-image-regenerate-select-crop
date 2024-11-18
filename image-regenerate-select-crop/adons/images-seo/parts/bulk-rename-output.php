@@ -8,26 +8,23 @@
 
 ?>
 <p>
+	<?php esc_html_e( 'The SEO rename process (on upload, manual rename, bulk rename) uses the current settings (does not apply retroactively), and overrides the filenames and attributes in the database.', 'sirsc' ); ?>
+	<?php echo wp_kses_post( __( 'The bulk rename process targets images set as <b>featured image</b> (for all post types selected that support the featured image feature) or attached as <b>media</b> (uploaded to that posts as children).', 'sirsc' ) ); ?>
 	<?php
-	echo wp_kses_post( __( 'The bulk rename process is targeting images set as <b>featured image</b> (for all post types selected that support the featured image feature) or attached as <b>media</b> (uploaded to that posts as children).', 'sirsc' ) );
-
 	if ( in_array( 'product', $types, true ) ) {
-		echo wp_kses_post( __( 'For products, the rename will include also the <b>gallery images</b>.', 'sirsc' ) );
+		echo wp_kses_post( __( 'For products, the rename process targets also the <b>gallery images</b>.', 'sirsc' ) );
 	}
-
-	esc_html_e( 'Please note that any of the rename process options (on upload, manual rename, bulk rename) will override the attachment attributes based on the images SEO settings you made.', 'sirsc' );
 	?>
 </p>
 
 <div class="as-row">
 	<div class="as-box bg-secondary small">
 		<div class="label-row as-title">
-			<span class="dashicons as-icon dashicons-format-gallery"></span>
-			<h2><?php esc_html_e( 'Bulk rename images', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Bulk rename', 'sirsc' ); ?></h2>
 		</div>
 
 		<p>
-			<?php esc_html_e( 'If you want to start the bulk rename of images, you have to select at least one post type, then click the bulk rename button.', 'sirsc' ); ?>
+			<?php esc_html_e( 'If you want to start the bulk rename of images, you have to select at least one post type.', 'sirsc' ); ?>
 		</p>
 
 		<div class="as-row columns-2">

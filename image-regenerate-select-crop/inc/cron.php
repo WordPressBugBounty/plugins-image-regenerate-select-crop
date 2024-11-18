@@ -19,7 +19,7 @@ define( 'SIRSC_JOBS_DB_VER', 2.0 );
  * Add filter for the custom cron schedule.
  */
 function add_cron_scheduled() {
-	\add_filter( 'cron_schedules', __NAMESPACE__ . '\\custom_cron_frequency' );
+	\add_filter( 'cron_schedules', __NAMESPACE__ . '\\custom_cron_frequency', 90 ); // phpcs:ignore
 }
 
 /**
@@ -89,7 +89,7 @@ function trigger_task_schedule( $hook, $name = '', $args = [] ) { // phpcs:ignor
 		\update_option( 'sirsc_jobs_list', $tasks );
 		\wp_schedule_event( time(), 'every_minute', $hook );
 
-		\SIRSC\Debug\bulk_log_write( 'CRON TASK <b>' . $hook . '</b> ' . $name . ' (' . \wp_json_encode( $args ) . ' ) <div>' . \__( 'the cron task has been scheduled', 'sirsc' ) . '</div>' );
+		\SIRSC\Debug\bulk_log_write( 'CRON TASK <b>' . $hook . '</b> ' . $name . ' (' . \wp_json_encode( $args ) . ' ) <div>' . \__( 'The cron task has been scheduled.', 'sirsc' ) . '</div>' );
 	}
 }
 
@@ -114,10 +114,12 @@ function assess_task( string $name = '', array $args = [] ) {
 	$hook = get_hook_string( $name, $args );
 	if ( ! is_scheduled( $hook ) ) {
 		trigger_task_schedule( $hook, $name, $args );
-		$message = \__( 'The action has been scheduled and the cron task will run in the background. You can close the dialog box.', 'sirsc' );
+		$message = \__( 'The action has been scheduled and the cron task will run in the background.', 'sirsc' );
 	} else {
-		$message = \__( 'The action is currently in progress, the cron task runs in the background. You can close the dialog box.', 'sirsc' );
+		$message = \__( 'The action is currently in progress, the cron task runs in the background.', 'sirsc' );
 	}
+
+	$message .= ' ' . \__( 'You can close the dialog box.', 'sirsc' );
 
 	$info = get_hook_info( $hook );
 	?>
@@ -125,10 +127,10 @@ function assess_task( string $name = '', array $args = [] ) {
 		<div>
 			<p class="sirsc-message success"><?php echo \wp_kses_post( $message ); ?></p>
 			<div class="sirsc-message info"><?php echo \wp_kses_post( $info['text'] ); ?></div>
-			<p><?php \esc_html_e( 'The cron task is scheduled to run every minute, please be patient until the task finishes.', 'sirsc' ); ?> <?php \esc_html_e( 'If you want to cancel the remaining execution and unshedule the task, click the button below.', 'sirsc' ); ?></p>
+			<p><?php \esc_html_e( 'The cron task has been scheduled to run every minute, please be patient until the task finishes.', 'sirsc' ); ?> <?php \esc_html_e( 'If you want to cancel the remaining execution and unshedule the task, click the button below.', 'sirsc' ); ?></p>
 		</div>
 		<div>
-			<p><button class="button has-icon" onclick="sirscCancelCronTask( '<?php echo \esc_attr( $hook ); ?>' )"><span class="dashicons dashicons-trash"></span> <?php \esc_html_e( 'Cancel execution', 'sirsc' ); ?></a><p>
+			<p><button class="button has-icon" onclick="sirscCancelCronTask( '<?php echo \esc_attr( $hook ); ?>' )"><span class="dashicons dashicons-trash"></span> <?php \esc_html_e( 'Cancel', 'sirsc' ); ?></a><p>
 		</div>
 	</div>
 	<?php
@@ -388,7 +390,7 @@ function trigger_task_unschedule( string $hook ) {
 		\SIRSC\Debug\bulk_log_write( 'CRON TASK <b>' . $hook . '</b> ' . $name
 			. ' (' . \wp_json_encode( $args ) . ' ) <div>'
 			// Translators: %s - duration.
-			. sprintf( \__( 'the cron task has been unscheduled and run for %s.', 'sirsc' ), $time )
+			. sprintf( \__( 'The cron task has run for %s.', 'sirsc' ), $time )
 			. '</div>'
 		);
 
@@ -429,7 +431,9 @@ function get_hook_info( string $hook = '', bool $reset = false ): array {
 				$limit = \SIRSC::$settings['cron_batch_regenerate'];
 				$step  = \SIRSC\Helper\bulk_action_query( $args['size'], $args['cpt'], $limit );
 
-				$info['text']  = \__( 'Remaining to regenerate', 'sirsc' ) . ': <b>' . (int) $step['total'] . '</b>';
+				// Translators: %1$s - total.
+				$info['text'] = sprintf( \__( 'Items remaining to regenerate: %1$s.', 'sirsc' ), '<b>' . (int) $step['total'] . '</b>' );
+
 				$info['total'] = (int) $step['total'];
 				break;
 
@@ -441,7 +445,9 @@ function get_hook_info( string $hook = '', bool $reset = false ): array {
 				$limit = \SIRSC::$settings['cron_batch_cleanup'];
 				$step  = \SIRSC\Helper\bulk_action_query( $args['size'], $args['cpt'], $limit, 'c-' );
 
-				$info['text']  = \__( 'Remaining to clean up', 'sirsc' ) . ': <b>' . (int) $step['total'] . '</b>';
+				// Translators: %1$s - total.
+				$info['text'] = sprintf( \__( 'Items remaining to cleanup: %1$s.', 'sirsc' ), '<b>' . (int) $step['total'] . '</b>' );
+
 				$info['total'] = (int) $step['total'];
 				break;
 
@@ -453,7 +459,9 @@ function get_hook_info( string $hook = '', bool $reset = false ): array {
 				$limit = \SIRSC::$settings['cron_batch_cleanup'];
 				$step  = \SIRSC\Helper\bulk_action_query( $args['type'], $args['cpt'], $limit, 'rc-' );
 
-				$info['text']  = \__( 'Remaining to clean up', 'sirsc' ) . ': <b>' . (int) $step['total'] . '</b>';
+				// Translators: %1$s - total.
+				$info['text'] = sprintf( \__( 'Items remaining to cleanup: %1$s.', 'sirsc' ), '<b>' . (int) $step['total'] . '</b>' );
+
 				$info['total'] = (int) $step['total'];
 				break;
 

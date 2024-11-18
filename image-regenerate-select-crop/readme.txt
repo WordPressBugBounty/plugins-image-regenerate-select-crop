@@ -3,8 +3,8 @@ Contributors: Iulia Cazan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
-Tested up to: 6.6
-Stable tag: 8.0.3
+Tested up to: 6.7
+Stable tag: 8.0.4
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,17 +33,6 @@ For the latest updates and detailed feature descriptions, visit [https://iuliaca
 7. Example of the plugin buttons for the featured image of a post.
 8. Example of the plugin buttons for the WooCommerce product featured image and the product gallery.
 9. The general setting view with options to regenerate all images for a specific size, cleanup, general crop position, quality, globally ignore sub-sizes, hide sub-sizes from views.
-
-
-== Changelog ==
-= 8.0.3 =
-* Attempt to fix the SVG dimensions when the core feature fails on upload (when SSL operation failed due to routines:tls_process_server_certificate:certificate verify)
-* Fixed cron schedule warning for custom frequency
-
-See the [changelog](changelog.txt) for detailed information on changes made in the earlier versions.
-
-== License ==
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 
 == Frequently Asked Questions ==
@@ -75,3 +64,18 @@ This option allows you to set a default crop position for the images generated f
 
 == Demo ==
 https://youtu.be/3hRSXMx3dcU
+
+
+== Changelog ==
+= 8.0.4 =
+* Tested up to 6.7
+* Compatibility with core 6.7
+* Translations updates
+* Fixed the uncaught error when running wp-cli resetcleanup command
+
+See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.
+
+
+== License ==
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+

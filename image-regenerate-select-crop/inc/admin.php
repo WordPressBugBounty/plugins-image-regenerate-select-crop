@@ -119,8 +119,8 @@ function admin_menu() {
 	);
 	\add_submenu_page(
 		'image-regenerate-select-crop-settings',
-		\__( 'Additional Sizes', 'sirsc' ),
-		\__( 'Additional Sizes', 'sirsc' ),
+		\__( 'Image Sizes', 'sirsc' ),
+		\__( 'Image Sizes', 'sirsc' ),
 		'manage_options',
 		\admin_url( 'options-media.php#images-custom-subsizes' )
 	);
@@ -430,7 +430,7 @@ function image_regenerate_select_crop_settings() {
 		<?php maybe_all_features_tab(); ?>
 		<div class="sirsc-tabbed-menu-content">
 			<p>
-				<?php \esc_html_e( 'Please make sure you visit and update your settings here whenever you activate a new theme or plugins, so that the new image size registered, adjusted or removed to be reflected also here, and in this way to assure the optimal behavior for the features of this plugin.', 'sirsc' ); ?> <span class="dashicons dashicons-image-crop"></span> <a href="<?php echo \esc_url( \admin_url( 'options-media.php' ) ); ?>#images-custom-settings"><?php \esc_html_e( 'Images Custom Settings', 'sirsc' ); ?></a> <span class="dashicons dashicons-format-gallery"></span> <a href="<?php echo \esc_url( \admin_url( 'options-media.php' ) ); ?>#images-custom-subsizes"><?php \esc_html_e( 'Define Custom Image Sizes', 'sirsc' ); ?></a>
+				<?php \esc_html_e( 'Visit and update your settings here whenever you activate a new theme or plugins, so that the image sizes registered/adjusted/removed to be reflected also here, and in this way to assure the optimal behavior for the features provided by this plugin.', 'sirsc' ); ?> <span class="dashicons dashicons-image-crop"></span> <a href="<?php echo \esc_url( \admin_url( 'options-media.php' ) ); ?>#images-custom-settings"><?php \esc_html_e( 'Custom Settings', 'sirsc' ); ?></a> <span class="dashicons dashicons-format-gallery"></span> <a href="<?php echo \esc_url( \admin_url( 'options-media.php' ) ); ?>#images-custom-subsizes"><?php \esc_html_e( 'Custom Image Sizes', 'sirsc' ); ?></a>
 			</p>
 
 			<div class="sirsc-image-generate-functionality">
@@ -677,59 +677,54 @@ function append_image_generate_button( $content, $post_id = 0, $thumbnail_id = 0
 function sirsc_override_section_callback() {
 	?>
 	<hr>
-	<h2 class="title"><?php \esc_html_e( 'Images Custom Settings', 'sirsc' ); ?></h2>
-	<p><?php \esc_html_e( 'You can override the default crop for the medium and large size of the images. Please note that the crop will apply to the designated image size only if it has both with and height defined (as you know, when you set 0 to one of the sizes, the image will be scaled proportionally, hence, the crop cannot be applied).', 'sirsc' ); ?></p>
+	<h2 class="title"><?php \esc_html_e( 'Custom Settings', 'sirsc' ); ?></h2>
+	<p><?php \esc_html_e( 'You can override the default crop for the medium and large size of the images. Please note that the crop will apply to the designated image size only if it has both width and height defined (as you know, when you set 0 to one of the sizes, the image will be scaled proportionally, hence, the crop cannot be applied).', 'sirsc' ); ?></p>
 
 	<table class="form-table" width="100%">
 		<tbody>
 			<tr>
-				<?php
-				$checked = \get_option( 'sirsc_override_medium_size' );
-				$crop    = \get_option( 'medium_crop' );
-				$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
-				?>
-				<td width="19%">
+				<th scope="row">
+					<?php \esc_html_e( 'Crop to exact dimensions', 'sirsc' ); ?>
+				</th>
+				<td colspan="2">
+					<?php
+					$checked = \get_option( 'sirsc_override_medium_size' );
+					$crop    = \get_option( 'medium_crop' );
+					$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
+					?>
 					<label>
 						<input name="sirsc_override_medium_size" id="sirsc_override_medium_size" type="checkbox" value="1" class="code" <?php \checked( 1, $checked ); ?>>
-						<b><?php \esc_html_e( 'Medium size crop', 'sirsc' ); ?></b>
+						<?php \esc_html_e( 'Medium size', 'sirsc' ); ?>
 					</label>
-				</td>
-				<td colspan="2"><?php \esc_html_e( 'Crop the image to exact dimensions (normally images are proportional).', 'sirsc' ); ?></td>
-			</tr>
-			<tr>
-				<?php
-				$checked = \get_option( 'sirsc_override_medium_large_size' );
-				$crop    = \get_option( 'medium_large_crop' );
-				$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
-				?>
-				<td>
+
+					<?php
+					$checked = \get_option( 'sirsc_override_medium_large_size' );
+					$crop    = \get_option( 'medium_large_crop' );
+					$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
+					?>
 					<label>
 						<input name="sirsc_override_medium_large_size" id="sirsc_override_medium_large_size" type="checkbox" value="1" class="code" <?php \checked( 1, $checked ); ?>>
-						<b><?php \esc_html_e( 'Medium large size crop', 'sirsc' ); ?></b>
+						<?php \esc_html_e( 'Medium large size', 'sirsc' ); ?>
 					</label>
-				</td>
-				<td colspan="2"><?php \esc_html_e( 'Crop the image to exact dimensions (normally images are proportional).', 'sirsc' ); ?></td>
-			</tr>
-			<tr>
-				<?php
-				$checked = \get_option( 'sirsc_override_large_size' );
-				$crop    = \get_option( 'large_crop' );
-				$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
-				?>
-				<td>
+
+					<?php
+					$checked = \get_option( 'sirsc_override_large_size' );
+					$crop    = \get_option( 'large_crop' );
+					$checked = ( 1 === (int) $crop && 1 === (int) $checked ) ? 1 : 0;
+					?>
 					<label>
 						<input name="sirsc_override_large_size" id="sirsc_override_large_size" type="checkbox" value="1" class="code" <?php \checked( 1, $checked ); ?>>
-						<b><?php \esc_html_e( 'Large size crop', 'sirsc' ); ?></b>
+						<?php \esc_html_e( 'Large size', 'sirsc' ); ?>
 					</label>
 				</td>
-				<td colspan="2"><?php \esc_html_e( 'Crop the image to exact dimensions (normally images are proportional).', 'sirsc' ); ?></td>
 			</tr>
+
 			<tr>
 				<?php
 				$checked   = \get_option( 'sirsc_admin_featured_size' );
 				$all_sizes = \SIRSC::get_all_image_sizes_plugin();
 				?>
-				<td><b><?php \esc_html_e( 'Featured image size in meta box', 'sirsc' ); ?></b></td>
+				<th scope="row"><?php \esc_html_e( 'Size in meta box', 'sirsc' ); ?></th>
 				<td>
 					<select name="sirsc_admin_featured_size" id="sirsc_admin_featured_size" style="width: 100%">
 						<option value=""></option>
@@ -739,7 +734,7 @@ function sirsc_override_section_callback() {
 					</select>
 				</td>
 				<td>
-					<?php \esc_html_e( 'This setting allows you to change the post thumbnail image size that is displayed in the meta box. Leave empty if you want to use the default image size that is set by WordPress and your theme.', 'sirsc' ); ?>
+					<?php \esc_html_e( 'This setting allows you to change the post thumbnail size that is displayed in the meta box.', 'sirsc' ); ?> <br><?php \esc_html_e( 'Leave empty if you want to use the default size that is set by WordPress and your theme.', 'sirsc' ); ?>
 				</td>
 			</tr>
 		</tbody>
@@ -762,7 +757,7 @@ function sirsc_custom_sizes_section_callback() {
 	\wp_nonce_field( 'sirsc_media_settings_save', 'sirsc_media_settings_nonce' );
 	?>
 	<hr>
-	<h2 class="title"><?php \esc_html_e( 'Define Custom Image Sizes', 'sirsc' ); ?></h2>
+	<h2 class="title"><?php \esc_html_e( 'Custom Image Sizes', 'sirsc' ); ?></h2>
 	<p>
 		<?php \esc_html_e( 'If you decided it is absolutely necessary to have new custom image sizes, you can make the setup below and these will be registered programmatically in your application if you configured these correctly (you have to input the size name and at least the width or height).', 'sirsc' ); ?>
 		<b><?php \esc_html_e( 'However, please make sure you only define these below if you are sure this is really necessary, as, any additional image size registered in your application is decreasing the performance on the images upload processing and also creates extra physical files on your hosting.', 'sirsc' ); ?></b>
@@ -776,10 +771,10 @@ function sirsc_custom_sizes_section_callback() {
 		<tbody>
 			<thead>
 				<tr>
-					<td colspan="2"><b><?php \esc_attr_e( 'Image Sizes Name', 'sirsc' ); ?></b></td>
+					<td colspan="2"><b><?php \esc_attr_e( 'Name', 'sirsc' ); ?></b></td>
 					<td width="10%"><b><?php \esc_attr_e( 'Max Width', 'sirsc' ); ?></b></td>
 					<td width="10%"><b><?php \esc_attr_e( 'Max Height', 'sirsc' ); ?></b></td>
-					<td><b><?php \esc_attr_e( 'Crop', 'sirsc' ); ?></b></td>
+					<td><b><?php \esc_html_e( 'Crop to exact dimensions', 'sirsc' ); ?></b></td>
 				</tr>
 			</thead>
 			<?php
@@ -801,7 +796,7 @@ function sirsc_custom_sizes_section_callback() {
 						<td colspan="5" style="padding: 0;"><hr></td>
 					</tr>
 					<tr>
-						<td data-colname="<?php \esc_attr_e( 'Image Sizes Name', 'sirsc' ); ?>">
+						<td data-colname="<?php \esc_attr_e( 'Name', 'sirsc' ); ?>">
 							<input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][name]"
 								id="sirsc_image_size_<?php echo (int) $counter; ?>_name"
 								type="text" value="<?php echo \esc_attr( $name ); ?>" style="width: 100%">
@@ -818,12 +813,9 @@ function sirsc_custom_sizes_section_callback() {
 								type="number" value="<?php echo \esc_attr( $height ); ?>" class="small-text"> px
 						</td>
 						<td data-colname="<?php \esc_attr_e( 'Crop', 'sirsc' ); ?>">
-							<label>
-								<input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][crop]"
-									id="sirsc_image_size_<?php echo (int) $counter; ?>_crop"
-									type="checkbox" value="1" class="code" <?php \checked( 1, $crop ); ?>>
-								<?php \esc_html_e( 'Crop the image to exact dimensions', 'sirsc' ); ?>.
-							</label>
+							<input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][crop]"
+								id="sirsc_image_size_<?php echo (int) $counter; ?>_crop"
+								type="checkbox" value="1" class="code" <?php \checked( 1, $crop ); ?>>
 						</td>
 					</tr>
 					<?php
@@ -836,7 +828,7 @@ function sirsc_custom_sizes_section_callback() {
 				<td colspan="5" style="padding: 0;"><hr></td>
 			</tr>
 			<tr class="sirsc-message info">
-				<td colspan="2" data-colname="<?php \esc_attr_e( 'Image Sizes Name', 'sirsc' ); ?>">
+				<td colspan="2" data-colname="<?php \esc_attr_e( 'Name', 'sirsc' ); ?>">
 					<input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][name]"
 						id="sirsc_image_size_<?php echo (int) $counter; ?>_name"
 						type="text" placeholder="<?php \esc_attr_e( 'New image size name', 'sirsc' ); ?>" value="" style="width: 100%">
@@ -852,7 +844,7 @@ function sirsc_custom_sizes_section_callback() {
 						type="number" value="" class="small-text"> px
 				</td>
 				<td data-colname="<?php \esc_attr_e( 'Crop', 'sirsc' ); ?>">
-					<label><input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][crop]" id="sirsc_image_size_<?php echo (int) $counter; ?>_crop" type="checkbox" value="1" class="code"> <?php \esc_html_e( 'Crop the image to exact dimensions', 'sirsc' ); ?> <?php \esc_html_e( '(normally images are proportional).', 'sirsc' ); ?></label>
+					<input name="sirsc_use_custom_image_sizes[<?php echo (int) $counter; ?>][crop]" id="sirsc_image_size_<?php echo (int) $counter; ?>_crop" type="checkbox" value="1" class="code">
 				</td>
 			</tr>
 		</tbody>
@@ -1035,23 +1027,4 @@ function media_column_value( $column, $value ) { // phpcs:ignore
 			}
 		}
 	}
-}
-
-/**
- * Adon intro.
- *
- * @param string $title Addon title.
- * @param string $desc  Addon description.
- * @param string $image Addon image.
- */
-function addon_intro( $title, $desc = '', $image = '' ) {
-	?>
-	<div class="as-row a-middle">
-		<img src="<?php echo \esc_url( SIRSC_URL . 'assets/images/' . $image ); ?>" loading="lazy" width="48" style="width: 48px; flex: 0 0 48px !important">
-		<div>
-			<div class="label-row"><h2><?php echo \esc_html( $title ); ?></h2></div>
-			<p><?php echo \wp_kses_post( $desc ); ?></p>
-		</div>
-	</div>
-	<?php
 }

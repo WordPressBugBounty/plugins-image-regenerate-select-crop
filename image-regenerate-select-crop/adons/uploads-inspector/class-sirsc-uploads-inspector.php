@@ -66,10 +66,12 @@ class SIRSC_Adons_Uploads_Inspector {
 		}
 
 		$called = get_called_class();
+		// Check extension version.
+		add_action( 'admin_init', [ $called, 'adon_ver_check' ], 30 );
+		add_action( 'admin_menu', [ get_called_class(), 'adon_admin_menu' ], 20 );
+		add_action( 'admin_enqueue_scripts', [ $called, 'load_assets' ] );
+
 		if ( is_admin() ) {
-			add_action( 'admin_menu', [ get_called_class(), 'adon_admin_menu' ], 20 );
-			add_action( 'plugins_loaded', [ $called, 'load_textdomain' ] );
-			add_action( 'admin_enqueue_scripts', [ $called, 'load_assets' ] );
 			add_action( 'sirsc_folder_assess_images_button', [ $called, 'folder_assess_images_button' ] );
 			add_action( 'sirsc_folder_refresh_button', [ $called, 'folder_refresh_button' ] );
 			add_action( 'wp_ajax_sirsc_adon_ui_display_summary', [ $called, 'display_summary' ] );
@@ -81,17 +83,8 @@ class SIRSC_Adons_Uploads_Inspector {
 			add_action( 'wp_ajax_sirsc_adon_ui_execute_cron', [ $called, 'assess_cron' ] );
 			add_action( 'sirsc_folder_assess_images_stats', [ $called, 'folder_assess_images_stats' ] );
 
-			// Check extension version.
-			add_action( 'init', [ $called, 'adon_ver_check' ], 30 );
 			self::init_buttons();
 		}
-	}
-
-	/**
-	 * Load text domain for internalization.
-	 */
-	public static function load_textdomain() {
-		load_plugin_textdomain( 'sirsc', false, basename( SIRSC_DIR ) . '/langs/' );
 	}
 
 	/**
@@ -214,37 +207,43 @@ class SIRSC_Adons_Uploads_Inspector {
 		SIRSC_Adons::check_adon_valid( self::ADON_SLUG );
 		$desc = SIRSC_Adons::get_adon_details( self::ADON_SLUG, 'description' );
 		?>
+
 		<div class="wrap sirsc-settings-wrap sirsc-feature">
-			<?php \SIRSC\Admin\show_plugin_top_info(); ?>
-			<?php \SIRSC\Admin\maybe_all_features_tab(); ?>
-			<?php \SIRSC\admin\addon_intro( __( 'Uploads Inspector', 'sirsc' ), $desc, 'adon-uploads-inspector-image.png' ); ?>
+			<?php
+			\SIRSC\Admin\show_plugin_top_info();
+			\SIRSC\Admin\maybe_all_features_tab();
+			?>
 
-			<div class="as-row no-margin">
-				<div class="as-box bg-secondary small">
-					<div class="label-row as-title">
-						<span class="dashicons as-icon dashicons-info-outline"></span>
-						<h2><?php esc_html_e( 'Folder summary', 'sirsc' ); ?></h2>
+			<div class="sirsc-tabbed-menu-content">
+				<p><?php echo \wp_kses_post( $desc ); ?></p>
+
+				<div class="as-row no-margin">
+					<div class="as-box bg-secondary small">
+						<div class="label-row as-title">
+							<span class="dashicons as-icon dashicons-info-outline"></span>
+							<h2><?php esc_html_e( 'Summary', 'sirsc' ); ?></h2>
+						</div>
+						<hr>
+						<div id="sirsc-summary-wrap" class="sirsc-feature sirsc-target">
+							<?php self::display_summary(); ?>
+						</div>
 					</div>
-					<hr>
-					<div id="sirsc-summary-wrap" class="sirsc-feature sirsc-target">
-						<?php self::display_summary(); ?>
+
+					<div class="as-box bg-secondary">
+						<?php do_action( 'sirsc_folder_refresh_button' ); ?>
+					</div>
+
+					<div class="as-box bg-secondary">
+						<?php do_action( 'sirsc_folder_assess_images_button', '*' ); ?>
 					</div>
 				</div>
 
-				<div class="as-box bg-secondary">
-					<?php do_action( 'sirsc_folder_assess_images_button', '*' ); ?>
+				<div id="sirsc-filesinfo-wrap" class="sirsc-feature as-box bg-secondary">
+					<?php self::display_filesinfo(); ?>
 				</div>
 
-				<div class="as-box bg-secondary">
-					<?php do_action( 'sirsc_folder_refresh_button' ); ?>
-				</div>
+				<div id="sirsc-listing-wrap" class="sirsc-feature sirsc-target"></div>
 			</div>
-
-			<div id="sirsc-filesinfo-wrap" class="sirsc-feature as-box bg-secondary">
-				<?php self::display_filesinfo(); ?>
-			</div>
-
-			<div id="sirsc-listing-wrap" class="sirsc-feature sirsc-target"></div>
 		</div>
 		<?php
 	}
@@ -271,7 +270,7 @@ class SIRSC_Adons_Uploads_Inspector {
 	public static function folder_assess_images_button( $path ) { // phpcs:ignore
 		?>
 		<div class="as-row as-title a-middle">
-			<h2><?php esc_html_e( 'Assess uploads', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Assess', 'sirsc' ); ?></h2>
 			<?php
 			if ( \SIRSC::$use_cron ) {
 				?>
@@ -279,7 +278,7 @@ class SIRSC_Adons_Uploads_Inspector {
 					class="button has-icon tiny f-right"
 					name="sirsc-settings-submit" value="submit"
 					id="sirsc-adon-ui-execute-assess-cron"
-					title="<?php \esc_attr_e( 'Cron task is scheduled', 'sirsc' ); ?>"
+					title="<?php \esc_attr_e( 'The cron task has been scheduled.', 'sirsc' ); ?>"
 					onclick="sirscUiStartAssessCron('start');">
 					<span class="dashicons dashicons-admin-generic"></span>
 				</button>
@@ -303,6 +302,7 @@ class SIRSC_Adons_Uploads_Inspector {
 		</div>
 		<p>
 			<?php esc_html_e( 'Click to assess the files from uploads folder & refresh the info.', 'sirsc' ); ?>
+
 			<?php esc_html_e( 'This option will initiate the assessment of the uploads structure and contents, and will collect information that can be checked later.', 'sirsc' ); ?>
 		</p>
 		<?php
@@ -314,11 +314,12 @@ class SIRSC_Adons_Uploads_Inspector {
 	public static function folder_refresh_button() {
 		?>
 		<div class="as-row as-title a-middle">
-			<h2><?php esc_html_e( 'Refresh summary', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Refresh', 'sirsc' ); ?></h2>
 			<?php \SIRSC\Iterator\button_display( 'sirsc-ui-refresh' ); ?>
 		</div>
 		<p>
-			<?php esc_html_e( 'Click to refresh summary. This will refresh the totals and counts if something was updated in the meanwhile.', 'sirsc' ); ?>
+			<?php esc_html_e( 'Click to refresh the summary and details (if something was updated in the meanwhile, this will refresh the totals and counts).', 'sirsc' ); ?>
+
 			<?php esc_html_e( 'This option will also stop the assessment, if that is currently in progress.', 'sirsc' ); ?>
 		</p>
 		<?php
@@ -336,21 +337,21 @@ class SIRSC_Adons_Uploads_Inspector {
 			?>
 			<ul class="sirsc-folders-info-wrap">
 				<li>
-					<?php esc_html_e( 'Upload folder', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Folder', 'sirsc' ); ?>:
 					<b><?php echo esc_html( $root['name'] ); ?></b>
 				</li>
 				<li>
 					<?php esc_html_e( 'Size', 'sirsc' ); ?>:
 					<b><?php echo esc_html( \SIRSC\Helper\human_filesize( $root['totals']['files_size'] ) ); ?></b>
 					(<?php echo (int) $root['totals']['files_size']; ?>
-					<?php esc_html_e( 'bytes', 'sirsc' ); ?>)
+					<?php esc_html_e( 'Bytes', 'sirsc' ); ?>)
 				</li>
 				<li>
-					<?php esc_html_e( 'Total folders', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Subfolders', 'sirsc' ); ?>:
 					<b><?php echo (int) $root['totals']['folders_count']; ?></b>
 				</li>
 				<li>
-					<?php esc_html_e( 'Total files', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Files', 'sirsc' ); ?>:
 					<b><?php echo (int) $root['totals']['files_count']; ?></b>
 				</li>
 			</ul>
@@ -479,8 +480,10 @@ class SIRSC_Adons_Uploads_Inspector {
 			?>
 			<div class="label-row as-title">
 				<h2>
-					<?php esc_html_e( 'Processing the request for', 'sirsc' ); ?>
-					<b><?php echo esc_html( $maybe_dir->path ); ?></b>
+					<?php
+					// Translators: %s - folder name.
+					echo wp_kses_post( sprintf( __( 'Processing the request for %s.', 'sirsc' ), '<b>' . $maybe_dir->path . '</b>' ) );
+					?>
 				</h2>
 			</div>
 			<?php self::compute_progress_bar(); ?>
@@ -584,7 +587,7 @@ class SIRSC_Adons_Uploads_Inspector {
 		<button id="<?php echo esc_html( $id ); ?>" class="sirsc-listing-wrap-item" data-page="1"
 			data-valid="0" data-maxpage="<?php echo (int) $max; ?>"
 			data-sizename="<?php echo esc_html( $size ); ?>" data-mimetype="<?php echo esc_html( $mime ); ?>"
-			data-title="<?php echo esc_html( $title ); ?>">(<?php echo (int) $total; ?> <?php esc_html_e( 'files', 'sirsc' ); ?>)</button>
+			data-title="<?php echo esc_html( $title ); ?>">(<?php echo (int) $total; ?>)</button>
 		<?php
 	}
 
@@ -600,7 +603,7 @@ class SIRSC_Adons_Uploads_Inspector {
 		}
 		?>
 		<div class="as-row as-title">
-			<h2><?php esc_html_e( 'Files Info', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Details', 'sirsc' ); ?></h2>
 		</div>
 		<p class="small-gap">
 			<?php

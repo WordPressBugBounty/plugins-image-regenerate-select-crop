@@ -91,7 +91,7 @@ function assess_collected_errors() { // phpcs:ignore
 	if ( ! empty( $errors['schedule'] ) ) {
 		foreach ( $errors['schedule'] as $id => $filename ) {
 			if ( empty( $errors['error'][ $id ] ) ) {
-				$errors['error'][ $id ] = '<em>' . $filename . '</em> - ' . \esc_html__( 'The original filesize is too big and the server does not have enough resources to process it.', 'sirsc' );
+				$errors['error'][ $id ] = '<em>' . $filename . '</em> - ' . \esc_html__( 'the original filesize is too big and the server does not have enough resources to process it', 'sirsc' );
 			}
 		}
 	}
@@ -99,21 +99,26 @@ function assess_collected_errors() { // phpcs:ignore
 	if ( ! empty( $errors['error'] ) ) {
 		$sep = '<b class="dashicons dashicons-dismiss"></b> ';
 
+		$rsn = [];
 		if ( ! empty( $errors['initiator'] ) && 'cleanup' === $errors['initiator'] ) {
-			$message = \wp_kses_post( sprintf(
-				// Translators: %1$s - separator, %2$s - server side error.
-				\__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen when: <br>&bull; the image you were trying to delete is <b>the original</b> file,<br>&bull; the image size was pointing to the <b>the original</b> and it should not be removed,<br>&bull; the <b>file is missing</b>.%1$sSee the details: %2$s', 'sirsc' ),
-				'</div><div class="info-reason sirsc-errors"><div class="sirsc-log info-title">',
-				'</div><div class="sirsc-log status-error">' . $sep . implode( '</div><div class="sirsc-log status-error">' . $sep, $errors['error'] ) . '</div>'
-			) );
+			$rsns[] = \__( 'the file you were trying to delete is the original file', 'sirsc' );
+			$rsns[] = \__( 'the sub-size points to the original file and that should not be removed', 'sirsc' );
+			$rsns[] = \__( 'the file is missing', 'sirsc' );
 		} else {
-			$message = \wp_kses_post( sprintf(
-				// Translators: %1$s - server side error.
-				\__( '<b>Unfortunately, there was an error</b>. Some of the execution might not have been successful. This can happen in when: <br>&bull; the image from which the script is generating the specified image size does not have the <b>proper size</b> for resize/crop to a specific width and height,<br>&bull; the attachment <b>metadata is broken</b>,<br>&bull; the original <b>file is missing</b>,<br>&bull; the image that is processed is <b>very big</b> (rezolution or size) and the <b>allocated memory</b> on the server is not enough to handle the request,<br>&bull; the overall processing on your site is <b>too intensive</b>.%1$sSee the details: %2$s', 'sirsc' ),
-				'</div><div class="info-reason sirsc-errors"><div class="sirsc-log info-title">',
-				'</div><div class="sirsc-log status-error">' . $sep . implode( '</div><div class="sirsc-log  status-error">' . $sep, $errors['error'] ) . '</div>'
-			) );
+			$rsns[] = \__( 'the image from which the script is generating the specified sub-size does not have the proper size for resize/crop to a specific width and height', 'sirsc' );
+			$rsns[] = \__( 'the attachment metadata is broken', 'sirsc' );
+			$rsns[] = \__( 'the original file is missing', 'sirsc' );
+			$rsns[] = \__( 'the image that is processed is very big (rezolution or size) and the allocated memory on the server is not enough to handle the request', 'sirsc' );
+			$rsns[] = \__( 'the overall processing on your site is too intensive', 'sirsc' );
 		}
+
+		$message = \wp_kses_post( sprintf(
+			// Translators: %1$s - reasons, %2$s - separator, %3$s - server side error.
+			\__( '<b>Unfortunately, there was an error</b>. Some of the execution was not successful. This can happen when: %1$s. %2$sSee the details: %3$s', 'sirsc' ),
+			'<br>&bull; ' . implode( ',<br>&bull; ', $rsns ),
+			'</div><div class="info-reason sirsc-errors"><div class="sirsc-log info-title">',
+			'</div><div class="sirsc-log status-error">' . $sep . implode( '</div><div class="sirsc-log status-error">' . $sep, $errors['error'] ) . '</div>'
+		) );
 
 		$upls = \wp_upload_dir();
 

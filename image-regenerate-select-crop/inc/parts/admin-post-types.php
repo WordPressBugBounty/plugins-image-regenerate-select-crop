@@ -31,12 +31,15 @@ namespace SIRSC\Admin;
 				<?php
 				foreach ( $post_types as $pt => $obj ) {
 					array_push( $ptypes, $pt );
-					$is_sel = ( $_sirsc_post_types === $pt ) ? 1 : 0;
-					$extra  = ( ! empty( $obj->_builtin ) ) ? '' : ' (custom post type)';
+					$is_sel = $_sirsc_post_types === $pt ? 1 : 0;
+					$extra  = ! empty( $obj->_builtin ) ? '' : ' (' . \__( 'custom post type', 'sirsc' ) . ')';
 					$pt_s   = \maybe_unserialize( \get_option( 'sirsc_settings_' . $pt ) );
-					$has    = ( ! empty( $pt_s ) ) ? '* ' : '';
+					$has    = ! empty( $pt_s ) ? '* ' : '';
+
+					// Translators: %1$s - post type name.
+					$opt_text = sprintf( \__( 'Settings for images attached to a %1$s', 'sirsc' ), $pt );
 					?>
-					<option value="<?php echo \esc_attr( $pt ); ?>"<?php \selected( 1, $is_sel ); ?>><?php echo \esc_html( $has . \esc_html__( 'Settings for images attached to a ', 'sirsc' ) . ' ' . $pt . $extra ); ?></option>
+					<option value="<?php echo \esc_attr( $pt ); ?>"<?php \selected( 1, $is_sel ); ?>><?php echo \esc_html( $has . $opt_text . $extra ); ?></option>
 					<?php
 				}
 				?>

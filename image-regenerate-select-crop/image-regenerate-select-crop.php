@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Image Regenerate & Select Crop
- * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
- * Description: Regenerate and crop images, details and actions for image sizes registered and image sizes generated, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.0.3
+ * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
+ * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
+ * Version:     8.0.4
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.03 );
+define( 'SIRSC_VER', 8.04 );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -41,6 +41,7 @@ define( 'SIRSC_PAGE', 'image-regenerate-select-crop-settings' );
 define( 'SIRSC_ADONS_DIR', SIRSC_DIR . 'adons/' );
 
 require_once SIRSC_DIR . 'inc/plugin.php';
+require_once SIRSC_DIR . 'inc/cron.php';
 require_once SIRSC_DIR . 'inc/notice.php';
 require_once SIRSC_DIR . 'inc/debug.php';
 require_once SIRSC_DIR . 'inc/action.php';
@@ -52,7 +53,6 @@ require_once SIRSC_DIR . 'inc/integration.php';
 require_once SIRSC_DIR . 'inc/calls.php';
 require_once SIRSC_DIR . 'inc/adons.php';
 require_once SIRSC_DIR . 'inc/wp-cli.php';
-require_once SIRSC_DIR . 'inc/cron.php';
 
 /**
  * Class for Image Regenerate & Select Crop.
@@ -1745,7 +1745,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						}
 
 						if ( empty( $metadata ) ) {
-							$metadata = self::attempt_to_create_metadata( $id, $filename );
+							$metadata = \SIRSC\Helper\attempt_to_create_metadata( $id, $filename );
 						}
 						if ( empty( $metadata['sizes'] ) ) {
 							$metadata['sizes'] = [];
@@ -2251,7 +2251,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$image = wp_get_attachment_metadata( $id );
 			if ( empty( $image ) ) {
 				$filename = get_attached_file( $id );
-				$image    = self::attempt_to_create_metadata( $id, $filename );
+				$image    = \SIRSC\Helper\attempt_to_create_metadata( $id, $filename );
 			}
 		}
 
@@ -2415,7 +2415,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			if ( ! empty( $image_meta['sizes'] ) ) {
 				$direct = wp_list_pluck( $image_meta['sizes'], 'file' );
 				if ( ! empty( $direct ) ) {
-					$dir = trailingslashit( dirname( $image_meta['file'] ) );
+					$dir = ! empty( $image_meta['file'] ) ? trailingslashit( dirname( $image_meta['file'] ) ) : '/';
 					foreach ( $direct as $key => $value ) {
 						$file = $dir . $value;
 						if ( ! empty( $summary[ $file ] ) ) {
@@ -2667,6 +2667,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			return false;
 		}
 
+		// phpcs:disable
 		$svg  = @simplexml_load_file( $svg );
 		$view = '';
 		if ( ! empty( $svg ) ) {
@@ -2679,10 +2680,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 		}
+		// phpcs:enable
 
 		if ( empty( $view ) ) {
 			$svg = file_get_contents( $svg );
-			if ( ! empty( $svg ) && preg_match('/viewBox="([\d.\s-]+)"/', $svg, $matches ) ) {
+			if ( ! empty( $svg ) && preg_match( '/viewBox="([\d.\s-]+)"/', $svg, $matches ) ) {
 				$view = $matches[1];
 			}
 		}
@@ -2693,7 +2695,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			return [
 				'width'       => (int) $width,
 				'height'      => (int) $height,
-				'orientation' => ( $width > $height ) ? 'landscape' : 'portrait'
+				'orientation' => $width > $height ? 'landscape' : 'portrait',
 			];
 		}
 
@@ -2821,7 +2823,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$image = \wp_get_attachment_metadata( $id );
 			if ( empty( $image ) ) {
 				$filename = \get_attached_file( $id );
-				$image    = self::attempt_to_create_metadata( $id, $filename );
+				$image    = \SIRSC\Helper\attempt_to_create_metadata( $id, $filename );
 			}
 		}
 

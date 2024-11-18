@@ -7,7 +7,7 @@
  */
 
 /**
- * Class for Image Regenerate & Select Crop plugin adon Upload Folder Info.
+ * Class for Image Regenerate & Select Crop plugin adon Uploads Folder Info.
  */
 class SIRSC_Adons_Uploads_Folder_Info {
 
@@ -97,26 +97,31 @@ class SIRSC_Adons_Uploads_Folder_Info {
 		?>
 
 		<div class="wrap sirsc-settings-wrap sirsc-feature">
-			<?php \SIRSC\Admin\show_plugin_top_info(); ?>
-			<?php \SIRSC\Admin\maybe_all_features_tab(); ?>
-			<?php \SIRSC\admin\addon_intro( __( 'Uploads Folder Info', 'sirsc' ), $desc, 'adon-uploads-folder-info-image.png' ); ?>
+			<?php
+			\SIRSC\Admin\show_plugin_top_info();
+			\SIRSC\Admin\maybe_all_features_tab();
+			?>
 
-			<div class="as-row no-margin">
-				<div class="as-box bg-secondary small">
-					<div class="label-row as-title">
-						<span class="dashicons as-icon dashicons-info-outline"></span>
-						<h2><?php esc_html_e( 'Folder summary', 'sirsc' ); ?></h2>
-					</div>
-					<hr>
-					<div id="sirsc-summary-wrap" class="sirsc-feature sirsc-target">
-						<?php self::display_summary(); ?>
-					</div>
-					<?php self::folder_refresh_button(); ?>
-				</div>
+			<div class="sirsc-tabbed-menu-content">
+				<p><?php echo \wp_kses_post( $desc ); ?></p>
 
-				<div class="as-box bg-secondary">
-					<div id="sirsc-filesinfo-wrap" class="sirsc-feature sirsc-folders-info sirsc-target">
-						<?php self::display_filesinfo(); ?>
+				<div class="as-row no-margin">
+					<div class="as-box bg-secondary small">
+						<div class="label-row as-title">
+							<span class="dashicons as-icon dashicons-info-outline"></span>
+							<h2><?php esc_html_e( 'Summary', 'sirsc' ); ?></h2>
+						</div>
+						<hr>
+						<div id="sirsc-summary-wrap" class="sirsc-feature sirsc-target">
+							<?php self::display_summary(); ?>
+						</div>
+						<?php self::folder_refresh_button(); ?>
+					</div>
+
+					<div class="as-box bg-secondary">
+						<div id="sirsc-filesinfo-wrap" class="sirsc-feature sirsc-folders-info sirsc-target">
+							<?php self::display_filesinfo(); ?>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -132,11 +137,11 @@ class SIRSC_Adons_Uploads_Folder_Info {
 		<hr>
 
 		<div class="label-row">
-			<h2><?php esc_html_e( 'Refresh summary', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Refresh', 'sirsc' ); ?></h2>
 		</div>
 
 		<p>
-			<?php esc_html_e( 'Click to refresh summary & folder details. This will refresh the totals and counts if something was updated in the meanwhile.', 'sirsc' ); ?>
+			<?php esc_html_e( 'Click to refresh the summary and details (if something was updated in the meanwhile, this will refresh the totals and counts).', 'sirsc' ); ?>
 		</p>
 
 		<?php \SIRSC\Iterator\button_display( 'sirsc-ufi-refresh' ); ?>
@@ -155,21 +160,21 @@ class SIRSC_Adons_Uploads_Folder_Info {
 			?>
 			<ul class="sirsc-folders-info-wrap">
 				<li>
-					<?php esc_html_e( 'Upload folder', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Folder', 'sirsc' ); ?>:
 					<b><?php echo esc_html( $root['name'] ); ?></b>
 				</li>
 				<li>
 					<?php esc_html_e( 'Size', 'sirsc' ); ?>:
 					<b><?php echo esc_html( \SIRSC\Helper\human_filesize( $root['totals']['files_size'] ) ); ?></b>
 					(<?php echo (int) $root['totals']['files_size']; ?>
-					<?php esc_html_e( 'bytes', 'sirsc' ); ?>)
+					<?php esc_html_e( 'Bytes', 'sirsc' ); ?>)
 				</li>
 				<li>
-					<?php esc_html_e( 'Total folders', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Subfolders', 'sirsc' ); ?>:
 					<b><?php echo (int) $root['totals']['folders_count']; ?></b>
 				</li>
 				<li>
-					<?php esc_html_e( 'Total files', 'sirsc' ); ?>:
+					<?php esc_html_e( 'Files', 'sirsc' ); ?>:
 					<b><?php echo (int) $root['totals']['files_count']; ?></b>
 				</li>
 			</ul>
@@ -219,10 +224,10 @@ class SIRSC_Adons_Uploads_Folder_Info {
 			<table class="wp-list-table striped widefat fixed pages">
 				<thead>
 					<td><h3 class="heading"><?php esc_html_e( 'Folder', 'sirsc' ); ?></h3></td>
-					<td width="20%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Total folders', 'sirsc' ); ?></h3></td>
-					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Total files', 'sirsc' ); ?></h3></td>
-					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Total size', 'sirsc' ); ?></h3></td>
-					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Total bytes', 'sirsc' ); ?></h3></td>
+					<td width="20%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Subfolders', 'sirsc' ); ?></h3></td>
+					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Files', 'sirsc' ); ?></h3></td>
+					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Size', 'sirsc' ); ?></h3></td>
+					<td width="15%" class="a-right"><h3 class="heading"><?php esc_html_e( 'Bytes', 'sirsc' ); ?></h3></td>
 				</thead>
 
 				<tbody>
@@ -238,22 +243,22 @@ class SIRSC_Adons_Uploads_Folder_Info {
 									<span class="name"><b><?php echo esc_html( $folder['name'] ); ?></b></span>
 								</div>
 							</td>
-							<td class="a-right" data-colname="<?php esc_attr_e( 'Total folders', 'sirsc' ); ?>">
+							<td class="a-right" data-colname="<?php esc_attr_e( 'Subfolders', 'sirsc' ); ?>">
 								<?php if ( ! empty( $folder['totals']['folders_count'] ) ) : ?>
 									<?php echo (int) $folder['totals']['folders_count']; ?>
 								<?php endif; ?>
 							</td>
-							<td class="a-right" data-colname="<?php esc_attr_e( 'Total files', 'sirsc' ); ?>">
+							<td class="a-right" data-colname="<?php esc_attr_e( 'Files', 'sirsc' ); ?>">
 								<?php if ( ! empty( $folder['totals']['files_count'] ) ) : ?>
 									<?php echo (int) $folder['totals']['files_count']; ?>
 								<?php endif; ?>
 							</td>
-							<td class="a-right" data-colname="<?php esc_attr_e( 'Total size', 'sirsc' ); ?>">
+							<td class="a-right" data-colname="<?php esc_attr_e( 'Size', 'sirsc' ); ?>">
 								<?php if ( ! empty( $folder['totals']['files_size'] ) ) : ?>
 									<b><?php echo esc_html( \SIRSC\Helper\human_filesize( $folder['totals']['files_size'] ) ); ?></b>
 								<?php endif; ?>
 							</td>
-							<td class="a-right last" data-colname="<?php esc_attr_e( 'Total bytes', 'sirsc' ); ?>">
+							<td class="a-right last" data-colname="<?php esc_attr_e( 'Bytes', 'sirsc' ); ?>">
 								<?php if ( ! empty( $folder['totals']['files_size'] ) ) : ?>
 									<?php echo (int) $folder['totals']['files_size']; ?>
 								<?php endif; ?>
@@ -291,7 +296,7 @@ class SIRSC_Adons_Uploads_Folder_Info {
 		}
 		?>
 		<div class="label-row as-title">
-			<h2><?php esc_html_e( 'Folder Details', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Details', 'sirsc' ); ?></h2>
 		</div>
 
 		<?php

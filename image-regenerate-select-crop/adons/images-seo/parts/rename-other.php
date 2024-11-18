@@ -10,11 +10,10 @@
 <div id="sirsc-is-rename-wrap" class="as-row">
 	<div class="as-box bg-secondary small">
 		<div class="label-row as-title">
-			<span class="dashicons as-icon dashicons-image-rotate-right"></span>
-			<h2><?php esc_html_e( 'Rename images', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Rename', 'sirsc' ); ?></h2>
 		</div>
 
-		<p><?php esc_html_e( 'You can change the title below, then click the button to rename the identifies images associated with this post, and their generated image sizes.', 'sirsc' ); ?></p>
+		<p><?php esc_html_e( 'Change the title below to rename the targeted images for this post, and their generated sub-sizes.', 'sirsc' ); ?></p>
 
 		<div class="label-row">
 			<input type="text" name="sirsc_imgseo-renamefile-title" id="sirsc_imgseo-renamefile-title" value="<?php echo esc_attr( $post->post_title ); ?>">

@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 8.0.3 =
+* Attempt to fix the SVG dimensions when the core feature fails on upload (when SSL operation failed due to routines:tls_process_server_certificate:certificate verify)
+* Fixed cron schedule warning for custom frequency
+
 = 8.0.2 =
 * Removed the GLOB_BRACE from the code, as that is not available on some non GNU systems
 

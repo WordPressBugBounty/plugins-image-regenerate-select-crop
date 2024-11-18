@@ -436,11 +436,13 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 										\SIRSC\Debug\bulk_log_write( 'WP-CLI * ' . $text );
 									}
 								} elseif ( $verbose ) {
-									WP_CLI::line( esc_html__( 'No cleanup necessary for', 'sirsc' ) . ' ' . $v['ID'] . '.' );
+									// Translators: %1$s - id.
+									WP_CLI::line( \esc_html( sprintf( \__( 'No cleanup necessary for %1$s', 'sirsc' ), $v['ID'] ) ) );
 								}
 							}
 						} elseif ( $verbose ) {
-							WP_CLI::line( esc_html__( 'No cleanup necessary for', 'sirsc' ) . ' ' . $v['ID'] . '.' );
+							// Translators: %1$s - id.
+							WP_CLI::line( \esc_html( sprintf( \__( 'No cleanup necessary for %1$s', 'sirsc' ), $v['ID'] ) ) );
 						}
 
 						if ( $initial !== $meta ) {

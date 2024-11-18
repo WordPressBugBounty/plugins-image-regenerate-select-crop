@@ -128,7 +128,7 @@ if ( ! empty( $items ) ) {
 					<td class="a-right" data-colname="<?php esc_attr_e( 'File size', 'sirsc' ); ?>">
 						<b><?php echo esc_html( \SIRSC\Helper\human_filesize( $item->filesize ) ); ?></b>
 						<div class="small-font">
-							(<?php echo esc_html( $item->filesize ); ?> <?php esc_html_e( 'bytes', 'sirsc' ); ?>)
+							(<?php echo esc_html( $item->filesize ); ?> <?php esc_html_e( 'Bytes', 'sirsc' ); ?>)
 						</div>
 					</td>
 					<td class="a-right" data-colname="<?php esc_attr_e( 'Size', 'sirsc' ); ?>">

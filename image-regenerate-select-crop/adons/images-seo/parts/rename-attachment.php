@@ -10,14 +10,12 @@
 <div id="sirsc-is-rename-wrap" class="as-row">
 	<div class="as-box bg-secondary small">
 		<div class="label-row as-title">
-			<span class="dashicons as-icon dashicons-image-rotate-right"></span>
-
-			<h2><?php esc_html_e( 'Rename attachment file', 'sirsc' ); ?></h2>
+			<h2><?php esc_html_e( 'Rename', 'sirsc' ); ?></h2>
 		</div>
 
-		<p><?php esc_html_e( 'You can change the title below, then click the button to rename the attachment file, and the generated image sizes.', 'sirsc' ); ?></p>
+		<p><?php esc_html_e( 'Change the title below to rename the attachment file, and the generated sub-sizes.', 'sirsc' ); ?></p>
 
-		<div class="label-row">
+		<div class="label-row as-title">
 			<input type="text" name="sirsc_imgseo-renamefile-title" id="sirsc_imgseo-renamefile-title" value="<?php echo esc_attr( $post->post_title ); ?>">
 
 			<button type="submit" class="sirsc-button-icon button-primary has-icon tiny" onclick="sirscToggleProcesing( 'sirsc-is-rename-wrap' );" title="<?php esc_attr_e( 'Rename', 'sirsc' ); ?>"><span class="dashicons dashicons-image-rotate-right"></span></button>

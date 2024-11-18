@@ -210,11 +210,13 @@ class SIRSC_Adons_Import_Export {
 		$desc = SIRSC_Adons::get_adon_details( self::ADON_SLUG, 'description' );
 		?>
 		<div class="wrap sirsc-settings-wrap sirsc-feature">
-			<?php \SIRSC\Admin\show_plugin_top_info(); ?>
-			<?php \SIRSC\Admin\maybe_all_features_tab(); ?>
-			<?php \SIRSC\admin\addon_intro( __( 'Import/Export', 'sirsc' ), $desc, 'adon-import-export-image.png' ); ?>
+			<?php
+			\SIRSC\Admin\show_plugin_top_info();
+			\SIRSC\Admin\maybe_all_features_tab();
+			?>
 
 			<div class="sirsc-tabbed-menu-content">
+				<p><?php echo \wp_kses_post( $desc ); ?></p>
 				<?php require_once __DIR__ . '/parts/areas.php'; ?>
 			</div>
 

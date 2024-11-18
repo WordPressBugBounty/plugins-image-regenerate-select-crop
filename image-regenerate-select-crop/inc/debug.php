@@ -133,7 +133,7 @@ function sirsc_debug() {
 						<div class="label-row">
 							<button class="button has-icon tiny button-primary" onclick="refreshLog( 'bulk' )"><span class="dashicons dashicons-update-alt"></span></button>
 							<h2><?php \esc_html_e( 'Bulk actions log', 'sirsc' ); ?></h2>
-							<button class="button button-neutral" onclick="resetLog( 'bulk' )"><?php \esc_html_e( 'Reset log', 'sirsc' ); ?></button>
+							<button class="button button-neutral" onclick="resetLog( 'bulk' )"><?php \esc_html_e( 'Reset', 'sirsc' ); ?></button>
 						</div>
 						<p><?php \esc_html_e( 'The bulk actions execution results can be seen below, the most recent actions are shown at the top of the list.', 'sirsc' ); ?></p>
 						<div id="sirsc-log-bulk" class="code">
@@ -145,7 +145,7 @@ function sirsc_debug() {
 						<div class="label-row">
 							<button class="button has-icon tiny button-primary" onclick="refreshLog( 'tracer' )"><span class="dashicons dashicons-update-alt"></span></button>
 							<h2><?php \esc_html_e( 'Tracer log', 'sirsc' ); ?></h2>
-							<button class="button button-neutral" onclick="resetLog( 'tracer' )"><?php \esc_html_e( 'Reset log', 'sirsc' ); ?></button>
+							<button class="button button-neutral" onclick="resetLog( 'tracer' )"><?php \esc_html_e( 'Reset', 'sirsc' ); ?></button>
 						</div>
 						<p><?php \esc_html_e( 'The tracer log can be seen below, the most recent events are shown at the top of the list.', 'sirsc' ); ?></p>
 						<div id="sirsc-log-tracer" class="code">

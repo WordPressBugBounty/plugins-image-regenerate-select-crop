@@ -10,7 +10,7 @@ namespace SIRSC\Admin;
 
 the_info_text( 'info_global_ignore', \__( 'This option allows you to exclude globally from the application some of the image sizes that are registered through various plugins and themes options, that you perhaps do not need at all in your application (these are just stored in your folders and database but not actually used/visible on the front-end).', 'sirsc' ) . '<hr>' . \__( 'By excluding these, the unnecessary image sizes will not be generated at all.', 'sirsc' ) );
 
-the_info_text( 'info_default_quality', \__( 'The quality option is allowing you to control the quality of the images that are generated for each of the image sizes, starting from the quality of the image you upload. This can be useful for performance.', 'sirsc' ) . '<hr><b>' . \__( 'However, please be careful not to change the quality of the full image or the quality of the image size that you set as the forced original.', 'sirsc' ) . '</b><hr>' . \__( 'Setting a lower quality is recommended for smaller images sizes, that are generated from the full/original file.', 'sirsc' ) );
+the_info_text( 'info_default_quality', \__( 'The quality option is allowing you to control the quality of the generated sub-sizes, starting from the quality of the image you upload. This can be useful for performance.', 'sirsc' ) . '<hr><b>' . \__( 'Be careful not to change the quality of the full image or the quality of the sub-size that you set as the forced original.', 'sirsc' ) . '</b><hr>' . \__( 'Setting a lower quality is recommended for smaller sub-sizes, that are generated from the full/original file.', 'sirsc' ) );
 
 the_info_text( 'info_force_original', \__( 'This option means that when uploading an image, the original image will be replaced completely by the image size you select (the image generated, scaled or cropped to a specific width and height will become the full size for that image going further).', 'sirsc' ) . '<hr>' . \__( 'This can be very useful if you do not use the original image in any of the layouts at the full size, and this might save some storage space.', 'sirsc' ) . '<hr>' . \__( 'Leave "nothing selected" to keep the full/original image as the file you upload (default WordPress behavior).', 'sirsc' ) );
 
@@ -75,7 +75,7 @@ the_info_text( 'info_regenerate', \__( 'This option allows you to regenerate the
 				<h3><?php \esc_html_e( 'Quality', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'file compression', 'sirsc' ); ?></div>
 			</td>
-			<td width="15%">
+			<td width="12%">
 				<h3><?php \esc_html_e( 'Force original', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'use as original', 'sirsc' ); ?></div>
 			</td>
@@ -83,15 +83,15 @@ the_info_text( 'info_regenerate', \__( 'This option allows you to regenerate the
 				<h3><?php \esc_html_e( 'Hide Preview', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'hide from views', 'sirsc' ); ?></div>
 			</td>
-			<td width="12%">
+			<td width="9%">
 				<h3><?php \esc_html_e( 'Default Crop', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'initial position', 'sirsc' ); ?></div>
 			</td>
-			<td width="8%" class="a-right">
+			<td width="6%" class="a-right">
 				<h3><?php \esc_html_e( 'Cleanup', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'removal', 'sirsc' ); ?></div>
 			</td>
-			<td width="10%" class="a-right">
+			<td width="12%" class="a-right">
 				<h3><?php \esc_html_e( 'Regenerate', 'sirsc' ); ?></h3>
 				<div class="row-hint"><?php \esc_html_e( 'scale/crop', 'sirsc' ); ?></div>
 			</td>

@@ -10,12 +10,12 @@ namespace SIRSC\Admin;
 
 ?>
 <p>
-	<?php \esc_html_e( 'The advanced custom rules you configure below are global and will override all the other settings you set above.', 'sirsc' ); ?><br><b><?php \esc_html_e( 'Please be aware that the custom rules will apply only if you actually set up the post to use one of the rules below, and only then upload images to that post.', 'sirsc' ); ?></b>
+	<?php \esc_html_e( 'The advanced custom rules you configure below are global and will override all the other settings you set above.', 'sirsc' ); ?><br><b><?php \esc_html_e( 'The custom rules will apply only if you set up the post to use one of the rules below, and only after that you upload images to that post.', 'sirsc' ); ?></b>
 </p>
 
 <div class="label-row as-title"><h3><?php \esc_html_e( 'Advanced custom rules based on the post where the image will be uploaded', 'sirsc' ); ?></h3></div>
 
-<p class="small-gap"><?php \esc_html_e( 'Very important: the order in which the rules are checked and have priority is: post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first in this order will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you.', 'sirsc' ); ?></p>
+<p class="small-gap"><?php \esc_html_e( 'The order in which the rules are checked and have priority is: post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first (in this order) will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you.', 'sirsc' ); ?></p>
 
 <?php
 $select_ims = '';
@@ -48,19 +48,39 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 		<tr>
 			<td width="12%">
 				<h3><?php \esc_html_e( 'The post has', 'sirsc' ); ?></h3>
-				<div class="row-hint"><?php \esc_html_e( 'Ex: Categories', 'sirsc' ); ?></div>
+				<div class="row-hint">
+					<?php
+					// Translators: %s - example.
+					echo \esc_html( sprintf( \__( 'Ex: %s', 'sirsc' ), \__( 'Categories', 'sirsc' ) ) );
+					?>
+				</div>
 			</td>
 			<td width="12%">
 				<h3><?php \esc_html_e( 'Value', 'sirsc' ); ?></h3>
-				<div class="row-hint"><?php \esc_html_e( 'Ex: gallery,my-photos', 'sirsc' ); ?></div>
+				<div class="row-hint">
+					<?php
+					// Translators: %s - example.
+					echo \esc_html( sprintf( \__( 'Ex: %s', 'sirsc' ), 'gallery,my-photos' ) );
+					?>
+				</div>
 			</td>
 			<td width="12%">
 				<h3><?php \esc_html_e( 'Force original', 'sirsc' ); ?></h3>
-				<div class="row-hint"><?php \esc_html_e( 'Ex: large', 'sirsc' ); ?></div>
+				<div class="row-hint">
+					<?php
+					// Translators: %s - example.
+					echo \esc_html( sprintf( \__( 'Ex: %s', 'sirsc' ), 'large' ) );
+					?>
+				</div>
 			</td>
 			<td>
 				<h3><?php \esc_html_e( 'Generate only these image sizes for the rule', 'sirsc' ); ?></h3>
-				<div class="row-hint"><?php \esc_html_e( 'Ex: thumbnail, large', 'sirsc' ); ?></div>
+				<div class="row-hint">
+					<?php
+					// Translators: %s - example.
+					echo \esc_html( sprintf( \__( 'Ex: %s', 'sirsc' ), 'thumbnail,large' ) );
+					?>
+				</div>
 			</td>
 			<td width="13%" colspan="2">
 				<h3><?php \esc_html_e( 'Suppress', 'sirsc' ); ?></h3>
@@ -133,10 +153,13 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 
 						echo '<div class="potential-rule ' . $class . $extra . '">'; // phpcs:ignore
 						if ( substr_count( $class, 'row-ignore' ) ) {
-							\esc_html_e( 'This rule is SUPPRESSED', 'sirsc' );
+							// Translators: %s - rule status.
+							echo \esc_html( sprintf( \__( 'This rule is %s', 'sirsc' ), \__( 'suppressed', 'sirsc' ) ) );
 						} else {
-							\esc_html_e( 'This rule is ACTIVE', 'sirsc' );
+							// Translators: %s - rule status.
+							echo \esc_html( sprintf( \__( 'This rule is %s', 'sirsc' ), \__( 'activated', 'sirsc' ) ) );
 						}
+
 						echo ': ';
 
 						// phpcs:disable

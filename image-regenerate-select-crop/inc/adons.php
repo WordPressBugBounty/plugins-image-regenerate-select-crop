@@ -83,7 +83,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 
 		self::$menu_items['image-regenerate-select-crop-extensions'] = [
 			'slug'  => 'image-regenerate-select-crop-extensions',
-			'title' => __( 'Features Manager', 'sirsc' ),
+			'title' => __( 'Extensions', 'sirsc' ),
 			'url'   => admin_url( 'admin.php?page=image-regenerate-select-crop-extensions' ),
 			'icon'  => '<span class="dashicons dashicons-admin-plugins"></span>',
 		];
@@ -143,7 +143,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 		$default = [
 			'import-export'       => [
 				'name'        => __( 'Import/Export', 'sirsc' ),
-				'description' => __( 'This extension allows you to export and import the plugin settings from an instance to another. The export includes the general settings, the advanced rules, the media settings, and the additional sizes manages with this plugin.', 'sirsc' ),
+				'description' => __( 'Export and import the plugin settings from one instance to another (general settings, advanced rules, media settings, additional image sizes managed with this plugin).', 'sirsc' ),
 				'icon'        => '<span class="dashicons dashicons-migrate"></span>',
 				'available'   => true,
 				'active'      => false,
@@ -156,7 +156,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 			],
 			'images-seo'          => [
 				'name'        => __( 'Images SEO', 'sirsc' ),
-				'description' => __( 'This extension allows you to rename the images files (bulk rename, individual rename or image rename on upload). Also, the extension provides the feature to override the attachments attributes based on the feature settings.', 'sirsc' ),
+				'description' => __( 'Rename the images files (bulk rename, individual rename or image rename on upload) and override the attachments attributes based on the settings.', 'sirsc' ),
 				'icon'        => '',
 				'available'   => false,
 				'active'      => false,
@@ -169,7 +169,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 			],
 			'uploads-folder-info' => [
 				'name'        => __( 'Uploads Folder Info', 'sirsc' ),
-				'description' => __( 'This extension allows you to see details about your application uploads folder: the total files size, the number of folders (and sub-folders), the number of files.', 'sirsc' ),
+				'description' => __( 'See details about your uploads folder: number of files and folders (including subfolders), the total size.', 'sirsc' ),
 				'icon'        => '',
 				'available'   => false,
 				'active'      => false,
@@ -182,7 +182,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 			],
 			'uploads-inspector'   => [
 				'name'        => __( 'Uploads Inspector', 'sirsc' ),
-				'description' => __( 'This extension allows you to analyze the files from your uploads folder (even the orphaned files, these not associated with attachment records in the database) and see details about their size, MIME type, attachment IDs, images sizes, etc.', 'sirsc' ),
+				'description' => __( 'Analyze the files from your uploads folder (including the orphaned files - not associated with attachment records in the database) and see details about the size, MIME type, attachment IDs, sub-sizes, etc.', 'sirsc' ),
 				'icon'        => '',
 				'available'   => false,
 				'active'      => false,
@@ -242,8 +242,8 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 
 		add_submenu_page(
 			'image-regenerate-select-crop-settings',
-			__( 'Features Manager', 'sirsc' ),
-			__( 'Features Manager', 'sirsc' ) . $adons_notice,
+			__( 'Extensions', 'sirsc' ),
+			__( 'Extensions', 'sirsc' ) . $adons_notice,
 			'manage_options',
 			'image-regenerate-select-crop-extensions',
 			[ get_called_class(), 'features_manager' ]
@@ -253,11 +253,11 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 		if ( ! empty( $submenu['image-regenerate-select-crop-settings'] ) ) {
 			$items = [];
 			foreach ( $submenu['image-regenerate-select-crop-settings'] as $k => $item ) {
-				if ( substr_count( $item[2], 'sirsc-adon-' ) || substr_count( $item[2], 'options-media.php' ) ) {
-					$item[0] = ' - ' . $item[0];
+				if ( str_contains( $item[2], '-adon-' ) || str_contains( $item[2], 'options-media.php' ) ) {
+					$item[0] = $item[0];
 				}
 
-				if ( substr_count( $item[2], 'sirsc-adon-' ) ) {
+				if ( str_contains( $item[2], '-adon-' ) ) {
 					$items[ 20 + (int) $k ] = $item;
 				} else {
 					$items[ $k ] = $item;
@@ -576,7 +576,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 			<input type="hidden" name="sirsc-adon-slug" value="<?php echo esc_attr( $slug ); ?>">
 
 			<div class="box-wrap">
-				<img src="<?php echo esc_url( SIRSC_URL . 'assets/images/adon-' . esc_attr( $slug ) . '-image.png' ); ?>" loading="lazy">
+				<img src="<?php echo esc_url( SIRSC_URL . 'assets/images/adon-' . esc_attr( $slug ) . '.png' ); ?>" loading="lazy">
 				<?php self::adon_price_info( $slug, $item, $attr ); ?>
 			</div>
 
@@ -610,7 +610,7 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 			<?php \SIRSC\Admin\maybe_all_features_tab(); ?>
 
 			<div class="sirsc-tabbed-menu-content">
-				<p><?php esc_html_e( 'You will see here the available extensions compatible with the installed plugin version.', 'sirsc' ); ?> <?php esc_html_e( 'You can activate and deactivate these at any time.', 'sirsc' ); ?></p>
+				<p><?php esc_html_e( 'See the available extensions compatible with the installed plugin version.', 'sirsc' ); ?> <?php esc_html_e( 'You can activate and deactivate these at any time.', 'sirsc' ); ?></p>
 
 				<?php if ( ! empty( self::$adons ) ) : ?>
 					<div class="as-row columns-4">

@@ -216,9 +216,9 @@ function show_image_single_size_info( $id, $size, $filename = '', $all_size = []
 	$extra_text = '';
 
 	if ( $computed->info->is_native_crop_type ) {
-		$title = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop image', 'sirsc' );
+		$title = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop', 'sirsc' );
 	} else {
-		$title = SIRSC_ICON_SCALE . ' ' . \esc_html__( 'Scale image', 'sirsc' );
+		$title = SIRSC_ICON_SCALE . ' ' . \esc_html__( 'Scale', 'sirsc' );
 	}
 
 	$maybelink = '';
@@ -234,10 +234,10 @@ function show_image_single_size_info( $id, $size, $filename = '', $all_size = []
 
 	if ( $computed->info->is_crop ) {
 		if ( $computed->info->can_be_cropped ) {
-			$title   = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop image', 'sirsc' );
+			$title   = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop', 'sirsc' );
 			$action .= '<div class="pick_crop">' . make_generate_images_crop( $id, $size ) . '</div>';
 		} else {
-			$title = '<div class="dashicons dashicons-image-crop disabled auto"></div> ' . \esc_html__( 'Crop image', 'sirsc' );
+			$title = '<div class="dashicons dashicons-image-crop disabled auto"></div> ' . \esc_html__( 'Crop', 'sirsc' );
 		}
 	}
 
@@ -247,18 +247,18 @@ function show_image_single_size_info( $id, $size, $filename = '', $all_size = []
 
 	if ( $computed->info->can_be_generated ) {
 		if ( $computed->info->is_native_crop_type ) {
-			$title = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop image', 'sirsc' );
+			$title = SIRSC_ICON_CROP . ' ' . \esc_html__( 'Crop', 'sirsc' );
 		} else {
-			$title = SIRSC_ICON_SCALE . ' ' . \esc_html__( 'Scale image', 'sirsc' );
+			$title = SIRSC_ICON_SCALE . ' ' . \esc_html__( 'Scale', 'sirsc' );
 		}
 
-		$extra_text = ( $computed->info->must_scale_up ) ? ' <em>(' . \__( 'must scale up to generate the expected size', 'sirsc' ) . ')</em>' : '';
+		$extra_text = ( $computed->info->must_scale_up ) ? ' <em>(' . \__( 'must upscale to generate the expected size', 'sirsc' ) . ')</em>' : '';
 		$action    .= $regenerate_input;
 	} else {
 		if ( $computed->info->is_native_crop_type ) {
-			$title = '<div class="dashicons dashicons-image-crop disabled"></div> ' . \esc_html__( 'Crop image', 'sirsc' );
+			$title = '<div class="dashicons dashicons-image-crop disabled"></div> ' . \esc_html__( 'Crop', 'sirsc' );
 		} else {
-			$title = '<div class="dashicons dashicons-editor-expand disabled"></div> ' . \esc_html__( 'Scale image', 'sirsc' );
+			$title = '<div class="dashicons dashicons-editor-expand disabled"></div> ' . \esc_html__( 'Scale', 'sirsc' );
 		}
 
 		$action .= '<div class="sirsc-small-info sirsc-message warning">' . \esc_html__( 'The width and height of the original image are smaller than the requested image size.', 'sirsc' ) . '</div>';
@@ -302,7 +302,7 @@ function show_image_single_size_info( $id, $size, $filename = '', $all_size = []
 			<div class="image-box first">
 				<span class="sirsc-small-info">
 					<?php \esc_html_e( 'Info', 'sirsc' ); ?>:
-					<b><?php echo size_to_text( $info ); // phpcs:ignore ?></b>
+					<span><?php echo size_to_text( $info ); // phpcs:ignore ?></span>
 					<?php echo $extra_text; // phpcs:ignore ?>
 				</span>
 				<div id="sirsc-size-details-<?php echo \esc_attr( $idd ); ?>"
@@ -1034,7 +1034,7 @@ function attachment_summary( $id, $image = [], $compute = [], $good = [] ) { // 
 		$image = \wp_get_attachment_metadata( $id );
 		if ( empty( $image ) ) {
 			$filename = \get_attached_file( $id );
-			$image    = \SIRSC::attempt_to_create_metadata( $id, $filename );
+			$image    = attempt_to_create_metadata( $id, $filename );
 		}
 	}
 
@@ -1139,7 +1139,7 @@ function attachment_listing_summary( $id, $image = [], $wrap = '' ) { // phpcs:i
 		$image = \wp_get_attachment_metadata( $id );
 		if ( empty( $image ) ) {
 			$filename = \get_attached_file( $id );
-			$image    = \SIRSC::attempt_to_create_metadata( $id, $filename );
+			$image    = attempt_to_create_metadata( $id, $filename );
 		}
 	}
 
@@ -1243,7 +1243,7 @@ function attachment_sizes_lightbox( $id ) { // phpcs:ignore
 					<a href="<?php echo \esc_url( $source->url ); ?>" target="_blank"><div class="dashicons dashicons-admin-links"></div> <?php echo \esc_html( $source->name ); ?></a>
 				</div>
 				<div class="original-info label-row space-between no-top no-shadow main bg-white">
-					<b class="first auto"><?php \esc_html_e( 'Image size details & generated image', 'sirsc' ); ?></b>
+					<b class="first auto"><?php \esc_html_e( 'Sub-size info', 'sirsc' ); ?></b>
 					<b class="second"><?php \esc_html_e( 'Actions', 'sirsc' ); ?></b>
 				</div>
 				<?php
@@ -1397,13 +1397,17 @@ function maybe_match_size_name_by_width_height( $maybe_size ) { // phpcs:ignore
  */
 function size_to_text( $v ) { // phpcs:ignore
 	if ( 0 === (int) $v['height'] ) {
-		$size_text = '<b>' . \esc_html__( 'scale', 'sirsc' ) . '</b> ' . \esc_html__( 'to max width of', 'sirsc' ) . ' <b>' . $v['width'] . '</b>px';
+		// Translators: %s - pixels size.
+		$size_text = \wp_kses_post( sprintf( \__( '<b>scale</b> to max width of <b>%s</b>px', 'sirsc' ), $v['width'] ) );
 	} elseif ( 0 === (int) $v['width'] ) {
-		$size_text = '<b>' . \esc_html__( 'scale', 'sirsc' ) . '</b> ' . \esc_html__( 'to max height of', 'sirsc' ) . ' <b>' . $v['height'] . '</b>px';
+		// Translators: %s - pixels size.
+		$size_text = \wp_kses_post( sprintf( \__( '<b>scale</b> to max height of <b>%s</b>px', 'sirsc' ), $v['height'] ) );
 	} elseif ( ! empty( $v['crop'] ) ) {
-		$size_text = '<b>' . \esc_html__( 'crop', 'sirsc' ) . '</b> ' . \esc_html__( 'of', 'sirsc' ) . ' <b>' . $v['width'] . '</b>x<b>' . $v['height'] . '</b>px';
+		// Translators: %1$s - width pixels size, %2$s - height pixels size.
+		$size_text = \wp_kses_post( sprintf( \__( '<b>crop</b> of <b>%1$s</b>x<b>%2$s</b>px', 'sirsc' ), $v['width'], $v['height'] ) );
 	} else {
-		$size_text = '<b>' . \esc_html__( 'scale', 'sirsc' ) . '</b> ' . \esc_html__( 'to max width of', 'sirsc' ) . ' <b>' . $v['width'] . '</b>px ' . \esc_html__( 'or to max height of', 'sirsc' ) . ' <b>' . $v['height'] . '</b>px';
+		// Translators: %1$s - width pixels size, %2$s - height pixels size.
+		$size_text = \wp_kses_post( sprintf( \__( '<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px', 'sirsc' ), $v['width'], $v['height'] ) );
 	}
 	return $size_text;
 }
@@ -1635,7 +1639,13 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 
 			?>
 			<div class="lightbox-title label-row">
-				<h2><?php \esc_html_e( 'Remaining to clean up', 'sirsc' ); ?>: <?php echo (int) $result['total']; ?></h2>
+
+				<h2>
+					<?php
+					// Translators: %1$s - total.
+					echo \wp_kses_post( sprintf( \__( 'Items remaining to cleanup: %1$s.', 'sirsc' ), '<b>' . (int) $result['total'] . '</b>' ) );
+					?>
+				</h2>
 				<a class="button has-icon tiny close-button" tabindex="0" onclick="sirscStopBulkAction(); sirscCloseLightbox();"><span class="dashicons dashicons-no"></span></a>
 			</div>
 			<div class="inside as-target sirsc-bulk-action sirsc-bulk-clean">
@@ -1669,7 +1679,7 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 											$to_delete = false;
 
 											\SIRSC::collect_regenerate_results( $id, '', 'info', 'cleanup' );
-											$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'Skipping the cleanup or this file (it is the original file).', 'sirsc' ) . '</em>';
+											$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'The cleanup for this file will be skipped (it is the original file).', 'sirsc' ) . '</em>';
 
 											$message[] = output_bulk_message( 'warning', $text, $id, true );
 										} elseif ( 'unused' === $type ) {
@@ -1679,7 +1689,7 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 												$to_delete = false;
 
 												\SIRSC::collect_regenerate_results( $id, '', 'info', 'cleanup' );
-												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'Skipping the cleanup or this file (the size is registered).', 'sirsc' ) . '</em>';
+												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'The cleanup for this file will be skipped (the size is registered).', 'sirsc' ) . '</em>';
 
 												$message[] = output_bulk_message( 'warning', $text, $id, true );
 											} else {
@@ -1704,19 +1714,19 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 													}
 												}
 												\SIRSC::collect_regenerate_results( $id, '', 'success', 'cleanup' );
-												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'has been deleted.', 'sirsc' ) . '</em>';
+												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'has been deleted', 'sirsc' ) . '</em>';
 
 												$message[] = output_bulk_message( 'success', $text, $id, true );
 
 												// Notify other scripts that the file was deleted.
 												\do_action( 'sirsc_image_file_deleted', $id, $removable );
 											} elseif ( empty( $info['registered'] ) ) {
-												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'could not be deleted.', 'sirsc' ) . '</em>';
+												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'could not be deleted', 'sirsc' ) . '</em>';
 												\SIRSC::collect_regenerate_results( $id, $text, 'error', 'cleanup' );
 												$message[] = output_bulk_message( 'error', $text, $id, true );
 											} else {
 												\SIRSC::collect_regenerate_results( $id, '', 'success', 'cleanup' );
-												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'has been deleted.', 'sirsc' ) . '</em>';
+												$text = '<span>' . $name . '</span> <em>' . \esc_html__( 'has been deleted', 'sirsc' ) . '</em>';
 
 												$message[] = output_bulk_message( 'success', $text, $id, true );
 											}
@@ -1724,7 +1734,8 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 									}
 								}
 							} else {
-								$text = '<span>' . \esc_html__( 'No cleanup necessary for', 'sirsc' ) . ' ' . $id . '</span><em></em>';
+								// Translators: %1$s - id.
+								$text = '<span>' . \esc_html( sprintf( \__( 'No cleanup necessary for %1$s', 'sirsc' ), $id ) ) . '</span><em></em>';
 
 								$message[] = output_bulk_message( 'info', $text, $id, true );
 							}
@@ -1819,7 +1830,12 @@ function cleanup_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ignore
 
 			?>
 			<div class="lightbox-title label-row">
-				<h2><?php \esc_html_e( 'Remaining to clean up', 'sirsc' ); ?>: <?php echo (int) $result['total']; ?></h2>
+				<h2>
+					<?php
+					// Translators: %1$s - total.
+					echo \wp_kses_post( sprintf( \__( 'Items remaining to cleanup: %1$s.', 'sirsc' ), '<b>' . (int) $result['total'] . '</b>' ) );
+					?>
+				</h2>
 				<a class="button has-icon tiny close-button" tabindex="0" onclick="sirscStopBulkAction(); sirscCloseLightbox();"><span class="dashicons dashicons-no"></span></a>
 			</div>
 			<div class="inside as-target sirsc-bulk-action sirsc-bulk-clean">
@@ -1843,7 +1859,7 @@ function cleanup_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ignore
 							$info     = $image->info;
 
 							if ( ! $info->is_found ) {
-								$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'could not be found.', 'sirsc' ) . '</em>';
+								$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'could not be found', 'sirsc' ) . '</em>';
 
 								$message = output_bulk_message( 'warning', $text, $id, true );
 							} elseif ( ! $info->can_be_deleted ) {
@@ -1858,13 +1874,13 @@ function cleanup_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ignore
 											$unset = true;
 										}
 									}
-									$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'could not be deleted (it is the original file).', 'sirsc' ) . '</em>';
+									$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'could not be deleted (it is the original file)', 'sirsc' ) . '</em>';
 
 									\SIRSC::collect_regenerate_results( $id, $text, 'error', 'cleanup' );
 									$message = output_bulk_message( 'error', $text, $id, true );
 								}
 							} elseif ( ! is_dir( $image->size->path ) ) {
-								$text = '<span>' . $image->size->name . '</span> <em>' . \esc_html__( 'has been deleted.', 'sirsc' ) . '</em>';
+								$text = '<span>' . $image->size->name . '</span> <em>' . \esc_html__( 'has been deleted', 'sirsc' ) . '</em>';
 
 								// Make sure not to delete the original file.
 								\SIRSC::collect_regenerate_results( $id, $text, 'success', 'cleanup' );
@@ -1971,7 +1987,12 @@ function regenerate_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ign
 			?>
 
 			<div class="lightbox-title label-row">
-				<h2><?php \esc_html_e( 'Remaining to regenerate', 'sirsc' ); ?>: <?php echo (int) $result['total']; ?></h2>
+				<h2>
+					<?php
+					// Translators: %1$s - total.
+					echo \wp_kses_post( sprintf( \__( 'Items remaining to regenerate: %1$s.', 'sirsc' ), '<b>' . (int) $result['total'] . '</b>' ) );
+					?>
+				</h2>
 				<a class="button has-icon tiny close-button" tabindex="0" onclick="sirscStopBulkAction(); sirscCloseLightbox();"><span class="dashicons dashicons-no"></span></a>
 			</div>
 			<div class="inside as-target sirsc-bulk-action sirsc-bulk-regen">
@@ -1994,13 +2015,13 @@ function regenerate_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ign
 								if ( ! empty( $info->bulk_regenerate_text ) ) {
 									$text = $info->bulk_regenerate_text;
 								} else {
-									$text = '<span>' . $info->expected->name . '</span> <em>' . \__( 'Skipping the regeneration of this file (as per settings).', 'sirsc' ) . '</em>';
+									$text = '<span>' . $info->expected->name . '</span> <em>' . \__( 'The regeneration of this file will be skipped (as per settings).', 'sirsc' ) . '</em>';
 								}
 								$message = output_bulk_message( 'warning', $text, $id, true );
 							} else {
 								$resp = make_images_if_not_exists( $id, $size );
 								if ( 'error-too-small' === $resp ) {
-									$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not generate, the original is too small.', 'sirsc' ) . '</em>';
+									$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not be generated, the original is too small.', 'sirsc' ) . '</em>';
 
 									\SIRSC::collect_regenerate_results( $id, $text, 'error' );
 									$message = output_bulk_message( 'error', $text, $id, true );
@@ -2014,9 +2035,9 @@ function regenerate_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ign
 										$message = output_bulk_message( 'success', $text, $id, true );
 									} else {
 										if ( ! $image->source->exists ) {
-											$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not generate, the original file is missing.', 'sirsc' ) . '</em>';
+											$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not be generated, the original file is missing.', 'sirsc' ) . '</em>';
 										} else {
-											$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not generate, the original is too small.', 'sirsc' ) . '</em>';
+											$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not be generated, the original is too small.', 'sirsc' ) . '</em>';
 										}
 
 										\SIRSC::collect_regenerate_results( $id, $text, 'error' );
@@ -2043,7 +2064,7 @@ function regenerate_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ign
 							<div class="image-box">
 								<span class="sirsc-small-info">
 									<?php \esc_html_e( 'Info', 'sirsc' ); ?>:
-									<b><?php echo size_to_text( $sizes[ $size ] ); // phpcs:ignore ?></b>
+									<span><?php echo size_to_text( $sizes[ $size ] ); // phpcs:ignore ?></spam>
 								</span>
 								<div class="sirsc-size-details"
 									id="sirsc-size-details-<?php echo \esc_attr( $idd ); ?>">
@@ -2293,7 +2314,7 @@ function progress_bar( $total, $processed = 0, $counter = false, $text = '' ) { 
 				} else {
 					echo \esc_html( sprintf(
 						// Translators: %1$d - count products, %2$d - total.
-						\__( 'There are %1$d items assessed out of %2$d.', 'sirsc' ),
+						\__( '%1$d items assessed of %2$d.', 'sirsc' ),
 						$processed,
 						$total
 					) );
@@ -2331,7 +2352,7 @@ function settings_button_size_cleanup( $cpt, $size ) { // phpcs:ignore
 			class="button has-icon tiny f-right <?php echo \esc_attr( $cron_class ); ?>"
 			name="sirsc-settings-submit" value="submit"
 			id="sirsc-cleanup-button-<?php echo \esc_attr( $size ); ?>-cron"
-			title="<?php \esc_attr_e( 'Cron task is scheduled', 'sirsc' ); ?>"
+			title="<?php \esc_attr_e( 'The cron task has been scheduled.', 'sirsc' ); ?>"
 			onclick="sirscStartCleanupSize( 'start', '<?php echo \esc_attr( $size ); ?>', '<?php echo \esc_attr( $cpt ); ?>' );">
 			<span class="dashicons dashicons-admin-generic"></span>
 		</button>
@@ -2379,7 +2400,7 @@ function settings_button_size_regenerate( $cpt, $size ) { // phpcs:ignore
 			class="button has-icon tiny f-right <?php echo \esc_attr( $cron_class ); ?> sirsc-wrap-regenerate-buttons"
 			name="sirsc-settings-submit" value="submit"
 			id="sirsc-regenerate-button-<?php echo \esc_attr( $size ); ?>-cron"
-			title="<?php \esc_attr_e( 'Cron task is scheduled', 'sirsc' ); ?>"
+			title="<?php \esc_attr_e( 'The cron task has been scheduled.', 'sirsc' ); ?>"
 			onclick="sirscStartRegenerateSize( 'start', '<?php echo \esc_attr( $size ); ?>', '<?php echo \esc_attr( $cpt ); ?>' );">
 			<span class="dashicons dashicons-admin-generic"></span>
 		</button>
@@ -2435,7 +2456,7 @@ function settings_button_raw_cleanup( $cpt, $type ) { // phpcs:ignore
 		?>
 		<button type="button" class="button has-icon tiny <?php echo \esc_attr( $cron_class ); ?>"
 			name="sirsc-settings-submit" id="sirsc-raw-cleanup-button-<?php echo \esc_attr( $type ); ?>-cron"
-			value="submit" title="<?php \esc_attr_e( 'Cron task is scheduled', 'sirsc' ); ?>"
+			value="submit" title="<?php \esc_attr_e( 'The cron task has been scheduled.', 'sirsc' ); ?>"
 			onclick="sirscStartRawCleanup( 'start', '<?php echo \esc_attr( $type ); ?>', '<?php echo \esc_attr( $cpt ); ?>' );">
 			<span class="dashicons dashicons-admin-generic"></span>
 		</button>

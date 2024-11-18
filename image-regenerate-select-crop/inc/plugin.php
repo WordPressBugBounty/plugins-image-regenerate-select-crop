@@ -9,10 +9,29 @@ declare( strict_types=1 );
 namespace SIRSC;
 
 \add_filter( 'plugin_action_links_' . \plugin_basename( SIRSC_FILE ), __NAMESPACE__ . '\\plugin_action_links' );
-\add_action( 'plugins_loaded', __NAMESPACE__ . '\\load_textdomain' );
 \add_action( 'plugins_loaded', __NAMESPACE__ . '\\check_version' );
 \register_activation_hook( SIRSC_FILE, __NAMESPACE__ . '\\plugin_activation' );
 \register_deactivation_hook( SIRSC_FILE, __NAMESPACE__ . '\\plugin_deactivation' );
+\add_action( 'init', __NAMESPACE__ . '\\load_sirsc_textdomain' );
+
+/**
+ * Load text domain for internalization.
+ */
+function load_sirsc_textdomain() {
+	$locale      = \get_locale();
+	$textdomain  = 'sirsc';
+	$plugin_path = SIRSC_DIR . 'langs/' . $textdomain . '-' . $locale . '.mo';
+	$global_path = WP_LANG_DIR . '/plugins/' . $textdomain . '-' . $locale . '.mo';
+
+	\load_plugin_textdomain( $textdomain, false, basename( SIRSC_DIR ) . '/langs/' );
+
+	// Attempt to fix 6.7 translation from plugin folder.
+	if ( file_exists( $plugin_path ) && is_readable( $plugin_path ) ) {
+		\load_textdomain( $textdomain, $plugin_path );
+	} elseif ( file_exists( $global_path ) && is_readable( $global_path ) ) {
+		\load_textdomain( $textdomain, $global_path );
+	}
+}
 
 /**
  * Add the plugin settings and plugin URL links.
@@ -24,13 +43,6 @@ function plugin_action_links( $links ) {
 	array_unshift( $links, '<a href="' . \esc_url( 'admin.php?page=' . SIRSC_PAGE ) . '">' . \esc_html__( 'Settings', 'sirsc' ) . '</a>' );
 
 	return $links;
-}
-
-/**
- * Load text domain for internalization.
- */
-function load_textdomain() {
-	\load_plugin_textdomain( 'sirsc', false, basename( SIRSC_DIR ) . '/langs/' );
 }
 
 /**

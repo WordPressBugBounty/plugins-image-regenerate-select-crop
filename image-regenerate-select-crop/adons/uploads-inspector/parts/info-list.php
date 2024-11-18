@@ -16,7 +16,7 @@ global $wpdb;
 	if ( ! empty( $items ) ) {
 		?>
 		<div>
-			<h3 class="heading"><?php esc_html_e( 'MIME type', 'sirsc' ); ?></h3>
+			<h3 class="heading"><?php esc_html_e( 'MIME Type', 'sirsc' ); ?></h3>
 			<hr>
 			<ul class="files-info-wrap small">
 				<?php
@@ -31,7 +31,7 @@ global $wpdb;
 						<?php else : ?>
 							<span><?php echo esc_html( $item->mimetype ); ?></span>
 						<?php endif; ?>
-						<?php self::file_info_button( 'js-sirsc-adon-improf-list-mime-' . $v_mtype . '-0', $max_page, '', $v_mtype, __( 'MIME type', 'sirsc' ) . ': ' . $mimetype, $item->total_files ); ?>
+						<?php self::file_info_button( 'js-sirsc-adon-improf-list-mime-' . $v_mtype . '-0', $max_page, '', $v_mtype, __( 'MIME Type', 'sirsc' ) . ': ' . $mimetype, $item->total_files ); ?>
 					</li>
 					<?php
 				}
@@ -46,7 +46,7 @@ global $wpdb;
 	if ( ! empty( $items ) ) {
 		?>
 		<div>
-			<h3 class="heading"><?php esc_html_e( 'Images sizes', 'sirsc' ); ?></h3>
+			<h3 class="heading"><?php esc_html_e( 'Image Sizes', 'sirsc' ); ?></h3>
 			<hr>
 			<ul class="files-info-wrap small">
 				<?php
@@ -61,7 +61,7 @@ global $wpdb;
 						<?php else : ?>
 							<span><?php echo esc_html( $item->size_name ); ?></span>
 						<?php endif; ?>
-						<?php self::file_info_button( 'js-sirsc-adon-improf-list-size-' . $v_sname . '-0', $max_page, $v_sname, '', __( 'Images sizes', 'sirsc' ) . ': ' . $size_name, $item->total_files ); ?>
+						<?php self::file_info_button( 'js-sirsc-adon-improf-list-size-' . $v_sname . '-0', $max_page, $v_sname, '', __( 'Image Sizes', 'sirsc' ) . ': ' . $size_name, $item->total_files ); ?>
 					</li>
 					<?php
 				}

@@ -253,11 +253,11 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 		if ( ! empty( $submenu['image-regenerate-select-crop-settings'] ) ) {
 			$items = [];
 			foreach ( $submenu['image-regenerate-select-crop-settings'] as $k => $item ) {
-				if ( str_contains( $item[2], '-adon-' ) || str_contains( $item[2], 'options-media.php' ) ) {
+				if ( substr_count( $item[2], '-adon-' ) || substr_count( $item[2], 'options-media.php' ) ) {
 					$item[0] = $item[0];
 				}
 
-				if ( str_contains( $item[2], '-adon-' ) ) {
+				if ( substr_count( $item[2], '-adon-' ) ) {
 					$items[ 20 + (int) $k ] = $item;
 				} else {
 					$items[ $k ] = $item;

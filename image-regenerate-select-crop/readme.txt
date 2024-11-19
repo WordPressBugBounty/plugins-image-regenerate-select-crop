@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
 Tested up to: 6.7
-Stable tag: 8.0.4
+Stable tag: 8.0.5
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +67,9 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
+= 8.0.5 =
+* Reverted to old `substr_count` function for backward compatibility with PHP < 8.0
+
 = 8.0.4 =
 * Tested up to 6.7
 * Compatibility with core 6.7

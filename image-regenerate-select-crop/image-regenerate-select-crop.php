@@ -5,7 +5,7 @@
  * Domain Path: /langs
  * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
- * Version:     8.0.4
+ * Version:     8.0.5
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.04 );
+define( 'SIRSC_VER', 8.05 );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );

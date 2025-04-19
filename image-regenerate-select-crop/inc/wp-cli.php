@@ -271,9 +271,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 						foreach ( $execute_sizes as $sn => $sv ) {
 							$progress = \WP_CLI\Utils\make_progress_bar( '------- REMOVE ' . $sn, count( $rows ) );
 							foreach ( $rows as $v ) {
-
-								WP_CLI::error( 'trans id ' . \SIRSC\Admin\get_count_trans_name( 'cleanup', $v['post_type'], $sn ) );
-
 								\SIRSC\Debug\bulk_log_write( 'WP-CLI cleanup ' . $v['ID'] . ' ' . $sn );
 								\SIRSC\Action\cleanup_attachment_one_size( $v['ID'], $sn, true, $verbose );
 								$progress->tick();

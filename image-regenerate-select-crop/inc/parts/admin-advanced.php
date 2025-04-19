@@ -15,7 +15,7 @@ namespace SIRSC\Admin;
 
 <div class="label-row as-title"><h3><?php \esc_html_e( 'Advanced custom rules based on the post where the image will be uploaded', 'sirsc' ); ?></h3></div>
 
-<p class="small-gap"><?php \esc_html_e( 'The order in which the rules are checked and have priority is: post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first (in this order) will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you.', 'sirsc' ); ?></p>
+<p class="small-gap"><?php \esc_html_e( 'The order in which the rules are checked and have priority is: unattached, post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first (in this order) will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you.', 'sirsc' ); ?></p>
 
 <?php
 $select_ims = '';
@@ -28,17 +28,20 @@ if ( ! empty( $all_sizes ) ) {
 		$checks_ims .= '<label class="label-row" label-for="#ID#_' . \esc_attr( $k ) . '"><input type="checkbox" name="#NAME#" id="#ID#_' . \esc_attr( $k ) . '" value="' . \esc_attr( $k ) . '">' . \esc_attr( $k ) . '</label>';
 	}
 }
+
 $checks_fea = $checks_ims;
 $taxonomies = \get_taxonomies( [ 'public' => 1 ], 'objects' );
-$select_tax = '';
+
+$select_tax  = '';
+$select_tax .= '<option value="unattached">' . \esc_html__( 'Unattached', 'sirsc' ) . '</option>';
+$select_tax .= '<option value="ID">' . \esc_html__( 'Post ID', 'sirsc' ) . '</option>';
+$select_tax .= '<option value="post_type">' . \esc_html__( 'Post type', 'sirsc' ) . '</option>';
+$select_tax .= '<option value="post_parent">' . \esc_html__( 'Post parent ID', 'sirsc' ) . '</option>';
 if ( ! empty( $taxonomies ) ) {
 	foreach ( $taxonomies as $k => $v ) {
 		$select_tax .= '<option value="' . \esc_attr( $k ) . '">' . \esc_attr( $v->label ) . '</option>';
 	}
 }
-$select_tax .= '<option value="ID">' . \esc_html__( 'Post ID', 'sirsc' ) . '</option>';
-$select_tax .= '<option value="post_parent">' . \esc_html__( 'Post parent ID', 'sirsc' ) . '</option>';
-$select_tax .= '<option value="post_type">' . \esc_html__( 'Post type', 'sirsc' ) . '</option>';
 
 the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would apply only for regenerating the featured image. An image becomes a "Featured Image" after the upload was already processed and when the post is saved, hence the rules set below can apply only when regenerating the image.', 'sirsc' ) );
 ?>
@@ -92,7 +95,8 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 		for ( $i = 1; $i <= 10; $i++ ) {
 			$class = 'row-hide-rule';
 			if ( ! empty( \SIRSC::$user_custom_rules[ $i ]['type'] )
-				&& ! empty( \SIRSC::$user_custom_rules[ $i ]['value'] ) ) {
+				&& ( isset( \SIRSC::$user_custom_rules[ $i ]['value'] )
+					|| 'unattached' === \SIRSC::$user_custom_rules[ $i ]['type'] ) ) {
 				$class = 'row-use-rule';
 			}
 			if ( ! empty( \SIRSC::$user_custom_rules[ $i ]['suppress'] )
@@ -100,11 +104,11 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 				$class .= ' row-ignore-rule';
 			}
 
-			$supp = ( ! empty( \SIRSC::$user_custom_rules[ $i ]['suppress'] ) && 'on' === \SIRSC::$user_custom_rules[ $i ]['suppress'] ) ? ' checked="checked"' : '';
+			$supp = ! empty( \SIRSC::$user_custom_rules[ $i ]['suppress'] && 'on' === \SIRSC::$user_custom_rules[ $i ]['suppress'] ) ? ' checked="checked"' : '';
 
-			$row_class = ( substr_count( $class, 'row-ignore-rule' ) ) ? 'row-ignore-rule' : $class;
-			$row_class = ( substr_count( $class, 'row-hide-rule' ) ) ? 'row-hide-rule' : $row_class;
-			$row_class = ( substr_count( $class, 'row-use-rule' ) ) ? 'row-use-rule' : $row_class;
+			$row_class = substr_count( $class, 'row-ignore-rule' ) ? 'row-ignore-rule' : $class;
+			$row_class = substr_count( $class, 'row-hide-rule' ) ? 'row-hide-rule' : $row_class;
+			$row_class = substr_count( $class, 'row-use-rule' ) ? 'row-use-rule' : $row_class;
 
 			if ( substr_count( $class, 'row-ignore-rule' ) ) {
 				$row_class .= ' sirsc-message warning';
@@ -171,6 +175,12 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['value'] . '</b>',
 								'<b>' . implode( ', ', array_unique( \SIRSC::$user_custom_rules[ $i ]['only'] ) ) . '</b>'
 							);
+						} elseif ( 'unattached' === \SIRSC::$user_custom_rules[ $i ]['type'] ) {
+							echo sprintf(
+								// Translators: %1$s - subsize.
+								\esc_html__( 'uploading unattached images will generate only the %1$s sizes.', 'sirsc' ),
+								'<b>' . implode( ', ', array_unique( \SIRSC::$user_custom_rules[ $i ]['only'] ) ) . '</b>'
+							);
 						} else {
 							echo sprintf(
 								// Translators: %1$s type, %2$s value, %3$s original, %4$s only.
@@ -200,26 +210,32 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 							?>
 						</div>
 					</div>
-					<br>
-					<div class="as-box sirsc-group">
-						<div class="label-row">
-							<?php the_info_icon( 'info_custom_for_featured' ); ?>
-							<h3><?php \esc_html_e( 'Rules that would apply only for regenerating the featured image', 'sirsc' ); ?></h3>
-						</div>
-						<div class="as-row columns-3">
-							<?php
-							$featured = str_replace( '#NAME#', '_user_custom_rule[' . $i . '][forfeatured][]', str_replace( '#ID#', '_user_custom_rule_' . $i . '_forfeatured_', $checks_fea ) );
+					<?php
+					if ( 'unattached' !== \SIRSC::$user_custom_rules[ $i ]['type'] ) {
+						?>
+						<br>
+						<div class="as-box sirsc-group">
+							<div class="label-row">
+								<?php the_info_icon( 'info_custom_for_featured' ); ?>
+								<h3><?php \esc_html_e( 'Rules that would apply only for regenerating the featured image', 'sirsc' ); ?></h3>
+							</div>
+							<div class="as-row columns-3">
+								<?php
+								$featured = str_replace( '#NAME#', '_user_custom_rule[' . $i . '][forfeatured][]', str_replace( '#ID#', '_user_custom_rule_' . $i . '_forfeatured_', $checks_fea ) );
 
-							$sel = ( ! empty( \SIRSC::$user_custom_rules[ $i ]['forfeatured'] ) ) ? \SIRSC::$user_custom_rules[ $i ]['forfeatured'] : [];
-							foreach ( $sel as $is ) {
-								if ( ! empty( $class ) && substr_count( $class, 'row-use' ) ) {
-									$featured = str_replace( ' value="' . $is . '"', ' value="' . $is . '" checked="checked" class="row-use"', str_replace( ' label-for="' . $is . '"', ' label-for="' . $is . '" class="' . $class . '"', $featured ) );
+								$sel = ( ! empty( \SIRSC::$user_custom_rules[ $i ]['forfeatured'] ) ) ? \SIRSC::$user_custom_rules[ $i ]['forfeatured'] : [];
+								foreach ( $sel as $is ) {
+									if ( ! empty( $class ) && substr_count( $class, 'row-use' ) ) {
+										$featured = str_replace( ' value="' . $is . '"', ' value="' . $is . '" checked="checked" class="row-use"', str_replace( ' label-for="' . $is . '"', ' label-for="' . $is . '" class="' . $class . '"', $featured ) );
+									}
 								}
-							}
-							echo $featured; // phpcs:ignore
-							?>
+								echo $featured; // phpcs:ignore
+								?>
+							</div>
 						</div>
-					</div>
+						<?php
+					}
+					?>
 				</td>
 				<td class="option-supress" width="48" data-colname="<?php \esc_attr_e( 'Suppress', 'sirsc' ); ?>">
 					<input type="checkbox" name="_user_custom_rule[<?php echo (int) $i; ?>][suppress]" id="user_custom_rule_<?php echo (int) $i; ?>_suppress" <?php echo $supp; // phpcs:ignore ?>>

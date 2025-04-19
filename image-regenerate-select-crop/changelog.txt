@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 8.0.5 =
+* Reverted to old `substr_count` function for backward compatibility with PHP < 8.0
+
+= 8.0.4 =
+* Tested up to 6.7
+* Compatibility with core 6.7
+* Translations updates
+* Fixed the uncaught error when running wp-cli resetcleanup command
+
 = 8.0.3 =
 * Attempt to fix the SVG dimensions when the core feature fails on upload (when SSL operation failed due to routines:tls_process_server_certificate:certificate verify)
 * Fixed cron schedule warning for custom frequency

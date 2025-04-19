@@ -69,7 +69,7 @@
 				<# } #> {{ maybeReadOnly }} />
 		<# }
 	} #>
-	<# if ( 'image' === data.type ) { #>
+	<# if ( 'image' === data.type && ! data?.mime.includes('svg') ) { #>
 		<?php SIRSC\Admin\media_template_buttons(); ?>
 	<# } #>
 </script>

@@ -5,7 +5,7 @@
  * Domain Path: /langs
  * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
- * Version:     8.0.5
+ * Version:     8.1.0
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -13,7 +13,7 @@
  *
  * @package ic-devops
  *
- * Copyright (C) 2014-2024 Iulia Cazan
+ * Copyright (C) 2014-2025 Iulia Cazan
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.05 );
+define( 'SIRSC_VER', 8.10 );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -718,6 +718,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			'disable_woo_thregen'      => false,
 			'sync_settings_ewww'       => false,
 			'listing_tiny_buttons'     => true,
+			'actions_for_upload_cap'   => false,
 			'force_size_choose'        => false,
 			'leave_settings_behind'    => true,
 			'listing_show_summary'     => false,
@@ -766,6 +767,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			'disable_woo_thregen',
 			'sync_settings_ewww',
 			'listing_tiny_buttons',
+			'actions_for_upload_cap',
 			'leave_settings_behind',
 			'media_grid_buttons',
 			'force_size_choose',
@@ -871,7 +873,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$settings['default_quality'] = $data['default_quality'];
 			}
 
-			$bool = [ 'enable_perfect', 'enable_upscale', 'regenerate_missing', 'regenerate_only_featured', 'bulk_actions_descending', 'disable_woo_thregen', 'sync_settings_ewww', 'listing_tiny_buttons', 'media_grid_buttons', 'listing_show_summary', 'force_size_choose', 'leave_settings_behind', 'enable_debug_log' ];
+			$bool = [ 'enable_perfect', 'enable_upscale', 'regenerate_missing', 'regenerate_only_featured', 'bulk_actions_descending', 'disable_woo_thregen', 'sync_settings_ewww', 'listing_tiny_buttons', 'actions_for_upload_cap', 'media_grid_buttons', 'listing_show_summary', 'force_size_choose', 'leave_settings_behind', 'enable_debug_log' ];
 			foreach ( $bool as $opt ) {
 				$settings[ $opt ] = ! empty( $data[ $opt ] );
 			}
@@ -925,12 +927,20 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		self::get_default_user_custom_rules();
+		$unattached = false;
+
 		$data    = filter_input( INPUT_POST, 'sirsc', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
 		$urules  = filter_input( INPUT_POST, '_user_custom_rule', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
 		$ucrules = [];
 		foreach ( self::$user_custom_rules as $k => $v ) {
 			if ( isset( $urules[ $k ] ) ) {
-				$ucrules[ $k ] = ( ! empty( $urules[ $k ] ) ) ? $urules[ $k ] : '';
+				if ( 'unattached' === $v['type'] ) {
+					if ( $unattached ) {
+						continue;
+					}
+					$unattached = true;
+				}
+				$ucrules[ $k ] = ! empty( $urules[ $k ] ) ? $urules[ $k ] : '';
 			}
 		}
 
@@ -964,12 +974,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 		$usable_crules = [];
 		foreach ( $ucrules as $key => $val ) {
-			if ( ! empty( $val['type'] ) && ! empty( $val['value'] )
+			if ( ! empty( $val['type'] ) && isset( $val['value'] )
 				&& ! empty( $val['original'] ) && ( ! empty( $val['only'] ) || ! empty( $val['forfeatured'] ) )
 				&& empty( $val['suppress'] ) ) {
 				$usable_crules[] = $val;
 			}
 		}
+
 		$usable_crules = self::update_user_custom_rules_priority( $usable_crules );
 		update_option( 'sirsc_user_custom_rules_usable', $usable_crules );
 
@@ -999,6 +1010,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$ucr = [];
 			$c   = 0;
 
+			// Collect the Unattached rules.
+			foreach ( $usable_crules as $k => $rule ) {
+				if ( 'unattached' === $rule['type'] ) {
+					$ucr[ ++$c ] = $rule;
+					unset( $usable_crules[ $k ] );
+				}
+			}
 			// Collect the ID rules.
 			foreach ( $usable_crules as $k => $rule ) {
 				if ( 'ID' === $rule['type'] ) {
@@ -1199,6 +1217,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			&& ! in_array( $post->post_type, self::$exclude_post_type, true ) ) {
 			self::get_post_type_settings( $post->post_type );
 			self::hook_upload_extra_rules( $post_id, $post->post_type, 0, '' );
+		} elseif ( 'attachment' === $post->post_type ) {
+			self::hook_upload_extra_rules( $post_id, $post->post_type, $post->post_parent );
 		}
 
 		if ( empty( self::$settings ) ) {
@@ -1286,11 +1306,17 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$for_featured = false;
 			$val['value'] = str_replace( ' ', '', $val['value'] );
 			$val_array    = [];
-			if ( ! empty( $val['value'] ) && in_array( $val['type'], [ 'ID', 'post_parent' ], true ) ) {
+			if ( isset( $val['value'] ) && in_array( $val['type'], [ 'ID', 'post_parent' ], true ) ) {
 				$val_array = array_map( 'intval', explode( ',', $val['value'] ) );
 			}
 
 			switch ( $val['type'] ) {
+				case 'unattached':
+					// The unattached attachemnts.
+					if ( 0 === (int) $image_par ) {
+						$apply = true;
+					}
+					break;
 				case 'ID':
 					// This is the attachment parent id.
 					if ( ! empty( $val['forfeatured'] ) && self::attachment_is_featured_image( $id, $image_par ) ) {
@@ -1598,13 +1624,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$execute = true;
 			} else {
 				// Check if the file does exist and has the required width and height.
-				$w = ( ! empty( $sval['width'] ) ) ? (int) $sval['width'] : 0;
-				$h = ( ! empty( $sval['height'] ) ) ? (int) $sval['height'] : 0;
-				$c = ( ! empty( $sval['crop'] ) ) ? $sval['crop'] : false;
+				$w = ! empty( $sval['width'] ) ? (int) $sval['width'] : 0;
+				$h = ! empty( $sval['height'] ) ? (int) $sval['height'] : 0;
+				$c = ! empty( $sval['crop'] ) ? $sval['crop'] : false;
 
 				$c_image_size = getimagesize( $file );
-				$ciw          = (int) $c_image_size[0];
-				$cih          = (int) $c_image_size[1];
+
+				$ciw = (int) $c_image_size[0];
+				$cih = (int) $c_image_size[1];
 				if ( ! empty( $c ) ) {
 					if ( $w !== $ciw || $h !== $cih ) {
 						$execute = true;
@@ -1618,6 +1645,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 		}
+
 		return $execute;
 	}
 
@@ -2848,7 +2876,9 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 */
 	public static function cleanup_before_releasing_the_metadata_on_upload( $attachment_id ) { // phpcs:ignore
 		self::assess_tmp_artefacts( (int) $attachment_id );
+
 		$filter_out = wp_get_attachment_metadata( $attachment_id );
+
 		if ( defined( 'SIRSC_BRUTE_RENAME' ) && SIRSC_BRUTE_RENAME !== $filter_out['file'] ) {
 			$filter_out['file'] = SIRSC_BRUTE_RENAME;
 			if ( ! empty( self::$settings['force_original_to'] )
@@ -2878,8 +2908,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 					update_attached_file( $attachment_id, $filter_out['file'] );
 				} else {
-					$initial = ! empty( $filter_out['file'] )
-						? str_replace( '.', '-scaled.', $filter_out['file'] ) : '';
+					$initial = ! empty( $filter_out['file'] ) ? str_replace( '.', '-scaled.', $filter_out['file'] ) : '';
 				}
 			}
 
@@ -2911,6 +2940,17 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			if ( ! empty( $initial ) && file_exists( trailingslashit( $uploads['basedir'] ) . $initial ) ) {
 				@unlink( trailingslashit( $uploads['basedir'] ) . $initial ); // phpcs:ignore
 			}
+
+			update_post_meta( $attachment_id, '_wp_attachment_metadata', $filter_out );
+		}
+
+		// Last size check and update.
+		$file = get_attached_file( (int) $attachment_id );
+		if ( ! empty( $file ) ) {
+			$imagesize              = wp_getimagesize( $file );
+			$filter_out['filesize'] = wp_filesize( $file );
+			$filter_out['width']    = $imagesize[0];
+			$filter_out['height']   = $imagesize[1];
 
 			update_post_meta( $attachment_id, '_wp_attachment_metadata', $filter_out );
 		}
@@ -3020,50 +3060,65 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function upload_name_prefilter( $filename = '', $ext = '', $dir = '', $callback = null, $alt = [], $number = '' ) {
 
 		$ext = strtolower( $ext );
-		if ( ! empty( $filename ) && in_array( $ext, [ '.gif', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif' ], true ) ) {
-			if ( empty( $number ) ) {
-				$name = substr( $filename, 0, -1 * strlen( $ext ) );
-			} else {
-				$name = substr( $filename, 0, -1 * ( strlen( $ext ) + strlen( (string) $number ) + 1 ) );
-			}
+		if ( empty( $filename )
+			|| ! in_array( $ext, [ '.gif', '.png', '.jpg', '.jpeg', '.webp', '.svg', '.avif' ], true ) ) {
+			// Fail-fast.
+			return $filename;
+		}
 
-			$count = 0;
-			$name  = strtolower( str_replace( '.', '-', $name ) );
-			$name  = str_replace( '_', '-', $name );
+		$count   = 0;
+		$initial = substr( $filename, 0, -1 * strlen( $ext ) );
+		if ( empty( $number ) ) {
+			$name = substr( $filename, 0, -1 * strlen( $ext ) );
+		} else {
+			$name = substr( $filename, 0, -1 * ( strlen( $ext ) + strlen( (string) $number ) + 1 ) );
+		}
 
-			// Scaled is a reserved word.
-			if ( '-scaled' === substr( $name, -7 ) ) {
-				$name = substr( $name, 0, -7 );
-			}
+		$name = strtolower( str_replace( '.', '-', $name ) );
+		$name = str_replace( '_', '-', $name );
+		$name = str_replace( '---', '-', $name );
 
-			// Use scandir, just like core does.
-			$files = @scandir( $dir ); // phpcs:ignore
-			if ( ! empty( $files ) ) {
-				foreach ( $files as $file ) {
-					if ( ! substr_count( $file, $name ) ) {
-						continue;
-					}
+		// Scaled is a reserved word.
+		if ( '-scaled' === substr( $name, -7 ) ) {
+			$name = substr( $name, 0, -7 );
+		}
 
-					$fname = explode( '.', $file );
-					$fext  = '.' . end( $fname );
-					if ( $ext !== $fext ) {
-						continue;
-					}
+		if ( $initial === $name ) {
+			// Fail-fast, nothig to fix in the filename.
+			return $filename;
+		}
 
-					$test = explode( $name, $file );
-					if ( ! empty( $test[1] ) && substr_count( $test[1], 'x' ) ) {
-						continue;
-					}
-
-					++$count;
+		// Use scandir, just like core does.
+		$files = @scandir( $dir ); // phpcs:ignore
+		if ( ! empty( $files ) ) {
+			foreach ( $files as $file ) {
+				if ( ! substr_count( $file, $name ) ) {
+					continue;
 				}
-			}
 
-			if ( $count > 0 ) {
-				$filename = strtolower( $name . '-' . $count . $ext );
-			} else {
-				$filename = strtolower( $name . $ext );
+				if ( substr( $file, 0, strlen( $name ) ) !== $name ) {
+					continue;
+				}
+
+				$fname = explode( '.', $file );
+				$fext  = '.' . end( $fname );
+				if ( $ext !== $fext ) {
+					continue;
+				}
+
+				$test = explode( $name, $file );
+				if ( ! empty( $test[1] ) && substr_count( $test[1], 'x' ) ) {
+					continue;
+				}
+
+				++$count;
 			}
+		}
+
+		if ( $count > 0 ) {
+			$filename = strtolower( $name . '-' . $count . $ext );
+		} else {
+			$filename = strtolower( $name . $ext );
 		}
 
 		return $filename;

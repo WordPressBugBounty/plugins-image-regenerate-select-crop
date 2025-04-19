@@ -155,7 +155,7 @@ $alt_text_description = sprintf(
 
 		<div class="settings">
 			<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
-			<# if ( 'image' === data.type ) { #>
+			<# if ( 'image' === data.type && ! data?.mime.includes('svg') ) { #>
 				<span class="setting extra" data-setting="extra">
 					<label class="name"><?php _e( 'Sub-sizes', 'sirsc' ); ?></label>
 					<?php SIRSC\Admin\media_template_buttons(); ?>

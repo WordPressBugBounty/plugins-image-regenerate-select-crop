@@ -386,9 +386,12 @@ function assess_expected_image( $id, $size, $image = [], $uplinfo = [], $all_siz
 
 	// Compute the expected if the size does not exist.
 	if ( ! empty( $size ) && ! empty( $all_sizes[ $size ] ) ) {
+		$image_w = ! empty( $image['width'] ) ? (int) $image['width'] : 0;
+		$image_h = ! empty( $image['height'] ) ? (int) $image['height'] : 0;
+
 		$maybe = \image_resize_dimensions(
-			(int) $image['width'] ?? 0,
-			(int) $image['height'] ?? 0,
+			$image_w,
+			$image_h,
 			$all_sizes[ $size ]['width'],
 			$all_sizes[ $size ]['height'],
 			$all_sizes[ $size ]['crop']
@@ -412,8 +415,8 @@ function assess_expected_image( $id, $size, $image = [], $uplinfo = [], $all_siz
 			$filetype         = \wp_check_filetype( $result['path'] );
 			$result['meta']   = [
 				'file'      => basename( $result['path'] ),
-				'width'     => ( ! empty( $maybe[4] ) ) ? (int) $maybe[4] : (int) $image['width'],
-				'height'    => ( ! empty( $maybe[5] ) ) ? (int) $maybe[5] : (int) $image['height'],
+				'width'     => ! empty( $maybe[4] ) ? (int) $maybe[4] : $image_w,
+				'height'    => ! empty( $maybe[5] ) ? (int) $maybe[5] : $image_h,
 				'mime-type' => $filetype['type'],
 			];
 		}
@@ -917,7 +920,7 @@ function expose_image_after_processing( $id, $size, $generate = false, $position
 	}
 
 	$id    = (int) $id;
-	$sizes = ( ! empty( $size ) ) ? trim( $size ) : 'all';
+	$sizes = ! empty( $size ) ? trim( $size ) : 'all';
 	if ( true === $generate ) {
 		\SIRSC::load_settings_for_post_id( $id );
 		debug( 'AJAX - Processing regenerate for ' . $id . '|' . $sizes, true, true );
@@ -1309,7 +1312,14 @@ function single_attachment_raw_cleanup( $id ) { // phpcs:ignore
  */
 function make_buttons( $id = 0, $show_cleanup = false ) { // phpcs:ignore
 	global $sirsc_column_summary;
-	$id      = (int) $id;
+
+	$id   = (int) $id;
+	$mime = \get_post_mime_type( $id );
+	if ( ! empty( $mime ) && substr_count( $mime, 'svg' ) ) {
+		// No buttons for the SVGs.
+		return '';
+	}
+
 	$buttons = '
 		<a class="button has-icon button-primary" tabindex="0" onclick="sirscSingleDetails(\'' . $id . '\')" title="' . \esc_attr__( 'Details/Options', 'sirsc' ) . '" id="sirsc-handle-info-' . $id . '">' . SIRSC_ICON_DETAILS . ' <span>' . \esc_html__( 'Image Details', 'sirsc' ) . '</span></a>
 		<a class="button has-icon button-primary" tabindex="0" onclick="sirscSingleRegenerate(\'' . $id . '\')" title="' . \esc_attr__( 'Regenerate', 'sirsc' ) . '" id="sirsc-handle-regenerate-' . $id . '">' . SIRSC_ICON_REFRESH . ' <span>' . \esc_html__( 'Regenerate', 'sirsc' ) . '</span></a>';

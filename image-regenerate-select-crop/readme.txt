@@ -3,8 +3,8 @@ Contributors: Iulia Cazan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
-Tested up to: 6.7
-Stable tag: 8.0.5
+Tested up to: 6.8
+Stable tag: 8.1.0
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,14 +67,13 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.0.5 =
-* Reverted to old `substr_count` function for backward compatibility with PHP < 8.0
-
-= 8.0.4 =
-* Tested up to 6.7
-* Compatibility with core 6.7
-* Translations updates
-* Fixed the uncaught error when running wp-cli resetcleanup command
+= 8.1.0 =
+* Tested up to 6.8
+* Removed the buttons with actions for the SVG files
+* Added the new setting that allows to enable the actions for users with upload files capability
+* Added the Unattached option for the advanced rules
+* Refined the unique name logic
+* Translation updates
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.
 

@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Image Regenerate & Select Crop 8.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sirsc\n"
-"POT-Creation-Date: 2024-11-18T06:46:57+00:00\n"
-"PO-Revision-Date: 2024-11-18 18:12+0200\n"
+"POT-Creation-Date: 2025-04-19T13:54:27+00:00\n"
+"PO-Revision-Date: 2025-04-19 16:55+0300\n"
 "Last-Translator: Iulia Cazan\n"
 "Language-Team: \n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Domain: sirsc\n"
 
 #. Plugin Name of the plugin
@@ -122,7 +122,7 @@ msgstr ""
 
 #: adons/images-seo/class-sirsc-images-seo.php:461
 #: adons/images-seo/class-sirsc-images-seo.php:516
-#: image-regenerate-select-crop.php:3114 inc/plugin.php:43
+#: image-regenerate-select-crop.php:3169 inc/plugin.php:43
 msgid "Settings"
 msgstr "Setări"
 
@@ -174,8 +174,8 @@ msgstr ""
 
 #. Translators: %s - example.
 #: adons/images-seo/class-sirsc-images-seo.php:639
-#: inc/parts/admin-advanced.php:54 inc/parts/admin-advanced.php:63
-#: inc/parts/admin-advanced.php:72 inc/parts/admin-advanced.php:81
+#: inc/parts/admin-advanced.php:57 inc/parts/admin-advanced.php:66
+#: inc/parts/admin-advanced.php:75 inc/parts/admin-advanced.php:84
 msgid "Ex: %s"
 msgstr "Exemplu: %s"
 
@@ -426,7 +426,7 @@ msgstr ""
 "Selectează tipurile de articole pentru a le face disponibile pentru procesul "
 "de redenumire în bloc."
 
-#: adons/images-seo/parts/settings.php:134 inc/parts/admin-advanced.php:228
+#: adons/images-seo/parts/settings.php:134 inc/parts/admin-advanced.php:244
 #: inc/parts/admin-post-types.php:17
 msgid "Save Settings"
 msgstr "Salvează setătile"
@@ -576,7 +576,7 @@ msgid "Uploads Inspector"
 msgstr "Inspector încărcări"
 
 #: adons/uploads-inspector/class-sirsc-uploads-inspector.php:281
-#: inc/cron.php:92 inc/helper.php:2355 inc/helper.php:2403 inc/helper.php:2459
+#: inc/cron.php:92 inc/helper.php:2365 inc/helper.php:2413 inc/helper.php:2469
 msgid "The cron task has been scheduled."
 msgstr "Sarcina cron a fost programată."
 
@@ -628,7 +628,7 @@ msgid "Page %1$s of %2$s"
 msgstr "Pagina %1$s din %2$s"
 
 #: adons/uploads-inspector/parts/files-list.php:93
-#: adons/uploads-inspector/parts/files-list.php:111 inc/helper.php:1242
+#: adons/uploads-inspector/parts/files-list.php:111 inc/helper.php:1245
 msgid "File"
 msgstr "Fișier"
 
@@ -641,7 +641,7 @@ msgstr "Tip MIME"
 
 #: adons/uploads-inspector/parts/files-list.php:95
 #: adons/uploads-inspector/parts/files-list.php:128 inc/helper.php:316
-#: inc/helper.php:2076
+#: inc/helper.php:2086
 msgid "File size"
 msgstr "Mărime fișier"
 
@@ -663,7 +663,7 @@ msgstr "Atașament"
 #: adons/uploads-inspector/parts/info-list.php:60
 #: adons/uploads-inspector/parts/info-list.php:85
 #: adons/uploads-inspector/parts/info-list.php:90
-#: image-regenerate-select-crop.php:2358
+#: image-regenerate-select-crop.php:2386
 msgid "unknown"
 msgstr "necunoscut"
 
@@ -676,7 +676,7 @@ msgid "In option"
 msgstr "În opțiune"
 
 #: adons/uploads-inspector/parts/files-list.php:137 inc/helper.php:96
-#: inc/parts/admin-advanced.php:125
+#: inc/parts/admin-advanced.php:129
 msgid "N/A"
 msgstr "N/A"
 
@@ -717,45 +717,45 @@ msgstr "Dreapta"
 msgid "Bottom"
 msgstr "Jos"
 
-#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:807
-#: image-regenerate-select-crop.php:923 inc/admin.php:392 inc/admin.php:874
-#: inc/admin.php:961 inc/adons.php:600 inc/calls.php:49 inc/calls.php:53
+#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:809
+#: image-regenerate-select-crop.php:925 inc/admin.php:392 inc/admin.php:875
+#: inc/admin.php:962 inc/adons.php:600 inc/calls.php:48 inc/calls.php:52
 #: inc/debug.php:116 inc/iterator.php:122
 msgid "Action not allowed."
 msgstr "Acțiunea nu este permisă."
 
-#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:807
-#: image-regenerate-select-crop.php:923 inc/admin.php:874 inc/calls.php:49
-#: inc/calls.php:53 inc/iterator.php:122
+#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:809
+#: image-regenerate-select-crop.php:925 inc/admin.php:875 inc/calls.php:48
+#: inc/calls.php:52 inc/iterator.php:122
 msgid "Security Breach"
 msgstr "Breșă de securitate"
 
-#: image-regenerate-select-crop.php:2297 image-regenerate-select-crop.php:2318
-#: image-regenerate-select-crop.php:2338 image-regenerate-select-crop.php:2479
+#: image-regenerate-select-crop.php:2325 image-regenerate-select-crop.php:2346
+#: image-regenerate-select-crop.php:2366 image-regenerate-select-crop.php:2507
 msgid "currently registered"
 msgstr "înregistrată momentan"
 
-#: image-regenerate-select-crop.php:2338
+#: image-regenerate-select-crop.php:2366
 msgid "not registered anymore"
 msgstr "nu mai este înregistrată"
 
-#: image-regenerate-select-crop.php:2363
+#: image-regenerate-select-crop.php:2391
 msgid "never registered"
 msgstr "niciodată înregistrată"
 
-#: image-regenerate-select-crop.php:3115 inc/plugin.php:42
+#: image-regenerate-select-crop.php:3170 inc/plugin.php:42
 msgid "Plugin URL"
 msgstr "URL modul"
 
-#: inc/action.php:58 inc/wp-cli.php:430
+#: inc/action.php:58 inc/wp-cli.php:427
 msgid "was removed"
 msgstr "s-a eliminat"
 
-#: inc/action.php:64 inc/wp-cli.php:434
+#: inc/action.php:64 inc/wp-cli.php:431
 msgid "Could not remove"
 msgstr "Nu s-a putut elimina"
 
-#: inc/action.php:64 inc/wp-cli.php:434
+#: inc/action.php:64 inc/wp-cli.php:431
 msgid "The image is missing or it is the original file."
 msgstr "Imaginea lipsește sau este fișierul original."
 
@@ -790,32 +790,32 @@ msgstr ""
 msgid "The operation is irreversible!"
 msgstr "Operațiunea este ireversibilă!"
 
-#: inc/admin.php:266 inc/helper.php:312 inc/helper.php:2073
+#: inc/admin.php:266 inc/helper.php:312 inc/helper.php:2083
 msgid "Resolution"
 msgstr "Rezoluție"
 
-#: inc/admin.php:267 inc/admin.php:1003 inc/helper.php:1314
+#: inc/admin.php:267 inc/admin.php:1004 inc/helper.php:1324
 msgid "Details/Options"
 msgstr "Detalii/opțiuni"
 
-#: inc/admin.php:268 inc/helper.php:1314
+#: inc/admin.php:268 inc/helper.php:1324
 msgid "Image Details"
 msgstr "Detalii imagine"
 
-#: inc/admin.php:269 inc/helper.php:244 inc/helper.php:1315
+#: inc/admin.php:269 inc/helper.php:244 inc/helper.php:1325
 #: inc/parts/admin-sizes-table.php:95 inc/parts/admin-sizes-table.php:188
 msgid "Regenerate"
 msgstr "Regenează"
 
-#: inc/admin.php:270 inc/helper.php:1319
+#: inc/admin.php:270 inc/helper.php:1329
 msgid "Raw Cleanup"
 msgstr "Curăță brut"
 
-#: inc/admin.php:271 inc/helper.php:1950
+#: inc/admin.php:271 inc/helper.php:1960
 msgid "Regenerate Log"
 msgstr "Jurnal regenerare"
 
-#: inc/admin.php:272 inc/helper.php:1604 inc/helper.php:1795
+#: inc/admin.php:272 inc/helper.php:1614 inc/helper.php:1805
 msgid "Cleanup Log"
 msgstr "Jurnal curățare"
 
@@ -839,11 +839,11 @@ msgstr ""
 "eliminate să fie reflectate și aici, și astfel să asiguri comportamentul "
 "optim pentru funcțiile oferite de acest modul."
 
-#: inc/admin.php:433 inc/admin.php:680
+#: inc/admin.php:433 inc/admin.php:681
 msgid "Custom Settings"
 msgstr "Setări personalizate"
 
-#: inc/admin.php:433 inc/admin.php:760
+#: inc/admin.php:433 inc/admin.php:761
 msgid "Custom Image Sizes"
 msgstr "Dimensiuni imagine personalizate"
 
@@ -868,7 +868,7 @@ msgstr ""
 msgid "The plugin settings have been updated successfully."
 msgstr "Setările modului au fost actualizate cu succes."
 
-#: inc/admin.php:681
+#: inc/admin.php:682
 msgid ""
 "You can override the default crop for the medium and large size of the "
 "images. Please note that the crop will apply to the designated image size "
@@ -882,27 +882,27 @@ msgstr ""
 "știi, când setezi 0 la una dintre dimensiuni, imaginea va fi scalată "
 "proporțional, prin urmare, decuparea nu poate fi aplicată)."
 
-#: inc/admin.php:687 inc/admin.php:777
+#: inc/admin.php:688 inc/admin.php:778
 msgid "Crop to exact dimensions"
 msgstr "Decupează la dimensiuni exacte"
 
-#: inc/admin.php:697
+#: inc/admin.php:698
 msgid "Medium size"
 msgstr "Dimensiune medie"
 
-#: inc/admin.php:707
+#: inc/admin.php:708
 msgid "Medium large size"
 msgstr "Dimensiune medie mare"
 
-#: inc/admin.php:717
+#: inc/admin.php:718
 msgid "Large size"
 msgstr "Dimensiune mare"
 
-#: inc/admin.php:727
+#: inc/admin.php:728
 msgid "Size in meta box"
 msgstr "Dimensiune în căsuța meta"
 
-#: inc/admin.php:737
+#: inc/admin.php:738
 msgid ""
 "This setting allows you to change the post thumbnail size that is displayed "
 "in the meta box."
@@ -910,7 +910,7 @@ msgstr ""
 "Această setare îți permite să modifici dimensiunea miniaturii articolului "
 "care este afișată în caseta meta."
 
-#: inc/admin.php:737
+#: inc/admin.php:738
 msgid ""
 "Leave empty if you want to use the default size that is set by WordPress and "
 "your theme."
@@ -918,7 +918,7 @@ msgstr ""
 "Lasă necompletat dacă vrei să utilizezi dimensiunea implicită stabilită de "
 "WordPress și tema ta."
 
-#: inc/admin.php:762
+#: inc/admin.php:763
 msgid ""
 "If you decided it is absolutely necessary to have new custom image sizes, "
 "you can make the setup below and these will be registered programmatically "
@@ -930,7 +930,7 @@ msgstr ""
 "programatic în aplicația ta, dacă sunt configurate corect (trebuie să "
 "introduci denumirea dimensiunii și cel puțin lățimea sau înălțimea)."
 
-#: inc/admin.php:763
+#: inc/admin.php:764
 msgid ""
 "However, please make sure you only define these below if you are sure this "
 "is really necessary, as, any additional image size registered in your "
@@ -942,7 +942,7 @@ msgstr ""
 "în aplicație scade performanța la procesarea încărcării imaginilor și de "
 "asemenea creează fișiere fizice suplimentare la găzduire."
 
-#: inc/admin.php:764
+#: inc/admin.php:765
 msgid ""
 "Also, please note that changing the image sizes names or width and height "
 "values is not recommended after these were defined and your application "
@@ -953,11 +953,11 @@ msgstr ""
 "au fost definite și aplicația ta a început să genereze imagini pentru "
 "specificațiile respective."
 
-#: inc/admin.php:767
+#: inc/admin.php:768
 msgid "Use this feature wisely."
 msgstr "Utilizează această opțiune cu precauție."
 
-#: inc/admin.php:768
+#: inc/admin.php:769
 msgid ""
 "Please consult with a front-end developer before deciding to define more "
 "image sizes below (and in general in the application), as most of the times "
@@ -969,28 +969,28 @@ msgstr ""
 "că de cele mai multe ori este suficient doar să actualizezi dimensiunile "
 "native de imagine și codului front-end (tema)."
 
-#: inc/admin.php:774 inc/admin.php:799 inc/admin.php:831
+#: inc/admin.php:775 inc/admin.php:800 inc/admin.php:832
 msgid "Name"
 msgstr "Nume"
 
-#: inc/admin.php:775 inc/admin.php:805 inc/admin.php:836
+#: inc/admin.php:776 inc/admin.php:806 inc/admin.php:837
 msgid "Max Width"
 msgstr "Lățime maximă"
 
-#: inc/admin.php:776 inc/admin.php:810 inc/admin.php:841
+#: inc/admin.php:777 inc/admin.php:811 inc/admin.php:842
 msgid "Max Height"
 msgstr "Înălțime maximă"
 
-#: inc/admin.php:804
+#: inc/admin.php:805
 msgid "(leave empty to remove this image size)"
 msgstr "(lasă necompletat pentru a elimina această mărime de imagine)"
 
-#: inc/admin.php:815 inc/admin.php:846 inc/helper.php:219 inc/helper.php:237
+#: inc/admin.php:816 inc/admin.php:847 inc/helper.php:219 inc/helper.php:237
 #: inc/helper.php:240 inc/helper.php:250 inc/helper.php:259
 msgid "Crop"
 msgstr "Decupează"
 
-#: inc/admin.php:834
+#: inc/admin.php:835
 msgid "New image size name"
 msgstr "Nume dimensiune imagine nouă"
 
@@ -1151,12 +1151,12 @@ msgid "The cron task has run for %s."
 msgstr "Sarcina cron a rulat pentru %s."
 
 #. Translators: %1$s - total.
-#: inc/cron.php:435 inc/helper.php:1993
+#: inc/cron.php:435 inc/helper.php:2003
 msgid "Items remaining to regenerate: %1$s."
 msgstr "Articole rămase de regenerat: %1$s."
 
 #. Translators: %1$s - total.
-#: inc/cron.php:449 inc/cron.php:463 inc/helper.php:1646 inc/helper.php:1836
+#: inc/cron.php:449 inc/cron.php:463 inc/helper.php:1656 inc/helper.php:1846
 msgid "Items remaining to cleanup: %1$s."
 msgstr "Articole rămase de curățat: %1$s."
 
@@ -1230,7 +1230,7 @@ msgstr ""
 msgid "Scale"
 msgstr "Scalează"
 
-#: inc/helper.php:232 inc/helper.php:2061
+#: inc/helper.php:232 inc/helper.php:2071
 msgid "not found"
 msgstr "nu s-a găsit"
 
@@ -1250,7 +1250,7 @@ msgstr ""
 "Lățimea și înălțimea imaginii originale sunt mai mici decât dimensiunea "
 "dorită a imaginii."
 
-#: inc/helper.php:282 inc/helper.php:1062
+#: inc/helper.php:282 inc/helper.php:1065
 msgid "Cleanup the metadata"
 msgstr "Curăță metadatele"
 
@@ -1262,11 +1262,11 @@ msgstr ""
 "Această dimensiune de imagine partajează același fișier cu mărimea completă "
 "(imaginea originală) și acesta nu poate fi modificat."
 
-#: inc/helper.php:287 inc/helper.php:1063
+#: inc/helper.php:287 inc/helper.php:1066
 msgid "Delete"
 msgstr "Șterge"
 
-#: inc/helper.php:304 inc/helper.php:2066
+#: inc/helper.php:304 inc/helper.php:2076
 msgid "Info"
 msgstr "Informații"
 
@@ -1274,7 +1274,7 @@ msgstr "Informații"
 msgid "Default quality"
 msgstr "Calitate implicită"
 
-#: inc/helper.php:623
+#: inc/helper.php:626
 msgid ""
 "Skipping the regeneration of this file, the file already exists (as per "
 "settings)."
@@ -1282,17 +1282,17 @@ msgstr ""
 "Se sare peste generarea acestui fișier, fișierul există deja (conform "
 "setărilor)."
 
-#: inc/helper.php:899 inc/helper.php:915 inc/helper.php:1295
-#: inc/helper.php:1762 inc/helper.php:1916 inc/helper.php:2100
+#: inc/helper.php:902 inc/helper.php:918 inc/helper.php:1298
+#: inc/helper.php:1772 inc/helper.php:1926 inc/helper.php:2110
 msgid "Something went wrong!"
 msgstr "Ceva a decurs greșit!"
 
-#: inc/helper.php:942 inc/helper.php:1300 inc/helper.php:1754
-#: inc/helper.php:1908 inc/helper.php:2093
+#: inc/helper.php:945 inc/helper.php:1303 inc/helper.php:1764
+#: inc/helper.php:1918 inc/helper.php:2103
 msgid "Done!"
 msgstr "Gata!"
 
-#: inc/helper.php:1046
+#: inc/helper.php:1049
 msgid ""
 "You can see below some additional information about the files generated, "
 "recorded in the database, also files left behind from image sizes that are "
@@ -1305,138 +1305,138 @@ msgstr ""
 "la alte procesări de imagini (dar care nu mai sunt înregistrate în baza de "
 "date, așadar, probabil nefolosite)."
 
-#: inc/helper.php:1050
+#: inc/helper.php:1053
 msgid "Nothing available."
 msgstr "Nimic disponibil."
 
-#: inc/helper.php:1058 inc/helper.php:1163 inc/helper.php:1273
+#: inc/helper.php:1061 inc/helper.php:1166 inc/helper.php:1276
 msgid "The file is missing!"
 msgstr "Fișierul lipsește!"
 
-#: inc/helper.php:1077 inc/helper.php:1241
+#: inc/helper.php:1080 inc/helper.php:1244
 msgid "file size"
 msgstr "mărime fișier"
 
-#: inc/helper.php:1230
+#: inc/helper.php:1233
 msgid "Image Details & Options"
 msgstr "Detalii și opțiuni imagine"
 
-#: inc/helper.php:1239
+#: inc/helper.php:1242
 msgid "The original image"
 msgstr "Imaginea originală"
 
-#: inc/helper.php:1246
+#: inc/helper.php:1249
 msgid "Sub-size info"
 msgstr "Informații subdimensiune"
 
-#: inc/helper.php:1247
+#: inc/helper.php:1250
 msgid "Actions"
 msgstr "Acțiuni"
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1401
+#: inc/helper.php:1411
 msgid "<b>scale</b> to max width of <b>%s</b>px"
 msgstr "<b>scalează</b> la lățimea maximă de <b>%s</b>px"
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1404
+#: inc/helper.php:1414
 msgid "<b>scale</b> to max height of <b>%s</b>px"
 msgstr "<b>scalează</b> la înălțimea maximă de <b>%s</b>px"
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1407
+#: inc/helper.php:1417
 msgid "<b>crop</b> of <b>%1$s</b>x<b>%2$s</b>px"
 msgstr "<b>decupează</b> la <b>%1$s</b>x<b>%2$s</b>px"
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1410
+#: inc/helper.php:1420
 msgid ""
 "<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px"
 msgstr ""
 "<b>scalează</b> la lățimea maximă de <b>%s</b>px sau înălțimea maximă de "
 "<b>%2$s</b>px"
 
-#: inc/helper.php:1433
+#: inc/helper.php:1443
 msgid "Click to generate a crop of the image from this position"
 msgstr "Fă clic pentru a genera o decupare a imaginii din această poziție"
 
-#: inc/helper.php:1450
+#: inc/helper.php:1460
 msgid "Default crop position from settings"
 msgstr "Poziția de decupare implicită din setări"
 
-#: inc/helper.php:1621 inc/helper.php:1812 inc/helper.php:1967
+#: inc/helper.php:1631 inc/helper.php:1822 inc/helper.php:1977
 msgid "Finishing up"
 msgstr "Finalizez"
 
-#: inc/helper.php:1682
+#: inc/helper.php:1692
 msgid "The cleanup for this file will be skipped (it is the original file)."
 msgstr "Curățarea pentru acest fișier va fi omisă (este fișierul original)."
 
-#: inc/helper.php:1692
+#: inc/helper.php:1702
 msgid "The cleanup for this file will be skipped (the size is registered)."
 msgstr ""
 "Curățarea pentru acest fișier va fi omisă (dimensiunea este înregistrată)."
 
-#: inc/helper.php:1717 inc/helper.php:1729 inc/helper.php:1883
+#: inc/helper.php:1727 inc/helper.php:1739 inc/helper.php:1893
 msgid "has been deleted"
 msgstr "s-a șters"
 
-#: inc/helper.php:1724
+#: inc/helper.php:1734
 msgid "could not be deleted"
 msgstr "nu s-a putut elimina"
 
 #. Translators: %1$s - id.
-#: inc/helper.php:1738 inc/wp-cli.php:440 inc/wp-cli.php:445
+#: inc/helper.php:1748 inc/wp-cli.php:437 inc/wp-cli.php:442
 msgid "No cleanup necessary for %1$s"
 msgstr "Nu este necesară curățarea pentru %1$s"
 
-#: inc/helper.php:1862
+#: inc/helper.php:1872
 msgid "could not be found"
 msgstr "nu s-a putut găsi"
 
-#: inc/helper.php:1877
+#: inc/helper.php:1887
 msgid "could not be deleted (it is the original file)"
 msgstr "nu s-a putut șterge (este fișierul original)"
 
-#: inc/helper.php:2018
+#: inc/helper.php:2028
 msgid "The regeneration of this file will be skipped (as per settings)."
 msgstr "Regenerarea acestui fișier va fi omisă (conform setărilor)."
 
-#: inc/helper.php:2024 inc/helper.php:2040
+#: inc/helper.php:2034 inc/helper.php:2050
 msgid "Could not be generated, the original is too small."
 msgstr "Nu s-a putut generat, originalul este prea mic."
 
-#: inc/helper.php:2032
+#: inc/helper.php:2042
 msgid "The file was regenerated."
 msgstr "Fișierul a fost regenerat."
 
-#: inc/helper.php:2038
+#: inc/helper.php:2048
 msgid "Could not be generated, the original file is missing."
 msgstr "Nu s-a putut genera, fișierul original lipsește."
 
 #. Translators: %1$d - count products, %2$d - total.
-#: inc/helper.php:2317
+#: inc/helper.php:2327
 msgid "%1$d items assessed of %2$d."
 msgstr "%1$d articole evaluate la %2$d."
 
-#: inc/helper.php:2367 inc/helper.php:2370 inc/parts/admin-sizes-table.php:91
+#: inc/helper.php:2377 inc/helper.php:2380 inc/parts/admin-sizes-table.php:91
 #: inc/parts/admin-sizes-table.php:185
 msgid "Cleanup"
 msgstr "Curăță"
 
-#: inc/helper.php:2418 inc/iterator.php:180
+#: inc/helper.php:2428 inc/iterator.php:180
 msgid "Resume"
 msgstr "Reia"
 
-#: inc/helper.php:2426
+#: inc/helper.php:2436
 msgid "Regenerate All"
 msgstr "Regenerează tot"
 
-#: inc/helper.php:2442
+#: inc/helper.php:2452
 msgid "Cleanup Unused"
 msgstr "Curăță nefolosite"
 
-#: inc/helper.php:2443
+#: inc/helper.php:2453
 msgid "Cleanup Raw"
 msgstr "Curăță brut"
 
@@ -1547,34 +1547,38 @@ msgstr ""
 
 #: inc/parts/admin-advanced.php:18
 msgid ""
-"The order in which the rules are checked and have priority is: post ID, post "
-"type, post format, post parent, post tags, post categories, other "
-"taxonomies. Any of the rules that match first (in this order) will apply for "
-"the images that are generated when you upload images to that post (and the "
-"rest of the rules will be ignored). You can suppress at any time any of the "
-"rules and then enable these back as it suits you."
+"The order in which the rules are checked and have priority is: unattached, "
+"post ID, post type, post format, post parent, post tags, post categories, "
+"other taxonomies. Any of the rules that match first (in this order) will "
+"apply for the images that are generated when you upload images to that post "
+"(and the rest of the rules will be ignored). You can suppress at any time "
+"any of the rules and then enable these back as it suits you."
 msgstr ""
-"Ordinea în care regulile sunt verificate și au prioritate este: ID articol, "
-"tip articol, format articol, părinte articol, etichete articol, categorii de "
-"articol, alte taxonomii. Oricare dintre regulile care se potrivește prima "
-"(în această ordine) se va aplica pentru imaginile care sunt generate atunci "
-"când încarci imagini la acel articol (și restul regulilor vor fi ignorate). "
-"Poți suprima oricând oricare dintre reguli și apoi le poți activa înapoi, "
-"după cum îți convine."
+"Ordinea în care regulile sunt verificate și au prioritate este: neatașat, ID "
+"articol, tip articol, format articol, părinte articol, etichete articol, "
+"categorii de articol, alte taxonomii. Oricare dintre regulile care se "
+"potrivește prima (în această ordine) se va aplica pentru imaginile care sunt "
+"generate atunci când încarci imagini la acel articol (și restul regulilor "
+"vor fi ignorate). Poți suprima oricând oricare dintre reguli și apoi le poți "
+"activa înapoi, după cum îți convine."
 
-#: inc/parts/admin-advanced.php:39
+#: inc/parts/admin-advanced.php:36
+msgid "Unattached"
+msgstr "Neatașat"
+
+#: inc/parts/admin-advanced.php:37
 msgid "Post ID"
 msgstr "ID articol"
 
-#: inc/parts/admin-advanced.php:40
-msgid "Post parent ID"
-msgstr "ID articol părinte"
-
-#: inc/parts/admin-advanced.php:41
+#: inc/parts/admin-advanced.php:38
 msgid "Post type"
 msgstr "Tip articol"
 
-#: inc/parts/admin-advanced.php:43
+#: inc/parts/admin-advanced.php:39
+msgid "Post parent ID"
+msgstr "ID articol părinte"
+
+#: inc/parts/admin-advanced.php:46
 msgid ""
 "Set below rules that would apply only for regenerating the featured image. "
 "An image becomes a \"Featured Image\" after the upload was already processed "
@@ -1586,49 +1590,49 @@ msgstr ""
 "a fost deja procesată și când postarea este salvată, prin urmare regulile "
 "stabilite mai jos se pot aplica doar la regenerarea imaginii."
 
-#: inc/parts/admin-advanced.php:50 inc/parts/admin-advanced.php:123
+#: inc/parts/admin-advanced.php:53 inc/parts/admin-advanced.php:127
 msgid "The post has"
 msgstr "Articolul are"
 
 #. Translators: %s - example.
-#: inc/parts/admin-advanced.php:54
+#: inc/parts/admin-advanced.php:57
 msgid "Categories"
 msgstr "Categorii"
 
-#: inc/parts/admin-advanced.php:59 inc/parts/admin-advanced.php:135
+#: inc/parts/admin-advanced.php:62 inc/parts/admin-advanced.php:139
 msgid "Value"
 msgstr "Valoare"
 
-#: inc/parts/admin-advanced.php:68 inc/parts/admin-advanced.php:138
+#: inc/parts/admin-advanced.php:71 inc/parts/admin-advanced.php:142
 #: inc/parts/admin-sizes-table.php:79 inc/parts/admin-sizes-table.php:159
 msgid "Force original"
 msgstr "Forțează originalul"
 
-#: inc/parts/admin-advanced.php:77 inc/parts/admin-advanced.php:150
+#: inc/parts/admin-advanced.php:80 inc/parts/admin-advanced.php:154
 msgid "Generate only these image sizes for the rule"
 msgstr "Generează numai aceste dimensiuni de imagine pentru regulă"
 
-#: inc/parts/admin-advanced.php:86 inc/parts/admin-advanced.php:224
+#: inc/parts/admin-advanced.php:89 inc/parts/admin-advanced.php:240
 msgid "Suppress"
 msgstr "Suprimă"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:157 inc/parts/admin-advanced.php:160
+#: inc/parts/admin-advanced.php:161 inc/parts/admin-advanced.php:164
 msgid "This rule is %s"
 msgstr "Regula este %s"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:157
+#: inc/parts/admin-advanced.php:161
 msgid "suppressed"
 msgstr "suprimată"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:160
+#: inc/parts/admin-advanced.php:164
 msgid "activated"
 msgstr "activată"
 
 #. Translators: %1$s type, %2$s value, %3$s only.
-#: inc/parts/admin-advanced.php:169
+#: inc/parts/admin-advanced.php:173
 msgid ""
 "uploading images to a post that has %1$s as %2$s will generate only the %3$s "
 "sizes."
@@ -1636,8 +1640,13 @@ msgstr ""
 "încărcarea imaginilor într-un articol care are %1$s ca %2$s va genera numai "
 "dimensiunile %3$s."
 
+#. Translators: %1$s - subsize.
+#: inc/parts/admin-advanced.php:181
+msgid "uploading unattached images will generate only the %1$s sizes."
+msgstr "încărcarea imaginilor neatașate vor genera numai dimensiunile %1$s."
+
 #. Translators: %1$s type, %2$s value, %3$s original, %4$s only.
-#: inc/parts/admin-advanced.php:177
+#: inc/parts/admin-advanced.php:187
 msgid ""
 "uploading images to a post that has %1$s as %2$s will force the original "
 "image to %3$s size and will generate only the %4$s sizes."
@@ -1645,7 +1654,7 @@ msgstr ""
 "încărcarea imaginilor într-un articol care are %1$s ca %2$s va forța "
 "imaginea originală la dimensiunea %3$s și va genera numai dimensiunile %4$s."
 
-#: inc/parts/admin-advanced.php:207
+#: inc/parts/admin-advanced.php:220
 msgid "Rules that would apply only for regenerating the featured image"
 msgstr ""
 "Reguli care s-ar aplica numai pentru regenerarea imaginii reprezentative"
@@ -1767,30 +1776,35 @@ msgstr ""
 "Anulează toate activitățile programate momental, care au ca scop regenerarea "
 "sau curățarea imaginilor."
 
-#: inc/parts/admin-general.php:23
+#: inc/parts/admin-general.php:24
+msgid "allow actions for users with upload files capability"
+msgstr ""
+"permite acțiuni pentru utilizatori cu capabilitatea de încărcare fișiere"
+
+#: inc/parts/admin-general.php:29
 msgid "show small buttons in the media screen"
 msgstr "afișează butoanele mici în ecranul media"
 
-#: inc/parts/admin-general.php:28
+#: inc/parts/admin-general.php:34
 msgid "show buttons in the media screen in grid mode"
 msgstr "afișează butoanele în ecranul media în modul grilă"
 
-#: inc/parts/admin-general.php:33
+#: inc/parts/admin-general.php:39
 msgid "show attachment image sizes summary in the media screen"
 msgstr ""
 "afișează rezumatul dimensiunilor imaginilor atașamentelor în ecranul media"
 
-#: inc/parts/admin-general.php:40
+#: inc/parts/admin-general.php:46
 msgid "turn off the WooCommerce background thumbnails regenerate"
 msgstr "dezactivează regenerarea miniaturilor de fundal WooCommerce"
 
-#: inc/parts/admin-general.php:48
+#: inc/parts/admin-general.php:54
 msgid "sync ignored image sizes with EWWW Image Optimizer plugin"
 msgstr ""
 "sincronizează dimensiunile de imagini ignorate cu modulul EWWW Image "
 "Optimizer"
 
-#: inc/parts/admin-general.php:51
+#: inc/parts/admin-general.php:57
 msgid ""
 "This option allows you to sync <em>disable creation</em> image sizes from "
 "<b>EWWW Image Optimizer</b> plugin with the <em>global ignore</em> image "
@@ -1804,12 +1818,12 @@ msgstr ""
 "Select Crop</b>. În acest fel, când actualizezi setările într-unul dintre "
 "module, setările vor fi sincronizate în celălalt modul."
 
-#: inc/parts/admin-general.php:57
+#: inc/parts/admin-general.php:63
 msgid "bulk regenerate/cleanup execution starts from the most recent files"
 msgstr ""
 "execuția de regenerare/curățare în bloc începe de la cele mai recente fișiere"
 
-#: inc/parts/admin-general.php:60
+#: inc/parts/admin-general.php:66
 msgid ""
 "This option allows you to run the bulk cleanup and bulk regenerate actions "
 "starting from the most recent files you have in the media library until the "
@@ -1826,17 +1840,17 @@ msgstr ""
 "rulezi acest lucru doar pentru încărcări mai recente.<hr>În mod implicit, "
 "acțiunile în bloc vor rula de la cele mai vechi la cele mai noi fișiere."
 
-#: inc/parts/admin-general.php:65
+#: inc/parts/admin-general.php:71
 msgid "do not cleanup the settings after the plugin is deactivated"
 msgstr "nu curățați setările după ce modulul este dezactivat"
 
-#: inc/parts/admin-general.php:71
+#: inc/parts/admin-general.php:77
 msgid "turn on the custom debug log for monitoring the events execution"
 msgstr ""
 "activează jurnalul de depanare personalizat, pentru monitorizarea execuției "
 "evenimentelor"
 
-#: inc/parts/admin-general.php:77
+#: inc/parts/admin-general.php:83
 msgid ""
 "filter and expose the image sizes available for the attachment display "
 "settings in the media dialog (any registered available size, even when there "
@@ -2357,6 +2371,8 @@ msgid ""
 "<a href=\"%1$s\" rel=\"noreferrer\">%2$s Premium extensions</a> are "
 "available for this plugin."
 msgstr ""
+"<a href=\"%1$s\" rel=\"noreferrer\">%2$s Extensiile premium</a> sunt "
+"disponibile pentru acest plugin."
 
 #. Translators: %1$s - extensions URL.
 #: inc/parts/notice-update.php:27
@@ -2387,19 +2403,19 @@ msgstr "Nu se poate genera, originalul este prea mic."
 msgid "Could not generate, the original file is missing."
 msgstr "Nu se poate genera, fișierul original lipsește."
 
-#: inc/wp-cli.php:597 inc/wp-cli.php:668
+#: inc/wp-cli.php:594 inc/wp-cli.php:665
 msgid "Permalinks refresh"
 msgstr "Reîmprospătează legăturile permanente"
 
-#: inc/wp-cli.php:599 inc/wp-cli.php:670
+#: inc/wp-cli.php:596 inc/wp-cli.php:667
 msgid "Cache refresh"
 msgstr "Reîmprospătează cache"
 
-#: inc/wp-cli.php:646
+#: inc/wp-cli.php:643
 msgid "Rename files for attachment"
 msgstr "Redenumire fișiere pentru atașament"
 
-#: inc/wp-cli.php:653
+#: inc/wp-cli.php:650
 msgid "Find and replace database content for attachment files"
 msgstr ""
 "Găsește și înlocuiește conținutul din baza de date pentru fișierele "

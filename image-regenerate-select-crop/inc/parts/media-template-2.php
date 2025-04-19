@@ -120,7 +120,7 @@ $alt_text_description = sprintf(
 			</div>
 		</div>
 	</div>
-	<# if ( 'image' === data.type && ! data.uploading ) { #>
+	<# if ( 'image' === data.type && ! data.uploading && ! data?.mime.includes('svg') ) { #>
 		<span class="setting extra" data-setting="extra">
 			<label class="name"><?php _e( 'Sub-sizes', 'sirsc' ); ?></label>
 			<?php SIRSC\Admin\media_template_buttons(); ?>

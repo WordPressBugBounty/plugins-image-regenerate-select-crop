@@ -10,7 +10,7 @@
  */
 class SIRSC_Adons_API {
 	const PLUGIN_PREFIX     = 'sirsc-adons-api';
-	const PLUGIN_API_URL    = 'https://iuliacazan.ro/wp-admin/admin-ajax.php';
+	const PLUGIN_API_URL    = 'https://iuliacazan.ro/wp-json/klk/v2';
 	const PLUGIN_STORE_CODE = 'g8e27lE005UMhzK';
 
 	/**
@@ -75,14 +75,11 @@ class SIRSC_Adons_API {
 			'domain'     => get_site_url(),
 		];
 
-		$response = wp_remote_post(
-			self::PLUGIN_API_URL . '?action=' . $action,
-			[
-				'method'  => 'POST',
-				'timeout' => 120,
-				'body'    => array_merge( $default, $args ),
-			]
-		);
+		$response = wp_remote_post( self::PLUGIN_API_URL . '/' . $action, [
+			'method'  => 'POST',
+			'timeout' => 120,
+			'body'    => array_merge( $default, $args ),
+		] );
 		if ( ! is_wp_error( $response ) ) {
 			$data = wp_remote_retrieve_body( $response );
 			if ( is_wp_error( $data ) ) {
@@ -126,13 +123,10 @@ class SIRSC_Adons_API {
 	 */
 	public static function activate_license_key( $slug, $sku, $key ) { // phpcs:ignore
 		self::update_adon_property( $slug, 'license_key', $key );
-		$rez = self::do_api_call(
-			'license_key_activate',
-			[
-				'sku'         => $sku,
-				'license_key' => $key,
-			]
-		);
+		$rez = self::do_api_call( 'activate', [
+			'sku'         => $sku,
+			'license_key' => $key,
+		] );
 		if ( ! empty( $rez->data ) ) {
 			if ( ! empty( $rez->data->activation_id ) ) {
 				self::update_adon_property( $slug, 'activation_id', $rez->data->activation_id );
@@ -163,14 +157,11 @@ class SIRSC_Adons_API {
 	 */
 	public static function validate_license_key( $slug, $sku, $key, $id ) { // phpcs:ignore
 		if ( ! empty( $id ) ) {
-			$rez = self::do_api_call(
-				'license_key_validate',
-				[
-					'sku'           => $sku,
-					'license_key'   => $key,
-					'activation_id' => $id,
-				]
-			);
+			$rez = self::do_api_call( 'validate', [
+				'sku'           => $sku,
+				'license_key'   => $key,
+				'activation_id' => $id,
+			] );
 			if ( ! empty( $rez->data ) ) {
 				if ( ! empty( $rez->data->status ) && 'active' === $rez->data->status ) {
 					self::update_adon_property( $slug, 'available', true );
@@ -193,14 +184,11 @@ class SIRSC_Adons_API {
 	 * @param string $id   The activation ID.
 	 */
 	public static function deactivate_license_key( $slug, $sku, $key, $id ) { // phpcs:ignore
-		$rez = self::do_api_call(
-			'license_key_deactivate',
-			[
-				'sku'           => $sku,
-				'license_key'   => $key,
-				'activation_id' => $id,
-			]
-		);
+		$rez = self::do_api_call( 'deactivate', [
+			'sku'           => $sku,
+			'license_key'   => $key,
+			'activation_id' => $id,
+		] );
 	}
 
 	/**

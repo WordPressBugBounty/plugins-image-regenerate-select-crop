@@ -40,12 +40,11 @@ function sirsc_call_end() {
  * @param string $verify    Which nonce to verify.
  */
 function verify_ajax_call_nonce( string $type = 'get', string $condition = 'full', string $verify = 'sirsc-ajax-actions' ) {
-	$nonce = 'get' === $type
-		? filter_input( INPUT_GET, 'verify', FILTER_DEFAULT )
-		: filter_input( INPUT_POST, 'verify', FILTER_DEFAULT );
 
-	if ( empty( $nonce ) || ! \is_user_logged_in()
-		|| ( 'full' === $condition && ! \current_user_can( 'manage_options' ) ) ) {
+	$nonce     = filter_input( 'get' === $type ? INPUT_GET : INPUT_POST, 'verify', FILTER_DEFAULT );
+	$allow_cap = ! empty( \SIRSC::$settings['actions_for_upload_cap'] ) ? 'upload_files' : 'manage_options';
+
+	if ( empty( $nonce ) || ! \is_user_logged_in() || ( 'full' === $condition && ! \current_user_can( $allow_cap ) ) ) {
 		\wp_die( \esc_html__( 'Action not allowed.', 'sirsc' ), \esc_html__( 'Security Breach', 'sirsc' ) );
 	}
 

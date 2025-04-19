@@ -17,6 +17,12 @@ namespace SIRSC\Admin;
 </div>
 
 <div class="as-row columns-4 a-middle small-gap">
+
+	<label class="label-row">
+		<input type="checkbox" name="sirsc[actions_for_upload_cap]" id="sirsc_listing_tiny_buttons"
+			<?php \checked( true, $settings['actions_for_upload_cap'] ); ?> <?php setting_is_readonly( 'actions_for_upload_cap' ); ?> data-sirsc-autosubmit="change">
+		<?php \esc_html_e( 'allow actions for users with upload files capability', 'sirsc' ); ?>
+	</label>
 	<label class="label-row">
 		<input type="checkbox" name="sirsc[listing_tiny_buttons]" id="sirsc_listing_tiny_buttons"
 			<?php \checked( true, $settings['listing_tiny_buttons'] ); ?> <?php setting_is_readonly( 'listing_tiny_buttons' ); ?> data-sirsc-autosubmit="change">

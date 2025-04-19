@@ -271,7 +271,7 @@ function load_assets() {
 			'regenerate_log_title'   => \__( 'Regenerate Log', 'sirsc' ),
 			'cleanup_log_title'      => \__( 'Cleanup Log', 'sirsc' ),
 			'upload_root_path'       => \trailingslashit( $upls['basedir'] ),
-			'display_small_buttons'  => ( ! empty( \SIRSC::$settings['listing_tiny_buttons'] ) ) ? ' tiny' : '',
+			'display_small_buttons'  => ! empty( \SIRSC::$settings['listing_tiny_buttons'] ) ? ' tiny' : '',
 			'admin_featured_size'    => \get_option( 'sirsc_admin_featured_size' ),
 			'confirm_raw_cleanup'    => \__( 'This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?', 'sirsc' ),
 			'delay'                  => \SIRSC::BULK_PROCESS_DELAY,
@@ -635,7 +635,8 @@ function append_image_generate_button( $content, $post_id = 0, $thumbnail_id = 0
 	$is_the_attachment = false;
 	if ( is_object( $content ) ) {
 		$thumbnail_id = $content->ID;
-		$display      = ! empty( $content->post_mime_type ) && substr_count( $content->post_mime_type, 'image/' );
+		$display      = ! empty( $content->post_mime_type ) && substr_count( $content->post_mime_type, 'image/' )
+			&& ! substr_count( $content->post_mime_type, 'svg' );
 
 		$is_the_attachment = true;
 	}
@@ -1019,8 +1020,9 @@ function media_column_value( $column, $value ) { // phpcs:ignore
 			$sirsc_column_summary = true;
 		}
 		if ( ! empty( $post ) && ! empty( $post->post_mime_type )
-			&& substr_count( $post->post_mime_type, 'image/' ) ) {
-			$extra_class = ( ! empty( \SIRSC::$settings['listing_tiny_buttons'] ) ) ? 'tiny' : '';
+			&& substr_count( $post->post_mime_type, 'image/' )
+			&& ! substr_count( $post->post_mime_type, 'svg' ) ) {
+			$extra_class = ! empty( \SIRSC::$settings['listing_tiny_buttons'] ) ? 'tiny' : '';
 			echo append_image_generate_button( '', '', $post->ID, $extra_class ); // phpcs:ignore
 			if ( ! empty( \SIRSC::$settings['listing_show_summary'] ) ) {
 				\SIRSC\Helper\attachment_listing_summary( $post->ID );

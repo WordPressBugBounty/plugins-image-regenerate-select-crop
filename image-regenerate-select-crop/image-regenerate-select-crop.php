@@ -5,7 +5,7 @@
  * Domain Path: /langs
  * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
- * Version:     8.1.0
+ * Version:     8.1.1
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.10 );
+define( 'SIRSC_VER', 8.11 );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -221,8 +221,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$called = get_called_class();
 
 		self::$settings = get_option( 'sirsc_settings' );
-		self::$use_cron = ( ! empty( self::$settings['cron_bulk_execution'] ) ) ? true : false;
-		self::$is_cron  = ( defined( 'DOING_CRON' ) && DOING_CRON ) ? true : false;
+		self::$use_cron = ! empty( self::$settings['cron_bulk_execution'] ) ? true : false;
+		self::$is_cron  = defined( 'DOING_CRON' ) && DOING_CRON ? true : false;
 
 		self::get_default_user_custom_rules();
 
@@ -247,19 +247,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 
 			add_action( 'wp_ajax_sirsc_show_actions_result', [ $called, 'show_actions_result' ] );
-
-			self::$crop_positions = [
-				'lt' => __( 'Left', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
-				'ct' => __( 'Center', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
-				'rt' => __( 'Right', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
-				'lc' => __( 'Left', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
-				'cc' => __( 'Center', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
-				'rc' => __( 'Right', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
-				'lb' => __( 'Left', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
-				'cb' => __( 'Center', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
-				'rb' => __( 'Right', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
-			];
-
+			add_action( 'init', [ $called, 'init_crop_positions' ] );
 			add_action( 'sirsc_action_after_image_delete', [ $called, 'refresh_extra_info_footer' ] );
 			add_filter( 'admin_post_thumbnail_size', [ $called, 'admin_featured_size' ], 60, 3 );
 		}
@@ -281,9 +269,24 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Initiate the default crop positions.
+	 */
+	public static function init_crop_positions() {
+		self::$crop_positions = [
+			'lt' => __( 'Left', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
+			'ct' => __( 'Center', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
+			'rt' => __( 'Right', 'sirsc' ) . '/' . __( 'Top', 'sirsc' ),
+			'lc' => __( 'Left', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
+			'cc' => __( 'Center', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
+			'rc' => __( 'Right', 'sirsc' ) . '/' . __( 'Center', 'sirsc' ),
+			'lb' => __( 'Left', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
+			'cb' => __( 'Center', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
+			'rb' => __( 'Right', 'sirsc' ) . '/' . __( 'Bottom', 'sirsc' ),
+		];
+	}
+
+	/**
 	 * Initiate the default structure for the custom rules.
-	 *
-	 * @return array
 	 */
 	public static function init_user_custom_rules(): array {
 		$default = [];

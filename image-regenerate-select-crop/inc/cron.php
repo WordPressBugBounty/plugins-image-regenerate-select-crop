@@ -8,7 +8,7 @@
 declare( strict_types=1 );
 namespace SIRSC\Cron;
 
-define( 'SIRSC_JOBS_DB_VER', 2.0 );
+define( 'SIRSC_JOBS_DB_VER', 2.1 );
 
 \add_action( 'init', __NAMESPACE__ . '\\add_cron_scheduled', 0 );
 \add_action( 'init', __NAMESPACE__ . '\\check_cron_scheduled_tasks' );
@@ -287,14 +287,13 @@ function run_task( $hook = '', $args = [] ) { // phpcs:ignore
 /**
  * Register the custom frequency for tasks.
  *
- * @param  array $schedules The avalable frequencies of tasks.
- * @return array
+ * @param array $schedules The avalable frequencies of tasks.
  */
 function custom_cron_frequency( array $schedules ): array {
 	if ( ! isset( $schedules['every_minute'] ) ) {
 		$schedules['every_minute'] = [
 			'interval' => 60,
-			'display'  => \__( 'Every minute', 'sirsc' ),
+			'display'  => 'Every minute',
 		];
 	}
 
@@ -405,9 +404,8 @@ function trigger_task_unschedule( string $hook ) {
 /**
  * Get hook info.
  *
- * @param  string $hook  Hook handle.
- * @param  bool   $reset Reset counters.
- * @return array
+ * @param string $hook  Hook handle.
+ * @param bool   $reset Reset counters.
  */
 function get_hook_info( string $hook = '', bool $reset = false ): array {
 	$info = [

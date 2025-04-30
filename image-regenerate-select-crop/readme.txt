@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
 Tested up to: 6.8
-Stable tag: 8.1.0
+Stable tag: 8.1.1
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,13 +67,9 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.1.0 =
-* Tested up to 6.8
-* Removed the buttons with actions for the SVG files
-* Added the new setting that allows to enable the actions for users with upload files capability
-* Added the Unattached option for the advanced rules
-* Refined the unique name logic
-* Translation updates
+= 8.1.1 =
+* PHP 8+ compatibility
+* Fixed _load_textdomain_just_in_time was called incorrectly warnings
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.
 

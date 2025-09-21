@@ -5,7 +5,7 @@
  * Domain Path: /langs
  * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
- * Version:     8.1.1
+ * Version:     8.1.2
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.11 );
+define( 'SIRSC_VER', 8.12 );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -679,7 +679,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				wp_die( esc_html__( 'Action not allowed.', 'sirsc' ), esc_html__( 'Security Breach', 'sirsc' ) );
 			}
 
-			$data = filter_input( INPUT_POST, 'sirsc', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
+			$data = filter_input( INPUT_POST, 'sirsc', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( ! empty( $data['trigger'] ) ) {
 				if ( 'sirsc-settings-advanced-rules' === $data['trigger'] ) {
 					// Custom rules update.
@@ -816,7 +816,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$to_update = filter_input( INPUT_POST, '_sirsc_settings_submit', FILTER_DEFAULT );
 		if ( ! empty( $to_update ) ) {
 			$settings = self::get_settings_list();
-			$data     = filter_input( INPUT_POST, 'sirsc', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
+			$data     = filter_input( INPUT_POST, 'sirsc', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 			if ( ! empty( $data['trigger'] ) ) {
 				if ( 'sirsc-settings-reset' === $data['trigger'] ) {
 					$list = get_option( 'sirsc_types_options' );
@@ -932,8 +932,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		self::get_default_user_custom_rules();
 		$unattached = false;
 
-		$data    = filter_input( INPUT_POST, 'sirsc', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
-		$urules  = filter_input( INPUT_POST, '_user_custom_rule', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY );
+		$data    = filter_input( INPUT_POST, 'sirsc', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		$urules  = filter_input( INPUT_POST, '_user_custom_rule', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 		$ucrules = [];
 		foreach ( self::$user_custom_rules as $k => $v ) {
 			if ( isset( $urules[ $k ] ) ) {
@@ -1946,6 +1946,46 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Returns the sizes map from attachment metadata.
+	 *
+	 * @param  array $meta Attachment metadata.
+	 * @return array
+	 */
+	public static function get_metadata_map( $meta = [] ) {
+		if ( empty( $meta['width'] ) || empty( $meta['height'] ) ) {
+			return [];
+		}
+
+		$upload_dir = wp_get_upload_dir();
+		$file_path  = path_join( $upload_dir['basedir'], $meta['file'] );
+		$mime       = wp_check_filetype( $file_path );
+		$mime_type  = $mime['type'] ?? '';
+
+		$meta_map = [];
+		if ( ! empty( $meta['sizes'] ) ) {
+			foreach ( $meta['sizes'] as $k => $v ) {
+				$meta_map[ $v['width'] . 'x' . $v['height'] ] = [
+					'subsize' => $k,
+					'details' => $v,
+				];
+			}
+		}
+
+		$meta_map[ $meta['width'] . 'x' . $meta['height'] ] = [
+			'subsize' => 'full',
+			'details' => [
+				'file'      => wp_basename( $meta['file'] ?? '' ),
+				'width'     => $meta['width'],
+				'height'    => $meta['height'],
+				'mime-type' => $mime_type,
+				'filesize'  => $meta['filesize'] ?? 0,
+			],
+		];
+
+		return $meta_map;
+	}
+
+	/**
 	 * Access directly the image editor to generate a specific image.
 	 *
 	 * @param  string $id            The attachment ID.
@@ -2014,9 +2054,25 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 		}
 
-		if ( ! empty( $estimated ) &&
-			(int) $estimated[0] === (int) $image_size[0] && (int) $estimated[1] === (int) $image_size[1] ) {
-			$meta = wp_get_attachment_metadata( $id );
+		$meta     = wp_get_attachment_metadata( $id );
+		$meta_map = self::get_metadata_map( $meta );
+
+		if ( ! empty( $estimated )
+			&& empty( $info['crop'] )
+			&& (int) $estimated[0] === (int) $image_size[0]
+			&& (int) $estimated[1] === (int) $image_size[1]
+			&& isset( $meta_map[ (int) $estimated[0] . 'x' . (int) $estimated[1] ] ) ) {
+
+			// Shorten the checks, this exists already.
+			return array_merge(
+				$meta_map[ (int) $estimated[0] . 'x' . (int) $estimated[1] ]['details'],
+				[ 'reused' => true ]
+			);
+		}
+
+		if ( ! empty( $estimated )
+			&& (int) $estimated[0] === (int) $info['width']
+			&& (int) $estimated[1] === (int) $info['height'] ) {
 
 			// Skip the editor, this is the same as the current file.
 			if ( self::$wp_ver < 5.3 ) {
@@ -2039,6 +2095,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( ! empty( $meta['width'] ) && ! empty( $meta['height'] )
 					&& (int) $estimated[0] === (int) $meta['width']
 					&& (int) $estimated[1] === (int) $meta['height'] ) {
+
 					// This matches the orginal.
 					return [
 						'file'   => wp_basename( $file ),
@@ -2648,42 +2705,50 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Force the custom threshold for WP >= 5.3, when there is a forced original size in the settings.
 	 *
-	 * @param  int    $initial_value Maximum width.
-	 * @param  int    $imagesize     Computed attributes for the file.
-	 * @param  string $file          The file.
-	 * @param  int    $attachment_id The attachment ID.
+	 * @param  int    $initial_value The threshold maximum width in pixels (default 2560).
+	 * @param  array  $isize         Indexed array of the image width and height in pixels.
+	 * @param  string $file          Full path to the uploaded image file.
+	 * @param  int    $attachment_id Attachment post ID.
 	 * @return int|bool
 	 */
-	public static function big_image_size_threshold_forced( $initial_value, $imagesize, $file, $attachment_id ) { // phpcs:ignore
-		if ( ! empty( self::$settings['force_original_to'] ) ) {
-			self::load_settings_for_post_id( $attachment_id );
-			$size = self::get_all_image_sizes( self::$settings['force_original_to'] );
-			if ( empty( $size ) ) {
-				return $initial_value;
-			}
+	public static function big_image_size_threshold_forced( $initial_value, $isize = [], $file = '', $attachment_id = 0 ) { // phpcs:ignore
 
-			if ( empty( $size['width'] ) ) {
-				$size['width'] = 0;
-			}
-			if ( empty( $size['height'] ) ) {
-				$size['height'] = 0;
-			}
-
-			$estimated = wp_constrain_dimensions( (int) $imagesize[0], (int) $imagesize[1], $size['width'], $size['height'] );
-			\SIRSC\Helper\debug( 'Estimated before applying threshold ' . print_r( $estimated, 1 ), true, true ); // phpcs:ignore
-
-			if ( $size['width'] < $size['height'] ) {
-				// Portrait.
-				$tmp          = self::decide_estimated_size( $imagesize, self::$settings['force_original_to'] );
-				$estimated[0] = $tmp[0] ?? 0;
-			}
-
-			$threshold = max( $size['width'], $estimated[0] ?? 0 );
-			if ( $threshold < $initial_value ) {
-				\SIRSC\Helper\debug( 'Force the image threshold to ' . $threshold, true, true );
-				return (int) $threshold;
-			}
+		if ( empty( self::$settings['force_original_to'] ) ) {
+			// No need to continue.
+			return $initial_value;
 		}
+
+		if ( empty( $isize ) || ! is_array( $isize ) || empty( $file ) || empty( $attachment_id ) ) {
+			// No need to continue, the hook parameters were not provided as in the documentation.
+			return $initial_value;
+		}
+
+		self::load_settings_for_post_id( $attachment_id );
+		$size = self::get_all_image_sizes( self::$settings['force_original_to'] );
+		if ( empty( $size ) ) {
+			return $initial_value;
+		}
+
+		$size['width']  = empty( $size['width'] ) ? 0 : (int) $size['width'];
+		$size['height'] = empty( $size['height'] ) ? 0 : (int) $size['height'];
+
+		$estimated = wp_constrain_dimensions( (int) $isize[0], (int) $isize[1], $size['width'], $size['height'] );
+		\SIRSC\Helper\debug( 'Estimated before applying threshold ' . print_r( $estimated, 1 ), true, true ); // phpcs:ignore
+
+		if ( $size['width'] < $size['height'] ) {
+			// Portrait.
+			$tmp = self::decide_estimated_size( $imagesize, self::$settings['force_original_to'] );
+
+			$estimated[0] = $tmp[0] ?? 0;
+		}
+
+		$threshold = max( $size['width'], $estimated[0] ?? 0 );
+		if ( $threshold < $initial_value ) {
+			\SIRSC\Helper\debug( 'Force the image threshold to ' . $threshold, true, true );
+			return (int) $threshold;
+		}
+
+		// Fallback to initial value.
 		return $initial_value;
 	}
 

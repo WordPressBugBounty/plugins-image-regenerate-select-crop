@@ -45,6 +45,12 @@ function process_subsize_for_file( $post_id, $name, $file_w, $file_h, $pick_crop
 
 	$editor = \wp_get_image_editor( $filename );
 	if ( ! \is_wp_error( $editor ) ) {
+
+		// Read EXIF data and correct orientation if needed.
+		if ( method_exists( $editor, 'maybe_exif_rotate' ) ) {
+			$editor->maybe_exif_rotate();
+		}
+
 		if ( ! empty( $assessed['upscale']['width'] ) ) {
 			$sirsc_editor_overrides = $assessed;
 			\SIRSC\Helper\debug( 'CROP failed, attempt to UPSCALE', true, true );

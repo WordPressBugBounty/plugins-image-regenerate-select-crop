@@ -5,9 +5,13 @@
  * @package sirsc
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
 declare( strict_types=1 );
 namespace SIRSC\Admin;
 
+\defined( 'ABSPATH' ) || exit;
 ?>
 <p>
 	<?php \esc_html_e( 'The advanced custom rules you configure below are global and will override all the other settings you set above.', 'sirsc' ); ?><br><b><?php \esc_html_e( 'The custom rules will apply only if you set up the post to use one of the rules below, and only after that you upload images to that post.', 'sirsc' ); ?></b>
@@ -166,33 +170,31 @@ the_info_text( 'info_custom_for_featured', \__( 'Set below rules that would appl
 
 						echo ': ';
 
-						// phpcs:disable
 						if ( '**full**' === \SIRSC::$user_custom_rules[ $i ]['original'] ) {
-							echo sprintf(
+							echo \wp_kses_post( sprintf(
 								// Translators: %1$s type, %2$s value, %3$s only.
 								\esc_html__( 'uploading images to a post that has %1$s as %2$s will generate only the %3$s sizes.', 'sirsc' ),
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['type'] . '</b>',
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['value'] . '</b>',
 								'<b>' . implode( ', ', array_unique( \SIRSC::$user_custom_rules[ $i ]['only'] ) ) . '</b>'
-							);
+							) );
 						} elseif ( 'unattached' === \SIRSC::$user_custom_rules[ $i ]['type'] ) {
-							echo sprintf(
+							echo \wp_kses_post( sprintf(
 								// Translators: %1$s - subsize.
 								\esc_html__( 'uploading unattached images will generate only the %1$s sizes.', 'sirsc' ),
 								'<b>' . implode( ', ', array_unique( \SIRSC::$user_custom_rules[ $i ]['only'] ) ) . '</b>'
-							);
+							) );
 						} else {
-							echo sprintf(
+							echo \wp_kses_post( sprintf(
 								// Translators: %1$s type, %2$s value, %3$s original, %4$s only.
 								\esc_html__( 'uploading images to a post that has %1$s as %2$s will force the original image to %3$s size and will generate only the %4$s sizes.', 'sirsc' ),
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['type'] . '</b>',
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['value'] . '</b>',
 								'<b>' . \SIRSC::$user_custom_rules[ $i ]['original'] . '</b>',
 								'<b>' . implode( ', ', array_unique( \SIRSC::$user_custom_rules[ $i ]['only'] ) ) . '</b>'
-							);
+							) );
 						}
 						echo '</div><br>';
-						// phpcs:enable
 					}
 					?>
 					<div class="as-box sirsc-group">

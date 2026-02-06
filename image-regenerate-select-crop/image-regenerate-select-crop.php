@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Image Regenerate & Select Crop
- * Text Domain: sirsc
- * Domain Path: /langs
  * Plugin URI:  https://iuliacazan.ro/image-regenerate-select-crop/
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
- * Version:     8.1.2
+ * Text Domain: sirsc
+ * Domain Path: /langs
+ * Version:     8.1.4
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -13,7 +13,7 @@
  *
  * @package ic-devops
  *
- * Copyright (C) 2014-2025 Iulia Cazan
+ * Copyright (C) 2014-2026 Iulia Cazan
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
@@ -29,7 +29,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-define( 'SIRSC_VER', 8.12 );
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+
+defined( 'ABSPATH' ) || exit;
+
+define( 'SIRSC_VER', 8.14 );
+define( 'SIRSC_VER_TEXT', '8.1.4' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -200,7 +206,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @return object
 	 */
-	public static function get_instance() { // phpcs:ignore
+	public static function get_instance() {
 		if ( ! self::$instance ) {
 			self::$instance = new SIRSC_Image_Regenerate_Select_Crop();
 		}
@@ -348,7 +354,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @return array
 	 */
-	public static function assess_all_wp_sizes() { // phpcs:ignore
+	public static function assess_all_wp_sizes() {
 		$sizes = [];
 		if ( function_exists( 'wp_get_registered_image_subsizes' ) ) {
 			$sizes = wp_get_registered_image_subsizes();
@@ -377,7 +383,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param array $metadata The image metadata.
 	 * @return array
 	 */
-	public static function filter_ignore_global_image_sizes( $sizes, $metadata = [] ) { // phpcs:ignore
+	public static function filter_ignore_global_image_sizes( $sizes, $metadata = [] ) {
 		$sizes = self::assess_all_wp_sizes();
 		if ( ! empty( self::$settings['complete_global_ignore'] ) ) {
 			foreach ( self::$settings['complete_global_ignore'] as $s ) {
@@ -392,7 +398,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 		}
 
-		$check_size = serialize( $sizes ); // phpcs:ignore
+		// phpcs:disable WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
+		$check_size = serialize( $sizes );
 		if ( ! substr_count( $check_size, 'width' ) && ! substr_count( $check_size, 'height' ) ) {
 			// Fail-fast here.
 			return [];
@@ -409,7 +416,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param array $metadata Uploaded image metadata.
 	 * @return array
 	 */
-	public static function filter_some_more_based_on_metadata( $sizes, $metadata = [] ) { // phpcs:ignore
+	public static function filter_some_more_based_on_metadata( $sizes, $metadata = [] ) {
 		if ( empty( $metadata['file'] ) ) {
 			// Fail-fast, no upload.
 			return $sizes;
@@ -427,9 +434,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 		}
 
+		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_value
 		$args = [
-			'meta_key'       => '_wp_attached_file', // phpcs:ignore
-			'meta_value'     => $metadata['file'], // phpcs:ignore
+			'meta_key'       => '_wp_attached_file',
+			'meta_value'     => $metadata['file'],
 			'post_status'    => 'any',
 			'post_type'      => 'attachment',
 			'posts_per_page' => 1,
@@ -458,7 +467,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @return array
 	 */
-	public static function get_native_image_sizes() { // phpcs:ignore
+	public static function get_native_image_sizes() {
 		return self::$wp_native_sizes;
 	}
 
@@ -467,7 +476,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @param string $size Image size slug.
 	 */
-	public static function get_all_image_sizes( $size = '' ) { // phpcs:ignore
+	public static function get_all_image_sizes( $size = '' ) {
 		global $_wp_additional_image_sizes;
 		$sizes = [];
 
@@ -515,7 +524,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  bool   $strict True if needs to return only the strict available from settings.
 	 * @return array|bool
 	 */
-	public static function get_all_image_sizes_plugin( $size = '', $strict = false ) { // phpcs:ignore
+	public static function get_all_image_sizes_plugin( $size = '', $strict = false ) {
 		$sizes = self::get_all_image_sizes( $size );
 		$init  = $sizes;
 		if ( ! empty( self::$settings['exclude'] ) ) {
@@ -566,7 +575,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  bool   $usable True if needs to return only the strict available from settings.
 	 * @return array
 	 */
-	public static function get_subsizes_info( $one = '', $usable = false ) { // phpcs:ignore
+	public static function get_subsizes_info( $one = '', $usable = false ) {
 		if ( empty( self::$subsizes_info ) ) {
 			$sizes = self::get_all_image_sizes();
 			$init  = $sizes;
@@ -636,7 +645,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param array  $error   The error array.
 	 * @return string
 	 */
-	public static function assess_background_errors( $message, $error ) { // phpcs:ignore
+	public static function assess_background_errors( $message, $error ) {
 		if ( ! empty( $error ) || ! empty( $message ) ) {
 			if ( ! empty( $error['message'] ) && substr_count( $error['message'], 'memor' ) ) {
 
@@ -743,7 +752,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param string $cpt Post type.
 	 * @return array
 	 */
-	public static function prepare_settings_list( $cpt = '' ) : array { // phpcs:ignore
+	public static function prepare_settings_list( $cpt = '' ): array {
 		$list            = self::get_settings_list();
 		$global_settings = maybe_unserialize( get_option( 'sirsc_settings' ) );
 		$global_settings = wp_parse_args( $global_settings, $list );
@@ -1007,7 +1016,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param array $usable_crules The rules to be prioritized.
 	 * @return array
 	 */
-	public static function update_user_custom_rules_priority( $usable_crules = [] ) { // phpcs:ignore
+	public static function update_user_custom_rules_priority( $usable_crules = [] ) {
 		if ( ! empty( $usable_crules ) ) {
 			// Put the rules in the priority order.
 			$ucr = [];
@@ -1089,25 +1098,25 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Custom image size names list in the media screen.
 	 *
-	 * @param  array $list Initial list of sizes.
+	 * @param  array $sizes_list Initial list of sizes.
 	 * @return array
 	 */
-	public static function one_time_custom_image_size_names_choose( $list ) { // phpcs:ignore
+	public static function one_time_custom_image_size_names_choose( $sizes_list ) {
 		// Expose all image sizes in the editor.
-		return self::custom_image_size_names_choose( $list );
+		return self::custom_image_size_names_choose( $sizes_list );
 	}
 
 	/**
 	 * Custom image size names list in the media screen.
 	 *
-	 * @param  array $list Initial list of sizes.
+	 * @param  array $sizes_list Initial list of sizes.
 	 * @return array
 	 */
-	public static function custom_image_size_names_choose( $list ) { // phpcs:ignore
-		$initial = $list;
+	public static function custom_image_size_names_choose( $sizes_list ) {
+		$initial = $sizes_list;
 		$sizes   = get_intermediate_image_sizes();
 		if ( empty( $sizes ) ) {
-			return $list;
+			return $sizes_list;
 		}
 
 		$all_ims  = array_filter( $sizes );
@@ -1129,26 +1138,26 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 		if ( true === $override || ! empty( self::$settings['force_size_choose'] ) ) {
 			if ( ! empty( $all_ims ) ) {
-				$list = [];
+				$sizes_list = [];
 				foreach ( $all_ims as $value ) {
 					if ( ! empty( $value ) ) {
 						if ( ! empty( $initial[ $value ] ) ) {
 							// Re-use the title from the initial array.
-							$list[ $value ] = $initial[ $value ];
+							$sizes_list[ $value ] = $initial[ $value ];
 						} else {
 							// Add this to the list of available sizes in the media screen.
-							$list[ $value ] = ucwords( str_replace( '-', ' ', str_replace( '_', ' ', $value ) ) );
+							$sizes_list[ $value ] = ucwords( str_replace( '-', ' ', str_replace( '_', ' ', $value ) ) );
 						}
 					}
 				}
 				if ( ! empty( $initial['full'] ) ) {
-					$list['full'] = $initial['full'];
+					$sizes_list['full'] = $initial['full'];
 				}
 			} else {
 				// Fall-back to the minimal.
-				$list = [ 'thumbnail' => $initial['thumbnail'] ];
+				$sizes_list = [ 'thumbnail' => $initial['thumbnail'] ];
 				if ( ! empty( $initial['full'] ) ) {
-					$list['full'] = $initial['full'];
+					$sizes_list['full'] = $initial['full'];
 				}
 			}
 		}
@@ -1162,14 +1171,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 				$should = array_unique( $should );
 				foreach ( $should as $slug ) {
-					if ( empty( $list[ $slug ] ) ) {
-						$list[ $slug ] = ucwords( str_replace( '_', ' ', $slug ) );
+					if ( empty( $sizes_list[ $slug ] ) ) {
+						$sizes_list[ $slug ] = ucwords( str_replace( '_', ' ', $slug ) );
 					}
 				}
 			}
 		}
 
-		return $list;
+		return $sizes_list;
 	}
 
 	/**
@@ -1179,7 +1188,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  WP_Block_Editor_Context $block_editor_context Block editor context.
 	 * @return array
 	 */
-	public static function custom_image_size_names_choose_blocks( $editor_settings, $block_editor_context ) { // phpcs:ignore
+	public static function custom_image_size_names_choose_blocks( $editor_settings, $block_editor_context ) {
 		if ( ! empty( $block_editor_context->post ) ) {
 			self::hook_upload_extra_rules(
 				0,
@@ -1208,7 +1217,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @param int $post_id The post ID.
 	 */
-	public static function load_settings_for_post_id( $post_id = 0 ) { // phpcs:ignore
+	public static function load_settings_for_post_id( $post_id = 0 ) {
 		$post = get_post( $post_id );
 		if ( ! empty( $post->post_parent ) ) {
 			$pt = get_post_type( $post->post_parent );
@@ -1263,7 +1272,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int $post_id       Post ID.
 	 * @return bool
 	 */
-	public static function attachment_is_featured_image( $attachment_id = 0, $post_id = 0 ) { // phpcs:ignore
+	public static function attachment_is_featured_image( $attachment_id = 0, $post_id = 0 ) {
 		$post_featured_image = get_post_thumbnail_id( (int) $post_id );
 		return (int) $post_featured_image === (int) $attachment_id;
 	}
@@ -1297,7 +1306,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param int    $parent_id   Attachment post parent ID.
 	 * @param string $parent_type Attachment post parent type.
 	 */
-	public static function apply_user_custom_rules( $id, $type, $parent_id = 0, $parent_type = '' ) { // phpcs:ignore
+	public static function apply_user_custom_rules( $id, $type, $parent_id = 0, $parent_type = '' ) {
 		if ( empty( self::$user_custom_rules_usable ) ) {
 			// Fail-fast, no custom rule set.
 			return;
@@ -1351,12 +1360,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							$apply        = true;
 							$for_featured = true;
 						}
-					} else { // phpcs:ignore
-						if ( in_array( $parent_type, explode( ',', $val['value'] ), true ) ) {
-							$apply = true;
-						} elseif ( in_array( $type, explode( ',', $val['value'] ), true ) ) {
-							$apply = true;
-						}
+					} elseif ( in_array( $parent_type, explode( ',', $val['value'] ), true ) ) {
+						$apply = true;
+					} elseif ( in_array( $type, explode( ',', $val['value'] ), true ) ) {
+						$apply = true;
 					}
 					break;
 				case 'post_format':
@@ -1431,7 +1438,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @param string $post_type The post type.
 	 */
-	public static function get_post_type_settings( $post_type ) { // phpcs:ignore
+	public static function get_post_type_settings( $post_type ) {
 		$pt = '';
 		if ( ! empty( $post_type ) && ( 'attachment' === $post_type || ! in_array( $post_type, self::$exclude_post_type, true ) ) ) {
 			$pt = '_' . $post_type;
@@ -1456,7 +1463,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param array $is_featured The rule is for featured image or not.
 	 * @return array
 	 */
-	public static function custom_rule_to_settings_rules( $settings = [], $rule = [], $is_featured = false ) { // phpcs:ignore
+	public static function custom_rule_to_settings_rules( $settings = [], $rule = [], $is_featured = false ) {
 		if ( empty( $rule ) || ! is_array( $rule ) ) {
 			// Fail-fast, no need to continue.
 			return $settings;
@@ -1523,7 +1530,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param string $type      The collect type (error|schedule).
 	 * @param string $initiator The collect initiator.
 	 */
-	public static function collect_regenerate_results( $id, $message = '', $type = 'schedule', $initiator = 'regenerate' ) { // phpcs:ignore
+	public static function collect_regenerate_results( $id, $message = '', $type = 'schedule', $initiator = 'regenerate' ) {
 		$monitor = get_option( 'sirsc_monitor_errors', [] );
 		if ( empty( $monitor['error'] ) ) {
 			$monitor['error'] = [];
@@ -1552,10 +1559,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param string $name File name.
 	 * @param array  $upls Upload info array.
 	 */
-	public static function output_bulk_message_regenerate_success( $name, $upls ) { // phpcs:ignore
+	public static function output_bulk_message_regenerate_success( $name, $upls ) {
 		$fname = str_replace( trailingslashit( $upls['basedir'] ), '', $name );
 		$fname = str_replace( trailingslashit( $upls['baseurl'] ), '', $fname );
-		echo '<b class="dashicons dashicons-yes-alt"></b> ' . $fname; // phpcs:ignore
+		echo wp_kses_post( '<b class="dashicons dashicons-yes-alt"></b> ' . $fname );
 	}
 
 	/**
@@ -1566,7 +1573,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  string $sname The intended image size name.
 	 * @return bool
 	 */
-	public static function assess_original_vs_target( $image = [], $sval = [], $sname = '' ) { // phpcs:ignore
+	public static function assess_original_vs_target( $image = [], $sval = [], $sname = '' ) {
 		if ( empty( $image ) || empty( $sval ) ) {
 			return false;
 		}
@@ -1608,7 +1615,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  bool   $force    True to force re-crop.
 	 * @return bool
 	 */
-	public static function check_if_execute_size( $image = [], $sname = '', $sval = [], $filename = '', $force = false ) { // phpcs:ignore
+	public static function check_if_execute_size( $image = [], $sname = '', $sval = [], $filename = '', $force = false ) {
 		$execute = false;
 		if ( ! self::assess_original_vs_target( $image, $sval, $sname ) ) {
 			// Fail-fast.
@@ -1663,7 +1670,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  bool   $first_time_replace Maybe it is the first time when the image is processed after upload.
 	 * @return mixed
 	 */
-	public static function process_single_size_from_file( $id, $size_name = '', $size_info = [], $small_crop = '', $force_quality = 0, $first_time_replace = false ) { // phpcs:ignore
+	public static function process_single_size_from_file( $id, $size_name = '', $size_info = [], $small_crop = '', $force_quality = 0, $first_time_replace = false ) {
 		if ( empty( $size_name ) ) {
 			return;
 		}
@@ -1816,7 +1823,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int    $force_quality Maybe some forced quality.
 	 * @return array|bool
 	 */
-	public static function swap_full_with_another_size( $id, $file, $size_name, $small_crop, $force_quality ) { // phpcs:ignore
+	public static function swap_full_with_another_size( $id, $file, $size_name, $small_crop, $force_quality ) {
 		$metadata  = wp_get_attachment_metadata( $id );
 		$initial_m = $metadata;
 		if ( empty( $metadata ) ) {
@@ -1840,12 +1847,15 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			\SIRSC\Helper\debug( 'FORCED SIZE EDITOR PROCESSED IMAGE', true, true );
 			$saved_filename = $info['path'] . $saved['file'];
 
+			// phpcs:disable WordPress.WP.AlternativeFunctions.unlink_unlink
+			// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_print_r
+			// phpcs:disable WordPress.PHP.NoSilencedErrors.Discouraged
 			if ( wp_basename( $saved_filename ) !== $info['name'] ) {
 				// Rename the new size as the full image.
-				@copy( $saved_filename, $info['filename'] ); // phpcs:ignore
+				@copy( $saved_filename, $info['filename'] );
 
 				// Remove the image size.
-				@unlink( $saved_filename ); // phpcs:ignore
+				@unlink( $saved_filename );
 
 				// Adjust the metadata to match the new set.
 				$metadata['width']    = $saved['width'];
@@ -1868,7 +1878,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 
-			\SIRSC\Helper\debug( 'AFTER EDITOR PROCESSED IMAGE ' . print_r( $metadata, 1 ), true, true ); // phpcs:ignore
+			\SIRSC\Helper\debug( 'AFTER EDITOR PROCESSED IMAGE ' . print_r( $metadata, 1 ), true, true );
 			return $metadata;
 		}
 
@@ -1907,21 +1917,19 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$new[0] = $info['width'];
 				$new[1] = ceil( $info['width'] * $native[1] / $native[0] );
 			}
-		} else { // phpcs:ignore
+		} elseif ( ! empty( $info['crop'] ) ) {
 			// Expects a portrait.
-			if ( ! empty( $info['crop'] ) ) {
-				if ( $tmp[1] < $info['height'] ) {
-					$new = [ $info['width'], $info['height'] ];
-				}
+			if ( $tmp[1] < $info['height'] ) {
+				$new = [ $info['width'], $info['height'] ];
+			}
 
-				if ( $new[0] < $native ) {
-					$new[1] = $info['height'];
-					$new[0] = ceil( $info['height'] * $native[0] / $native[1] );
-				}
-			} elseif ( $tmp[1] < $info['height'] ) {
+			if ( $new[0] < $native ) {
 				$new[1] = $info['height'];
 				$new[0] = ceil( $info['height'] * $native[0] / $native[1] );
 			}
+		} elseif ( $tmp[1] < $info['height'] ) {
+			$new[1] = $info['height'];
+			$new[0] = ceil( $info['height'] * $native[0] / $native[1] );
 		}
 
 		return $new;
@@ -1964,7 +1972,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$meta_map = [];
 		if ( ! empty( $meta['sizes'] ) ) {
 			foreach ( $meta['sizes'] as $k => $v ) {
-				$meta_map[ $v['width'] . 'x' . $v['height'] ] = [
+				$meta_map[ ( $v['width'] ?? 0 ) . 'x' . ( $v['height'] ?? 0 ) ] = [
 					'subsize' => $k,
 					'details' => $v,
 				];
@@ -1997,7 +2005,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  bool   $is_swap       Maybe use the swap rules.
 	 * @return array|bool
 	 */
-	public static function image_editor( $id, $file, $name = '', $info = [], $small_crop = '', $force_quality = 0, $is_swap = false ) { // phpcs:ignore
+	public static function image_editor( $id, $file, $name = '', $info = [], $small_crop = '', $force_quality = 0, $is_swap = false ) {
 		if ( empty( $file ) || ( ! empty( $file ) && ! file_exists( $file ) ) ) {
 			// Fail-fast, the original is not found.
 			return false;
@@ -2056,7 +2064,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 		$meta     = wp_get_attachment_metadata( $id );
 		$meta_map = self::get_metadata_map( $meta );
-
 		if ( ! empty( $estimated )
 			&& empty( $info['crop'] )
 			&& (int) $estimated[0] === (int) $image_size[0]
@@ -2074,6 +2081,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			&& (int) $estimated[0] === (int) $info['width']
 			&& (int) $estimated[1] === (int) $info['height'] ) {
 
+			// phpcs:disable WordPress.WP.AlternativeFunctions.rename_rename
 			// Skip the editor, this is the same as the current file.
 			if ( self::$wp_ver < 5.3 ) {
 				// For older version, let's check the size in DB.
@@ -2081,7 +2089,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 					$the_file = trailingslashit( dirname( $file ) ) . $meta['sizes'][ $name ]['file'];
 					if ( file_exists( $the_file ) ) {
 						$the_size = getimagesize( $the_file );
-						rename( $the_file, $file ); // phpcs:ignore
+						rename( $the_file, $file );
 						return [
 							'file'   => wp_basename( $file ),
 							'width'  => (int) $the_size[0],
@@ -2091,35 +2099,18 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						];
 					}
 				}
-			} else { // phpcs:ignore
-				if ( ! empty( $meta['width'] ) && ! empty( $meta['height'] )
-					&& (int) $estimated[0] === (int) $meta['width']
-					&& (int) $estimated[1] === (int) $meta['height'] ) {
-
-					// This matches the orginal.
-					return [
-						'file'   => wp_basename( $file ),
-						'width'  => (int) $estimated[0],
-						'height' => (int) $estimated[1],
-						'mime'   => $mime_type,
-						'reused' => true,
-					];
-				} elseif ( ! empty( $meta['sizes'][ $name ]['file'] ) ) {
-					$the_file = trailingslashit( dirname( $file ) ) . $meta['sizes'][ $name ]['file'];
-					if ( file_exists( $the_file ) ) {
-						$the_size = getimagesize( $the_file );
-						return [
-							'file'   => wp_basename( $file ),
-							'width'  => (int) $the_size[0],
-							'height' => (int) $the_size[1],
-							'mime'   => $mime_type,
-							'reused' => true,
-						];
-					}
-				}
+			} elseif ( ! empty( $meta['width'] ) && ! empty( $meta['height'] )
+				&& (int) $estimated[0] === (int) $meta['width']
+				&& (int) $estimated[1] === (int) $meta['height'] ) {
+				// This matches the orginal.
+				return [
+					'file'   => wp_basename( $file ),
+					'width'  => (int) $estimated[0],
+					'height' => (int) $estimated[1],
+					'mime'   => $mime_type,
+					'reused' => true,
+				];
 			}
-
-			return false;
 		}
 
 		return \SIRSC\Editor\process_subsize_for_file( $id, $name, $image_size[0], $image_size[1], $small_crop, $force_quality );
@@ -2134,7 +2125,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  string $name   File name.
 	 * @return string
 	 */
-	public static function assess_unique_original( $id, $folder, $dir = '', $name = '' ) { // phpcs:ignore
+	public static function assess_unique_original( $id, $folder, $dir = '', $name = '' ) {
 		if ( ! file_exists( $folder . $name ) ) {
 			return $name;
 		}
@@ -2148,7 +2139,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int $id Attachment ID.
 	 * @return array
 	 */
-	public static function assess_rename_original( $id ) { // phpcs:ignore
+	public static function assess_rename_original( $id ) {
 		$metadata = wp_get_attachment_metadata( $id );
 		if ( ! empty( $metadata ) ) {
 			$orig_me = $metadata;
@@ -2189,12 +2180,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				// Remove the initial original file if that is not used by another attachment.
 				if ( file_exists( $info['path'] . $metadata['original_image'] )
 					&& $metadata['original_image'] !== $unique ) {
-					@unlink( $info['path'] . $metadata['original_image'] ); // phpcs:ignore
+					@unlink( $info['path'] . $metadata['original_image'] );
 				}
 
 				// Rename the full size as the initial original file.
 				if ( file_exists( $info['path'] . $info['name'] ) ) {
-					@rename( $info['path'] . $info['name'], $info['path'] . $unique ); // phpcs:ignore
+					@rename( $info['path'] . $info['name'], $info['path'] . $unique );
 				}
 
 				// Pass the new name.
@@ -2228,7 +2219,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$new = self::assess_unique_original( $id, $info['path'], $info['dir'], $initial_unique );
 				if ( $new === $initial_unique ) {
 					\SIRSC\Helper\debug( 'FOUND A POTENTIAL REVERT ' . $new, true, true );
-					@rename( $info['path'] . wp_basename( $metadata['file'] ), $info['path'] . $new ); // phpcs:ignore
+					@rename( $info['path'] . wp_basename( $metadata['file'] ), $info['path'] . $new );
 					$metadata['file']           = $info['dir'] . $new;
 					$metadata['original_image'] = $new;
 
@@ -2257,7 +2248,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int    $force_quality Custom quality.
 	 * @return int|null
 	 */
-	public static function editor_set_custom_quality( $sname, $mime, $force_quality ) { // phpcs:ignore
+	public static function editor_set_custom_quality( $sname, $mime, $force_quality ) {
 		if ( ! empty( $force_quality ) ) {
 			// There is some forced quality.
 			$quality = (int) $force_quality;
@@ -2288,7 +2279,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param string $selcrop   Perhaps a selected crop string.
 	 * @return array|boolean
 	 */
-	public static function identify_crop_pos( $size_name = '', $selcrop = '' ) { // phpcs:ignore
+	public static function identify_crop_pos( $size_name = '', $selcrop = '' ) {
 		if ( empty( $size_name ) ) {
 			// Fail-fast.
 			return false;
@@ -2312,7 +2303,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  object $compute Maybe extra computed info.
 	 * @return array|void
 	 */
-	public static function general_sizes_and_files_match( $id, $image = [], $compute = null ) { // phpcs:ignore
+	public static function general_sizes_and_files_match( $id, $image = [], $compute = null ) {
 		if ( empty( $id ) ) {
 			// Fail-fast.
 			return;
@@ -2413,17 +2404,17 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 		if ( ! empty( $compute['metadata']['sizes'] ) ) {
 			foreach ( $compute['metadata']['sizes'] as $k => $v ) {
-				$file  = $dir . $v['file'];
-				$fsize = ( file_exists( $basedir . $file ) ) ? filesize( $basedir . $file ) : 0;
+				$file  = $dir . ( $v['file'] ?? '' );
+				$fsize = file_exists( $basedir . $file ) && ! is_dir( $file ) ? filesize( $basedir . $file ) : 0;
 				$info  = [
-					'width'      => ( ! empty( $v['width'] ) ) ? $v['width'] : 0,
-					'height'     => ( ! empty( $v['height'] ) ) ? $v['height'] : 0,
+					'width'      => ! empty( $v['width'] ) ? $v['width'] : 0,
+					'height'     => ! empty( $v['height'] ) ? $v['height'] : 0,
 					'size'       => $k,
 					'registered' => ( in_array( $k, $registered, true ) ),
 					'fsize'      => $fsize,
 					'filesize'   => \SIRSC\Helper\human_filesize( $fsize ),
-					'icon'       => ( in_array( $k, $registered, true ) ) ? 'dashicons-yes-alt' : 'dashicons-marker',
-					'hint'       => ( in_array( $k, $registered, true ) ) ? __( 'currently registered', 'sirsc' ) : __( 'not registered anymore', 'sirsc' ),
+					'icon'       => in_array( $k, $registered, true ) ? 'dashicons-yes-alt' : 'dashicons-marker',
+					'hint'       => in_array( $k, $registered, true ) ? __( 'currently registered', 'sirsc' ) : __( 'not registered anymore', 'sirsc' ),
 					'is_main'    => 0,
 				];
 				if ( ! isset( $summary[ $file ] ) ) {
@@ -2477,7 +2468,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  string $size Size name.
 	 * @return bool
 	 */
-	public static function size_is_registered( $size ) { // phpcs:ignore
+	public static function size_is_registered( $size ) {
 		$registered = get_intermediate_image_sizes();
 
 		if ( 'full' === $size || 'original' === $size ) {
@@ -2494,7 +2485,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  array $summary Identified generated files.
 	 * @return array
 	 */
-	public static function maybe_match_unknown_files_to_meta( $id, $summary ) { // phpcs:ignore
+	public static function maybe_match_unknown_files_to_meta( $id, $summary ) {
 		$assess = [];
 		if ( ! empty( $summary ) ) {
 			$image_meta   = wp_get_attachment_metadata( $id );
@@ -2591,7 +2582,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  array $image Maybe the known attachment metadata.
 	 * @return array
 	 */
-	public static function assess_files_for_attachment_original( $id, $image = [] ) { // phpcs:ignore
+	public static function assess_files_for_attachment_original( $id, $image = [] ) {
 		if ( empty( $image ) ) {
 			$image = wp_get_attachment_metadata( $id );
 		}
@@ -2693,11 +2684,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @param int $post_id Attachment ID.
 	 */
-	public static function on_delete_attachment( $post_id ) { // phpcs:ignore
+	public static function on_delete_attachment( $post_id ) {
 		$gene_all = self::assess_files_for_attachment_original( $post_id );
 		if ( ! empty( $gene_all['paths']['generated'] ) ) {
 			foreach ( $gene_all['paths']['generated'] as $value ) {
-				@unlink( $value ); // phpcs:ignore
+				@unlink( $value );
 			}
 		}
 	}
@@ -2711,7 +2702,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int    $attachment_id Attachment post ID.
 	 * @return int|bool
 	 */
-	public static function big_image_size_threshold_forced( $initial_value, $isize = [], $file = '', $attachment_id = 0 ) { // phpcs:ignore
+	public static function big_image_size_threshold_forced( $initial_value, $isize = [], $file = '', $attachment_id = 0 ) {
 
 		if ( empty( self::$settings['force_original_to'] ) ) {
 			// No need to continue.
@@ -2733,7 +2724,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$size['height'] = empty( $size['height'] ) ? 0 : (int) $size['height'];
 
 		$estimated = wp_constrain_dimensions( (int) $isize[0], (int) $isize[1], $size['width'], $size['height'] );
-		\SIRSC\Helper\debug( 'Estimated before applying threshold ' . print_r( $estimated, 1 ), true, true ); // phpcs:ignore
+		\SIRSC\Helper\debug( 'Estimated before applying threshold ' . print_r( $estimated, 1 ), true, true );
 
 		if ( $size['width'] < $size['height'] ) {
 			// Portrait.
@@ -2763,7 +2754,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			return false;
 		}
 
-		// phpcs:disable
+		// phpcs:disable WordPress.PHP.NoSilencedErrors.Discouraged
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$svg  = @simplexml_load_file( $svg );
 		$view = '';
 		if ( ! empty( $svg ) ) {
@@ -2776,7 +2768,6 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			}
 		}
-		// phpcs:enable
 
 		if ( empty( $view ) ) {
 			$svg = file_get_contents( $svg );
@@ -2805,7 +2796,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int   $attachment_id The attachment that is processing.
 	 * @return array
 	 */
-	public static function wp_generate_attachment_metadata( $metadata, $attachment_id ) { // phpcs:ignore
+	public static function wp_generate_attachment_metadata( $metadata, $attachment_id ) {
 		if ( empty( $attachment_id ) ) {
 			// Fail-fast.
 			return $metadata;
@@ -2929,7 +2920,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( empty( $info['registered'] ) ) {
 					// Cleanup temp files.
 					if ( file_exists( $upload_dir['basedir'] . '/' . $file ) ) {
-						@unlink( $upload_dir['basedir'] . '/' . $file ); // phpcs:ignore
+						@unlink( $upload_dir['basedir'] . '/' . $file );
 					}
 				}
 			}
@@ -2942,7 +2933,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int $attachment_id The attachment ID.
 	 * @return array
 	 */
-	public static function cleanup_before_releasing_the_metadata_on_upload( $attachment_id ) { // phpcs:ignore
+	public static function cleanup_before_releasing_the_metadata_on_upload( $attachment_id ) {
 		self::assess_tmp_artefacts( (int) $attachment_id );
 
 		$filter_out = wp_get_attachment_metadata( $attachment_id );
@@ -2999,14 +2990,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						$maybe = str_replace( '.', '-' . $size_info['width'] . 'x' . $size_info['height'] . '.', $filter_out['file'] );
 						$maybe = trailingslashit( $uploads['basedir'] ) . $maybe;
 						if ( file_exists( $maybe ) ) {
-							@unlink( $maybe ); // phpcs:ignore
+							@unlink( $maybe );
 						}
 					}
 				}
 			}
 
 			if ( ! empty( $initial ) && file_exists( trailingslashit( $uploads['basedir'] ) . $initial ) ) {
-				@unlink( trailingslashit( $uploads['basedir'] ) . $initial ); // phpcs:ignore
+				@unlink( trailingslashit( $uploads['basedir'] ) . $initial );
 			}
 
 			update_post_meta( $attachment_id, '_wp_attachment_metadata', $filter_out );
@@ -3035,7 +3026,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  array  $image Maybe the previously computed attachment metadata.
 	 * @return bool|string
 	 */
-	public static function execute_specified_attachment_file_delete( $id = 0, $size = '', $fname = '', &$image = [] ) { // phpcs:ignore
+	public static function execute_specified_attachment_file_delete( $id = 0, $size = '', $fname = '', &$image = [] ) {
 		if ( empty( $image ) ) {
 			$image = wp_get_attachment_metadata( $id );
 		}
@@ -3058,7 +3049,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  string $meta_key   Post meta key.
 	 * @param  array  $meta_value Post meta value.
 	 */
-	public static function process_filtered_attachments( $meta_id = '', $post_id = '', $meta_key = '', $meta_value = '' ) { // phpcs:ignore
+	public static function process_filtered_attachments( $meta_id = '', $post_id = '', $meta_key = '', $meta_value = '' ) {
 		if ( empty( $post_id ) || empty( $meta_value ) || '_wp_attachment_metadata' !== $meta_key ) {
 			// Fail-fast.
 			return;
@@ -3072,7 +3063,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		\SIRSC\Helper\notify_doing_sirsc();
 		self::load_settings_for_post_id( $post_id );
 
-		\SIRSC\Helper\debug( 'FIRST METADATA SAVED ' . print_r( $meta_value, 1 ), true, true ); // phpcs:ignore
+		\SIRSC\Helper\debug( 'FIRST METADATA SAVED ' . print_r( $meta_value, 1 ), true, true );
 
 		if ( ! empty( self::$settings['force_original_to'] ) ) {
 			/**
@@ -3157,7 +3148,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		// Use scandir, just like core does.
-		$files = @scandir( $dir ); // phpcs:ignore
+		$files = @scandir( $dir );
 		if ( ! empty( $files ) ) {
 			foreach ( $files as $file ) {
 				if ( ! substr_count( $file, $name ) ) {
@@ -3200,7 +3191,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  int    $post         Post ID.
 	 * @return string
 	 */
-	public static function admin_featured_size( $size, $thumbnail_id = 0, $post = 0 ) { // phpcs:ignore
+	public static function admin_featured_size( $size, $thumbnail_id = 0, $post = 0 ) {
 		$override = get_option( 'sirsc_admin_featured_size' );
 		if ( ! empty( $override ) ) {
 			return $override;
@@ -3212,7 +3203,8 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * Attempt to refresh extra info in the footer of the image details lightbox.
 	 */
 	public static function refresh_extra_info_footer() {
-		if ( empty( $_REQUEST['sirsc_data'] ) ) { // phpcs:ignore
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		if ( empty( $_REQUEST['sirsc_data'] ) ) {
 			// Fail-fast.
 			return;
 		}
@@ -3232,7 +3224,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 *
 	 * @param array $links The plugin links.
 	 */
-	public static function plugin_action_links( $links ) { // phpcs:ignore
+	public static function plugin_action_links( $links ) {
 		$all   = [];
 		$all[] = '<a href="' . esc_url( self::$plugin_url ) . '">' . esc_html__( 'Settings', 'sirsc' ) . '</a>';
 		$all[] = '<a href="https://iuliacazan.ro/image-regenerate-select-crop">' . esc_html__( 'Plugin URL', 'sirsc' ) . '</a>';

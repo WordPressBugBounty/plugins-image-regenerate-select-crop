@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\AJAX;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 \add_action( 'wp_ajax_sirsc_single_details', __NAMESPACE__ . '\\single_details' );
 \add_action( 'wp_ajax_sirsc_single_cleanup', __NAMESPACE__ . '\\single_cleanup' );
 \add_action( 'wp_ajax_sirsc_single_regenerate', __NAMESPACE__ . '\\single_regenerate' );

@@ -5,6 +5,11 @@
  * @package sirsc
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+\defined( 'ABSPATH' ) || exit;
+
 $maybe_trans = \get_transient( SIRSC_NOTICE );
 if ( ! empty( $maybe_trans ) ) {
 	$slug   = md5( SIRSC_SLUG );

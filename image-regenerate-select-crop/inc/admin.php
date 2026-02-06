@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Admin;
 
+\defined( 'ABSPATH' ) || exit;
+
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
 // Hook up the custom menu.
 \add_action( 'admin_menu', __NAMESPACE__ . '\\admin_menu' );
 \add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\load_assets' );
@@ -22,6 +26,7 @@ namespace SIRSC\Admin;
 \add_filter( 'manage_media_columns', __NAMESPACE__ . '\\register_media_columns', 5 );
 \add_action( 'manage_media_custom_column', __NAMESPACE__ . '\\media_column_value', 5, 2 );
 \add_action( 'wp_enqueue_media', __NAMESPACE__ . '\\add_media_overrides' );
+\add_filter( 'admin_footer_text', __NAMESPACE__ . '\\footer_text' );
 
 /**
  * Add media overrides.
@@ -70,12 +75,23 @@ function media_template_buttons() {
  * @return string
  */
 function get_sirsc_logo( $content = false ): string {
-	$svg = '<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;fill-rule:evenodd;clip-rule:evenodd" viewBox="0 0 2541 2541"><path fill="currentColor" d="M173 0h1399c-42 139-50 303 7 479l228 66c-13-39-25-91-33-134l-4-131c91 90 334 354 406 386 61 27 177 23 245 0l-92-92C1916 159 1786 80 1797 0h175l569 569v173c-372 172-744-159-1241-199-624-50-855 427-729 944l220 68c-3-67-22-100-22-171 108 104 300 374 556 292l-573-574 65-151 771 773C1228 2012 559 1417 0 1574V173C0 78 78 0 173 0zm2067 0h128c95 0 173 78 173 173v131L2240 0zm301 970v1398c0 95-78 173-173 173H967c42-139 50-303-8-479l-227-66c12 39 24 91 32 135l5 131c-264-262-379-478-651-387l92 93c413 415 542 493 531 573H566L0 1975v-177c371-169 743 160 1239 200 623 50 855-426 729-944l-220-67c2 66 21 99 22 170-109-104-300-374-557-291l573 574-64 150-772-772c142-114 417-68 576-25 208 55 365 142 574 180 145 26 287 45 441-3zM298 2541H173c-95 0-173-78-173-173v-127l298 300z"/></svg>';
+	static $svg_logo, $svg_logo_bg;
+
+	if ( ! isset( $svg_logo ) ) {
+		ob_start();
+		include SIRSC_DIR . 'assets/images/icon.svg';
+		$svg_logo = ob_get_clean();
+	}
 
 	if ( ! empty( $content ) ) {
-		return $svg;
+		return $svg_logo;
 	}
-	return 'data:image/svg+xml;base64,' . base64_encode( $svg ); // phpcs:ignore
+
+	if ( ! isset( $svg_logo_bg ) ) {
+		$svg_logo_bg = 'data:image/svg+xml;base64,' . base64_encode( $svg_logo ); // phpcs:ignore
+	}
+
+	return $svg_logo_bg;
 }
 
 /**
@@ -83,9 +99,7 @@ function get_sirsc_logo( $content = false ): string {
  */
 function the_plugin_icon() {
 	?>
-	<img class="sirsc-icon-svg" width="32" height="32"
-		src="<?php echo \esc_url( SIRSC_URL . 'assets/images/icon.svg' ); ?>"
-		alt="<?php \esc_html_e( 'Image Regenerate & Select Crop', 'sirsc' ); ?>">
+	<span class="sirsc-icon-svg"><?php echo get_sirsc_logo( true ); // phpcs:ignore ?></span>
 	<?php
 }
 
@@ -99,7 +113,7 @@ function admin_menu() {
 		'manage_options',
 		'image-regenerate-select-crop-settings',
 		__NAMESPACE__ . '\\image_regenerate_select_crop_settings',
-		'dashicons-admin-plugins',
+		get_sirsc_logo(),
 		70
 	);
 	\add_submenu_page(
@@ -130,21 +144,18 @@ function admin_menu() {
  * Registers the Gutenberg custom block assets.
  */
 function sirsc_block_init() {
-	if ( ! function_exists( 'register_block_type' ) ) {
+	if ( ! function_exists( 'register_block_type' ) || ! \is_admin() ) {
 		// Gutenberg is not active.
 		return;
 	}
 
 	$uri = $_SERVER['REQUEST_URI']; // phpcs:ignore
-
 	if ( ! substr_count( $uri, 'post.php' )
 		&& ! substr_count( $uri, 'post-new.php' )
 		&& ! substr_count( $uri, 'upload.php' )
 		&& ! substr_count( $uri, 'page=image-regenerate-select-crop-' )
-		&& ! substr_count( $uri, 'page=sirsc-adon-' )
-		&& ! substr_count( $uri, 'page=sirsc-debug' )
+		&& ! substr_count( $uri, 'page=sirsc' )
 		&& ! substr_count( $uri, 'options-media.php' ) ) {
-
 		// Fail-fast, the assets should not be loaded.
 		return;
 	}
@@ -233,28 +244,25 @@ function make_preset_colors_tokens() {
  * Enqueue the css and javascript files
  */
 function load_assets() {
-	$ver = \SIRSC\get_build_ver();
-	if ( file_exists( SIRSC_DIR . 'build/admin.css' ) ) {
-		\wp_enqueue_style( SIRSC_SLUG . '-admin', SIRSC_URL . 'build/admin.css', [], $ver, false );
-		\wp_add_inline_style( SIRSC_SLUG . '-admin', make_preset_colors_tokens() );
-	}
-
-	$uri = $_SERVER['REQUEST_URI']; // phpcs:ignore
-
-	if ( ! substr_count( $uri, 'post.php' )
-		&& ! substr_count( $uri, 'post-new.php' )
-		&& ! substr_count( $uri, 'upload.php' )
-		&& ! substr_count( $uri, 'page=image-regenerate-select-crop-' )
-		&& ! substr_count( $uri, 'page=sirsc-adon-' )
-		&& ! substr_count( $uri, 'page=sirsc-debug' ) ) {
-
-		// Fail-fast, the assets should not be loaded.
+	$current_screen = \get_current_screen();
+	if ( empty( $current_screen->id ) ) {
+		// Fail-fast, no need to continue.
 		return;
 	}
 
+	if ( ! substr_count( $current_screen->id, 'image-regenerate-select-crop' )
+		&& ! substr_count( $current_screen->id, 'sirsc' )
+		&& 'post' !== $current_screen->base
+		&& 'upload' !== $current_screen->base
+		&& 'options-media' !== $current_screen->base
+	) {
+		// Fail-fast, we only add assets to this page.
+		return;
+	}
+
+	$ver = \SIRSC\get_build_ver();
 	if ( file_exists( SIRSC_DIR . 'build/index.js' ) ) {
 		$upls = \wp_upload_dir();
-
 		\wp_register_script( SIRSC_SLUG, SIRSC_URL . 'build/index.js', [], $ver, true );
 		\wp_localize_script( SIRSC_SLUG, str_replace( '-', '', SIRSC_SLUG ) . 'Settings', [
 			'ajaxUrl'                => \admin_url( 'admin-ajax.php' ),
@@ -282,6 +290,7 @@ function load_assets() {
 
 	if ( file_exists( SIRSC_DIR . 'build/style-view.css' ) ) {
 		\wp_enqueue_style( SIRSC_SLUG, SIRSC_URL . 'build/style-view.css', [], $ver, false );
+		\wp_add_inline_style( SIRSC_SLUG, make_preset_colors_tokens() );
 	}
 }
 
@@ -447,7 +456,6 @@ function image_regenerate_select_crop_settings() {
 				</form>
 			</div>
 		</div>
-		<?php show_donate_text(); ?>
 	</div>
 	<?php
 }
@@ -515,12 +523,15 @@ function calculate_total_to_cleanup( $post_type = '', $image_size_name = '', $ne
 				$cond_join .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm2 ON (pm2.meta_value = p.ID and pm2.meta_key = \'_thumbnail_id\' ) ';
 			}
 
-			// phpcs:disable
+			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching
+			// phpcs:disable PluginCheck.Security.DirectDB.UnescapedDBParameter
 			$tmp_query = $wpdb->prepare( '
 				SELECT p.ID FROM ' . $wpdb->posts . ' as p
 				INNER JOIN ' . $wpdb->postmeta . ' as pm ON(pm.post_id = p.ID and pm.meta_key like %s)
 				' . $cond_join . ' WHERE pm.meta_value like %s AND p.ID > %d AND p.post_mime_type like %s
-				' . $cond_where . ' order by p.ID limit 0, 1', // phpcs:ignore
+				' . $cond_where . ' order by p.ID limit 0, 1',
 				'_wp_attachment_metadata',
 				'%' . $wpdb->esc_like( '"' . $image_size_name . '"' ) . '%',
 				intval( $next_post_id ),
@@ -528,7 +539,6 @@ function calculate_total_to_cleanup( $post_type = '', $image_size_name = '', $ne
 			);
 
 			$total = $wpdb->get_var( $tmp_query ) ?? 0;
-			// phpcs:enable
 		}
 
 		\set_transient( $trans_id, $total, DAY_IN_SECONDS );
@@ -575,18 +585,53 @@ function donate_text() {
 }
 
 /**
- * Maybe donate or rate.
+ * Display footer links and plugin credits.
+ *
+ * @param string $original Original footer content.
  */
-function show_donate_text() {
-	if ( \apply_filters( 'sirsc_filter_remove_top_info', false ) ) {
-		return;
+function footer_text( string $original = '' ): string {
+	$screen = \get_current_screen();
+	if ( ! is_object( $screen ) || ( ! substr_count( $screen->base, 'image-regenerate-select-crop' ) && ! substr_count( $screen->base, 'sirsc' ) ) ) {
+		return $original;
 	}
-	?>
-	<div class="donate">
-		<img src="<?php echo \esc_url( SIRSC_URL . 'assets/images/icon-128x128.gif' ); ?>" width="32" height="32" alt="">
-		<div><?php echo \wp_kses_post( donate_text() ); ?></div>
-	</div>
-	<?php
+
+	if ( \apply_filters( 'sirsc_filter_remove_top_info', false ) ) {
+		return $original;
+	}
+
+	$elements = [];
+	$title    = \__( 'Image Regenerate & Select Crop', 'sirsc' );
+	$donate   = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ&item_name=Support for development and maintenance (' . rawurlencode( $title ) . ')';
+
+	$elements[] = sprintf(
+		// Translators: %1$s - title, %2$s - version, %3$s - author.
+		\__( '%1$s version %2$s by %3$s', 'sirsc' ),
+		\esc_attr( $title ),
+		\esc_attr( SIRSC_VER_TEXT ),
+		'<a href="https://iuliacazan.ro" target="_blank" rel="noopener">Iulia Cazan</a>'
+	);
+	$elements[] = sprintf(
+		'<a href="%1$s" target="_blank" rel="noopener">%2$s</a>',
+		\esc_url( SIRSC_SUPPORT ),
+		\esc_attr__( 'Support', 'sirsc' )
+	);
+	$elements[] = sprintf(
+		'<a href="%1$s" target="_blank" rel="noopener">%2$s</a>',
+		\esc_url( SIRSC_SUPPORT . '/reviews/' ),
+		\esc_attr__( 'Reviews', 'sirsc' )
+	);
+	$elements[] = sprintf(
+		'<a href="%1$s" target="_blank" rel="noopener">%2$s</a>',
+		\esc_url( $donate ),
+		\esc_attr__( 'Donate', 'sirsc' )
+	);
+	$elements[] = sprintf(
+		// Translators: %1$s - social link.
+		\__( 'Follow me on <a href="%1$s" target="_blank" rel="noopener">LinkedIn</a>', 'sirsc' ),
+		'https://www.linkedin.com/in/iuliacazan/',
+	);
+
+	return \wp_kses_post( implode( ' &bull; ', $elements ) );
 }
 
 /**
@@ -985,8 +1030,6 @@ function sirsc_custom_rules_settings() {
 				</form>
 			</div>
 		</div>
-
-		<?php show_donate_text(); ?>
 	</div>
 	<?php
 }

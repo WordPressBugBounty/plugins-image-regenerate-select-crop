@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Admin;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+\defined( 'ABSPATH' ) || exit;
 ?>
 
 <hr>

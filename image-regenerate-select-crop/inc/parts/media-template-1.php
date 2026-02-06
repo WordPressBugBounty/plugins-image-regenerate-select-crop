@@ -5,6 +5,8 @@
  * @package sirsc
  */
 
+defined( 'ABSPATH' ) || exit;
+
 // phpcs:disable
 ?>
 <script type="text/html" id="tmpl-attachment_custom">

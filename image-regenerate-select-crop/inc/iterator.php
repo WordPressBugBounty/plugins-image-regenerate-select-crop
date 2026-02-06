@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Iterator;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 \add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\\load_assets', 20 );
 \add_action( 'sirsc/iterator/setup_buttons', __NAMESPACE__ . '\\setup_buttons', 10, 2 );
 

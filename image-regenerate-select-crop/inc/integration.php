@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Integration;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 // WooCommerce integration hooks.
 \add_action( 'woocommerce_admin_after_product_gallery_item', __NAMESPACE__ . '\\maybe_wc_gallery_buttons', 60, 2 );
 \add_filter( 'woocommerce_background_image_regeneration', __NAMESPACE__ . '\\maybe_disable_wc_regeneration', 30 );

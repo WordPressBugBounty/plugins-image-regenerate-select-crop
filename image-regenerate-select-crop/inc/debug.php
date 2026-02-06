@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Debug;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 \add_action( 'admin_init', __NAMESPACE__ . '\\check_log_prefix' );
 \add_action( 'admin_menu', __NAMESPACE__ . '\\admin_menu', 20 );
 \add_filter( 'sirsc_keep_scaled', '__return_false', 9 );
@@ -177,8 +181,6 @@ function sirsc_debug() {
 				<?php status(); ?>
 			</div>
 		</div>
-
-		<?php \SIRSC\admin\show_donate_text(); ?>
 	</div>
 	<?php
 }

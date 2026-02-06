@@ -1,23 +1,26 @@
-# Copyright (C) 2014-2024 Iulia Cazan
-# This file is distributed under the GPL2.
 msgid ""
 msgstr ""
 "Project-Id-Version: Image Regenerate & Select Crop 8.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sirsc\n"
-"POT-Creation-Date: 2025-04-19T13:54:27+00:00\n"
-"PO-Revision-Date: 2025-04-19 16:55+0300\n"
 "Last-Translator: Iulia Cazan\n"
 "Language-Team: \n"
-"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"POT-Creation-Date: 2026-01-31T14:26:09+00:00\n"
+"PO-Revision-Date: 2026-01-31 16:26+0200\n"
+"Language: ro\n"
+"X-Generator: Poedit 3.8\n"
 "X-Domain: sirsc\n"
 
 #. Plugin Name of the plugin
-#: image-regenerate-select-crop.php inc/admin.php:88 inc/admin.php:97
-#: inc/admin.php:98 inc/admin.php:349 inc/parts/notice-update.php:11
+#: image-regenerate-select-crop.php
+#: inc/admin.php:93
+#: inc/admin.php:102
+#: inc/admin.php:103
+#: inc/admin.php:354
+#: inc/admin.php:599
+#: inc/parts/notice-update.php:16
 msgid "Image Regenerate & Select Crop"
 msgstr "Regenerare și tăiere selectivă imagine"
 
@@ -28,16 +31,8 @@ msgstr "https://iuliacazan.ro/image-regenerate-select-crop/"
 
 #. Description of the plugin
 #: image-regenerate-select-crop.php
-msgid ""
-"Regenerate and crop the images, see details and use additional actions for "
-"image sizes and generated sub-sizes, clean up, placeholders, custom rules, "
-"register new image sizes, crop medium settings, WP-CLI commands, optimize "
-"images."
-msgstr ""
-"Regenerează și decupează imaginile, vezi detalii și folosește acțiuni "
-"adiționale pentru dimensiunile imaginii și subdimensiunile generate, "
-"curățare, substituenți, reguli avansate, înregistrare dimensiuni imagine "
-"noi, setări tăiere selectivă medie, comenzi WP-CLI, optimizare imagini."
+msgid "Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images."
+msgstr "Regenerează și decupează imaginile, vezi detalii și folosește acțiuni adiționale pentru dimensiunile imaginii și subdimensiunile generate, curățare, substituenți, reguli avansate, înregistrare dimensiuni imagine noi, setări tăiere selectivă medie, comenzi WP-CLI, optimizare imagini."
 
 #. Author of the plugin
 #: image-regenerate-select-crop.php
@@ -49,2377 +44,1878 @@ msgstr "Iulia Cazan"
 msgid "https://profiles.wordpress.org/iulia-cazan"
 msgstr "https://profiles.wordpress.org/iulia-cazan"
 
-#: adons/images-seo/class-sirsc-images-seo.php:97
+#: adons/images-seo/class-sirsc-images-seo.php:102
 msgid "Bulk Rename"
 msgstr "Redenumește în bloc"
 
-#: adons/images-seo/class-sirsc-images-seo.php:265
+#: adons/images-seo/class-sirsc-images-seo.php:270
 msgid "The initial filename was recorded."
 msgstr "Numele inițial al fișierului a fost înregistrat."
 
-#: adons/images-seo/class-sirsc-images-seo.php:273
+#: adons/images-seo/class-sirsc-images-seo.php:278
 msgid "the alternative text"
 msgstr "textul alternativ"
 
-#: adons/images-seo/class-sirsc-images-seo.php:278
+#: adons/images-seo/class-sirsc-images-seo.php:283
 msgid "the caption"
 msgstr "legenda"
 
-#: adons/images-seo/class-sirsc-images-seo.php:283
+#: adons/images-seo/class-sirsc-images-seo.php:288
 msgid "the title"
 msgstr "titlul"
 
-#: adons/images-seo/class-sirsc-images-seo.php:288
+#: adons/images-seo/class-sirsc-images-seo.php:293
 msgid "the permalink"
 msgstr "legătura permanentă"
 
 #. Translators: %s - attribute.
-#: adons/images-seo/class-sirsc-images-seo.php:293
+#: adons/images-seo/class-sirsc-images-seo.php:298
 msgid "Updates: %s."
 msgstr "Actualizări: %s."
 
 #. Translators: %s - path.
-#: adons/images-seo/class-sirsc-images-seo.php:308
-#: adons/images-seo/class-sirsc-images-seo.php:329
+#: adons/images-seo/class-sirsc-images-seo.php:313
+#: adons/images-seo/class-sirsc-images-seo.php:334
 msgid "No changes for %s."
 msgstr "Nicio modificare pentru %s."
 
 #. Translators: %1$d - sub-sizes replaced.
-#: adons/images-seo/class-sirsc-images-seo.php:378
+#: adons/images-seo/class-sirsc-images-seo.php:383
 msgid "+ %1$d more sub-sizes"
 msgstr "+ încă %1$d subdimensiuni"
 
-#: adons/images-seo/class-sirsc-images-seo.php:406
+#: adons/images-seo/class-sirsc-images-seo.php:411
 msgid "Attachment ID"
 msgstr "ID atașament"
 
-#: adons/images-seo/class-sirsc-images-seo.php:406
+#: adons/images-seo/class-sirsc-images-seo.php:411
 msgid "New Title"
 msgstr "Titlu nou"
 
-#: adons/images-seo/class-sirsc-images-seo.php:429
-#: adons/images-seo/class-sirsc-images-seo.php:465
-#: adons/images-seo/class-sirsc-images-seo.php:478
-#: adons/images-seo/class-sirsc-images-seo.php:479 inc/adons.php:158
+#: adons/images-seo/class-sirsc-images-seo.php:434
+#: adons/images-seo/class-sirsc-images-seo.php:470
+#: adons/images-seo/class-sirsc-images-seo.php:483
+#: adons/images-seo/class-sirsc-images-seo.php:484
+#: inc/adons.php:162
 msgid "Images SEO"
 msgstr "SEO imagini"
 
-#: adons/images-seo/class-sirsc-images-seo.php:451
-msgid ""
-"You can rename this attachment files (including the generated sub-sizes) and "
-"other attributes."
-msgstr ""
-"Poți redenumi fișierele acestui atașament (inclusiv subdimensiunile "
-"generate) și alte atribute."
+#: adons/images-seo/class-sirsc-images-seo.php:456
+msgid "You can rename this attachment files (including the generated sub-sizes) and other attributes."
+msgstr "Poți redenumi fișierele acestui atașament (inclusiv subdimensiunile generate) și alte atribute."
 
-#: adons/images-seo/class-sirsc-images-seo.php:453
-msgid ""
-"You can rename and update some attributes of the files uploaded or attached "
-"to this post."
-msgstr ""
-"Poți redenumi și modifica unele atribute ale fișierelor încărcate sau "
-"atașate la acest articol."
+#: adons/images-seo/class-sirsc-images-seo.php:458
+msgid "You can rename and update some attributes of the files uploaded or attached to this post."
+msgstr "Poți redenumi și modifica unele atribute ale fișierelor încărcate sau atașate la acest articol."
 
-#: adons/images-seo/class-sirsc-images-seo.php:461
-#: adons/images-seo/class-sirsc-images-seo.php:516
-#: image-regenerate-select-crop.php:3169 inc/plugin.php:43
+#: adons/images-seo/class-sirsc-images-seo.php:466
+#: adons/images-seo/class-sirsc-images-seo.php:521
+#: image-regenerate-select-crop.php:3245
+#: inc/plugin.php:27
 msgid "Settings"
 msgstr "Setări"
 
-#: adons/images-seo/class-sirsc-images-seo.php:520
-#: adons/images-seo/parts/bulk-rename-output.php:23
+#: adons/images-seo/class-sirsc-images-seo.php:525
+#: adons/images-seo/parts/bulk-rename-output.php:27
 msgid "Bulk rename"
 msgstr "Redenumește în bloc"
 
-#: adons/images-seo/class-sirsc-images-seo.php:525
-#: adons/images-seo/parts/rename-attachment.php:13
-#: adons/images-seo/parts/rename-attachment.php:21
-#: adons/images-seo/parts/rename-other.php:13
-#: adons/images-seo/parts/rename-other.php:21
+#: adons/images-seo/class-sirsc-images-seo.php:530
+#: adons/images-seo/parts/rename-attachment.php:17
+#: adons/images-seo/parts/rename-attachment.php:25
+#: adons/images-seo/parts/rename-other.php:17
+#: adons/images-seo/parts/rename-other.php:25
 msgid "Rename"
 msgstr "Redenumește"
 
-#: adons/images-seo/class-sirsc-images-seo.php:601
-#: adons/images-seo/class-sirsc-images-seo.php:609
+#: adons/images-seo/class-sirsc-images-seo.php:606
+#: adons/images-seo/class-sirsc-images-seo.php:614
 msgid "Rename result"
 msgstr "Rezultatul redenumirii"
 
-#: adons/images-seo/class-sirsc-images-seo.php:617
+#: adons/images-seo/class-sirsc-images-seo.php:622
 msgid "You must select an image."
 msgstr "Trebuie să selectezi o imagine."
 
-#: adons/images-seo/class-sirsc-images-seo.php:632
-#: adons/images-seo/class-sirsc-images-seo.php:659
-#: adons/images-seo/parts/bulk-rename-output.php:27
-msgid ""
-"If you want to start the bulk rename of images, you have to select at least "
-"one post type."
-msgstr ""
-"Dacă vrei să inițiezi redenumirea imaginilor în bloc, trebuie să selectezi "
-"cel puțin un tip de articol."
+#: adons/images-seo/class-sirsc-images-seo.php:637
+#: adons/images-seo/class-sirsc-images-seo.php:664
+#: adons/images-seo/parts/bulk-rename-output.php:31
+msgid "If you want to start the bulk rename of images, you have to select at least one post type."
+msgstr "Dacă vrei să inițiezi redenumirea imaginilor în bloc, trebuie să selectezi cel puțin un tip de articol."
 
-#: adons/images-seo/class-sirsc-images-seo.php:635
-msgid ""
-"For performance and speed reasons it is reccommedned to use the wp-cli "
-"commands from your terminal, specially if you have a large set of files. "
-"When you run the wp-cli command it will prompt for you to enter the site id "
-"(or 1 if you are not using a multi-site) and the post type for which you "
-"want to bulk rename the files (separate with , if you have more)."
-msgstr ""
-"Din motive de performanță și viteză, este recomandat să folosești comenzile "
-"wp-cli din terminalul tău, mai ales dacă ai un set mare de fișiere. Când "
-"rulezi comanda wp-cli, ți se va solicita să introduci id-ul site-ului (sau 1 "
-"dacă nu utilizați un multi-site) și tipul de articol pentru care vrei să "
-"redenumești în bloc fișierele (separă cu , dacă ai mai multe)."
+#: adons/images-seo/class-sirsc-images-seo.php:640
+msgid "For performance and speed reasons it is reccommedned to use the wp-cli commands from your terminal, specially if you have a large set of files. When you run the wp-cli command it will prompt for you to enter the site id (or 1 if you are not using a multi-site) and the post type for which you want to bulk rename the files (separate with , if you have more)."
+msgstr "Din motive de performanță și viteză, este recomandat să folosești comenzile wp-cli din terminalul tău, mai ales dacă ai un set mare de fișiere. Când rulezi comanda wp-cli, ți se va solicita să introduci id-ul site-ului (sau 1 dacă nu utilizați un multi-site) și tipul de articol pentru care vrei să redenumești în bloc fișierele (separă cu , dacă ai mai multe)."
 
 #. Translators: %s - example.
-#: adons/images-seo/class-sirsc-images-seo.php:639
-#: inc/parts/admin-advanced.php:57 inc/parts/admin-advanced.php:66
-#: inc/parts/admin-advanced.php:75 inc/parts/admin-advanced.php:84
+#: adons/images-seo/class-sirsc-images-seo.php:644
+#: inc/parts/admin-advanced.php:61
+#: inc/parts/admin-advanced.php:70
+#: inc/parts/admin-advanced.php:79
+#: inc/parts/admin-advanced.php:88
 msgid "Ex: %s"
 msgstr "Exemplu: %s"
 
-#: adons/images-seo/class-sirsc-images-seo.php:644
-msgid ""
-"Make sure you back up your files and database before running any bulk "
-"action, some changes cannot be reverted from the browser."
-msgstr ""
-"Asigură-te că faci o copie de siguranță ale fișierelor și bazei de date "
-"înainte de a executa orice acțiune în bloc, unele modificări nu pot fi "
-"anulate din browser."
+#: adons/images-seo/class-sirsc-images-seo.php:649
+msgid "Make sure you back up your files and database before running any bulk action, some changes cannot be reverted from the browser."
+msgstr "Asigură-te că faci o copie de siguranță ale fișierelor și bazei de date înainte de a executa orice acțiune în bloc, unele modificări nu pot fi anulate din browser."
 
-#: adons/images-seo/class-sirsc-images-seo.php:680
+#: adons/images-seo/class-sirsc-images-seo.php:685
 msgid "No processing required."
 msgstr "Nu necesită procesare."
 
-#: adons/images-seo/class-sirsc-images-seo.php:692
+#: adons/images-seo/class-sirsc-images-seo.php:697
 msgid "Processing"
 msgstr "Procesez"
 
-#: adons/images-seo/class-sirsc-images-seo.php:706
-#: adons/images-seo/class-sirsc-images-seo.php:736
+#: adons/images-seo/class-sirsc-images-seo.php:711
+#: adons/images-seo/class-sirsc-images-seo.php:741
 msgid "The identified images were renamed."
 msgstr "Imaginile identificate au fost redenumite."
 
 #. Translators: %1$d - count, %2$d - total.
-#: adons/images-seo/class-sirsc-images-seo.php:881
+#: adons/images-seo/class-sirsc-images-seo.php:886
 msgid "The SEO rename was processed for %1$d items of %2$d."
 msgstr "Redenumirea SEO a fost procesată pentru %1$d articole din %2$d."
 
-#: adons/images-seo/class-sirsc-images-seo.php:916
-msgid ""
-"The SEO rename is based on the post that is using the image as the featured "
-"image."
-msgstr ""
-"Redenumirea SEO se bazează pe articolul care folosește imaginea ca imagine "
-"reprezentativă."
+#: adons/images-seo/class-sirsc-images-seo.php:921
+msgid "The SEO rename is based on the post that is using the image as the featured image."
+msgstr "Redenumirea SEO se bazează pe articolul care folosește imaginea ca imagine reprezentativă."
 
-#: adons/images-seo/class-sirsc-images-seo.php:941
-msgid ""
-"The SEO rename is based on the product that is using the image as a gallery "
-"image."
-msgstr ""
-"Redenumirea SEO se bazează pe produsul care utilizează imaginea ca imagine "
-"de galerie."
+#: adons/images-seo/class-sirsc-images-seo.php:946
+msgid "The SEO rename is based on the product that is using the image as a gallery image."
+msgstr "Redenumirea SEO se bazează pe produsul care utilizează imaginea ca imagine de galerie."
 
-#: adons/images-seo/class-sirsc-images-seo.php:961
+#: adons/images-seo/class-sirsc-images-seo.php:966
 msgid "The SEO rename is based on the post parent of the image."
 msgstr "Redenumirea SEO se bazează pe articolul părinte al imaginii."
 
-#: adons/images-seo/class-sirsc-images-seo.php:971
+#: adons/images-seo/class-sirsc-images-seo.php:976
 msgid "The SEO rename is based on the attachment title."
 msgstr "Redenumirea SEO se bazează pe titlul atașamentului."
 
-#: adons/images-seo/class-sirsc-images-seo.php:1024
+#: adons/images-seo/class-sirsc-images-seo.php:1029
 msgid "No ID provided."
 msgstr "Nu s-a furnizat niciun ID."
 
-#: adons/images-seo/class-sirsc-images-seo.php:1036
-#: adons/images-seo/parts/bulk-rename-output.php:11
-#: adons/images-seo/parts/settings.php:13
-msgid ""
-"The SEO rename process (on upload, manual rename, bulk rename) uses the "
-"current settings (does not apply retroactively), and overrides the filenames "
-"and attributes in the database."
-msgstr ""
-"Procesul de redenumire SEO (la încărcare, redenumire manuală, redenumire în "
-"bloc) utilizează setările curente (nu se aplică retroactiv), și suprascrie "
-"numele fișierelor și atributele din baza de date."
-
-#: adons/images-seo/parts/bulk-rename-output.php:12
-msgid ""
-"The bulk rename process targets images set as <b>featured image</b> (for all "
-"post types selected that support the featured image feature) or attached as "
-"<b>media</b> (uploaded to that posts as children)."
-msgstr ""
-"Procesul de redenumire în bloc vizează imaginile setate ca <b>imagine "
-"reprezentativă</b> (pentru toate tipurile de articole selectate, care "
-"suportă imagine reprezentativă) sau atașate ca <b>media</b> (încărcate la "
-"acel articol ca și copii)."
-
+#: adons/images-seo/class-sirsc-images-seo.php:1041
 #: adons/images-seo/parts/bulk-rename-output.php:15
-msgid ""
-"For products, the rename process targets also the <b>gallery images</b>."
-msgstr ""
-"Pentru produse, procesul de redenumire vizează și <b>imaginile galeriei</b>."
+#: adons/images-seo/parts/settings.php:17
+msgid "The SEO rename process (on upload, manual rename, bulk rename) uses the current settings (does not apply retroactively), and overrides the filenames and attributes in the database."
+msgstr "Procesul de redenumire SEO (la încărcare, redenumire manuală, redenumire în bloc) utilizează setările curente (nu se aplică retroactiv), și suprascrie numele fișierelor și atributele din baza de date."
 
-#: adons/images-seo/parts/rename-attachment.php:16
-msgid ""
-"Change the title below to rename the attachment file, and the generated sub-"
-"sizes."
-msgstr ""
-"Schimbă titlul de mai jos pentru a redenumi fișierul atașat și sub-"
-"dimensiunile generate."
+#: adons/images-seo/parts/bulk-rename-output.php:16
+msgid "The bulk rename process targets images set as <b>featured image</b> (for all post types selected that support the featured image feature) or attached as <b>media</b> (uploaded to that posts as children)."
+msgstr "Procesul de redenumire în bloc vizează imaginile setate ca <b>imagine reprezentativă</b> (pentru toate tipurile de articole selectate, care suportă imagine reprezentativă) sau atașate ca <b>media</b> (încărcate la acel articol ca și copii)."
 
-#: adons/images-seo/parts/rename-attachment.php:27
+#: adons/images-seo/parts/bulk-rename-output.php:19
+msgid "For products, the rename process targets also the <b>gallery images</b>."
+msgstr "Pentru produse, procesul de redenumire vizează și <b>imaginile galeriei</b>."
+
+#: adons/images-seo/parts/rename-attachment.php:20
+msgid "Change the title below to rename the attachment file, and the generated sub-sizes."
+msgstr "Schimbă titlul de mai jos pentru a redenumi fișierul atașat și sub-dimensiunile generate."
+
+#: adons/images-seo/parts/rename-attachment.php:31
 msgid "Attachment image"
 msgstr "Imaginea atașamentului"
 
-#: adons/images-seo/parts/rename-attachment.php:39
-#: adons/images-seo/parts/rename-attachment.php:50
-#: adons/images-seo/parts/rename-other.php:39
-#: adons/images-seo/parts/rename-other.php:50
+#: adons/images-seo/parts/rename-attachment.php:43
+#: adons/images-seo/parts/rename-attachment.php:54
+#: adons/images-seo/parts/rename-other.php:43
+#: adons/images-seo/parts/rename-other.php:54
 msgid "Go to"
 msgstr "Mergi la"
 
-#: adons/images-seo/parts/rename-other.php:16
-msgid ""
-"Change the title below to rename the targeted images for this post, and "
-"their generated sub-sizes."
-msgstr ""
-"Schimbă titlul de mai jos pentru a redenumi imaginile vizate pentru acest "
-"articol și subdimensiunile generate de acestea."
+#: adons/images-seo/parts/rename-other.php:20
+msgid "Change the title below to rename the targeted images for this post, and their generated sub-sizes."
+msgstr "Schimbă titlul de mai jos pentru a redenumi imaginile vizate pentru acest articol și subdimensiunile generate de acestea."
 
-#: adons/images-seo/parts/rename-other.php:27
+#: adons/images-seo/parts/rename-other.php:31
 msgid "Images attached to the post"
 msgstr "Imagini atașate articolului"
 
-#: adons/images-seo/parts/seo-log.php:13
+#: adons/images-seo/parts/seo-log.php:17
 msgid "Rename Log"
 msgstr "Jurnal redenumire"
 
-#: adons/images-seo/parts/seo-log.php:14 inc/debug.php:136 inc/debug.php:148
-#: inc/parts/admin-reset.php:20 inc/parts/admin-reset.php:22
+#: adons/images-seo/parts/seo-log.php:18
+#: inc/debug.php:140
+#: inc/debug.php:152
+#: inc/parts/admin-reset.php:24
+#: inc/parts/admin-reset.php:26
 msgid "Reset"
 msgstr "Resetează"
 
-#: adons/images-seo/parts/seo-log.php:18
-msgid ""
-"The rename log shows the most recent events at the bottom of the list. This "
-"log will be reset if you run the wp-cli commands."
-msgstr ""
-"Jurnalul de redenumire arată cele mai recente evenimente în partea de jos a "
-"listei. Acest jurnal va fi resetat dacă rulezi comenzile wp-cli."
+#: adons/images-seo/parts/seo-log.php:22
+msgid "The rename log shows the most recent events at the bottom of the list. This log will be reset if you run the wp-cli commands."
+msgstr "Jurnalul de redenumire arată cele mai recente evenimente în partea de jos a listei. Acest jurnal va fi resetat dacă rulezi comenzile wp-cli."
 
-#: adons/images-seo/parts/seo-log.php:21
+#: adons/images-seo/parts/seo-log.php:25
 msgid "Run the wp-cli command in your terminal to see more details."
-msgstr ""
-"Rulează comanda wp-cli în terminalul tău pentru a vedea mai multe detalii."
+msgstr "Rulează comanda wp-cli în terminalul tău pentru a vedea mai multe detalii."
 
-#: adons/images-seo/parts/seo-log.php:28
-msgid ""
-"If you cannot run the wp-cli commands, you can use the data from this log to "
-"make your own find-replace script that replaces the old strings with new "
-"strings in your database, if you have hardcoded URLs for the images. Each "
-"line represents a string to be replaced, the first part before the comma is "
-"the old reference, the second part is the new reference."
-msgstr ""
-"Dacă nu poți rula comenzile wp-cli, poți utiliza datele din acest jurnal "
-"pentru a-ți crea propriul script de căutare-înlocuire care înlocuiește "
-"șirurile vechi cu șiruri noi în baza de date, dacă ai URL-uri codificate "
-"pentru imagini. Fiecare linie reprezintă un șir care trebuie înlocuit, prima "
-"parte dinaintea virgulei este referința veche, a doua parte este noua "
-"referință."
+#: adons/images-seo/parts/seo-log.php:32
+msgid "If you cannot run the wp-cli commands, you can use the data from this log to make your own find-replace script that replaces the old strings with new strings in your database, if you have hardcoded URLs for the images. Each line represents a string to be replaced, the first part before the comma is the old reference, the second part is the new reference."
+msgstr "Dacă nu poți rula comenzile wp-cli, poți utiliza datele din acest jurnal pentru a-ți crea propriul script de căutare-înlocuire care înlocuiește șirurile vechi cu șiruri noi în baza de date, dacă ai URL-uri codificate pentru imagini. Fiecare linie reprezintă un șir care trebuie înlocuit, prima parte dinaintea virgulei este referința veche, a doua parte este noua referință."
 
-#: adons/images-seo/parts/settings.php:14
+#: adons/images-seo/parts/settings.php:18
 msgid "Enable the options you want to be used for images processing."
-msgstr ""
-"Activează opțiunile pe care vrei să le utilizați pentru procesarea "
-"imaginilor."
+msgstr "Activează opțiunile pe care vrei să le utilizați pentru procesarea imaginilor."
 
-#: adons/images-seo/parts/settings.php:22
+#: adons/images-seo/parts/settings.php:26
 msgid "rename the files"
 msgstr "redenumește fișierele"
 
-#: adons/images-seo/parts/settings.php:25
+#: adons/images-seo/parts/settings.php:29
 msgid "Rename the attachment files and the generated sub-sizes."
 msgstr "Redenumește fișierele atașate și subdimensiunile generate."
 
-#: adons/images-seo/parts/settings.php:31
+#: adons/images-seo/parts/settings.php:35
 msgid "track initial filename"
 msgstr "urmărește numele inițial al fișierului"
 
-#: adons/images-seo/parts/settings.php:34
+#: adons/images-seo/parts/settings.php:38
 msgid "Keep a record of the initial filename if the file is renamed."
-msgstr ""
-"Păstrează o înregistrare a numelui inițial al fișierului dacă fișierul este "
-"redenumit."
+msgstr "Păstrează o înregistrare a numelui inițial al fișierului dacă fișierul este redenumit."
 
-#: adons/images-seo/parts/settings.php:39
+#: adons/images-seo/parts/settings.php:43
 msgid "override the title"
 msgstr "suprascrie titlul"
 
-#: adons/images-seo/parts/settings.php:42
+#: adons/images-seo/parts/settings.php:46
 msgid "Override the attachment title with the inherited title."
 msgstr "Suprascrie titlul atașamentului cu titlul moștenit."
 
-#: adons/images-seo/parts/settings.php:47
+#: adons/images-seo/parts/settings.php:51
 msgid "override the alternative text"
 msgstr "suprascrie textul alternativ"
 
-#: adons/images-seo/parts/settings.php:50
+#: adons/images-seo/parts/settings.php:54
 msgid "Override the attachment alternative text with the inherited title."
 msgstr "Suprascrie textul alternativ al atașamentului cu titlul moștenit."
 
-#: adons/images-seo/parts/settings.php:55
+#: adons/images-seo/parts/settings.php:59
 msgid "override the caption"
 msgstr "suprascrie legenda"
 
-#: adons/images-seo/parts/settings.php:58
-msgid ""
-"Override the attachment caption (used by the gallery and image blocks) with "
-"the inherited title."
-msgstr ""
-"Suprascrie legenda atașamentului (folosită de galerie și de blocurile de "
-"imagini) cu titlul moștenit."
+#: adons/images-seo/parts/settings.php:62
+msgid "Override the attachment caption (used by the gallery and image blocks) with the inherited title."
+msgstr "Suprascrie legenda atașamentului (folosită de galerie și de blocurile de imagini) cu titlul moștenit."
 
-#: adons/images-seo/parts/settings.php:63
+#: adons/images-seo/parts/settings.php:67
 msgid "override the permalink"
 msgstr "suprascrie legătura permanentă"
 
-#: adons/images-seo/parts/settings.php:66
+#: adons/images-seo/parts/settings.php:70
 msgid "Override the attachment permalink with the inherited title."
 msgstr "Suprascrie legătura permanentă a atașamentului cu titlul moștenit."
 
-#: adons/images-seo/parts/settings.php:72
+#: adons/images-seo/parts/settings.php:76
 msgid "Show the rename button"
 msgstr "Arată butonul de redenumire"
 
-#: adons/images-seo/parts/settings.php:73
-msgid ""
-"When you edit the selected post types, you will see the rename button in the "
-"sidebar."
-msgstr ""
-"Când editezi tipurile de articole selectate, vei vedea butonul de redenumire "
-"în bara laterală."
+#: adons/images-seo/parts/settings.php:77
+msgid "When you edit the selected post types, you will see the rename button in the sidebar."
+msgstr "Când editezi tipurile de articole selectate, vei vedea butonul de redenumire în bara laterală."
 
-#: adons/images-seo/parts/settings.php:95
+#: adons/images-seo/parts/settings.php:99
 msgid "Rename on upload"
 msgstr "Redenumește la încărcare"
 
-#: adons/images-seo/parts/settings.php:96
-msgid ""
-"Attempt to automatically rename the files when uploaded to the selected post "
-"types."
-msgstr ""
-"Încearcă să redenumești automat fișierele când sunt încărcate în tipurile de "
-"articole selectate."
+#: adons/images-seo/parts/settings.php:100
+msgid "Attempt to automatically rename the files when uploaded to the selected post types."
+msgstr "Încearcă să redenumești automat fișierele când sunt încărcate în tipurile de articole selectate."
 
-#: adons/images-seo/parts/settings.php:114
+#: adons/images-seo/parts/settings.php:118
 msgid "Bulk rename for types"
 msgstr "Redenumește în bloc pentru tipuri"
 
-#: adons/images-seo/parts/settings.php:115
-msgid ""
-"Select the post types to make these available for the bulk rename process."
-msgstr ""
-"Selectează tipurile de articole pentru a le face disponibile pentru procesul "
-"de redenumire în bloc."
+#: adons/images-seo/parts/settings.php:119
+msgid "Select the post types to make these available for the bulk rename process."
+msgstr "Selectează tipurile de articole pentru a le face disponibile pentru procesul de redenumire în bloc."
 
-#: adons/images-seo/parts/settings.php:134 inc/parts/admin-advanced.php:244
-#: inc/parts/admin-post-types.php:17
+#: adons/images-seo/parts/settings.php:138
+#: inc/parts/admin-advanced.php:246
+#: inc/parts/admin-post-types.php:21
 msgid "Save Settings"
 msgstr "Salvează setătile"
 
-#: adons/import-export/class-sirsc-import-export.php:122
+#: adons/import-export/class-sirsc-import-export.php:127
 msgid "The plugin settings have been imported successfully."
 msgstr "Setările modulului au fost importate cu succes."
 
-#: adons/import-export/class-sirsc-import-export.php:140
+#: adons/import-export/class-sirsc-import-export.php:145
 msgid "The plugin settings were not imported, something went wrong."
 msgstr "Setările modulului nu au fost importate, ceva a decurs greșit."
 
-#: adons/import-export/class-sirsc-import-export.php:193
-#: adons/import-export/class-sirsc-import-export.php:194 inc/adons.php:145
+#: adons/import-export/class-sirsc-import-export.php:198
+#: adons/import-export/class-sirsc-import-export.php:199
+#: inc/adons.php:149
 msgid "Import/Export"
 msgstr "Import/Export"
 
-#: adons/import-export/parts/areas.php:14
-msgid ""
-"The settings import/export is related to the image sizes that are found on "
-"the instance, through the plugins and theme that are activated. After the "
-"import, you might need to adjust the settings manually."
-msgstr ""
-"Importul/exportul setărilor este legat de dimensiunile imaginii care se "
-"găsesc pe instanță, prin modulele și tema care sunt activate. După import, "
-"poate fi necesar să ajustezi setările manual."
+#: adons/import-export/parts/areas.php:18
+msgid "The settings import/export is related to the image sizes that are found on the instance, through the plugins and theme that are activated. After the import, you might need to adjust the settings manually."
+msgstr "Importul/exportul setărilor este legat de dimensiunile imaginii care se găsesc pe instanță, prin modulele și tema care sunt activate. După import, poate fi necesar să ajustezi setările manual."
 
-#: adons/import-export/parts/areas.php:19
+#: adons/import-export/parts/areas.php:23
 msgid "Export"
 msgstr "Exportă"
 
-#: adons/import-export/parts/areas.php:22
+#: adons/import-export/parts/areas.php:26
 msgid "Copy the JSON string with the current settings."
 msgstr "Copiați șirul JSON cu setările curente."
 
-#: adons/import-export/parts/areas.php:28
-#: adons/import-export/parts/areas.php:30
+#: adons/import-export/parts/areas.php:32
+#: adons/import-export/parts/areas.php:34
 msgid "Import"
 msgstr "Importă"
 
-#: adons/import-export/parts/areas.php:33
+#: adons/import-export/parts/areas.php:37
 msgid "Paste here the JSON string and import the new settings."
 msgstr "Insereză aici șirul JSON și importă noile setări."
 
-#: adons/import-export/parts/areas.php:40
+#: adons/import-export/parts/areas.php:44
 msgid "Registered Image Sizes"
 msgstr "Dimensiuni de imagine înregistrate"
 
-#: adons/import-export/parts/areas.php:42
-msgid ""
-"If you deactivate the plugin but still want to keep the image sizes you "
-"registered with this plugin, you can copy the code snippet in your theme "
-"functions.php file, or in a plugin."
-msgstr ""
-"Dacă dezactivezi modulul, dar vrei totuși să păstrezi dimensiunile de "
-"imagine pe care le-ai înregistrat cu acest modul, poți copia fragmentul de "
-"cod în fișierul functions.php al temei tale, sau într-un modul."
+#: adons/import-export/parts/areas.php:46
+msgid "If you deactivate the plugin but still want to keep the image sizes you registered with this plugin, you can copy the code snippet in your theme functions.php file, or in a plugin."
+msgstr "Dacă dezactivezi modulul, dar vrei totuși să păstrezi dimensiunile de imagine pe care le-ai înregistrat cu acest modul, poți copia fragmentul de cod în fișierul functions.php al temei tale, sau într-un modul."
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:84
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:140
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:181
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:317
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:89
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:145
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:186
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:322
 msgid "Refresh"
 msgstr "Actualizează"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:112
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:224
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:117
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:229
 msgid "Summary"
 msgstr "Rezumat"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:144
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:321
-msgid ""
-"Click to refresh the summary and details (if something was updated in the "
-"meanwhile, this will refresh the totals and counts)."
-msgstr ""
-"Fă clic pentru a reîmprospăta rezumatul și detaliile (dacă ceva a fost "
-"actualizat între timp, aceasta va reîmprospăta totalurile și numărările)."
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:149
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:326
+msgid "Click to refresh the summary and details (if something was updated in the meanwhile, this will refresh the totals and counts)."
+msgstr "Fă clic pentru a reîmprospăta rezumatul și detaliile (dacă ceva a fost actualizat între timp, aceasta va reîmprospăta totalurile și numărările)."
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:163
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:226
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:241
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:340
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:168
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:231
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:246
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:345
 msgid "Folder"
 msgstr "Dosar"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:167
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:229
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:256
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:344
-#: adons/uploads-inspector/parts/files-list.php:134
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:172
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:234
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:261
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:349
+#: adons/uploads-inspector/parts/files-list.php:138
 msgid "Size"
 msgstr "Mărime"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:170
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:230
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:261
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:347
-#: adons/uploads-inspector/parts/files-list.php:131
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:175
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:235
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:266
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:352
+#: adons/uploads-inspector/parts/files-list.php:135
 msgid "Bytes"
 msgstr "Biți"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:173
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:227
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:246
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:350
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:178
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:232
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:251
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:355
 msgid "Subfolders"
 msgstr "Subdosare"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:177
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:228
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:251
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:354
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:182
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:233
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:256
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:359
 msgid "Files"
 msgstr "Fișiere"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:185
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:362
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:190
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:367
 msgid "Currenty, there is no info."
 msgstr "Nicio informație pentru moment."
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:203
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:204
-#: inc/adons.php:171
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:208
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:209
+#: inc/adons.php:175
 msgid "Uploads Folder Info"
 msgstr "Informații dosar încărcări"
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:299
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:606
-#: inc/admin.php:324 inc/adons.php:480 inc/adons.php:492
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:304
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:611
+#: inc/admin.php:329
+#: inc/adons.php:484
+#: inc/adons.php:496
 msgid "Details"
 msgstr "Detalii"
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:106
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:111
 msgid "List"
 msgstr "Listă"
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:173
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:273
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:178
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:278
 msgid "Assess"
 msgstr "Evaluează"
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:195
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:196
-#: inc/adons.php:184
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:200
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:201
+#: inc/adons.php:188
 msgid "Uploads Inspector"
 msgstr "Inspector încărcări"
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:281
-#: inc/cron.php:92 inc/helper.php:2365 inc/helper.php:2413 inc/helper.php:2469
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:286
+#: inc/cron.php:96
+#: inc/helper.php:2371
+#: inc/helper.php:2419
+#: inc/helper.php:2475
 msgid "The cron task has been scheduled."
 msgstr "Sarcina cron a fost programată."
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:304
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:309
 msgid "Click to assess the files from uploads folder & refresh the info."
-msgstr ""
-"Fă clic pentru a evalua fișierele din dosarul de încărcări și pentru a "
-"reîmprospăta informațiile."
+msgstr "Fă clic pentru a evalua fișierele din dosarul de încărcări și pentru a reîmprospăta informațiile."
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:306
-msgid ""
-"This option will initiate the assessment of the uploads structure and "
-"contents, and will collect information that can be checked later."
-msgstr ""
-"Această opțiune va iniția evaluarea structurii și conținutului încărcărilor "
-"și va colecta informații care pot fi verificate ulterior."
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:311
+msgid "This option will initiate the assessment of the uploads structure and contents, and will collect information that can be checked later."
+msgstr "Această opțiune va iniția evaluarea structurii și conținutului încărcărilor și va colecta informații care pot fi verificate ulterior."
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:323
-msgid ""
-"This option will also stop the assessment, if that is currently in progress."
-msgstr ""
-"Această opțiune va opri și evaluarea, dacă aceasta este în curs de "
-"desfășurare."
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:328
+msgid "This option will also stop the assessment, if that is currently in progress."
+msgstr "Această opțiune va opri și evaluarea, dacă aceasta este în curs de desfășurare."
 
 #. Translators: %s - folder name.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:485
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:490
 msgid "Processing the request for %s."
 msgstr "Procesez cererea pentru %s."
 
 #. Translators: %1$s - current page, %2$s - total pages.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:612
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:617
 msgid "The most recent files assessment was executed on %1$s."
 msgstr "Cea mai recentă evaluare a fișierelor s-a efectuat în %1$s."
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:616
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:621
 msgid "Click the files counts below to open the list of assessed items."
-msgstr ""
-"Fă clic pe numărul de fișiere de mai jos pentru a deschide lista de articole "
-"evaluate."
+msgstr "Fă clic pe numărul de fișiere de mai jos pentru a deschide lista de articole evaluate."
 
 #. Translators: %1$d - count products, %2$d - total.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:806
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:811
 msgid "There are %1$d items assessed out of %2$d."
 msgstr "Există %1$d articole evaluate din %2$d."
 
 #. Translators: %1$s - current page, %2$s - total pages.
-#: adons/uploads-inspector/parts/files-list.php:49
+#: adons/uploads-inspector/parts/files-list.php:53
 msgid "Page %1$s of %2$s"
 msgstr "Pagina %1$s din %2$s"
 
-#: adons/uploads-inspector/parts/files-list.php:93
-#: adons/uploads-inspector/parts/files-list.php:111 inc/helper.php:1245
+#: adons/uploads-inspector/parts/files-list.php:97
+#: adons/uploads-inspector/parts/files-list.php:115
+#: inc/helper.php:1251
 msgid "File"
 msgstr "Fișier"
 
-#: adons/uploads-inspector/parts/files-list.php:94
-#: adons/uploads-inspector/parts/files-list.php:125
-#: adons/uploads-inspector/parts/info-list.php:19
-#: adons/uploads-inspector/parts/info-list.php:34
+#: adons/uploads-inspector/parts/files-list.php:98
+#: adons/uploads-inspector/parts/files-list.php:129
+#: adons/uploads-inspector/parts/info-list.php:24
+#: adons/uploads-inspector/parts/info-list.php:39
 msgid "MIME Type"
 msgstr "Tip MIME"
 
-#: adons/uploads-inspector/parts/files-list.php:95
-#: adons/uploads-inspector/parts/files-list.php:128 inc/helper.php:316
-#: inc/helper.php:2086
+#: adons/uploads-inspector/parts/files-list.php:99
+#: adons/uploads-inspector/parts/files-list.php:132
+#: inc/helper.php:322
+#: inc/helper.php:2092
 msgid "File size"
 msgstr "Mărime fișier"
 
-#: adons/uploads-inspector/parts/files-list.php:96
+#: adons/uploads-inspector/parts/files-list.php:100
 msgid "Image Size"
 msgstr "Dimensiune imagine"
 
-#: adons/uploads-inspector/parts/files-list.php:97
-#: adons/uploads-inspector/parts/files-list.php:149
+#: adons/uploads-inspector/parts/files-list.php:101
+#: adons/uploads-inspector/parts/files-list.php:153
 msgid "Attachment"
 msgstr "Atașament"
 
-#: adons/uploads-inspector/parts/files-list.php:104
-#: adons/uploads-inspector/parts/files-list.php:105
-#: adons/uploads-inspector/parts/files-list.php:155
-#: adons/uploads-inspector/parts/info-list.php:25
+#: adons/uploads-inspector/parts/files-list.php:108
+#: adons/uploads-inspector/parts/files-list.php:109
+#: adons/uploads-inspector/parts/files-list.php:159
 #: adons/uploads-inspector/parts/info-list.php:30
-#: adons/uploads-inspector/parts/info-list.php:55
+#: adons/uploads-inspector/parts/info-list.php:35
 #: adons/uploads-inspector/parts/info-list.php:60
-#: adons/uploads-inspector/parts/info-list.php:85
+#: adons/uploads-inspector/parts/info-list.php:65
 #: adons/uploads-inspector/parts/info-list.php:90
-#: image-regenerate-select-crop.php:2386
+#: adons/uploads-inspector/parts/info-list.php:95
+#: image-regenerate-select-crop.php:2453
 msgid "unknown"
 msgstr "necunoscut"
 
-#: adons/uploads-inspector/parts/files-list.php:108
+#: adons/uploads-inspector/parts/files-list.php:112
 msgid "Counter"
 msgstr "Contor"
 
-#: adons/uploads-inspector/parts/files-list.php:121
+#: adons/uploads-inspector/parts/files-list.php:125
 msgid "In option"
 msgstr "În opțiune"
 
-#: adons/uploads-inspector/parts/files-list.php:137 inc/helper.php:96
-#: inc/parts/admin-advanced.php:129
+#: adons/uploads-inspector/parts/files-list.php:141
+#: inc/helper.php:102
+#: inc/parts/admin-advanced.php:133
 msgid "N/A"
 msgstr "N/A"
 
-#: adons/uploads-inspector/parts/info-list.php:49
-#: adons/uploads-inspector/parts/info-list.php:64 inc/admin.php:122
-#: inc/admin.php:123
+#: adons/uploads-inspector/parts/info-list.php:54
+#: adons/uploads-inspector/parts/info-list.php:69
+#: inc/admin.php:127
+#: inc/admin.php:128
 msgid "Image Sizes"
 msgstr "Dimensiuni imagine"
 
-#: adons/uploads-inspector/parts/info-list.php:79
-#: adons/uploads-inspector/parts/info-list.php:94
+#: adons/uploads-inspector/parts/info-list.php:84
+#: adons/uploads-inspector/parts/info-list.php:99
 msgid "Valid images"
 msgstr "Imagini valide"
 
-#: image-regenerate-select-crop.php:252 image-regenerate-select-crop.php:255
-#: image-regenerate-select-crop.php:258
+#: image-regenerate-select-crop.php:282
+#: image-regenerate-select-crop.php:285
+#: image-regenerate-select-crop.php:288
 msgid "Left"
 msgstr "Stânga"
 
-#: image-regenerate-select-crop.php:252 image-regenerate-select-crop.php:253
-#: image-regenerate-select-crop.php:254
+#: image-regenerate-select-crop.php:282
+#: image-regenerate-select-crop.php:283
+#: image-regenerate-select-crop.php:284
 msgid "Top"
 msgstr "Sus"
 
-#: image-regenerate-select-crop.php:253 image-regenerate-select-crop.php:255
-#: image-regenerate-select-crop.php:256 image-regenerate-select-crop.php:257
-#: image-regenerate-select-crop.php:259
+#: image-regenerate-select-crop.php:283
+#: image-regenerate-select-crop.php:285
+#: image-regenerate-select-crop.php:286
+#: image-regenerate-select-crop.php:287
+#: image-regenerate-select-crop.php:289
 msgid "Center"
 msgstr "Centru"
 
-#: image-regenerate-select-crop.php:254 image-regenerate-select-crop.php:257
-#: image-regenerate-select-crop.php:260
+#: image-regenerate-select-crop.php:284
+#: image-regenerate-select-crop.php:287
+#: image-regenerate-select-crop.php:290
 msgid "Right"
 msgstr "Dreapta"
 
-#: image-regenerate-select-crop.php:258 image-regenerate-select-crop.php:259
-#: image-regenerate-select-crop.php:260
+#: image-regenerate-select-crop.php:288
+#: image-regenerate-select-crop.php:289
+#: image-regenerate-select-crop.php:290
 msgid "Bottom"
 msgstr "Jos"
 
-#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:809
-#: image-regenerate-select-crop.php:925 inc/admin.php:392 inc/admin.php:875
-#: inc/admin.php:962 inc/adons.php:600 inc/calls.php:48 inc/calls.php:52
-#: inc/debug.php:116 inc/iterator.php:122
+#: image-regenerate-select-crop.php:688
+#: image-regenerate-select-crop.php:821
+#: image-regenerate-select-crop.php:937
+#: inc/admin.php:397
+#: inc/admin.php:916
+#: inc/admin.php:1003
+#: inc/adons.php:604
+#: inc/calls.php:52
+#: inc/calls.php:56
+#: inc/debug.php:120
+#: inc/iterator.php:126
 msgid "Action not allowed."
 msgstr "Acțiunea nu este permisă."
 
-#: image-regenerate-select-crop.php:676 image-regenerate-select-crop.php:809
-#: image-regenerate-select-crop.php:925 inc/admin.php:875 inc/calls.php:48
-#: inc/calls.php:52 inc/iterator.php:122
+#: image-regenerate-select-crop.php:688
+#: image-regenerate-select-crop.php:821
+#: image-regenerate-select-crop.php:937
+#: inc/admin.php:916
+#: inc/calls.php:52
+#: inc/calls.php:56
+#: inc/iterator.php:126
 msgid "Security Breach"
 msgstr "Breșă de securitate"
 
-#: image-regenerate-select-crop.php:2325 image-regenerate-select-crop.php:2346
-#: image-regenerate-select-crop.php:2366 image-regenerate-select-crop.php:2507
+#: image-regenerate-select-crop.php:2392
+#: image-regenerate-select-crop.php:2413
+#: image-regenerate-select-crop.php:2433
+#: image-regenerate-select-crop.php:2574
 msgid "currently registered"
 msgstr "înregistrată momentan"
 
-#: image-regenerate-select-crop.php:2366
+#: image-regenerate-select-crop.php:2433
 msgid "not registered anymore"
 msgstr "nu mai este înregistrată"
 
-#: image-regenerate-select-crop.php:2391
+#: image-regenerate-select-crop.php:2458
 msgid "never registered"
 msgstr "niciodată înregistrată"
 
-#: image-regenerate-select-crop.php:3170 inc/plugin.php:42
+#: image-regenerate-select-crop.php:3246
+#: inc/plugin.php:26
 msgid "Plugin URL"
 msgstr "URL modul"
 
-#: inc/action.php:58 inc/wp-cli.php:427
+#: inc/action.php:70
+#: inc/wp-cli.php:524
 msgid "was removed"
 msgstr "s-a eliminat"
 
-#: inc/action.php:64 inc/wp-cli.php:431
+#: inc/action.php:76
+#: inc/wp-cli.php:528
 msgid "Could not remove"
 msgstr "Nu s-a putut elimina"
 
-#: inc/action.php:64 inc/wp-cli.php:431
+#: inc/action.php:76
+#: inc/wp-cli.php:528
 msgid "The image is missing or it is the original file."
 msgstr "Imaginea lipsește sau este fișierul original."
 
 #. Translators: %d - the attachment id.
-#: inc/action.php:69
+#: inc/action.php:81
 msgid "METADATA cleanup performed for %d."
 msgstr "Curățarea METADATELOR a fost efectuată pentru %d."
 
-#: inc/admin.php:107 inc/admin.php:108 inc/adons.php:70
+#: inc/admin.php:112
+#: inc/admin.php:113
+#: inc/adons.php:74
 msgid "Advanced Rules"
 msgstr "Reguli avansate"
 
-#: inc/admin.php:115 inc/admin.php:116
+#: inc/admin.php:120
+#: inc/admin.php:121
 msgid "Media Settings"
 msgstr "Setări media"
 
-#: inc/admin.php:262
+#: inc/admin.php:267
 msgid "Cleanup all?"
 msgstr "Cureți tot?"
 
-#: inc/admin.php:263
+#: inc/admin.php:268
 msgid "Regenerate all?"
 msgstr "Regenerzi tot?"
 
-#: inc/admin.php:264
-msgid ""
-"This operation might take a while, depending on how many images you have."
-msgstr ""
-"Această operațiune poate dura ceva timp, în funcție de câte imagini ai."
+#: inc/admin.php:269
+msgid "This operation might take a while, depending on how many images you have."
+msgstr "Această operațiune poate dura ceva timp, în funcție de câte imagini ai."
 
-#: inc/admin.php:265
+#: inc/admin.php:270
 msgid "The operation is irreversible!"
 msgstr "Operațiunea este ireversibilă!"
 
-#: inc/admin.php:266 inc/helper.php:312 inc/helper.php:2083
+#: inc/admin.php:271
+#: inc/helper.php:318
+#: inc/helper.php:2089
 msgid "Resolution"
 msgstr "Rezoluție"
 
-#: inc/admin.php:267 inc/admin.php:1004 inc/helper.php:1324
+#: inc/admin.php:272
+#: inc/admin.php:1043
+#: inc/helper.php:1330
 msgid "Details/Options"
 msgstr "Detalii/opțiuni"
 
-#: inc/admin.php:268 inc/helper.php:1324
+#: inc/admin.php:273
+#: inc/helper.php:1330
 msgid "Image Details"
 msgstr "Detalii imagine"
 
-#: inc/admin.php:269 inc/helper.php:244 inc/helper.php:1325
-#: inc/parts/admin-sizes-table.php:95 inc/parts/admin-sizes-table.php:188
+#: inc/admin.php:274
+#: inc/helper.php:250
+#: inc/helper.php:1331
+#: inc/parts/admin-sizes-table.php:100
+#: inc/parts/admin-sizes-table.php:193
 msgid "Regenerate"
 msgstr "Regenează"
 
-#: inc/admin.php:270 inc/helper.php:1329
+#: inc/admin.php:275
+#: inc/helper.php:1335
 msgid "Raw Cleanup"
 msgstr "Curăță brut"
 
-#: inc/admin.php:271 inc/helper.php:1960
+#: inc/admin.php:276
+#: inc/helper.php:1966
 msgid "Regenerate Log"
 msgstr "Jurnal regenerare"
 
-#: inc/admin.php:272 inc/helper.php:1614 inc/helper.php:1805
+#: inc/admin.php:277
+#: inc/helper.php:1620
+#: inc/helper.php:1811
 msgid "Cleanup Log"
 msgstr "Jurnal curățare"
 
-#: inc/admin.php:276
-msgid ""
-"This action will remove all images generated for this attachment, except for "
-"the original file. Are you sure you want proceed?"
-msgstr ""
-"Această acțiune va elimina toate imaginile generate pentru acest atașament, "
-"cu excepția fișierului original. Sigur vrei să continui?"
+#: inc/admin.php:281
+msgid "This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?"
+msgstr "Această acțiune va elimina toate imaginile generate pentru acest atașament, cu excepția fișierului original. Sigur vrei să continui?"
 
-#: inc/admin.php:433
-msgid ""
-"Visit and update your settings here whenever you activate a new theme or "
-"plugins, so that the image sizes registered/adjusted/removed to be reflected "
-"also here, and in this way to assure the optimal behavior for the features "
-"provided by this plugin."
-msgstr ""
-"Vizitează și actualizează-ți setările aici ori de câte ori activezi o temă "
-"sau module noi, astfel încât dimensiunile de imagine înregistrate/ajustate/"
-"eliminate să fie reflectate și aici, și astfel să asiguri comportamentul "
-"optim pentru funcțiile oferite de acest modul."
+#: inc/admin.php:438
+msgid "Visit and update your settings here whenever you activate a new theme or plugins, so that the image sizes registered/adjusted/removed to be reflected also here, and in this way to assure the optimal behavior for the features provided by this plugin."
+msgstr "Vizitează și actualizează-ți setările aici ori de câte ori activezi o temă sau module noi, astfel încât dimensiunile de imagine înregistrate/ajustate/eliminate să fie reflectate și aici, și astfel să asiguri comportamentul optim pentru funcțiile oferite de acest modul."
 
-#: inc/admin.php:433 inc/admin.php:681
+#: inc/admin.php:438
+#: inc/admin.php:722
 msgid "Custom Settings"
 msgstr "Setări personalizate"
 
-#: inc/admin.php:433 inc/admin.php:761
+#: inc/admin.php:438
+#: inc/admin.php:802
 msgid "Custom Image Sizes"
 msgstr "Dimensiuni imagine personalizate"
 
-#: inc/admin.php:565
+#: inc/admin.php:571
 msgid "A huge thanks in advance!"
 msgstr "Multe mulțumiri în avans!"
 
 #. Translators: %1$s - donate URL, %2$s - rating.
-#: inc/admin.php:571
-msgid ""
-"If you find the plugin useful and would like to support my work, please "
-"consider making a <a href=\"%1$s\" target=\"_blank\" "
-"rel=\"noreferrer\">donation</a>. It would make me very happy if you would "
-"leave a %2$s rating."
-msgstr ""
-"Dacă acest modul îți este folositor și ai dori să îmi sprijini munca, m-aș "
-"bucura dacă ai face o <a href=\"%1$s\" target=\"_blank\" "
-"rel=\"noreferrer\">donație</a>. M-ar bucura mult dacă ai lăsa o recenzie de "
-"%2$s."
+#: inc/admin.php:577
+msgid "If you find the plugin useful and would like to support my work, please consider making a <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">donation</a>. It would make me very happy if you would leave a %2$s rating."
+msgstr "Dacă acest modul îți este folositor și ai dori să îmi sprijini munca, m-aș bucura dacă ai face o <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">donație</a>. M-ar bucura mult dacă ai lăsa o recenzie de %2$s."
 
-#: inc/admin.php:597
+#. Translators: %1$s - title, %2$s - version, %3$s - author.
+#: inc/admin.php:604
+msgid "%1$s version %2$s by %3$s"
+msgstr "%1$s versiune %2$s de %3$s"
+
+#: inc/admin.php:612
+msgid "Support"
+msgstr "Suport"
+
+#: inc/admin.php:617
+msgid "Reviews"
+msgstr "Recenzii"
+
+#: inc/admin.php:622
+msgid "Donate"
+msgstr "Donează"
+
+#. Translators: %1$s - social link.
+#: inc/admin.php:626
+msgid "Follow me on <a href=\"%1$s\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>"
+msgstr "Urmărește-mă pe <a href=\"%1$s\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>"
+
+#: inc/admin.php:638
 msgid "The plugin settings have been updated successfully."
 msgstr "Setările modului au fost actualizate cu succes."
 
-#: inc/admin.php:682
-msgid ""
-"You can override the default crop for the medium and large size of the "
-"images. Please note that the crop will apply to the designated image size "
-"only if it has both width and height defined (as you know, when you set 0 to "
-"one of the sizes, the image will be scaled proportionally, hence, the crop "
-"cannot be applied)."
-msgstr ""
-"Poți înlocui decuparea implicită pentru dimensiunea medie și mare a "
-"imaginilor. Te rog să reții că decuparea se va aplica dimensiunii desemnate "
-"a imaginii numai dacă are definite atât lățimea cât și înălțimea (după cum "
-"știi, când setezi 0 la una dintre dimensiuni, imaginea va fi scalată "
-"proporțional, prin urmare, decuparea nu poate fi aplicată)."
+#: inc/admin.php:723
+msgid "You can override the default crop for the medium and large size of the images. Please note that the crop will apply to the designated image size only if it has both width and height defined (as you know, when you set 0 to one of the sizes, the image will be scaled proportionally, hence, the crop cannot be applied)."
+msgstr "Poți înlocui decuparea implicită pentru dimensiunea medie și mare a imaginilor. Te rog să reții că decuparea se va aplica dimensiunii desemnate a imaginii numai dacă are definite atât lățimea cât și înălțimea (după cum știi, când setezi 0 la una dintre dimensiuni, imaginea va fi scalată proporțional, prin urmare, decuparea nu poate fi aplicată)."
 
-#: inc/admin.php:688 inc/admin.php:778
+#: inc/admin.php:729
+#: inc/admin.php:819
 msgid "Crop to exact dimensions"
 msgstr "Decupează la dimensiuni exacte"
 
-#: inc/admin.php:698
+#: inc/admin.php:739
 msgid "Medium size"
 msgstr "Dimensiune medie"
 
-#: inc/admin.php:708
+#: inc/admin.php:749
 msgid "Medium large size"
 msgstr "Dimensiune medie mare"
 
-#: inc/admin.php:718
+#: inc/admin.php:759
 msgid "Large size"
 msgstr "Dimensiune mare"
 
-#: inc/admin.php:728
+#: inc/admin.php:769
 msgid "Size in meta box"
 msgstr "Dimensiune în căsuța meta"
 
-#: inc/admin.php:738
-msgid ""
-"This setting allows you to change the post thumbnail size that is displayed "
-"in the meta box."
-msgstr ""
-"Această setare îți permite să modifici dimensiunea miniaturii articolului "
-"care este afișată în caseta meta."
+#: inc/admin.php:779
+msgid "This setting allows you to change the post thumbnail size that is displayed in the meta box."
+msgstr "Această setare îți permite să modifici dimensiunea miniaturii articolului care este afișată în caseta meta."
 
-#: inc/admin.php:738
-msgid ""
-"Leave empty if you want to use the default size that is set by WordPress and "
-"your theme."
-msgstr ""
-"Lasă necompletat dacă vrei să utilizezi dimensiunea implicită stabilită de "
-"WordPress și tema ta."
+#: inc/admin.php:779
+msgid "Leave empty if you want to use the default size that is set by WordPress and your theme."
+msgstr "Lasă necompletat dacă vrei să utilizezi dimensiunea implicită stabilită de WordPress și tema ta."
 
-#: inc/admin.php:763
-msgid ""
-"If you decided it is absolutely necessary to have new custom image sizes, "
-"you can make the setup below and these will be registered programmatically "
-"in your application if you configured these correctly (you have to input the "
-"size name and at least the width or height)."
-msgstr ""
-"Dacă ai decis că este absolut necesar să ai noi dimensiuni de imagine "
-"personalizate, poți face setările mai jos și acestea vor fi înregistrate "
-"programatic în aplicația ta, dacă sunt configurate corect (trebuie să "
-"introduci denumirea dimensiunii și cel puțin lățimea sau înălțimea)."
+#: inc/admin.php:804
+msgid "If you decided it is absolutely necessary to have new custom image sizes, you can make the setup below and these will be registered programmatically in your application if you configured these correctly (you have to input the size name and at least the width or height)."
+msgstr "Dacă ai decis că este absolut necesar să ai noi dimensiuni de imagine personalizate, poți face setările mai jos și acestea vor fi înregistrate programatic în aplicația ta, dacă sunt configurate corect (trebuie să introduci denumirea dimensiunii și cel puțin lățimea sau înălțimea)."
 
-#: inc/admin.php:764
-msgid ""
-"However, please make sure you only define these below if you are sure this "
-"is really necessary, as, any additional image size registered in your "
-"application is decreasing the performance on the images upload processing "
-"and also creates extra physical files on your hosting."
-msgstr ""
-"Totuși, asigură-te că le definești mai jos doar dacă știi sigur că este "
-"chiar necesar, pentru că orice dimensiune de imagine adițională înregistrată "
-"în aplicație scade performanța la procesarea încărcării imaginilor și de "
-"asemenea creează fișiere fizice suplimentare la găzduire."
+#: inc/admin.php:805
+msgid "However, please make sure you only define these below if you are sure this is really necessary, as, any additional image size registered in your application is decreasing the performance on the images upload processing and also creates extra physical files on your hosting."
+msgstr "Totuși, asigură-te că le definești mai jos doar dacă știi sigur că este chiar necesar, pentru că orice dimensiune de imagine adițională înregistrată în aplicație scade performanța la procesarea încărcării imaginilor și de asemenea creează fișiere fizice suplimentare la găzduire."
 
-#: inc/admin.php:765
-msgid ""
-"Also, please note that changing the image sizes names or width and height "
-"values is not recommended after these were defined and your application "
-"started to create images for these specifications."
-msgstr ""
-"În plus, te rog să notezi că modificarea denumirii sau a valorilor lățimii "
-"și înălțimii pentru dimensiunile de imagine nu se recomandă după ce acestea "
-"au fost definite și aplicația ta a început să genereze imagini pentru "
-"specificațiile respective."
+#: inc/admin.php:806
+msgid "Also, please note that changing the image sizes names or width and height values is not recommended after these were defined and your application started to create images for these specifications."
+msgstr "În plus, te rog să notezi că modificarea denumirii sau a valorilor lățimii și înălțimii pentru dimensiunile de imagine nu se recomandă după ce acestea au fost definite și aplicația ta a început să genereze imagini pentru specificațiile respective."
 
-#: inc/admin.php:768
+#: inc/admin.php:809
 msgid "Use this feature wisely."
 msgstr "Utilizează această opțiune cu precauție."
 
-#: inc/admin.php:769
-msgid ""
-"Please consult with a front-end developer before deciding to define more "
-"image sizes below (and in general in the application), as most of the times "
-"just updating the native image sizes settings and updating the front-end "
-"code (the theme) is enough."
-msgstr ""
-"Te rog să consulți un dezvoltator front-end înainte de a decide să definești "
-"mai jos mai multe dimensiuni de imagine (și în general în aplicație), pentru "
-"că de cele mai multe ori este suficient doar să actualizezi dimensiunile "
-"native de imagine și codului front-end (tema)."
+#: inc/admin.php:810
+msgid "Please consult with a front-end developer before deciding to define more image sizes below (and in general in the application), as most of the times just updating the native image sizes settings and updating the front-end code (the theme) is enough."
+msgstr "Te rog să consulți un dezvoltator front-end înainte de a decide să definești mai jos mai multe dimensiuni de imagine (și în general în aplicație), pentru că de cele mai multe ori este suficient doar să actualizezi dimensiunile native de imagine și codului front-end (tema)."
 
-#: inc/admin.php:775 inc/admin.php:800 inc/admin.php:832
+#: inc/admin.php:816
+#: inc/admin.php:841
+#: inc/admin.php:873
 msgid "Name"
 msgstr "Nume"
 
-#: inc/admin.php:776 inc/admin.php:806 inc/admin.php:837
+#: inc/admin.php:817
+#: inc/admin.php:847
+#: inc/admin.php:878
 msgid "Max Width"
 msgstr "Lățime maximă"
 
-#: inc/admin.php:777 inc/admin.php:811 inc/admin.php:842
+#: inc/admin.php:818
+#: inc/admin.php:852
+#: inc/admin.php:883
 msgid "Max Height"
 msgstr "Înălțime maximă"
 
-#: inc/admin.php:805
+#: inc/admin.php:846
 msgid "(leave empty to remove this image size)"
 msgstr "(lasă necompletat pentru a elimina această mărime de imagine)"
 
-#: inc/admin.php:816 inc/admin.php:847 inc/helper.php:219 inc/helper.php:237
-#: inc/helper.php:240 inc/helper.php:250 inc/helper.php:259
+#: inc/admin.php:857
+#: inc/admin.php:888
+#: inc/helper.php:225
+#: inc/helper.php:243
+#: inc/helper.php:246
+#: inc/helper.php:256
+#: inc/helper.php:265
 msgid "Crop"
 msgstr "Decupează"
 
-#: inc/admin.php:835
+#: inc/admin.php:876
 msgid "New image size name"
 msgstr "Nume dimensiune imagine nouă"
 
-#: inc/adons.php:63 inc/adons.php:268 inc/parts/admin-general.php:16
+#: inc/adons.php:67
+#: inc/adons.php:272
+#: inc/parts/admin-general.php:19
 msgid "General Settings"
 msgstr "Setări generale"
 
-#: inc/adons.php:78 inc/debug.php:101 inc/debug.php:102
+#: inc/adons.php:82
+#: inc/debug.php:105
+#: inc/debug.php:106
 msgid "Debug"
 msgstr "Depanare"
 
-#: inc/adons.php:86 inc/adons.php:245 inc/adons.php:246
+#: inc/adons.php:90
+#: inc/adons.php:249
+#: inc/adons.php:250
 msgid "Extensions"
 msgstr "Extensii"
 
-#: inc/adons.php:146
-msgid ""
-"Export and import the plugin settings from one instance to another (general "
-"settings, advanced rules, media settings, additional image sizes managed "
-"with this plugin)."
-msgstr ""
-"Exportă și importă setările modulului dintr-o instanță la alta (setări "
-"generale, reguli avansate, setări media, dimensiuni de imagine suplimentare "
-"gestionate cu acest modul)."
+#: inc/adons.php:150
+msgid "Export and import the plugin settings from one instance to another (general settings, advanced rules, media settings, additional image sizes managed with this plugin)."
+msgstr "Exportă și importă setările modulului dintr-o instanță la alta (setări generale, reguli avansate, setări media, dimensiuni de imagine suplimentare gestionate cu acest modul)."
 
-#: inc/adons.php:159
-msgid ""
-"Rename the images files (bulk rename, individual rename or image rename on "
-"upload) and override the attachments attributes based on the settings."
-msgstr ""
-"Redenumește fișierele imaginilor (redenumire în bloc, redenumire individuală "
-"sau redenumire imagine la încărcare) și suprascrie atributele atașamentelor "
-"pe baza setărilor."
+#: inc/adons.php:163
+msgid "Rename the images files (bulk rename, individual rename or image rename on upload) and override the attachments attributes based on the settings."
+msgstr "Redenumește fișierele imaginilor (redenumire în bloc, redenumire individuală sau redenumire imagine la încărcare) și suprascrie atributele atașamentelor pe baza setărilor."
 
-#: inc/adons.php:172
-msgid ""
-"See details about your uploads folder: number of files and folders "
-"(including subfolders), the total size."
-msgstr ""
-"Vezi detalii despre dosarul încărcări: numărul de fișiere și dosare "
-"(inclusiv subdosarele), dimensiunea totală."
+#: inc/adons.php:176
+msgid "See details about your uploads folder: number of files and folders (including subfolders), the total size."
+msgstr "Vezi detalii despre dosarul încărcări: numărul de fișiere și dosare (inclusiv subdosarele), dimensiunea totală."
 
-#: inc/adons.php:185
-msgid ""
-"Analyze the files from your uploads folder (including the orphaned files - "
-"not associated with attachment records in the database) and see details "
-"about the size, MIME type, attachment IDs, sub-sizes, etc."
-msgstr ""
-"Analizează fișierele din dosarul tău de încărcări (inclusiv fișierele orfane "
-"- care nu sunt asociate cu înregistrări de atașament în baza de date) și "
-"vezi detalii despre dimensiune, tip MIME, ID-urile de atașament, "
-"subdimensiuni, etc."
+#: inc/adons.php:189
+msgid "Analyze the files from your uploads folder (including the orphaned files - not associated with attachment records in the database) and see details about the size, MIME type, attachment IDs, sub-sizes, etc."
+msgstr "Analizează fișierele din dosarul tău de încărcări (inclusiv fișierele orfane - care nu sunt asociate cu înregistrări de atașament în baza de date) și vezi detalii despre dimensiune, tip MIME, ID-urile de atașament, subdimensiuni, etc."
 
-#: inc/adons.php:414
+#: inc/adons.php:418
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#: inc/adons.php:421
+#: inc/adons.php:425
 msgid "Enabled"
 msgstr "Activat"
 
-#: inc/adons.php:441
+#: inc/adons.php:445
 msgid "Purchase"
 msgstr "Achiziționează"
 
-#: inc/adons.php:460
+#: inc/adons.php:464
 msgid "License Key"
 msgstr "Cheie licență"
 
-#: inc/adons.php:461
+#: inc/adons.php:465
 msgid "Activate"
 msgstr "Activează"
 
-#: inc/adons.php:510
+#: inc/adons.php:514
 msgid "Free"
 msgstr "Gratuit"
 
 #. Translators: %1$s - adon price.
-#: inc/adons.php:514
+#: inc/adons.php:518
 msgid "&euro; %1$s / year"
 msgstr "&euro; %1$s / an"
 
-#: inc/adons.php:613
-msgid ""
-"See the available extensions compatible with the installed plugin version."
-msgstr ""
-"Vezi extensiile disponibile compatibile cu versiunea modulului instalat."
+#: inc/adons.php:617
+msgid "See the available extensions compatible with the installed plugin version."
+msgstr "Vezi extensiile disponibile compatibile cu versiunea modulului instalat."
 
-#: inc/adons.php:613
+#: inc/adons.php:617
 msgid "You can activate and deactivate these at any time."
 msgstr "Le poți activa și dezactiva în orice moment."
 
-#: inc/adons.php:625
+#: inc/adons.php:629
 msgid "No extension available at the moment."
 msgstr "Nicio extensie disponibilă momentan."
 
-#: inc/cron.php:108 inc/cron.php:158
+#: inc/cron.php:112
+#: inc/cron.php:162
 msgid "Cron Task"
 msgstr "Sarcină cron"
 
-#: inc/cron.php:117
-msgid ""
-"The action has been scheduled and the cron task will run in the background."
+#: inc/cron.php:121
+msgid "The action has been scheduled and the cron task will run in the background."
 msgstr "Acțiunea a fost programată și sarcina cron va rula în fundal."
 
-#: inc/cron.php:119
-msgid ""
-"The action is currently in progress, the cron task runs in the background."
+#: inc/cron.php:123
+msgid "The action is currently in progress, the cron task runs in the background."
 msgstr "Acțiunea este în curs de desfășurare, sarcina cron rulează în fundal."
 
-#: inc/cron.php:122
+#: inc/cron.php:126
 msgid "You can close the dialog box."
 msgstr "Poți închide caseta de dialog."
 
-#: inc/cron.php:130
-msgid ""
-"The cron task has been scheduled to run every minute, please be patient "
-"until the task finishes."
-msgstr ""
-"Sarcina cron a fost programată să ruleze în fiecare minut, te rog să ai "
-"răbdare până când sarcina se termină."
+#: inc/cron.php:134
+msgid "The cron task has been scheduled to run every minute, please be patient until the task finishes."
+msgstr "Sarcina cron a fost programată să ruleze în fiecare minut, te rog să ai răbdare până când sarcina se termină."
 
-#: inc/cron.php:130
-msgid ""
-"If you want to cancel the remaining execution and unshedule the task, click "
-"the button below."
-msgstr ""
-"Dacă vrei să anulezi execuția rămasă și să anulezi programarea sarcinii, fă "
-"clic pe butonul de mai jos."
+#: inc/cron.php:134
+msgid "If you want to cancel the remaining execution and unshedule the task, click the button below."
+msgstr "Dacă vrei să anulezi execuția rămasă și să anulezi programarea sarcinii, fă clic pe butonul de mai jos."
 
-#: inc/cron.php:133 inc/iterator.php:185 inc/parts/admin-cron.php:38
+#: inc/cron.php:137
+#: inc/iterator.php:189
+#: inc/parts/admin-cron.php:42
 msgid "Cancel"
 msgstr "Anulează"
 
-#: inc/cron.php:165
+#: inc/cron.php:169
 msgid "The scheduled task has been canceled."
 msgstr "Sarcina programată a fost anulată."
 
-#: inc/cron.php:297
-msgid "Every minute"
-msgstr "În fiecare minut"
-
-#: inc/cron.php:379
+#: inc/cron.php:382
 msgid "hours"
 msgstr "ore"
 
-#: inc/cron.php:382
+#: inc/cron.php:385
 msgid "minutes"
 msgstr "minute"
 
-#: inc/cron.php:385
+#: inc/cron.php:388
 msgid "seconds"
 msgstr "secunde"
 
 #. Translators: %s - duration.
-#: inc/cron.php:393
+#: inc/cron.php:396
 msgid "The cron task has run for %s."
 msgstr "Sarcina cron a rulat pentru %s."
 
 #. Translators: %1$s - total.
-#: inc/cron.php:435 inc/helper.php:2003
+#: inc/cron.php:437
+#: inc/helper.php:2009
 msgid "Items remaining to regenerate: %1$s."
 msgstr "Articole rămase de regenerat: %1$s."
 
 #. Translators: %1$s - total.
-#: inc/cron.php:449 inc/cron.php:463 inc/helper.php:1656 inc/helper.php:1846
+#: inc/cron.php:451
+#: inc/cron.php:465
+#: inc/helper.php:1662
+#: inc/helper.php:1852
 msgid "Items remaining to cleanup: %1$s."
 msgstr "Articole rămase de curățat: %1$s."
 
-#: inc/debug.php:126
-msgid ""
-"You will see here the information collected while executing regenerate and "
-"cleanup actions. Please reset the logs periodically."
-msgstr ""
-"Vei vedea aici informațiile colectate în timpul executării acțiunilor de "
-"regenerare și curățare. Te rog să resetezi jurnalele periodic."
+#: inc/debug.php:130
+msgid "You will see here the information collected while executing regenerate and cleanup actions. Please reset the logs periodically."
+msgstr "Vei vedea aici informațiile colectate în timpul executării acțiunilor de regenerare și curățare. Te rog să resetezi jurnalele periodic."
 
-#: inc/debug.php:135
+#: inc/debug.php:139
 msgid "Bulk actions log"
 msgstr "Jurnal acțiuni în bloc"
 
-#: inc/debug.php:138
-msgid ""
-"The bulk actions execution results can be seen below, the most recent "
-"actions are shown at the top of the list."
-msgstr ""
-"Rezultatele execuției acțiunilor în bloc pot fi văzute mai jos, cele mai "
-"recente acțiuni sunt afișate în partea de sus a listei."
+#: inc/debug.php:142
+msgid "The bulk actions execution results can be seen below, the most recent actions are shown at the top of the list."
+msgstr "Rezultatele execuției acțiunilor în bloc pot fi văzute mai jos, cele mai recente acțiuni sunt afișate în partea de sus a listei."
 
-#: inc/debug.php:147
+#: inc/debug.php:151
 msgid "Tracer log"
 msgstr "Jurnal urmărire"
 
-#: inc/debug.php:150
-msgid ""
-"The tracer log can be seen below, the most recent events are shown at the "
-"top of the list."
-msgstr ""
-"Jurnalul de urmărire se poate vedeam mai jos, cele mai recente acțiuni sunt "
-"afișare la începutul listei."
+#: inc/debug.php:154
+msgid "The tracer log can be seen below, the most recent events are shown at the top of the list."
+msgstr "Jurnalul de urmărire se poate vedeam mai jos, cele mai recente acțiuni sunt afișare la începutul listei."
 
-#: inc/debug.php:159
+#: inc/debug.php:163
 msgid "disable verbose mode"
 msgstr "dezactivează modul detaliat"
 
-#: inc/debug.php:161
+#: inc/debug.php:165
 msgid "when enabling/disabling verbose mode, the current log will be reset"
-msgstr ""
-"când se activează/dezactivează modul detaliat, jurnalul curent se resetează"
+msgstr "când se activează/dezactivează modul detaliat, jurnalul curent se resetează"
 
-#: inc/debug.php:169
+#: inc/debug.php:173
 msgid "Actions log"
 msgstr "Jurnal acțiuni"
 
-#: inc/debug.php:171
-msgid ""
-"The custom debug log for monitoring the events execution is not available "
-"currently, because your site configuration does not allow for writting files."
-msgstr ""
-"Jurnalul personalizat de urmărire a evenimentelor pentru depanare nu este "
-"disponibil momentan, deoarece configurația site-ului tău nu permite scrierea "
-"de fișiere."
+#: inc/debug.php:175
+msgid "The custom debug log for monitoring the events execution is not available currently, because your site configuration does not allow for writting files."
+msgstr "Jurnalul personalizat de urmărire a evenimentelor pentru depanare nu este disponibil momentan, deoarece configurația site-ului tău nu permite scrierea de fișiere."
 
-#: inc/debug.php:245
+#: inc/debug.php:247
 msgid "Status/Debug"
 msgstr "Stare/Depanare"
 
-#: inc/debug.php:247
-msgid ""
-"Here are some details about your current instance and the services versions. "
-"These are useful for troubleshooting."
-msgstr ""
-"Aici sunt câteva detalii despre instanța curentă și versiunile serviciilor. "
-"Acestea sunt utile pentru depanare."
+#: inc/debug.php:249
+msgid "Here are some details about your current instance and the services versions. These are useful for troubleshooting."
+msgstr "Aici sunt câteva detalii despre instanța curentă și versiunile serviciilor. Acestea sunt utile pentru depanare."
 
-#: inc/helper.php:221 inc/helper.php:252 inc/helper.php:261
+#: inc/helper.php:227
+#: inc/helper.php:258
+#: inc/helper.php:267
 msgid "Scale"
 msgstr "Scalează"
 
-#: inc/helper.php:232 inc/helper.php:2071
+#: inc/helper.php:238
+#: inc/helper.php:2077
 msgid "not found"
 msgstr "nu s-a găsit"
 
-#: inc/helper.php:246
+#: inc/helper.php:252
 msgid "Custom quality"
 msgstr "Calitate personalizată"
 
-#: inc/helper.php:255
+#: inc/helper.php:261
 msgid "must upscale to generate the expected size"
 msgstr "trebuie să se extindă pentru a genera dimensiunea așteptată"
 
-#: inc/helper.php:264
-msgid ""
-"The width and height of the original image are smaller than the requested "
-"image size."
-msgstr ""
-"Lățimea și înălțimea imaginii originale sunt mai mici decât dimensiunea "
-"dorită a imaginii."
+#: inc/helper.php:270
+msgid "The width and height of the original image are smaller than the requested image size."
+msgstr "Lățimea și înălțimea imaginii originale sunt mai mici decât dimensiunea dorită a imaginii."
 
-#: inc/helper.php:282 inc/helper.php:1065
+#: inc/helper.php:288
+#: inc/helper.php:1071
 msgid "Cleanup the metadata"
 msgstr "Curăță metadatele"
 
-#: inc/helper.php:284
-msgid ""
-"This image size shares the same file as the full size (the original image) "
-"and it cannot be altered."
-msgstr ""
-"Această dimensiune de imagine partajează același fișier cu mărimea completă "
-"(imaginea originală) și acesta nu poate fi modificat."
+#: inc/helper.php:290
+msgid "This image size shares the same file as the full size (the original image) and it cannot be altered."
+msgstr "Această dimensiune de imagine partajează același fișier cu mărimea completă (imaginea originală) și acesta nu poate fi modificat."
 
-#: inc/helper.php:287 inc/helper.php:1066
+#: inc/helper.php:293
+#: inc/helper.php:1072
 msgid "Delete"
 msgstr "Șterge"
 
-#: inc/helper.php:304 inc/helper.php:2076
+#: inc/helper.php:310
+#: inc/helper.php:2082
 msgid "Info"
 msgstr "Informații"
 
-#: inc/helper.php:326
+#: inc/helper.php:332
 msgid "Default quality"
 msgstr "Calitate implicită"
 
-#: inc/helper.php:626
-msgid ""
-"Skipping the regeneration of this file, the file already exists (as per "
-"settings)."
-msgstr ""
-"Se sare peste generarea acestui fișier, fișierul există deja (conform "
-"setărilor)."
+#: inc/helper.php:632
+msgid "Skipping the regeneration of this file, the file already exists (as per settings)."
+msgstr "Se sare peste generarea acestui fișier, fișierul există deja (conform setărilor)."
 
-#: inc/helper.php:902 inc/helper.php:918 inc/helper.php:1298
-#: inc/helper.php:1772 inc/helper.php:1926 inc/helper.php:2110
+#: inc/helper.php:908
+#: inc/helper.php:924
+#: inc/helper.php:1304
+#: inc/helper.php:1778
+#: inc/helper.php:1932
+#: inc/helper.php:2116
 msgid "Something went wrong!"
 msgstr "Ceva a decurs greșit!"
 
-#: inc/helper.php:945 inc/helper.php:1303 inc/helper.php:1764
-#: inc/helper.php:1918 inc/helper.php:2103
+#: inc/helper.php:951
+#: inc/helper.php:1309
+#: inc/helper.php:1770
+#: inc/helper.php:1924
+#: inc/helper.php:2109
 msgid "Done!"
 msgstr "Gata!"
 
-#: inc/helper.php:1049
-msgid ""
-"You can see below some additional information about the files generated, "
-"recorded in the database, also files left behind from image sizes that are "
-"no longer registered in your site, or other image processing (but not linked "
-"in the database anymore, hence, probably no used anymore)."
-msgstr ""
-"Poți vedea mai jos câteva informații adiționale despre fișierele generate, "
-"înregistrate în baza de date, de asemenea fișiere rămase în urmă de la "
-"dimensiunile de imagine care nu mai sunt înregistrate în site-ul tău, sau de "
-"la alte procesări de imagini (dar care nu mai sunt înregistrate în baza de "
-"date, așadar, probabil nefolosite)."
+#: inc/helper.php:1055
+msgid "You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore)."
+msgstr "Poți vedea mai jos câteva informații adiționale despre fișierele generate, înregistrate în baza de date, de asemenea fișiere rămase în urmă de la dimensiunile de imagine care nu mai sunt înregistrate în site-ul tău, sau de la alte procesări de imagini (dar care nu mai sunt înregistrate în baza de date, așadar, probabil nefolosite)."
 
-#: inc/helper.php:1053
+#: inc/helper.php:1059
 msgid "Nothing available."
 msgstr "Nimic disponibil."
 
-#: inc/helper.php:1061 inc/helper.php:1166 inc/helper.php:1276
+#: inc/helper.php:1067
+#: inc/helper.php:1172
+#: inc/helper.php:1282
 msgid "The file is missing!"
 msgstr "Fișierul lipsește!"
 
-#: inc/helper.php:1080 inc/helper.php:1244
+#: inc/helper.php:1086
+#: inc/helper.php:1250
 msgid "file size"
 msgstr "mărime fișier"
 
-#: inc/helper.php:1233
+#: inc/helper.php:1239
 msgid "Image Details & Options"
 msgstr "Detalii și opțiuni imagine"
 
-#: inc/helper.php:1242
+#: inc/helper.php:1248
 msgid "The original image"
 msgstr "Imaginea originală"
 
-#: inc/helper.php:1249
+#: inc/helper.php:1255
 msgid "Sub-size info"
 msgstr "Informații subdimensiune"
 
-#: inc/helper.php:1250
+#: inc/helper.php:1256
 msgid "Actions"
 msgstr "Acțiuni"
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1411
+#: inc/helper.php:1417
 msgid "<b>scale</b> to max width of <b>%s</b>px"
 msgstr "<b>scalează</b> la lățimea maximă de <b>%s</b>px"
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1414
+#: inc/helper.php:1420
 msgid "<b>scale</b> to max height of <b>%s</b>px"
 msgstr "<b>scalează</b> la înălțimea maximă de <b>%s</b>px"
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1417
+#: inc/helper.php:1423
 msgid "<b>crop</b> of <b>%1$s</b>x<b>%2$s</b>px"
 msgstr "<b>decupează</b> la <b>%1$s</b>x<b>%2$s</b>px"
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1420
-msgid ""
-"<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px"
-msgstr ""
-"<b>scalează</b> la lățimea maximă de <b>%s</b>px sau înălțimea maximă de "
-"<b>%2$s</b>px"
+#: inc/helper.php:1426
+msgid "<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px"
+msgstr "<b>scalează</b> la lățimea maximă de <b>%s</b>px sau înălțimea maximă de <b>%2$s</b>px"
 
-#: inc/helper.php:1443
+#: inc/helper.php:1449
 msgid "Click to generate a crop of the image from this position"
 msgstr "Fă clic pentru a genera o decupare a imaginii din această poziție"
 
-#: inc/helper.php:1460
+#: inc/helper.php:1466
 msgid "Default crop position from settings"
 msgstr "Poziția de decupare implicită din setări"
 
-#: inc/helper.php:1631 inc/helper.php:1822 inc/helper.php:1977
+#: inc/helper.php:1637
+#: inc/helper.php:1828
+#: inc/helper.php:1983
 msgid "Finishing up"
 msgstr "Finalizez"
 
-#: inc/helper.php:1692
+#: inc/helper.php:1698
 msgid "The cleanup for this file will be skipped (it is the original file)."
 msgstr "Curățarea pentru acest fișier va fi omisă (este fișierul original)."
 
-#: inc/helper.php:1702
+#: inc/helper.php:1708
 msgid "The cleanup for this file will be skipped (the size is registered)."
-msgstr ""
-"Curățarea pentru acest fișier va fi omisă (dimensiunea este înregistrată)."
+msgstr "Curățarea pentru acest fișier va fi omisă (dimensiunea este înregistrată)."
 
-#: inc/helper.php:1727 inc/helper.php:1739 inc/helper.php:1893
+#: inc/helper.php:1733
+#: inc/helper.php:1745
+#: inc/helper.php:1899
 msgid "has been deleted"
 msgstr "s-a șters"
 
-#: inc/helper.php:1734
+#: inc/helper.php:1740
 msgid "could not be deleted"
 msgstr "nu s-a putut elimina"
 
 #. Translators: %1$s - id.
-#: inc/helper.php:1748 inc/wp-cli.php:437 inc/wp-cli.php:442
+#: inc/helper.php:1754
+#: inc/wp-cli.php:535
+#: inc/wp-cli.php:540
 msgid "No cleanup necessary for %1$s"
 msgstr "Nu este necesară curățarea pentru %1$s"
 
-#: inc/helper.php:1872
+#: inc/helper.php:1878
 msgid "could not be found"
 msgstr "nu s-a putut găsi"
 
-#: inc/helper.php:1887
+#: inc/helper.php:1893
 msgid "could not be deleted (it is the original file)"
 msgstr "nu s-a putut șterge (este fișierul original)"
 
-#: inc/helper.php:2028
+#: inc/helper.php:2034
 msgid "The regeneration of this file will be skipped (as per settings)."
 msgstr "Regenerarea acestui fișier va fi omisă (conform setărilor)."
 
-#: inc/helper.php:2034 inc/helper.php:2050
+#: inc/helper.php:2040
+#: inc/helper.php:2056
 msgid "Could not be generated, the original is too small."
 msgstr "Nu s-a putut generat, originalul este prea mic."
 
-#: inc/helper.php:2042
+#: inc/helper.php:2048
 msgid "The file was regenerated."
 msgstr "Fișierul a fost regenerat."
 
-#: inc/helper.php:2048
+#: inc/helper.php:2054
 msgid "Could not be generated, the original file is missing."
 msgstr "Nu s-a putut genera, fișierul original lipsește."
 
 #. Translators: %1$d - count products, %2$d - total.
-#: inc/helper.php:2327
+#: inc/helper.php:2333
 msgid "%1$d items assessed of %2$d."
 msgstr "%1$d articole evaluate la %2$d."
 
-#: inc/helper.php:2377 inc/helper.php:2380 inc/parts/admin-sizes-table.php:91
-#: inc/parts/admin-sizes-table.php:185
+#: inc/helper.php:2383
+#: inc/helper.php:2386
+#: inc/parts/admin-sizes-table.php:96
+#: inc/parts/admin-sizes-table.php:190
 msgid "Cleanup"
 msgstr "Curăță"
 
-#: inc/helper.php:2428 inc/iterator.php:180
+#: inc/helper.php:2434
+#: inc/iterator.php:184
 msgid "Resume"
 msgstr "Reia"
 
-#: inc/helper.php:2436
+#: inc/helper.php:2442
 msgid "Regenerate All"
 msgstr "Regenerează tot"
 
-#: inc/helper.php:2452
+#: inc/helper.php:2458
 msgid "Cleanup Unused"
 msgstr "Curăță nefolosite"
 
-#: inc/helper.php:2453
+#: inc/helper.php:2459
 msgid "Cleanup Raw"
 msgstr "Curăță brut"
 
-#: inc/iterator.php:25
+#: inc/iterator.php:29
 msgid "Button"
 msgstr "Buton"
 
-#: inc/iterator.php:170
+#: inc/iterator.php:174
 msgid "Start"
 msgstr "Pornește"
 
-#: inc/iterator.php:175
+#: inc/iterator.php:179
 msgid "Stop"
 msgstr "Oprește"
 
-#: inc/iterator.php:190
+#: inc/iterator.php:194
 msgid "Finish"
 msgstr "Termină"
 
-#: inc/notice.php:48
+#: inc/notice.php:52
 msgid "Image Regenerate & Select Crop settings are not configured yet."
-msgstr ""
-"Setările pentru Regenerare și tăiere selectivă imagine nu sunt configurate "
-"încă."
+msgstr "Setările pentru Regenerare și tăiere selectivă imagine nu sunt configurate încă."
 
-#: inc/notice.php:94
-msgid ""
-"the original filesize is too big and the server does not have enough "
-"resources to process it"
-msgstr ""
-"mărimea fișierului original este prea mare și serverul nu are suficiente "
-"resurse pentru a-l procesa"
+#: inc/notice.php:98
+msgid "the original filesize is too big and the server does not have enough resources to process it"
+msgstr "mărimea fișierului original este prea mare și serverul nu are suficiente resurse pentru a-l procesa"
 
-#: inc/notice.php:104
+#: inc/notice.php:108
 msgid "the file you were trying to delete is the original file"
 msgstr "fișierul pe care ai încercat să îl ștergi este fișierul original"
 
-#: inc/notice.php:105
+#: inc/notice.php:109
 msgid "the sub-size points to the original file and that should not be removed"
-msgstr ""
-"sub-dimensiunea indică fișierul original și acesta nu ar trebui eliminat"
+msgstr "sub-dimensiunea indică fișierul original și acesta nu ar trebui eliminat"
 
-#: inc/notice.php:106
+#: inc/notice.php:110
 msgid "the file is missing"
 msgstr "fișierul lipsește"
 
-#: inc/notice.php:108
-msgid ""
-"the image from which the script is generating the specified sub-size does "
-"not have the proper size for resize/crop to a specific width and height"
-msgstr ""
-"imaginea din care scriptul generează subdimensiunea specificată nu are "
-"mărimea adecvată pentru redimensionare/decupare la o anumită lățime și "
-"înălțime"
+#: inc/notice.php:112
+msgid "the image from which the script is generating the specified sub-size does not have the proper size for resize/crop to a specific width and height"
+msgstr "imaginea din care scriptul generează subdimensiunea specificată nu are mărimea adecvată pentru redimensionare/decupare la o anumită lățime și înălțime"
 
-#: inc/notice.php:109
+#: inc/notice.php:113
 msgid "the attachment metadata is broken"
 msgstr "metadatele atașamentului sunt stricate"
 
-#: inc/notice.php:110
+#: inc/notice.php:114
 msgid "the original file is missing"
 msgstr "fișierul original lipsește"
 
-#: inc/notice.php:111
-msgid ""
-"the image that is processed is very big (rezolution or size) and the "
-"allocated memory on the server is not enough to handle the request"
-msgstr ""
-"imaginea care este procesată este foarte mare (rezoluție sau dimensiune) iar "
-"memoria alocată pe server nu este suficientă pentru a gestiona cererea"
+#: inc/notice.php:115
+msgid "the image that is processed is very big (rezolution or size) and the allocated memory on the server is not enough to handle the request"
+msgstr "imaginea care este procesată este foarte mare (rezoluție sau dimensiune) iar memoria alocată pe server nu este suficientă pentru a gestiona cererea"
 
-#: inc/notice.php:112
+#: inc/notice.php:116
 msgid "the overall processing on your site is too intensive"
 msgstr "procesarea generală pe site-ul tău este prea intensă"
 
 #. Translators: %1$s - reasons, %2$s - separator, %3$s - server side error.
-#: inc/notice.php:117
-msgid ""
-"<b>Unfortunately, there was an error</b>. Some of the execution was not "
-"successful. This can happen when: %1$s. %2$sSee the details: %3$s"
-msgstr ""
-"<b>Din păcate, a apărut o eroare</b>. O parte din execuție nu a avut succes. "
-"Acest lucru se poate întâmpla atunci când: %1$s. %2$sVezi detaliile: %3$s"
+#: inc/notice.php:121
+msgid "<b>Unfortunately, there was an error</b>. Some of the execution was not successful. This can happen when: %1$s. %2$sSee the details: %3$s"
+msgstr "<b>Din păcate, a apărut o eroare</b>. O parte din execuție nu a avut succes. Acest lucru se poate întâmpla atunci când: %1$s. %2$sVezi detaliile: %3$s"
 
-#: inc/parts/admin-advanced.php:13
-msgid ""
-"The advanced custom rules you configure below are global and will override "
-"all the other settings you set above."
-msgstr ""
-"Regulile avansate personalizate pe care le configurezi mai jos sunt globale "
-"și vor înlocui toate celelalte setări pe care le-ai setat mai sus."
+#: inc/parts/admin-advanced.php:17
+msgid "The advanced custom rules you configure below are global and will override all the other settings you set above."
+msgstr "Regulile avansate personalizate pe care le configurezi mai jos sunt globale și vor înlocui toate celelalte setări pe care le-ai setat mai sus."
 
-#: inc/parts/admin-advanced.php:13
-msgid ""
-"The custom rules will apply only if you set up the post to use one of the "
-"rules below, and only after that you upload images to that post."
-msgstr ""
-"Regulile personalizate se vor aplica numai dacă ai configurat articolul "
-"pentru a utiliza una dintre regulile de mai jos și numai după aceea încarci "
-"imagini la acel articol."
+#: inc/parts/admin-advanced.php:17
+msgid "The custom rules will apply only if you set up the post to use one of the rules below, and only after that you upload images to that post."
+msgstr "Regulile personalizate se vor aplica numai dacă ai configurat articolul pentru a utiliza una dintre regulile de mai jos și numai după aceea încarci imagini la acel articol."
 
-#: inc/parts/admin-advanced.php:16
-msgid ""
-"Advanced custom rules based on the post where the image will be uploaded"
-msgstr ""
-"Reguli personalizate avansate bazate pe articolul la care va fi încărcată "
-"imaginea"
+#: inc/parts/admin-advanced.php:20
+msgid "Advanced custom rules based on the post where the image will be uploaded"
+msgstr "Reguli personalizate avansate bazate pe articolul la care va fi încărcată imaginea"
 
-#: inc/parts/admin-advanced.php:18
-msgid ""
-"The order in which the rules are checked and have priority is: unattached, "
-"post ID, post type, post format, post parent, post tags, post categories, "
-"other taxonomies. Any of the rules that match first (in this order) will "
-"apply for the images that are generated when you upload images to that post "
-"(and the rest of the rules will be ignored). You can suppress at any time "
-"any of the rules and then enable these back as it suits you."
-msgstr ""
-"Ordinea în care regulile sunt verificate și au prioritate este: neatașat, ID "
-"articol, tip articol, format articol, părinte articol, etichete articol, "
-"categorii de articol, alte taxonomii. Oricare dintre regulile care se "
-"potrivește prima (în această ordine) se va aplica pentru imaginile care sunt "
-"generate atunci când încarci imagini la acel articol (și restul regulilor "
-"vor fi ignorate). Poți suprima oricând oricare dintre reguli și apoi le poți "
-"activa înapoi, după cum îți convine."
+#: inc/parts/admin-advanced.php:22
+msgid "The order in which the rules are checked and have priority is: unattached, post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first (in this order) will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you."
+msgstr "Ordinea în care regulile sunt verificate și au prioritate este: neatașat, ID articol, tip articol, format articol, părinte articol, etichete articol, categorii de articol, alte taxonomii. Oricare dintre regulile care se potrivește prima (în această ordine) se va aplica pentru imaginile care sunt generate atunci când încarci imagini la acel articol (și restul regulilor vor fi ignorate). Poți suprima oricând oricare dintre reguli și apoi le poți activa înapoi, după cum îți convine."
 
-#: inc/parts/admin-advanced.php:36
+#: inc/parts/admin-advanced.php:40
 msgid "Unattached"
 msgstr "Neatașat"
 
-#: inc/parts/admin-advanced.php:37
+#: inc/parts/admin-advanced.php:41
 msgid "Post ID"
 msgstr "ID articol"
 
-#: inc/parts/admin-advanced.php:38
+#: inc/parts/admin-advanced.php:42
 msgid "Post type"
 msgstr "Tip articol"
 
-#: inc/parts/admin-advanced.php:39
+#: inc/parts/admin-advanced.php:43
 msgid "Post parent ID"
 msgstr "ID articol părinte"
 
-#: inc/parts/admin-advanced.php:46
-msgid ""
-"Set below rules that would apply only for regenerating the featured image. "
-"An image becomes a \"Featured Image\" after the upload was already processed "
-"and when the post is saved, hence the rules set below can apply only when "
-"regenerating the image."
-msgstr ""
-"Setează mai jos reguli care s-ar aplica numai pentru regenerarea imaginii "
-"reprezentative. O imagine devine „Imagine reprezentativă” după ce încărcarea "
-"a fost deja procesată și când postarea este salvată, prin urmare regulile "
-"stabilite mai jos se pot aplica doar la regenerarea imaginii."
+#: inc/parts/admin-advanced.php:50
+msgid "Set below rules that would apply only for regenerating the featured image. An image becomes a \"Featured Image\" after the upload was already processed and when the post is saved, hence the rules set below can apply only when regenerating the image."
+msgstr "Setează mai jos reguli care s-ar aplica numai pentru regenerarea imaginii reprezentative. O imagine devine „Imagine reprezentativă” după ce încărcarea a fost deja procesată și când postarea este salvată, prin urmare regulile stabilite mai jos se pot aplica doar la regenerarea imaginii."
 
-#: inc/parts/admin-advanced.php:53 inc/parts/admin-advanced.php:127
+#: inc/parts/admin-advanced.php:57
+#: inc/parts/admin-advanced.php:131
 msgid "The post has"
 msgstr "Articolul are"
 
 #. Translators: %s - example.
-#: inc/parts/admin-advanced.php:57
+#: inc/parts/admin-advanced.php:61
 msgid "Categories"
 msgstr "Categorii"
 
-#: inc/parts/admin-advanced.php:62 inc/parts/admin-advanced.php:139
+#: inc/parts/admin-advanced.php:66
+#: inc/parts/admin-advanced.php:143
 msgid "Value"
 msgstr "Valoare"
 
-#: inc/parts/admin-advanced.php:71 inc/parts/admin-advanced.php:142
-#: inc/parts/admin-sizes-table.php:79 inc/parts/admin-sizes-table.php:159
+#: inc/parts/admin-advanced.php:75
+#: inc/parts/admin-advanced.php:146
+#: inc/parts/admin-sizes-table.php:84
+#: inc/parts/admin-sizes-table.php:164
 msgid "Force original"
 msgstr "Forțează originalul"
 
-#: inc/parts/admin-advanced.php:80 inc/parts/admin-advanced.php:154
+#: inc/parts/admin-advanced.php:84
+#: inc/parts/admin-advanced.php:158
 msgid "Generate only these image sizes for the rule"
 msgstr "Generează numai aceste dimensiuni de imagine pentru regulă"
 
-#: inc/parts/admin-advanced.php:89 inc/parts/admin-advanced.php:240
+#: inc/parts/admin-advanced.php:93
+#: inc/parts/admin-advanced.php:242
 msgid "Suppress"
 msgstr "Suprimă"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:161 inc/parts/admin-advanced.php:164
+#: inc/parts/admin-advanced.php:165
+#: inc/parts/admin-advanced.php:168
 msgid "This rule is %s"
 msgstr "Regula este %s"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:161
+#: inc/parts/admin-advanced.php:165
 msgid "suppressed"
 msgstr "suprimată"
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:164
+#: inc/parts/admin-advanced.php:168
 msgid "activated"
 msgstr "activată"
 
 #. Translators: %1$s type, %2$s value, %3$s only.
-#: inc/parts/admin-advanced.php:173
-msgid ""
-"uploading images to a post that has %1$s as %2$s will generate only the %3$s "
-"sizes."
-msgstr ""
-"încărcarea imaginilor într-un articol care are %1$s ca %2$s va genera numai "
-"dimensiunile %3$s."
+#: inc/parts/admin-advanced.php:176
+msgid "uploading images to a post that has %1$s as %2$s will generate only the %3$s sizes."
+msgstr "încărcarea imaginilor într-un articol care are %1$s ca %2$s va genera numai dimensiunile %3$s."
 
 #. Translators: %1$s - subsize.
-#: inc/parts/admin-advanced.php:181
+#: inc/parts/admin-advanced.php:184
 msgid "uploading unattached images will generate only the %1$s sizes."
 msgstr "încărcarea imaginilor neatașate vor genera numai dimensiunile %1$s."
 
 #. Translators: %1$s type, %2$s value, %3$s original, %4$s only.
-#: inc/parts/admin-advanced.php:187
-msgid ""
-"uploading images to a post that has %1$s as %2$s will force the original "
-"image to %3$s size and will generate only the %4$s sizes."
-msgstr ""
-"încărcarea imaginilor într-un articol care are %1$s ca %2$s va forța "
-"imaginea originală la dimensiunea %3$s și va genera numai dimensiunile %4$s."
+#: inc/parts/admin-advanced.php:190
+msgid "uploading images to a post that has %1$s as %2$s will force the original image to %3$s size and will generate only the %4$s sizes."
+msgstr "încărcarea imaginilor într-un articol care are %1$s ca %2$s va forța imaginea originală la dimensiunea %3$s și va genera numai dimensiunile %4$s."
 
-#: inc/parts/admin-advanced.php:220
+#: inc/parts/admin-advanced.php:222
 msgid "Rules that would apply only for regenerating the featured image"
-msgstr ""
-"Reguli care s-ar aplica numai pentru regenerarea imaginii reprezentative"
+msgstr "Reguli care s-ar aplica numai pentru regenerarea imaginii reprezentative"
 
-#: inc/parts/admin-cleanup.php:16
+#: inc/parts/admin-cleanup.php:20
 msgid "General Cleanup"
 msgstr "Curățare generală"
 
-#: inc/parts/admin-cleanup.php:19
+#: inc/parts/admin-cleanup.php:23
 msgid "It is recommended to run the cleanup using the command line tools."
-msgstr ""
-"Este recomandat să rulezi curățarea folosind instrumentele din linia de "
-"comandă."
+msgstr "Este recomandat să rulezi curățarea folosind instrumentele din linia de comandă."
 
-#: inc/parts/admin-cleanup.php:19
-msgid ""
-"However, if you do not have access to wp-cli on your server, you could run "
-"the cleanup actions by using the cron tasks, or, if you have a small set of "
-"images to cleanup, by using the plugin dialog."
-msgstr ""
-"Cu toate acestea, dacă nu ai acces la wp-cli pe serverul tău, poți rula "
-"acțiunile de curățare utilizând sarcinile cron sau, dacă ai un set mic de "
-"imagini de curățat, folosind caseta de dialog a modulului."
+#: inc/parts/admin-cleanup.php:23
+msgid "However, if you do not have access to wp-cli on your server, you could run the cleanup actions by using the cron tasks, or, if you have a small set of images to cleanup, by using the plugin dialog."
+msgstr "Cu toate acestea, dacă nu ai acces la wp-cli pe serverul tău, poți rula acțiunile de curățare utilizând sarcinile cron sau, dacă ai un set mic de imagini de curățat, folosind caseta de dialog a modulului."
 
-#: inc/parts/admin-cleanup.php:24
+#: inc/parts/admin-cleanup.php:28
 msgid "Cleanup unused files and keep currently registered sizes files"
-msgstr ""
-"Curăță fișierele neutilizate și păstrează fișierele de dimensiuni "
-"înregistrate momentan"
-
-#: inc/parts/admin-cleanup.php:27
-msgid ""
-"This type of cleanup is performed for all the attachments, and it removes "
-"any attachment unused file and keeps only the files associated with the "
-"currently registered image sizes. This action is also changing the "
-"attachment metadata in the database, and it is irreversible."
-msgstr ""
-"Acest tip de curățare se efectuează pentru toate atașamentele și elimină "
-"orice fișier atașat neutilizat și păstrează numai fișierele asociate cu "
-"dimensiunile de imagine înregistrate momental. Această acțiune modifică și "
-"metadatele atașamentului din baza de date, și este ireversibilă."
+msgstr "Curăță fișierele neutilizate și păstrează fișierele de dimensiuni înregistrate momentan"
 
 #: inc/parts/admin-cleanup.php:31
+msgid "This type of cleanup is performed for all the attachments, and it removes any attachment unused file and keeps only the files associated with the currently registered image sizes. This action is also changing the attachment metadata in the database, and it is irreversible."
+msgstr "Acest tip de curățare se efectuează pentru toate atașamentele și elimină orice fișier atașat neutilizat și păstrează numai fișierele asociate cu dimensiunile de imagine înregistrate momental. Această acțiune modifică și metadatele atașamentului din baza de date, și este ireversibilă."
+
+#: inc/parts/admin-cleanup.php:35
 msgid "Keep only the original/full size files"
 msgstr "Păstrează numai fișierele originale/la dimensiune completă"
 
-#: inc/parts/admin-cleanup.php:34
-msgid ""
-"This type of cleanup is performed for all the attachments, and it keeps only "
-"the file associated with the original/full size. This action is also "
-"changing the attachment metadata in the database, and it is irreversible. "
-"After this process is done, you need to regenerate the files for the desired "
-"image sizes."
-msgstr ""
-"Acest tip de curățare se efectuează pentru toate atașamentele și păstrează "
-"doar fișierul asociat cu dimensiunea originală/completă. Această acțiune "
-"modifică și metadatele atașamentului din baza de date și este ireversibilă. "
-"După finalizarea acestui proces, trebuie să regenerezi fișierele pentru "
-"dimensiunile de imagine dorite."
+#: inc/parts/admin-cleanup.php:38
+msgid "This type of cleanup is performed for all the attachments, and it keeps only the file associated with the original/full size. This action is also changing the attachment metadata in the database, and it is irreversible. After this process is done, you need to regenerate the files for the desired image sizes."
+msgstr "Acest tip de curățare se efectuează pentru toate atașamentele și păstrează doar fișierul asociat cu dimensiunea originală/completă. Această acțiune modifică și metadatele atașamentului din baza de date și este ireversibilă. După finalizarea acestui proces, trebuie să regenerezi fișierele pentru dimensiunile de imagine dorite."
 
-#: inc/parts/admin-cron.php:16
+#: inc/parts/admin-cron.php:20
 msgid "Cron Tasks"
 msgstr "Sarcini cron"
 
-#: inc/parts/admin-cron.php:22
-msgid ""
-"execute bulk actions using the WordPress cron tasks instead of the default "
-"interface"
-msgstr ""
-"execută acțiunile în bloc folosind sarcinile cron WordPress în loc de "
-"interfața implicită"
+#: inc/parts/admin-cron.php:26
+msgid "execute bulk actions using the WordPress cron tasks instead of the default interface"
+msgstr "execută acțiunile în bloc folosind sarcinile cron WordPress în loc de interfața implicită"
 
-#: inc/parts/admin-cron.php:25
-msgid ""
-"This option allows you to offload the execution of bulk actions to the "
-"WordPress cron tasks. This will run the intended actions as background "
-"tasks, instead of using the plugin default interface."
-msgstr ""
-"Această opțiune îți permite să descarci execuția acțiunilor în bloc în "
-"sarcinile cron WordPress. Acestea vor rula acțiunile dorite ca sarcini în "
-"fundal, în loc să utilizeze interfața implicită a modulului."
+#: inc/parts/admin-cron.php:29
+msgid "This option allows you to offload the execution of bulk actions to the WordPress cron tasks. This will run the intended actions as background tasks, instead of using the plugin default interface."
+msgstr "Această opțiune îți permite să descarci execuția acțiunilor în bloc în sarcinile cron WordPress. Acestea vor rula acțiunile dorite ca sarcini în fundal, în loc să utilizeze interfața implicită a modulului."
 
-#: inc/parts/admin-cron.php:25
-msgid ""
-"You will have to adjust the batches size based on your server settings and "
-"limitations."
-msgstr ""
-"Va trebui să ajustezi dimensiunea loturilor în funcție de setările și "
-"limitările serverului tău."
+#: inc/parts/admin-cron.php:29
+msgid "You will have to adjust the batches size based on your server settings and limitations."
+msgstr "Va trebui să ajustezi dimensiunea loturilor în funcție de setările și limitările serverului tău."
 
-#: inc/parts/admin-cron.php:25
-msgid ""
-"If the batch size is big, the whole processing will finish faster, but it "
-"can fail if your server runs out of resources. Setting a small size for the "
-"batch will encrease the time required for the whole processing to finish, "
-"but is less resource intensive."
-msgstr ""
-"Dacă dimensiunea lotului este mare, întreaga procesare se va termina mai "
-"repede, dar poate eșua dacă serverul tău rămâne fără resurse. Setarea unei "
-"dimensiuni mici pentru lot va crește timpul necesar pentru finalizarea "
-"întregii procesări, dar necesită mai puține resurse."
-
-#: inc/parts/admin-cron.php:31
-msgid "the number of images to be regenerated at each cron task iteration"
-msgstr ""
-"numărul de imagini care trebuie regenerate la fiecare iterație a sarcinii "
-"cron"
+#: inc/parts/admin-cron.php:29
+msgid "If the batch size is big, the whole processing will finish faster, but it can fail if your server runs out of resources. Setting a small size for the batch will encrease the time required for the whole processing to finish, but is less resource intensive."
+msgstr "Dacă dimensiunea lotului este mare, întreaga procesare se va termina mai repede, dar poate eșua dacă serverul tău rămâne fără resurse. Setarea unei dimensiuni mici pentru lot va crește timpul necesar pentru finalizarea întregii procesări, dar necesită mai puține resurse."
 
 #: inc/parts/admin-cron.php:35
-msgid "the number of images to be cleanup at each cron task iteration"
-msgstr ""
-"numărul de imagini care trebuie curățate la fiecare iterație a sarcinii cron"
+msgid "the number of images to be regenerated at each cron task iteration"
+msgstr "numărul de imagini care trebuie regenerate la fiecare iterație a sarcinii cron"
 
 #: inc/parts/admin-cron.php:39
-msgid ""
-"Cancel all currently scheduled tasks that aim to regenerate or cleanup the "
-"images."
-msgstr ""
-"Anulează toate activitățile programate momental, care au ca scop regenerarea "
-"sau curățarea imaginilor."
+msgid "the number of images to be cleanup at each cron task iteration"
+msgstr "numărul de imagini care trebuie curățate la fiecare iterație a sarcinii cron"
 
-#: inc/parts/admin-general.php:24
+#: inc/parts/admin-cron.php:43
+msgid "Cancel all currently scheduled tasks that aim to regenerate or cleanup the images."
+msgstr "Anulează toate activitățile programate momental, care au ca scop regenerarea sau curățarea imaginilor."
+
+#: inc/parts/admin-general.php:27
 msgid "allow actions for users with upload files capability"
-msgstr ""
-"permite acțiuni pentru utilizatori cu capabilitatea de încărcare fișiere"
+msgstr "permite acțiuni pentru utilizatori cu capabilitatea de încărcare fișiere"
 
-#: inc/parts/admin-general.php:29
+#: inc/parts/admin-general.php:32
 msgid "show small buttons in the media screen"
 msgstr "afișează butoanele mici în ecranul media"
 
-#: inc/parts/admin-general.php:34
+#: inc/parts/admin-general.php:37
 msgid "show buttons in the media screen in grid mode"
 msgstr "afișează butoanele în ecranul media în modul grilă"
 
-#: inc/parts/admin-general.php:39
+#: inc/parts/admin-general.php:42
 msgid "show attachment image sizes summary in the media screen"
-msgstr ""
-"afișează rezumatul dimensiunilor imaginilor atașamentelor în ecranul media"
+msgstr "afișează rezumatul dimensiunilor imaginilor atașamentelor în ecranul media"
 
-#: inc/parts/admin-general.php:46
+#: inc/parts/admin-general.php:49
 msgid "turn off the WooCommerce background thumbnails regenerate"
 msgstr "dezactivează regenerarea miniaturilor de fundal WooCommerce"
 
-#: inc/parts/admin-general.php:54
-msgid "sync ignored image sizes with EWWW Image Optimizer plugin"
-msgstr ""
-"sincronizează dimensiunile de imagini ignorate cu modulul EWWW Image "
-"Optimizer"
-
 #: inc/parts/admin-general.php:57
-msgid ""
-"This option allows you to sync <em>disable creation</em> image sizes from "
-"<b>EWWW Image Optimizer</b> plugin with the <em>global ignore</em> image "
-"sizes from <b>Image Regenerate & Select Crop</b>. In this way, when you "
-"update the settings in one of the plugins, the settings will be synced in "
-"the other plugin."
-msgstr ""
-"Această opțiune îți permite să sincronizezi dimensiunile de imagine "
-"<em>dezactivate de la generare</em> din modulul <b>EWWW Image Optimizer</b> "
-"cu dimensiunile de imagine <em>ignorate global</em> în <b>Image Regenerate & "
-"Select Crop</b>. În acest fel, când actualizezi setările într-unul dintre "
-"module, setările vor fi sincronizate în celălalt modul."
+msgid "sync ignored image sizes with EWWW Image Optimizer plugin"
+msgstr "sincronizează dimensiunile de imagini ignorate cu modulul EWWW Image Optimizer"
 
-#: inc/parts/admin-general.php:63
-msgid "bulk regenerate/cleanup execution starts from the most recent files"
-msgstr ""
-"execuția de regenerare/curățare în bloc începe de la cele mai recente fișiere"
+#: inc/parts/admin-general.php:60
+msgid "This option allows you to sync <em>disable creation</em> image sizes from <b>EWWW Image Optimizer</b> plugin with the <em>global ignore</em> image sizes from <b>Image Regenerate & Select Crop</b>. In this way, when you update the settings in one of the plugins, the settings will be synced in the other plugin."
+msgstr "Această opțiune îți permite să sincronizezi dimensiunile de imagine <em>dezactivate de la generare</em> din modulul <b>EWWW Image Optimizer</b> cu dimensiunile de imagine <em>ignorate global</em> în <b>Image Regenerate & Select Crop</b>. În acest fel, când actualizezi setările într-unul dintre module, setările vor fi sincronizate în celălalt modul."
 
 #: inc/parts/admin-general.php:66
-msgid ""
-"This option allows you to run the bulk cleanup and bulk regenerate actions "
-"starting from the most recent files you have in the media library until the "
-"most old image is found. This is useful if you know when you can pause/stop "
-"the bulk actions, for example when you already run the bulk actions for "
-"older files and you only need to run this for more recent uploads.<hr>By "
-"default, the bulk actions will run from the oldest to the newest files."
-msgstr ""
-"Această opțiune îți permite să rulezi acțiunile de curățare în bloc și "
-"regenerare în bloc pornind de la cele mai recente fișiere pe care le ai în "
-"biblioteca media, până când este găsită cea mai veche imagine. Acest lucru "
-"este util dacă știi când poți întrerupe/opri acțiunile în bloc, de exemplu "
-"când at rulat deja acțiunile în bloc pentru fișiere mai vechi și trebuie să "
-"rulezi acest lucru doar pentru încărcări mai recente.<hr>În mod implicit, "
-"acțiunile în bloc vor rula de la cele mai vechi la cele mai noi fișiere."
+msgid "bulk regenerate/cleanup execution starts from the most recent files"
+msgstr "execuția de regenerare/curățare în bloc începe de la cele mai recente fișiere"
 
-#: inc/parts/admin-general.php:71
+#: inc/parts/admin-general.php:69
+msgid "This option allows you to run the bulk cleanup and bulk regenerate actions starting from the most recent files you have in the media library until the most old image is found. This is useful if you know when you can pause/stop the bulk actions, for example when you already run the bulk actions for older files and you only need to run this for more recent uploads.<hr>By default, the bulk actions will run from the oldest to the newest files."
+msgstr "Această opțiune îți permite să rulezi acțiunile de curățare în bloc și regenerare în bloc pornind de la cele mai recente fișiere pe care le ai în biblioteca media, până când este găsită cea mai veche imagine. Acest lucru este util dacă știi când poți întrerupe/opri acțiunile în bloc, de exemplu când at rulat deja acțiunile în bloc pentru fișiere mai vechi și trebuie să rulezi acest lucru doar pentru încărcări mai recente.<hr>În mod implicit, acțiunile în bloc vor rula de la cele mai vechi la cele mai noi fișiere."
+
+#: inc/parts/admin-general.php:74
 msgid "do not cleanup the settings after the plugin is deactivated"
 msgstr "nu curățați setările după ce modulul este dezactivat"
 
-#: inc/parts/admin-general.php:77
+#: inc/parts/admin-general.php:80
 msgid "turn on the custom debug log for monitoring the events execution"
-msgstr ""
-"activează jurnalul de depanare personalizat, pentru monitorizarea execuției "
-"evenimentelor"
+msgstr "activează jurnalul de depanare personalizat, pentru monitorizarea execuției evenimentelor"
 
-#: inc/parts/admin-general.php:83
-msgid ""
-"filter and expose the image sizes available for the attachment display "
-"settings in the media dialog (any registered available size, even when there "
-"is no explicit filter applied)"
-msgstr ""
-"filtrează și expune dimensiunile de imagine disponibile pentru setările de "
-"afișare a atașamentelor în caseta de dialog media (orice dimensiune "
-"disponibilă înregistrată, chiar și atunci când nu este aplicat un filtru "
-"explicit)"
+#: inc/parts/admin-general.php:86
+msgid "filter and expose the image sizes available for the attachment display settings in the media dialog (any registered available size, even when there is no explicit filter applied)"
+msgstr "filtrează și expune dimensiunile de imagine disponibile pentru setările de afișare a atașamentelor în caseta de dialog media (orice dimensiune disponibilă înregistrată, chiar și atunci când nu este aplicat un filtru explicit)"
 
-#: inc/parts/admin-other-settings.php:16
+#: inc/parts/admin-other-settings.php:19
 msgid "Other Settings"
 msgstr "Alte setări"
 
-#: inc/parts/admin-other-settings.php:22
+#: inc/parts/admin-other-settings.php:25
 msgid "These settings are targetting only the post type you selected above."
-msgstr ""
-"Aceste setări vizează numai tipul de articol pe care l-ai selectat mai sus."
+msgstr "Aceste setări vizează numai tipul de articol pe care l-ai selectat mai sus."
 
-#: inc/parts/admin-other-settings.php:30
+#: inc/parts/admin-other-settings.php:33
 msgid "generate only perfect fit sizes"
 msgstr "generează numai mărimi care se încadrează perfect"
 
-#: inc/parts/admin-other-settings.php:33
-msgid ""
-"This option allows you to generate only images that match exactly the width "
-"and height of the crop/resize requirements, when the option is enabled. "
-"Otherwise, the script will generate anything possible for smaller images."
-msgstr ""
-"Această opțiune îți permite să generezi numai imagini care se potrivesc "
-"exact cu lățimea și înălțimea cerințelor de decupare/redimensionare, atunci "
-"când opțiunea este activată. În caz contrar, scriptul va genera orice este "
-"posibil pentru imagini mai mici."
-
-#: inc/parts/admin-other-settings.php:37
-msgid "attempt to upscale when generating only perfect fit sizes"
-msgstr ""
-"încercă să extinzi atunci când generezi numai dimensiuni încadrate perfecte"
+#: inc/parts/admin-other-settings.php:36
+msgid "This option allows you to generate only images that match exactly the width and height of the crop/resize requirements, when the option is enabled. Otherwise, the script will generate anything possible for smaller images."
+msgstr "Această opțiune îți permite să generezi numai imagini care se potrivesc exact cu lățimea și înălțimea cerințelor de decupare/redimensionare, atunci când opțiunea este activată. În caz contrar, scriptul va genera orice este posibil pentru imagini mai mici."
 
 #: inc/parts/admin-other-settings.php:40
-msgid ""
-"This option allows you to upscale the images when using the perfect fit "
-"option. This allows that images that have at least the original width close "
-"to the expected width or the original height close to the expected height "
-"(for example, the original image has 800x600 and the crop size 700x700) to "
-"be generated from a upscaled image."
-msgstr ""
-"Această opțiune îți permite să extinzi imaginile atunci când utilizezi "
-"opțiunea de încadrare perfectă. Acest lucru permite ca imaginile care au cel "
-"puțin lățimea inițială apropiată de lățimea așteptată sau înălțimea "
-"originală apropiată de înălțimea așteptată (de exemplu, imaginea originală "
-"are 800x600 și dimensiunea decupată 700x700) să fie generate dintr-o imagine "
-"extinsă."
+msgid "attempt to upscale when generating only perfect fit sizes"
+msgstr "încercă să extinzi atunci când generezi numai dimensiuni încadrate perfecte"
 
-#: inc/parts/admin-other-settings.php:44
+#: inc/parts/admin-other-settings.php:43
+msgid "This option allows you to upscale the images when using the perfect fit option. This allows that images that have at least the original width close to the expected width or the original height close to the expected height (for example, the original image has 800x600 and the crop size 700x700) to be generated from a upscaled image."
+msgstr "Această opțiune îți permite să extinzi imaginile atunci când utilizezi opțiunea de încadrare perfectă. Acest lucru permite ca imaginile care au cel puțin lățimea inițială apropiată de lățimea așteptată sau înălțimea originală apropiată de înălțimea așteptată (de exemplu, imaginea originală are 800x600 și dimensiunea decupată 700x700) să fie generate dintr-o imagine extinsă."
+
+#: inc/parts/admin-other-settings.php:47
 msgid "regenerate only missing files"
 msgstr "regenerează doar fișierele lipsă"
 
-#: inc/parts/admin-other-settings.php:47
-msgid ""
-"When using the bulk actions, this option allows you to regenerate only the "
-"images that do not exist, without overriding the existing ones."
-msgstr ""
-"Când utilizezi acțiunile în bloc, această opțiune îți permite să regenerezi "
-"doar imaginile care nu există, fără a le suprascriere pe cele existente."
+#: inc/parts/admin-other-settings.php:50
+msgid "When using the bulk actions, this option allows you to regenerate only the images that do not exist, without overriding the existing ones."
+msgstr "Când utilizezi acțiunile în bloc, această opțiune îți permite să regenerezi doar imaginile care nu există, fără a le suprascriere pe cele existente."
 
-#: inc/parts/admin-other-settings.php:51
+#: inc/parts/admin-other-settings.php:54
 msgid "regenerate/cleanup only featured images"
 msgstr "regenerează/curăță numai imaginile reprezentative"
 
-#: inc/parts/admin-other-settings.php:54
-msgid ""
-"When using the bulk actions, this option allows you to regenerate/cleanup "
-"only the images that are set as featured image for any of the posts."
-msgstr ""
-"Când utilizezi acțiunile în bloc, această opțiune îți permite să regenerezi/"
-"cureți numai imaginile care sunt setate ca imagine reprezentativă pentru "
-"oricare dintre articole."
+#: inc/parts/admin-other-settings.php:57
+msgid "When using the bulk actions, this option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts."
+msgstr "Când utilizezi acțiunile în bloc, această opțiune îți permite să regenerezi/cureți numai imaginile care sunt setate ca imagine reprezentativă pentru oricare dintre articole."
 
-#: inc/parts/admin-placeholder.php:18
+#: inc/parts/admin-placeholder.php:22
 msgid "Option to Enable Placeholders"
 msgstr "Opțiune activare substituenții"
 
-#: inc/parts/admin-placeholder.php:26
+#: inc/parts/admin-placeholder.php:30
 msgid "no placeholder"
 msgstr "fără substituent"
 
-#: inc/parts/admin-placeholder.php:33
+#: inc/parts/admin-placeholder.php:37
 msgid "force global"
 msgstr "forțează global"
 
-#: inc/parts/admin-placeholder.php:38
+#: inc/parts/admin-placeholder.php:42
 msgid "only missing images"
 msgstr "doar imagini lipsă"
 
-#: inc/parts/admin-placeholder.php:44
-msgid ""
-"This option allows you to display placeholders for the front-side images "
-"called programmatically (the images that are not embedded in the content "
-"with their src, but exposed using WordPress native functions). If there is "
-"no placeholder set, then the WordPress default behavior would be to display "
-"the full-size image instead of a missing image size, hence your pages might "
-"load slower, and when using grids, the items would not look even."
-msgstr ""
-"Această opțiune îți permite să afișezi substituenți pentru imaginile din "
-"față apelate programatic (imaginile care nu sunt încorporate în conținut cu "
-"src-ul lor, dar expuse folosind funcțiile native WordPress). Dacă nu există "
-"un substituent setat, atunci comportamentul implicit WordPress ar fi să "
-"afișeze imaginea la dimensiunea completă în loc de dimensiunea unei imagini "
-"lipsă, prin urmare paginile tale s-ar putea încărca mai lent, iar atunci "
-"când utilizezi grile, articolele nu ar arăta uniform."
-
-#: inc/parts/admin-placeholder.php:47
-msgid ""
-"This feature might not work properly, your placeholders folder is not "
-"writtable."
-msgstr ""
-"Este posibil ca această caracteristică să nu funcționeze corect, dosarul "
-"substituenți nu poate fi scris."
+#: inc/parts/admin-placeholder.php:48
+msgid "This option allows you to display placeholders for the front-side images called programmatically (the images that are not embedded in the content with their src, but exposed using WordPress native functions). If there is no placeholder set, then the WordPress default behavior would be to display the full-size image instead of a missing image size, hence your pages might load slower, and when using grids, the items would not look even."
+msgstr "Această opțiune îți permite să afișezi substituenți pentru imaginile din față apelate programatic (imaginile care nu sunt încorporate în conținut cu src-ul lor, dar expuse folosind funcțiile native WordPress). Dacă nu există un substituent setat, atunci comportamentul implicit WordPress ar fi să afișeze imaginea la dimensiunea completă în loc de dimensiunea unei imagini lipsă, prin urmare paginile tale s-ar putea încărca mai lent, iar atunci când utilizezi grile, articolele nu ar arăta uniform."
 
 #: inc/parts/admin-placeholder.php:51
-msgid ""
-"If you activate the \"force global\" option, all the images on the front-"
-"side that are related to posts will be replaced with the placeholders that "
-"mention the image size required. This is useful for debugging, to quickly "
-"identify the image sizes used for each layout and perhaps to help you "
-"regenerate the mission ones or decide what to keep or what to remove."
-msgstr ""
-"Dacă activezi opțiunea \"forțează global\", toate imaginile de pe partea din "
-"față care sunt legate de articole vor fi înlocuite cu substituenți care "
-"menționează dimensiunea necesară a imaginii. Acest lucru este util pentru "
-"depanare, pentru a identifica rapid dimensiunile imaginii utilizate pentru "
-"fiecare aspect și, probabil, pentru a te ajuta să le regenerezi pe cele "
-"lipsă sau pentru a decide ce să păstrezi sau ce să elimini."
+msgid "This feature might not work properly, your placeholders folder is not writtable."
+msgstr "Este posibil ca această caracteristică să nu funcționeze corect, dosarul substituenți nu poate fi scris."
 
-#: inc/parts/admin-placeholder.php:51
-msgid ""
-"If you activate the \"only missing images\" option, all the programmatically "
-"called images on the front-side that are related to posts and do not have "
-"the requested image size generated will be replaced with the placeholders "
-"that mention the image size required. This is useful for showing smaller "
-"images instead of the full-size images (as WordPress does by default), hence "
-"for speeding up the pages loading."
-msgstr ""
-"Dacă activezi opțiunea “doar imagini lipsă\", toate imaginile apelate "
-"programatic pe partea din față, care sunt legate de articole și care nu au "
-"imagine generată la dimensiunea dorită vor fi înlocuite cu substituenți care "
-"menționează dimensiunea necesare a imaginii. Acest lucru este util pentru "
-"afișarea imaginilor mai mici în loc de imagini complete (ce facă WordPress "
-"în mod implicit), prin urmare, pentru accelerarea încărcării paginilor."
+#: inc/parts/admin-placeholder.php:55
+msgid "If you activate the \"force global\" option, all the images on the front-side that are related to posts will be replaced with the placeholders that mention the image size required. This is useful for debugging, to quickly identify the image sizes used for each layout and perhaps to help you regenerate the mission ones or decide what to keep or what to remove."
+msgstr "Dacă activezi opțiunea \"forțează global\", toate imaginile de pe partea din față care sunt legate de articole vor fi înlocuite cu substituenți care menționează dimensiunea necesară a imaginii. Acest lucru este util pentru depanare, pentru a identifica rapid dimensiunile imaginii utilizate pentru fiecare aspect și, probabil, pentru a te ajuta să le regenerezi pe cele lipsă sau pentru a decide ce să păstrezi sau ce să elimini."
 
-#: inc/parts/admin-post-types.php:16
+#: inc/parts/admin-placeholder.php:55
+msgid "If you activate the \"only missing images\" option, all the programmatically called images on the front-side that are related to posts and do not have the requested image size generated will be replaced with the placeholders that mention the image size required. This is useful for showing smaller images instead of the full-size images (as WordPress does by default), hence for speeding up the pages loading."
+msgstr "Dacă activezi opțiunea “doar imagini lipsă\", toate imaginile apelate programatic pe partea din față, care sunt legate de articole și care nu au imagine generată la dimensiunea dorită vor fi înlocuite cu substituenți care menționează dimensiunea necesare a imaginii. Acest lucru este util pentru afișarea imaginilor mai mici în loc de imagini complete (ce facă WordPress în mod implicit), prin urmare, pentru accelerarea încărcării paginilor."
+
+#: inc/parts/admin-post-types.php:20
 msgid "Apply the settings below for the selected option"
 msgstr "Aplică setările de mai jos pentru opțiunea selectată"
 
-#: inc/parts/admin-post-types.php:20
-msgid ""
-"The options for which you made some settings are marked with * in the "
-"dropdown below."
-msgstr ""
-"Opțiunile pentru care ai făcut unele setări sunt marcate cu * în meniul "
-"vertical de mai jos."
+#: inc/parts/admin-post-types.php:24
+msgid "The options for which you made some settings are marked with * in the dropdown below."
+msgstr "Opțiunile pentru care ai făcut unele setări sunt marcate cu * în meniul vertical de mai jos."
 
-#: inc/parts/admin-post-types.php:20
-msgid ""
-"When you select a post type the general options will not be editable, only "
-"these that can apply to the images attached to a post will be available for "
-"updates."
-msgstr ""
-"Când selectezi un tip de articol, opțiunile generale nu vor fi modificate, "
-"doar acestea care se pot aplica imaginilor atașate unui articol vor fi "
-"disponibile pentru actualizări."
+#: inc/parts/admin-post-types.php:24
+msgid "When you select a post type the general options will not be editable, only these that can apply to the images attached to a post will be available for updates."
+msgstr "Când selectezi un tip de articol, opțiunile generale nu vor fi modificate, doar acestea care se pot aplica imaginilor atașate unui articol vor fi disponibile pentru actualizări."
 
-#: inc/parts/admin-post-types.php:30
+#: inc/parts/admin-post-types.php:34
 msgid "General settings (used as default for all images)"
 msgstr "Setări generale (utilizate implicit pentru toate imaginile)"
 
-#: inc/parts/admin-post-types.php:35
+#: inc/parts/admin-post-types.php:39
 msgid "custom post type"
 msgstr "tip articol personalizat"
 
 #. Translators: %1$s - post type name.
-#: inc/parts/admin-post-types.php:40
+#: inc/parts/admin-post-types.php:44
 msgid "Settings for images attached to a %1$s"
 msgstr "Setări pentru imaginile atașate la un %1$s"
 
-#: inc/parts/admin-post-types.php:52
-msgid ""
-"Select the general settings that applies to all, or only one of the post "
-"types if necessary."
-msgstr ""
-"Selectează setările generale care se aplică la toate, sau doar unui tip de "
-"articol dacă e necesar."
+#: inc/parts/admin-post-types.php:56
+msgid "Select the general settings that applies to all, or only one of the post types if necessary."
+msgstr "Selectează setările generale care se aplică la toate, sau doar unui tip de articol dacă e necesar."
 
-#: inc/parts/admin-reset.php:15
-msgid ""
-"This plugin provides the option to select image sizes that will be excluded "
-"from generating sub-sizes. By default, all image sizes defined in the system "
-"will be allowed (these are programmatically registered by the themes and "
-"plugins you activate in your site, without you even knowing about these). "
-"You can set up a global configuration, or more specific configuration for "
-"all images attached to a particular post type. If no particular settings are "
-"made for a post type, then the default general settings will be used."
-msgstr ""
-"Acest modul îți oferă opțiunea de a selecta dimensiunile imaginilor care vor "
-"fi excluse de la generarea de subdimensiuni. În mod implicit, toate "
-"dimensiunile imaginilor definite în sistem vor fi permise (acestea sunt "
-"înregistrate programatic de temele și modulele pe care le activezi în site-"
-"ul tău, fără ca tu să știi măcar despre acestea). Poți seta o configurație "
-"globală sau o configurație mai specifică pentru toate imaginile atașate unui "
-"anumit tip de articol. Dacă nu sunt făcute setări speciale pentru un tip de "
-"articol, atunci se vor folosi implicit setările generale."
+#: inc/parts/admin-reset.php:19
+msgid "This plugin provides the option to select image sizes that will be excluded from generating sub-sizes. By default, all image sizes defined in the system will be allowed (these are programmatically registered by the themes and plugins you activate in your site, without you even knowing about these). You can set up a global configuration, or more specific configuration for all images attached to a particular post type. If no particular settings are made for a post type, then the default general settings will be used."
+msgstr "Acest modul îți oferă opțiunea de a selecta dimensiunile imaginilor care vor fi excluse de la generarea de subdimensiuni. În mod implicit, toate dimensiunile imaginilor definite în sistem vor fi permise (acestea sunt înregistrate programatic de temele și modulele pe care le activezi în site-ul tău, fără ca tu să știi măcar despre acestea). Poți seta o configurație globală sau o configurație mai specifică pentru toate imaginile atașate unui anumit tip de articol. Dacă nu sunt făcute setări speciale pentru un tip de articol, atunci se vor folosi implicit setările generale."
 
-#: inc/parts/admin-reset.php:18
-msgid ""
-"Click the button to reset all settings for this plugin. The reset will not "
-"remove the custom registered image sizes, but only the settings."
-msgstr ""
-"Fă clic pe butonul pentru a anula toate setările pentru acest modul. "
-"Resetarea nu va elimina dimensiunile de imagine personalizate înregistrate, "
-"ci doar setările."
+#: inc/parts/admin-reset.php:22
+msgid "Click the button to reset all settings for this plugin. The reset will not remove the custom registered image sizes, but only the settings."
+msgstr "Fă clic pe butonul pentru a anula toate setările pentru acest modul. Resetarea nu va elimina dimensiunile de imagine personalizate înregistrate, ci doar setările."
 
-#: inc/parts/admin-sizes-table.php:11
-msgid ""
-"This option allows you to exclude globally from the application some of the "
-"image sizes that are registered through various plugins and themes options, "
-"that you perhaps do not need at all in your application (these are just "
-"stored in your folders and database but not actually used/visible on the "
-"front-end)."
-msgstr ""
-"Această opțiune îți permite să excluzi global din aplicație unele dintre "
-"dimensiunile de imagine care sunt înregistrate prin intermediul diferitelor "
-"module și opțiuni ale temelor, de care poate nu ai nevoie deloc în aplicația "
-"ta (acestea sunt doar stocate în dosare și în baza ta de date, dar nu sunt "
-"efectiv utilizate/vizibile pe partea din față)."
+#: inc/parts/admin-sizes-table.php:16
+msgid "This option allows you to exclude globally from the application some of the image sizes that are registered through various plugins and themes options, that you perhaps do not need at all in your application (these are just stored in your folders and database but not actually used/visible on the front-end)."
+msgstr "Această opțiune îți permite să excluzi global din aplicație unele dintre dimensiunile de imagine care sunt înregistrate prin intermediul diferitelor module și opțiuni ale temelor, de care poate nu ai nevoie deloc în aplicația ta (acestea sunt doar stocate în dosare și în baza ta de date, dar nu sunt efectiv utilizate/vizibile pe partea din față)."
 
-#: inc/parts/admin-sizes-table.php:11
-msgid ""
-"By excluding these, the unnecessary image sizes will not be generated at all."
-msgstr ""
-"Prin excluderea acestora, dimensiunile de imagine inutile nu vor fi generate "
-"deloc."
+#: inc/parts/admin-sizes-table.php:16
+msgid "By excluding these, the unnecessary image sizes will not be generated at all."
+msgstr "Prin excluderea acestora, dimensiunile de imagine inutile nu vor fi generate deloc."
 
-#: inc/parts/admin-sizes-table.php:13
-msgid ""
-"The quality option is allowing you to control the quality of the generated "
-"sub-sizes, starting from the quality of the image you upload. This can be "
-"useful for performance."
-msgstr ""
-"Opțiunea de calitate îți permite să controlezi calitatea subdimensiunilor "
-"generate, pornind de la calitatea imaginii pe care o încarci. Acest lucru "
-"poate fi util pentru performanță."
+#: inc/parts/admin-sizes-table.php:18
+msgid "The quality option is allowing you to control the quality of the generated sub-sizes, starting from the quality of the image you upload. This can be useful for performance."
+msgstr "Opțiunea de calitate îți permite să controlezi calitatea subdimensiunilor generate, pornind de la calitatea imaginii pe care o încarci. Acest lucru poate fi util pentru performanță."
 
-#: inc/parts/admin-sizes-table.php:13
-msgid ""
-"Be careful not to change the quality of the full image or the quality of the "
-"sub-size that you set as the forced original."
-msgstr ""
-"Ai grijă să nu modifici calitatea imaginii complete sau calitatea "
-"subdimensiunii pe care ai setat-o ​​ca original forțat."
+#: inc/parts/admin-sizes-table.php:18
+msgid "Be careful not to change the quality of the full image or the quality of the sub-size that you set as the forced original."
+msgstr "Ai grijă să nu modifici calitatea imaginii complete sau calitatea subdimensiunii pe care ai setat-o ​​ca original forțat."
 
-#: inc/parts/admin-sizes-table.php:13
-msgid ""
-"Setting a lower quality is recommended for smaller sub-sizes, that are "
-"generated from the full/original file."
-msgstr ""
-"Setarea unei calități mai scăzute este recomandată pentru subdimensiuni mai "
-"mici, care sunt generate din fișierul complet/original."
+#: inc/parts/admin-sizes-table.php:18
+msgid "Setting a lower quality is recommended for smaller sub-sizes, that are generated from the full/original file."
+msgstr "Setarea unei calități mai scăzute este recomandată pentru subdimensiuni mai mici, care sunt generate din fișierul complet/original."
 
-#: inc/parts/admin-sizes-table.php:15
-msgid ""
-"This option means that when uploading an image, the original image will be "
-"replaced completely by the image size you select (the image generated, "
-"scaled or cropped to a specific width and height will become the full size "
-"for that image going further)."
-msgstr ""
-"Această opțiune înseamnă că atunci când încarci o imagine, imaginea "
-"originală va fi înlocuită complet cu dimensiunea de imagine pe care o "
-"selectezi (imaginea generată, scalată sau decupată la o anumită lățime și "
-"înălțime va deveni dimensiunea completă pentru imaginea respectivă mergând "
-"mai departe)."
+#: inc/parts/admin-sizes-table.php:20
+msgid "This option means that when uploading an image, the original image will be replaced completely by the image size you select (the image generated, scaled or cropped to a specific width and height will become the full size for that image going further)."
+msgstr "Această opțiune înseamnă că atunci când încarci o imagine, imaginea originală va fi înlocuită complet cu dimensiunea de imagine pe care o selectezi (imaginea generată, scalată sau decupată la o anumită lățime și înălțime va deveni dimensiunea completă pentru imaginea respectivă mergând mai departe)."
 
-#: inc/parts/admin-sizes-table.php:15
-msgid ""
-"This can be very useful if you do not use the original image in any of the "
-"layouts at the full size, and this might save some storage space."
-msgstr ""
-"Acest lucru poate fi foarte util dacă nu utilizezi imaginea originală la "
-"dimensiunea maximă în niciunul dintre tipurile de aranjare în pagină, iar "
-"acest lucru ar putea economisi spațiu de stocare."
+#: inc/parts/admin-sizes-table.php:20
+msgid "This can be very useful if you do not use the original image in any of the layouts at the full size, and this might save some storage space."
+msgstr "Acest lucru poate fi foarte util dacă nu utilizezi imaginea originală la dimensiunea maximă în niciunul dintre tipurile de aranjare în pagină, iar acest lucru ar putea economisi spațiu de stocare."
 
-#: inc/parts/admin-sizes-table.php:15
-msgid ""
-"Leave \"nothing selected\" to keep the full/original image as the file you "
-"upload (default WordPress behavior)."
-msgstr ""
-"Lasă „nimic selectat” pentru a păstra imaginea completă/originală ca fișier "
-"pe care îl încarci (comportament WordPress implicit)."
+#: inc/parts/admin-sizes-table.php:20
+msgid "Leave \"nothing selected\" to keep the full/original image as the file you upload (default WordPress behavior)."
+msgstr "Lasă „nimic selectat” pentru a păstra imaginea completă/originală ca fișier pe care îl încarci (comportament WordPress implicit)."
 
-#: inc/parts/admin-sizes-table.php:17
-msgid ""
-"This option allows you to hide from the \"Image Regenerate & Select Crop "
-"Settings\" lightbox the details and options for the selected image sizes "
-"(when you or other admins are checking the image details, the hidden image "
-"sizes will not be shown)."
-msgstr ""
-"Această opțiune îți permite să ascunzi din caseta modală „Regenerare și "
-"tăiere selectivă imagine” detaliile și opțiunile pentru dimensiunile de "
-"imagine selectate (când tu sau alți administratori verificați detaliile "
-"imaginii, dimensiunile de imagine ascunse nu vor fi afișate)."
+#: inc/parts/admin-sizes-table.php:22
+msgid "This option allows you to hide from the \"Image Regenerate & Select Crop Settings\" lightbox the details and options for the selected image sizes (when you or other admins are checking the image details, the hidden image sizes will not be shown)."
+msgstr "Această opțiune îți permite să ascunzi din caseta modală „Regenerare și tăiere selectivă imagine” detaliile și opțiunile pentru dimensiunile de imagine selectate (când tu sau alți administratori verificați detaliile imaginii, dimensiunile de imagine ascunse nu vor fi afișate)."
 
-#: inc/parts/admin-sizes-table.php:17
-msgid ""
-"This is useful when you want to restrict from other users the functionality "
-"of crop or resize for particular image sizes, or to just hide the image "
-"sizes you added to global ignore."
-msgstr ""
-"Acest lucru este util atunci când vrei să restricționez de la alți "
-"utilizatori funcționalitatea de decupare sau redimensionare pentru anumite "
-"dimensiuni de imagine, sau pentru a ascunde doar dimensiunile de imagine pe "
-"care le-ai adăugat la ignorarea globală."
+#: inc/parts/admin-sizes-table.php:22
+msgid "This is useful when you want to restrict from other users the functionality of crop or resize for particular image sizes, or to just hide the image sizes you added to global ignore."
+msgstr "Acest lucru este util atunci când vrei să restricționez de la alți utilizatori funcționalitatea de decupare sau redimensionare pentru anumite dimensiuni de imagine, sau pentru a ascunde doar dimensiunile de imagine pe care le-ai adăugat la ignorarea globală."
 
-#: inc/parts/admin-sizes-table.php:17
-msgid ""
-"If you set the image size as ignored or unavailable, this will not be listed "
-"in the media screen when the dropdown of image sizes will be shown."
-msgstr ""
-"Dacă setezi dimensiunea de imagine ca fiind ignorată sau indisponibilă, "
-"aceasta nu va fi listată în ecranul media când va fi afișat meniul derulant "
-"cu dimensiunile de imagine."
+#: inc/parts/admin-sizes-table.php:22
+msgid "If you set the image size as ignored or unavailable, this will not be listed in the media screen when the dropdown of image sizes will be shown."
+msgstr "Dacă setezi dimensiunea de imagine ca fiind ignorată sau indisponibilă, aceasta nu va fi listată în ecranul media când va fi afișat meniul derulant cu dimensiunile de imagine."
 
-#: inc/parts/admin-sizes-table.php:19
-msgid ""
-"This option allows you to set a default crop position for the images "
-"generated for a particular image size. This option will be applied when you "
-"chose to regenerate an individual image or all of these, and also when a new "
-"image is uploaded."
-msgstr ""
-"Această opțiune îți permite să setezi o poziție implicită de decupare pentru "
-"imaginile generate pentru o anumită dimensiune de imagine. Această opțiune "
-"va fi aplicată atunci când alegi să regenerezi individual o imagine, sau pe "
-"toate acestea, precum și atunci când este încărcată o nouă imagine."
+#: inc/parts/admin-sizes-table.php:24
+msgid "This option allows you to set a default crop position for the images generated for a particular image size. This option will be applied when you chose to regenerate an individual image or all of these, and also when a new image is uploaded."
+msgstr "Această opțiune îți permite să setezi o poziție implicită de decupare pentru imaginile generate pentru o anumită dimensiune de imagine. Această opțiune va fi aplicată atunci când alegi să regenerezi individual o imagine, sau pe toate acestea, precum și atunci când este încărcată o nouă imagine."
 
-#: inc/parts/admin-sizes-table.php:21
-msgid ""
-"This option allows you to clean up all the image generated for a particular "
-"image size you already have in the application, and that you do not use or "
-"do not want to use anymore on the front-end."
-msgstr ""
-"Această opțiune îți permite să cureți toate imaginile generate pentru o "
-"anumită dimensiune de imagine pe care o ai deja în aplicație și pe care nu o "
-"utilizezi sau nu vrei să o mai folosești pe partea din față."
+#: inc/parts/admin-sizes-table.php:26
+msgid "This option allows you to clean up all the image generated for a particular image size you already have in the application, and that you do not use or do not want to use anymore on the front-end."
+msgstr "Această opțiune îți permite să cureți toate imaginile generate pentru o anumită dimensiune de imagine pe care o ai deja în aplicație și pe care nu o utilizezi sau nu vrei să o mai folosești pe partea din față."
 
-#: inc/parts/admin-sizes-table.php:21
-msgid ""
-"Please be careful, once you click to remove the images for a selected image "
-"size, the action is irreversible, the images generated up this point will be "
-"deleted from your folders and database records."
-msgstr ""
-"Te rog să ai grijă, odată ce faci clic pentru a elimina imaginile pentru o "
-"dimensiune de imagine selectată, acțiunea este ireversibilă, imaginile "
-"generate până în acest punct vor fi șterse din dosare și din înregistrările "
-"bazei de date."
+#: inc/parts/admin-sizes-table.php:26
+msgid "Please be careful, once you click to remove the images for a selected image size, the action is irreversible, the images generated up this point will be deleted from your folders and database records."
+msgstr "Te rog să ai grijă, odată ce faci clic pentru a elimina imaginile pentru o dimensiune de imagine selectată, acțiunea este ireversibilă, imaginile generate până în acest punct vor fi șterse din dosare și din înregistrările bazei de date."
 
-#: inc/parts/admin-sizes-table.php:21
+#: inc/parts/admin-sizes-table.php:26
 msgid "You can regenerate these later if you click the Regenerate button."
 msgstr "Le poți regenera mai târziu dacă faci clic pe butonul Regenerează."
 
-#: inc/parts/admin-sizes-table.php:23
-msgid ""
-"This option allows you to regenerate the images for the selected image size."
-msgstr ""
-"Această opțiune îți permite să regenerezi imaginile pentru dimensiunea de "
-"imagine selectată."
+#: inc/parts/admin-sizes-table.php:28
+msgid "This option allows you to regenerate the images for the selected image size."
+msgstr "Această opțiune îți permite să regenerezi imaginile pentru dimensiunea de imagine selectată."
 
-#: inc/parts/admin-sizes-table.php:23
-msgid ""
-"Please be careful, once you click the button to regenerate the selected "
-"image size, the action is irreversible, the images already generated will be "
-"overwritten."
-msgstr ""
-"Te rog să ai grijă, odată ce faci clic pe butonul pentru a regenera "
-"dimensiunea de imagine selectată, acțiunea este ireversibilă, imaginile deja "
-"generate vor fi suprascrise."
+#: inc/parts/admin-sizes-table.php:28
+msgid "Please be careful, once you click the button to regenerate the selected image size, the action is irreversible, the images already generated will be overwritten."
+msgstr "Te rog să ai grijă, odată ce faci clic pe butonul pentru a regenera dimensiunea de imagine selectată, acțiunea este ireversibilă, imaginile deja generate vor fi suprascrise."
 
-#: inc/parts/admin-sizes-table.php:31
+#: inc/parts/admin-sizes-table.php:36
 msgid "Image Sizes Options"
 msgstr "Opțiuni dimensiuni imagine"
 
-#: inc/parts/admin-sizes-table.php:35
+#: inc/parts/admin-sizes-table.php:40
 msgid "ignore image size"
 msgstr "ignora dimensiunea de imagine"
 
-#: inc/parts/admin-sizes-table.php:39
+#: inc/parts/admin-sizes-table.php:44
 msgid "image quality"
 msgstr "calitatea imaginii"
 
-#: inc/parts/admin-sizes-table.php:43
+#: inc/parts/admin-sizes-table.php:48
 msgid "force original option"
 msgstr "opțiunea original forțat"
 
-#: inc/parts/admin-sizes-table.php:47
+#: inc/parts/admin-sizes-table.php:52
 msgid "hide image preview from info view"
 msgstr "ascunde previzualizarea imaginii din caseta de informații"
 
-#: inc/parts/admin-sizes-table.php:51
+#: inc/parts/admin-sizes-table.php:56
 msgid "default crop position"
 msgstr "poziția implicită de decupare"
 
-#: inc/parts/admin-sizes-table.php:55
+#: inc/parts/admin-sizes-table.php:60
 msgid "cleanup sub-sizes"
 msgstr "curăță subdimensiunile"
 
-#: inc/parts/admin-sizes-table.php:59
+#: inc/parts/admin-sizes-table.php:64
 msgid "regenerate sub-sizes"
 msgstr "regenerează subdimensiunile"
 
-#: inc/parts/admin-sizes-table.php:67 inc/parts/admin-sizes-table.php:133
+#: inc/parts/admin-sizes-table.php:72
+#: inc/parts/admin-sizes-table.php:138
 msgid "Ignore"
 msgstr "Ignoră"
 
-#: inc/parts/admin-sizes-table.php:68
+#: inc/parts/admin-sizes-table.php:73
 msgid "disable sub-size"
 msgstr "dezactivează subdimensiunea"
 
-#: inc/parts/admin-sizes-table.php:71 inc/parts/admin-sizes-table.php:139
+#: inc/parts/admin-sizes-table.php:76
+#: inc/parts/admin-sizes-table.php:144
 msgid "Image Size Info"
 msgstr "Informații dimensiune imagine"
 
-#: inc/parts/admin-sizes-table.php:72
+#: inc/parts/admin-sizes-table.php:77
 msgid "name, scale/crop, dimension"
 msgstr "nume, scalare/decupare, dimensiune"
 
-#: inc/parts/admin-sizes-table.php:75 inc/parts/admin-sizes-table.php:150
+#: inc/parts/admin-sizes-table.php:80
+#: inc/parts/admin-sizes-table.php:155
 msgid "Quality"
 msgstr "Calitate"
 
-#: inc/parts/admin-sizes-table.php:76
+#: inc/parts/admin-sizes-table.php:81
 msgid "file compression"
 msgstr "comprimarea fișierului"
 
-#: inc/parts/admin-sizes-table.php:80
+#: inc/parts/admin-sizes-table.php:85
 msgid "use as original"
 msgstr "folosește ca original"
 
-#: inc/parts/admin-sizes-table.php:83 inc/parts/admin-sizes-table.php:165
+#: inc/parts/admin-sizes-table.php:88
+#: inc/parts/admin-sizes-table.php:170
 msgid "Hide Preview"
 msgstr "Ascunde previzualizarea"
 
-#: inc/parts/admin-sizes-table.php:84
+#: inc/parts/admin-sizes-table.php:89
 msgid "hide from views"
 msgstr "ascunde de la vedere"
 
-#: inc/parts/admin-sizes-table.php:87 inc/parts/admin-sizes-table.php:176
+#: inc/parts/admin-sizes-table.php:92
+#: inc/parts/admin-sizes-table.php:181
 msgid "Default Crop"
 msgstr "Decuparea implicită"
 
-#: inc/parts/admin-sizes-table.php:88
+#: inc/parts/admin-sizes-table.php:93
 msgid "initial position"
 msgstr "poziția inițială"
 
-#: inc/parts/admin-sizes-table.php:92
+#: inc/parts/admin-sizes-table.php:97
 msgid "removal"
 msgstr "îndepărtare"
 
-#: inc/parts/admin-sizes-table.php:96
+#: inc/parts/admin-sizes-table.php:101
 msgid "scale/crop"
 msgstr "scalează/decupează"
 
-#: inc/parts/admin-sizes-table.php:103
+#: inc/parts/admin-sizes-table.php:108
 msgid "reset to default quality"
 msgstr "resetează la calitatea implicită"
 
-#: inc/parts/admin-sizes-table.php:108
+#: inc/parts/admin-sizes-table.php:113
 msgid "nothing selected"
 msgstr "nimic selectat"
 
-#: inc/parts/admin-sizes-table.php:136
+#: inc/parts/admin-sizes-table.php:141
 msgid "global ignore"
 msgstr "ignoră global"
 
-#: inc/parts/admin-sizes-table.php:153
-msgid ""
-"Please be aware that your are changing the quality of the images going "
-"further for this images size!"
-msgstr ""
-"Te rog să reții că, mergând mai departe, modifici calitatea imaginilor "
-"pentru această dimensiune de imagine!"
+#: inc/parts/admin-sizes-table.php:158
+msgid "Please be aware that your are changing the quality of the images going further for this images size!"
+msgstr "Te rog să reții că, mergând mai departe, modifici calitatea imaginilor pentru această dimensiune de imagine!"
 
-#: inc/parts/admin-sizes-table.php:155
+#: inc/parts/admin-sizes-table.php:160
 msgid "quality"
 msgstr "calitate"
 
-#: inc/parts/admin-sizes-table.php:162
+#: inc/parts/admin-sizes-table.php:167
 msgid "force original"
 msgstr "forțează originalul"
 
-#: inc/parts/admin-sizes-table.php:168
+#: inc/parts/admin-sizes-table.php:173
 msgid "hide"
 msgstr "ascunde"
 
-#: inc/parts/admin-sizes-table.php:173
+#: inc/parts/admin-sizes-table.php:178
 msgid "unavailable"
 msgstr "indisponibil"
 
-#: inc/parts/media-template-2.php:125 inc/parts/media-template-3.php:160
+#: inc/parts/media-template-2.php:128
+#: inc/parts/media-template-3.php:163
 msgid "Sub-sizes"
 msgstr "Subdimensiuni"
 
 #. Translators: %1$s - plugin name.
-#: inc/parts/notice-update.php:14
+#: inc/parts/notice-update.php:19
 msgid "%1$s plugin was activated!"
 msgstr "Modulul %1$s a fost activat!"
 
 #. Translators: %1$s - extensions URL.
-#: inc/parts/notice-update.php:20
-msgid ""
-"<a href=\"%1$s\" rel=\"noreferrer\">%2$s Premium extensions</a> are "
-"available for this plugin."
-msgstr ""
-"<a href=\"%1$s\" rel=\"noreferrer\">%2$s Extensiile premium</a> sunt "
-"disponibile pentru acest plugin."
+#: inc/parts/notice-update.php:25
+msgid "<a href=\"%1$s\" rel=\"noreferrer\">%2$s Premium extensions</a> are available for this plugin."
+msgstr "<a href=\"%1$s\" rel=\"noreferrer\">%2$s Extensiile premium</a> sunt disponibile pentru acest plugin."
 
 #. Translators: %1$s - extensions URL.
-#: inc/parts/notice-update.php:27
-msgid ""
-"%5$sCheck out my other <a href=\"%1$s\" target=\"_blank\" "
-"rel=\"noreferrer\">%2$s free plugins</a> on WordPress.org and the <a "
-"href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s other extensions</a> "
-"available!"
-msgstr ""
-"%5$sVezi și celelalte <a href=\"%1$s\" target=\"_blank\" "
-"rel=\"noreferrer\">%2$s module gratuite</a> ale mele pe WordPress.org și <a "
-"href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s extensiile premium</"
-"a> disponibile!"
+#: inc/parts/notice-update.php:32
+msgid "%5$sCheck out my other <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">%2$s free plugins</a> on WordPress.org and the <a href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s other extensions</a> available!"
+msgstr "%5$sVezi și celelalte <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">%2$s module gratuite</a> ale mele pe WordPress.org și <a href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s extensiile premium</a> disponibile!"
 
-#: inc/parts/notice-update.php:47
+#: inc/parts/notice-update.php:52
 msgid "Dismiss this notice."
 msgstr "Respinge această notificare."
 
-#: inc/wp-cli.php:31
+#: inc/wp-cli.php:36
 msgid "Please specify the site id (1 if not multisite)."
 msgstr "Te rog să specifici ID-ul site-ului (1 dacă nu este multi-site)."
 
-#: inc/wp-cli.php:199
+#: inc/wp-cli.php:281
 msgid "Could not generate, the original is too small."
 msgstr "Nu se poate genera, originalul este prea mic."
 
-#: inc/wp-cli.php:204
+#: inc/wp-cli.php:286
 msgid "Could not generate, the original file is missing."
 msgstr "Nu se poate genera, fișierul original lipsește."
 
-#: inc/wp-cli.php:594 inc/wp-cli.php:665
+#: inc/wp-cli.php:700
+#: inc/wp-cli.php:771
 msgid "Permalinks refresh"
 msgstr "Reîmprospătează legăturile permanente"
 
-#: inc/wp-cli.php:596 inc/wp-cli.php:667
+#: inc/wp-cli.php:702
+#: inc/wp-cli.php:773
 msgid "Cache refresh"
 msgstr "Reîmprospătează cache"
 
-#: inc/wp-cli.php:643
+#: inc/wp-cli.php:749
 msgid "Rename files for attachment"
 msgstr "Redenumire fișiere pentru atașament"
 
-#: inc/wp-cli.php:650
+#: inc/wp-cli.php:756
 msgid "Find and replace database content for attachment files"
-msgstr ""
-"Găsește și înlocuiește conținutul din baza de date pentru fișierele "
-"atașamentului"
+msgstr "Găsește și înlocuiește conținutul din baza de date pentru fișierele atașamentului"
+
+#~ msgid "Every minute"
+#~ msgstr "În fiecare minut"
 
 #~ msgid "Resize"
 #~ msgstr "Redimensionare"
@@ -2434,9 +1930,7 @@ msgstr ""
 #~ msgstr "Resetează jurnalul"
 
 #~ msgid "Crop to exact dimensions (normally images are proportional)"
-#~ msgstr ""
-#~ "Decupează la dimensiuni exacte (în mod normal imaginile sunt "
-#~ "proporționale)"
+#~ msgstr "Decupează la dimensiuni exacte (în mod normal imaginile sunt proporționale)"
 
 #~ msgid "bytes"
 #~ msgstr "biți"

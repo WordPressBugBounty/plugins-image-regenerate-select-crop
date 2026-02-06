@@ -6,6 +6,11 @@
  * @version 8.0.0
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Class for Image Regenerate & Select Crop plugin adon Export/Import.
  */
@@ -219,8 +224,6 @@ class SIRSC_Adons_Import_Export {
 				<p><?php echo \wp_kses_post( $desc ); ?></p>
 				<?php require_once __DIR__ . '/parts/areas.php'; ?>
 			</div>
-
-			<?php \SIRSC\admin\show_donate_text(); ?>
 		</div>
 		<?php
 	}

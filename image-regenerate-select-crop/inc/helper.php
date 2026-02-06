@@ -8,6 +8,12 @@
 declare( strict_types=1 );
 namespace SIRSC\Helper;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+
+\defined( 'ABSPATH' ) || exit;
+
 const SIRSC_ICON_CROP    = '<div class="dashicons dashicons-image-crop"></div>';
 const SIRSC_ICON_SCALE   = '<div class="dashicons dashicons-editor-expand"></div>';
 const SIRSC_ICON_LINK    = '<div class="dashicons dashicons-admin-links"></div>';
@@ -973,16 +979,6 @@ function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '
 	} catch ( ErrorException $e ) {
 		error_log( 'sirsc exception ' . print_r( $e, 1 ) ); // phpcs:ignore
 	}
-}
-
-/**
- * Get changeset lock
- *
- * @param  int $id Post ID.
- * @return string
- */
-function get_last_update_time( $id ) {
-	return (string) \get_post_meta( $id, '_edit_lock', true );
 }
 
 /**

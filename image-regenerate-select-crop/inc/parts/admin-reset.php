@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Admin;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 ?>
 
 <div class="as-row a-middle">

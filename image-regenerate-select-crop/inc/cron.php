@@ -8,7 +8,11 @@
 declare( strict_types=1 );
 namespace SIRSC\Cron;
 
-define( 'SIRSC_JOBS_DB_VER', 2.1 );
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
+\define( 'SIRSC_JOBS_DB_VER', 2.1 );
 
 \add_action( 'init', __NAMESPACE__ . '\\add_cron_scheduled', 0 );
 \add_action( 'init', __NAMESPACE__ . '\\check_cron_scheduled_tasks' );

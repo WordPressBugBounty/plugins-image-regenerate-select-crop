@@ -5,6 +5,11 @@
  * @package sirsc
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+
+\defined( 'ABSPATH' ) || exit;
+
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	/**
 	 * Quick WP-CLI command to for SIRSC plugin that allows to regenerate and remove images.
@@ -67,8 +72,8 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
 			if ( ! empty( $args['the_command'] )
 				&& ( 'rawcleanup' === $args['the_command'] || 'resetcleanup' === $args['the_command'] ) ) {
-				// This is always all.
-				$args[2] = 'all';
+				$args[3] = $args[2] ?? 0; // Preserve the parent id if provided.
+				$args[2] = 'all'; // This is always all.
 			}
 
 			if ( 'seorename' !== $args['the_command'] ) {
@@ -82,7 +87,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 					}
 					WP_CLI::error( 'Please specify the image size name (one of: ' . $ims . ').' );
 					return;
-				} elseif ( 'all' === $args[2] || ! empty( $all_sizes[ $args[2] ] )
+				} elseif ( 'all' === $args[2] || substr_count( $args[2], ',' ) || ! empty( $all_sizes[ $args[2] ] )
 					|| ! empty( $args['is_cleanup'] ) ) {
 					$rez['size_name'] = trim( $args[2] );
 				} else {
@@ -115,6 +120,77 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				return true;
 			}
 			return false;
+		}
+
+		/**
+		 * Prepare the output line.
+		 *
+		 * @param string $line Line to be prepared.
+		 */
+		private static function prepare_line( $line ) {
+			static $upls;
+			if ( ! isset( $upls ) ) {
+				$upls = \wp_upload_dir();
+			}
+
+			if ( ! empty( $line ) ) {
+				$line = str_replace( trailingslashit( $upls['baseurl'] ), '/', $line );
+				$line = str_replace( trailingslashit( $upls['basedir'] ), '/', $line );
+			}
+
+			return $line;
+		}
+
+		/**
+		 * Outputs the command success.
+		 *
+		 * @param array  $lines  Lines from processing the command.
+		 * @param bool   $error  Is error.
+		 * @param string $prefix Lines prefix.
+		 */
+		private static function prepare_lines( $lines, $error = false, $prefix = '        - ' ) {
+			if ( ! empty( $lines ) ) {
+				foreach ( $lines as $k => $l ) {
+					if ( ! is_scalar( $l ) ) {
+						unset( $lines[ $k ] );
+					}
+				}
+
+				if ( empty( $lines ) ) {
+					return;
+				}
+
+				$color = $error ? '%y' : '%w';
+				$lines = implode( PHP_EOL . $prefix, $lines );
+				WP_CLI::line( WP_CLI::colorize( $color . $prefix . self::prepare_line( $lines, $error ) . '%n' ) );
+			}
+		}
+
+		/**
+		 * Start the prepared logs.
+		 */
+		private static function start_prepared_logs() {
+			global $sirsc_wpcli_info;
+			$sirsc_wpcli_info = [
+				'success' => [],
+				'error'   => [],
+			];
+		}
+
+		/**
+		 * Finish the prepared logs.
+		 */
+		private static function finish_prepared_logs() {
+			global $sirsc_wpcli_info;
+
+			if ( ! empty( $sirsc_wpcli_info['success'] ) ) {
+				self::prepare_lines( $sirsc_wpcli_info['success'], false );
+			}
+			if ( ! empty( $sirsc_wpcli_info['error'] ) ) {
+				self::prepare_lines( $sirsc_wpcli_info['error'], true );
+			}
+
+			self::start_prepared_logs();
 		}
 
 		/**
@@ -154,7 +230,8 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			$verbose = self::is_verbose( $assoc_args );
 			extract( $config ); // phpcs:ignore
 			if ( ! empty( $post_type ) && ! empty( $size_name ) && ! empty( $all_sizes ) ) {
-				global $wpdb;
+				self::start_prepared_logs();
+				global $wpdb, $sirsc_wpcli_info;
 
 				delete_transient( \SIRSC\Admin\get_count_trans_name( 'cleanup', $post_type, $size_name ) );
 				delete_transient( \SIRSC\Admin\get_count_trans_name( 'cleanup', '', $size_name ) );
@@ -164,12 +241,26 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 					$execute_sizes = $all_sizes;
 				} elseif ( ! empty( $all_sizes[ $size_name ] ) ) {
 					$execute_sizes[ $size_name ] = $size_name;
+				} elseif ( substr_count( $size_name, ',' ) ) {
+					$maybe = explode( ',', $size_name );
+					foreach ( $maybe as $size ) {
+						if ( ! empty( $all_sizes[ $size ] ) ) {
+							$execute_sizes[ $size ] = $all_sizes[ $size ];
+						}
+					}
 				}
-				$rows = self::make_query( $post_type, $parent_id, 'REGENERATE' );
+
+				$maybe_size_name = 'all' !== $size_name ? $size_name : '';
+
+				$rows = self::make_query( $post_type, $parent_id, 'REGENERATE', $maybe_size_name );
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
 					if ( ! empty( $execute_sizes ) ) {
 						foreach ( $execute_sizes as $sn => $sv ) {
-							$progress = \WP_CLI\Utils\make_progress_bar( '------- REGENERATE ' . $sn, count( $rows ) );
+							$progress = \WP_CLI\Utils\make_progress_bar(
+								WP_CLI::colorize( '------- %c' . $sn . '%n' ),
+								count( $rows )
+							);
+
 							foreach ( $rows as $v ) {
 								\SIRSC::load_settings_for_post_id( $v['ID'] );
 								if ( ! empty( \SIRSC::$settings['restrict_sizes_to_these_only'] )
@@ -181,33 +272,26 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 								\SIRSC\Debug\bulk_log_write( 'WP-CLI regenerate ' . $v['ID'] . ' ' . $sn );
 								$filename = get_attached_file( $v['ID'] );
 								if ( ! empty( $filename ) && file_exists( $filename ) ) {
-									$before = \SIRSC\Helper\get_last_update_time( $v['ID'] );
 									\SIRSC\Helper\make_images_if_not_exists( $v['ID'], $sn );
-									$after = \SIRSC\Helper\get_last_update_time( $v['ID'] );
-
-									$show_processed = false;
-									if ( $before !== $after ) {
-										$show_processed = true;
-									}
-
 									$th = wp_get_attachment_image_src( $v['ID'], $sn );
 									if ( ! empty( $th[0] ) ) {
-										if ( $verbose && $show_processed ) {
-											WP_CLI::success( $th[0] );
+										if ( $verbose ) {
+											$sirsc_wpcli_info['success'][] = $th[0];
 										}
 									} else {
 										$text = $filename . ' <em>' . esc_html__( 'Could not generate, the original is too small.', 'sirsc' ) . '</em>';
-										WP_CLI::line( wp_strip_all_tags( $text ) );
 										\SIRSC\Debug\bulk_log_write( 'WP-CLI * ' . $text );
+										$sirsc_wpcli_info['error'][] = wp_strip_all_tags( $text );
 									}
 								} else {
 									$text = $filename . ' <em>' . esc_html__( 'Could not generate, the original file is missing.', 'sirsc' ) . '</em>';
-									WP_CLI::line( wp_strip_all_tags( $text ) );
 									\SIRSC\Debug\bulk_log_write( 'WP-CLI * ' . $text );
+									$sirsc_wpcli_info['error'][] = wp_strip_all_tags( $text );
 								}
 								$progress->tick();
 							}
 							$progress->finish();
+							self::finish_prepared_logs();
 						}
 					}
 				}
@@ -254,6 +338,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			extract( $config ); // phpcs:ignore
 			if ( ! empty( $post_type ) && ! empty( $size_name ) && ! empty( $all_sizes ) ) {
 				global $wpdb;
+				self::start_prepared_logs();
 
 				delete_transient( \SIRSC\Admin\get_count_trans_name( 'cleanup', $post_type, $size_name ) );
 				delete_transient( \SIRSC\Admin\get_count_trans_name( 'cleanup', '', $size_name ) );
@@ -263,19 +348,34 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 					$execute_sizes = $all_sizes;
 				} elseif ( ! empty( $all_sizes[ $size_name ] ) || $is_forced ) {
 					$execute_sizes[ $size_name ] = $size_name;
+				} elseif ( substr_count( $size_name, ',' ) ) {
+					$maybe = explode( ',', $size_name );
+					foreach ( $maybe as $size ) {
+						if ( ! empty( $all_sizes[ $size ] ) ) {
+							$execute_sizes[ $size ] = $all_sizes[ $size ];
+						}
+					}
 				}
 
-				$rows = self::make_query( $post_type, $parent_id, 'REMOVE' );
+				$maybe_size_name = 'all' !== $size_name ? $size_name : '';
+
+				$rows = self::make_query( $post_type, $parent_id, 'REMOVE', $maybe_size_name );
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
 					if ( ! empty( $execute_sizes ) ) {
 						foreach ( $execute_sizes as $sn => $sv ) {
-							$progress = \WP_CLI\Utils\make_progress_bar( '------- REMOVE ' . $sn, count( $rows ) );
+							$progress = \WP_CLI\Utils\make_progress_bar(
+								WP_CLI::colorize( '------- %y' . $sn . '%n' ),
+								count( $rows )
+							);
+
 							foreach ( $rows as $v ) {
 								\SIRSC\Debug\bulk_log_write( 'WP-CLI cleanup ' . $v['ID'] . ' ' . $sn );
 								\SIRSC\Action\cleanup_attachment_one_size( $v['ID'], $sn, true, $verbose );
+
 								$progress->tick();
 							}
 							$progress->finish();
+							self::finish_prepared_logs();
 						}
 					}
 				}
@@ -306,15 +406,11 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		 * @param array $assoc_args Command associated arguments.
 		 */
 		public function rawcleanup( $args, $assoc_args ) { // phpcs:ignore
-			$config = self::prepare_args(
-				array_merge(
-					$args,
-					[
-						'is_cleanup'  => true,
-						'the_command' => 'rawcleanup',
-					]
-				)
-			);
+			$config = self::prepare_args( array_merge( $args, [
+				'is_cleanup'  => true,
+				'the_command' => 'rawcleanup',
+			] ) );
+
 			if ( ! is_array( $config ) ) {
 				return;
 			}
@@ -322,6 +418,8 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			$verbose = self::is_verbose( $assoc_args );
 			extract( $config ); // phpcs:ignore
 			if ( ! empty( $post_type ) ) {
+				self::start_prepared_logs();
+
 				$rows = self::make_query( $post_type, $parent_id, 'REMOVE' );
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
 					$progress = \WP_CLI\Utils\make_progress_bar(
@@ -334,6 +432,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 						$progress->tick();
 					}
 					$progress->finish();
+					self::finish_prepared_logs();
 				}
 				WP_CLI::success( 'ALL DONE!' );
 			} else {
@@ -379,6 +478,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			extract( $config ); // phpcs:ignore
 			if ( ! empty( $post_type ) ) {
 				global $wpdb;
+				self::start_prepared_logs();
 
 				$rows = self::make_query( $post_type, $parent_id, 'REMOVE' );
 				if ( ! empty( $rows ) && is_array( $rows ) ) {
@@ -424,12 +524,13 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 										@unlink( $removable ); // phpcs:ignore
 										// Make sure not to delete the original file.
 										if ( $verbose ) {
-											WP_CLI::success( $removable . ' ' . esc_html__( 'was removed', 'sirsc' ) );
+											$sirsc_wpcli_info['success'][] = $removable . ' ' . esc_html__( 'was removed', 'sirsc' );
 											do_action( 'sirsc_image_file_deleted', $v['ID'], $removable );
 										}
 									} elseif ( $verbose ) {
 										$text = $removable . ' <em>' . esc_html__( 'Could not remove', 'sirsc' ) . ' . ' . esc_html__( 'The image is missing or it is the original file.', 'sirsc' ) . '</em>';
-										WP_CLI::line( wp_strip_all_tags( $text ) );
+
+										$sirsc_wpcli_info['error'] = wp_strip_all_tags( $text );
 										\SIRSC\Debug\bulk_log_write( 'WP-CLI * ' . $text );
 									}
 								} elseif ( $verbose ) {
@@ -453,6 +554,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 						$progress->tick();
 					}
 					$progress->finish();
+					self::finish_prepared_logs();
 				}
 				WP_CLI::success( 'ALL DONE!' );
 			} else {
@@ -463,42 +565,49 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		/**
 		 * Return the posts that match the SIRSC criteria.
 		 *
-		 * @param  string         $post_type Maybe a post type.
-		 * @param  string|integer $parent_id Attachment parents (numeric or * for all).
-		 * @param  string         $action    Action title, regenerate or remove.
+		 * @param  string         $post_type  Maybe a post type.
+		 * @param  string|integer $parent_id  Attachment parents (numeric or * for all).
+		 * @param  string         $action     Action title, regenerate or remove.
+		 * @param  string         $maybe_size Maybe the sub-size name.
 		 * @return mixed
 		 */
-		private function make_query( $post_type = '', $parent_id = 0, $action = 'REGENERATE' ) { // phpcs:ignore
+		private function make_query( $post_type = '', $parent_id = 0, $action = 'REGENERATE', $maybe_size = '' ) { // phpcs:ignore
 			global $wpdb;
 			$args  = [];
 			$query = ' SELECT p.ID FROM ' . $wpdb->posts . ' as p ';
-			if ( ! empty( $post_type ) && 'all' !== $post_type ) {
-				$query .= ' INNER JOIN ' . $wpdb->posts . ' as parent ON( parent.ID = p.post_parent ) ';
+
+			$featured = ! empty( \SIRSC::$settings['regenerate_only_featured'] );
+			$text     = preg_replace( '/\s\s+/', ' ', sprintf(
+				'%1$s %2$s OF %3$s %4$s %5$s',
+				$action,
+				! empty( $maybe_size ) ? 'THE %m' . $maybe_size . '%n SUB-SIZE' : '%mall%n SUB-SIZES',
+				$featured ? '%mFEATURED%n' : 'ALL',
+				'IMAGES ASSOCIATED TO',
+				! empty( $parent_id )
+					? '%mPOST ' . $parent_id . '%n'
+					: ( 'all' === $post_type ? 'ALL TYPES' : '%m' . $post_type . '%n TYPE' ),
+			) );
+
+			WP_CLI::line( WP_CLI::colorize( trim( strtoupper( $text ) ) ) );
+
+			if ( $featured ) {
+				$query .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm ON( pm.meta_value = p.ID and pm.meta_key = \'_thumbnail_id\' ) ';
 			}
 
-			if ( ! empty( \SIRSC::$settings['regenerate_only_featured'] ) ) {
-				$query .= ' INNER JOIN ' . $wpdb->postmeta . ' as pm ON( pm.meta_value = p.ID and pm.meta_key = \'_thumbnail_id\' ) ';
+			if ( empty( $parent_id ) && ! empty( $post_type ) && 'all' !== $post_type ) {
+				$query .= ' INNER JOIN ' . $wpdb->posts . ' as parent ON( parent.ID = p.post_parent ) ';
 			}
 
 			$query .= ' WHERE ( p.post_mime_type like %s AND p.post_mime_type not like %s ) ';
 			$args[] = '%' . $wpdb->esc_like( 'image/' ) . '%';
 			$args[] = '%' . $wpdb->esc_like( 'image/svg' ) . '%';
 
-			if ( ! empty( $post_type ) && 'all' !== $post_type ) {
-				$query .= ' AND parent.post_type = %s ';
+			if ( ! empty( $parent_id ) ) {
+				$query .= ' AND p.post_parent = %d ';
+				$args[] = $parent_id;
+			} elseif ( ! empty( $post_type ) && 'all' !== $post_type ) {
+				$query .= ' AND parent.post_type = %s AND parent.ID IS NOT NULL';
 				$args[] = $post_type;
-				if ( ! empty( $parent_id ) ) {
-					$query .= ' AND parent.ID = %d ';
-					$args[] = $parent_id;
-					WP_CLI::line( '------- EXECUTE ' . $action . ' FOR IMAGES ASSOCIATED TO ' . $post_type . ' WITH ID = ' . $parent_id . ' -------' );
-				} else {
-					$query .= ' AND parent.ID IS NOT NULL ';
-					WP_CLI::line( '------- EXECUTE ' . $action . ' FOR ALL IMAGES ASSOCIATED TO ' . $post_type . ' -------' );
-				}
-			}
-
-			if ( 'all' === $post_type ) {
-				WP_CLI::line( '------- EXECUTE ' . $action . ' FOR ALL IMAGES ASSOCIATED TO ALL TYPES -------' );
 			}
 
 			if ( ! empty( \SIRSC::$settings['bulk_actions_descending'] ) ) {

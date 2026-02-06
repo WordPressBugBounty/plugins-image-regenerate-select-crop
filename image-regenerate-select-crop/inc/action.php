@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC\Action;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 /**
  * Compute list of original items from the meta.
  *
@@ -51,11 +55,19 @@ function handle_cleanup_removable_file( $id, $removable, $wpcli = false, $verbos
 		return;
 	}
 
+	global $sirsc_wpcli_info;
+	if ( empty( $sirsc_wpcli_info ) ) {
+		$sirsc_wpcli_info = [
+			'success' => [],
+			'error'   => [],
+		];
+	}
+
 	if ( file_exists( $removable ) ) {
 		@unlink( $removable ); // phpcs:ignore
 
 		if ( $wpcli && $verbose ) {
-			\WP_CLI::success( $removable . ' ' . \esc_html__( 'was removed', 'sirsc' ) );
+			$sirsc_wpcli_info['success'][] = $removable . ' ' . \esc_html__( 'was removed', 'sirsc' );
 		}
 
 		// Notify other scripts that the file was deleted.
@@ -66,10 +78,11 @@ function handle_cleanup_removable_file( $id, $removable, $wpcli = false, $verbos
 		if ( $wpcli ) {
 			if ( $verbose ) {
 				// Translators: %d - the attachment id.
-				\WP_CLI::success( sprintf( \esc_html__( 'METADATA cleanup performed for %d.', 'sirsc' ), $id ) );
+				$sirsc_wpcli_info['success'][] = sprintf( \esc_html__( 'METADATA cleanup performed for %d.', 'sirsc' ), $id );
 			}
 			\SIRSC\Debug\bulk_log_write( 'WP-CLI * ' . $text );
-			\WP_CLI::line( \wp_strip_all_tags( $text ) );
+
+			$sirsc_wpcli_info['error'][] = \wp_strip_all_tags( $text );
 		}
 	}
 }

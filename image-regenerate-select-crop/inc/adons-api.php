@@ -5,6 +5,10 @@
  * @package sirsc
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 /**
  * Adons API class for SIRSC plugin.
  */

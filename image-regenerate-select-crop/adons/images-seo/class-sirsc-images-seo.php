@@ -6,6 +6,11 @@
  * @version 8.0.0
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Class for Image Regenerate & Select Crop plugin adon Images SEO.
  */
@@ -256,7 +261,7 @@ class SIRSC_Adons_Images_SEO {
 
 			$extra_hints = [];
 			if ( ! empty( self::$settings['track_initial'] ) ) {
-				$was_tracked = get_post_meta( $id, '_seoimg_initial_filename' );
+				$was_tracked = get_post_meta( $id, '_seoimg_initial_filename', true );
 				if ( empty( $was_tracked ) ) {
 					// Only the first time.
 					$finfo = pathinfo( $meta['file'] );

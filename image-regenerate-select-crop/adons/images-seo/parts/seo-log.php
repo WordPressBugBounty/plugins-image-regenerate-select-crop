@@ -6,6 +6,10 @@
  * @version 8.0.0
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+defined( 'ABSPATH' ) || exit;
 ?>
 <div class="as-box bg-secondary">
 	<div class="label-row as-title">

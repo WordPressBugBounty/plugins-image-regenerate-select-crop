@@ -8,8 +8,12 @@
 declare( strict_types=1 );
 namespace SIRSC\Placeholder;
 
-define( 'SIRSC_PLACEHOLDER_DIR', SIRSC_DIR . 'assets/placeholders' );
-define( 'SIRSC_PLACEHOLDER_URL', \esc_url( SIRSC_URL . 'assets/placeholders' ) );
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
+\define( 'SIRSC_PLACEHOLDER_DIR', SIRSC_DIR . 'assets/placeholders' );
+\define( 'SIRSC_PLACEHOLDER_URL', \esc_url( SIRSC_URL . 'assets/placeholders' ) );
 
 \add_filter( 'image_downsize', __NAMESPACE__ . '\\image_downsize_placeholder_force_global', 10, 3 );
 \add_filter( 'image_downsize', __NAMESPACE__ . '\\image_downsize_placeholder_only_missing', 10, 3 );

@@ -1,26 +1,27 @@
-# Copyright (C) 2025 Iulia Cazan
+# Copyright (C) 2026 Iulia Cazan
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Image Regenerate & Select Crop 8.1.0\n"
+"Project-Id-Version: Image Regenerate & Select Crop 8.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sirsc\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-19T13:54:27+00:00\n"
+"POT-Creation-Date: 2026-01-31T14:26:28+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: sirsc\n"
 
 #. Plugin Name of the plugin
 #: image-regenerate-select-crop.php
-#: inc/admin.php:88
-#: inc/admin.php:97
-#: inc/admin.php:98
-#: inc/admin.php:349
-#: inc/parts/notice-update.php:11
+#: inc/admin.php:93
+#: inc/admin.php:102
+#: inc/admin.php:103
+#: inc/admin.php:354
+#: inc/admin.php:599
+#: inc/parts/notice-update.php:16
 msgid "Image Regenerate & Select Crop"
 msgstr ""
 
@@ -44,1854 +45,1872 @@ msgstr ""
 msgid "https://profiles.wordpress.org/iulia-cazan"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:97
+#: adons/images-seo/class-sirsc-images-seo.php:102
 msgid "Bulk Rename"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:265
+#: adons/images-seo/class-sirsc-images-seo.php:270
 msgid "The initial filename was recorded."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:273
+#: adons/images-seo/class-sirsc-images-seo.php:278
 msgid "the alternative text"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:278
+#: adons/images-seo/class-sirsc-images-seo.php:283
 msgid "the caption"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:283
+#: adons/images-seo/class-sirsc-images-seo.php:288
 msgid "the title"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:288
+#: adons/images-seo/class-sirsc-images-seo.php:293
 msgid "the permalink"
 msgstr ""
 
 #. Translators: %s - attribute.
-#: adons/images-seo/class-sirsc-images-seo.php:293
+#: adons/images-seo/class-sirsc-images-seo.php:298
 msgid "Updates: %s."
 msgstr ""
 
 #. Translators: %s - path.
-#: adons/images-seo/class-sirsc-images-seo.php:308
-#: adons/images-seo/class-sirsc-images-seo.php:329
+#: adons/images-seo/class-sirsc-images-seo.php:313
+#: adons/images-seo/class-sirsc-images-seo.php:334
 msgid "No changes for %s."
 msgstr ""
 
 #. Translators: %1$d - sub-sizes replaced.
-#: adons/images-seo/class-sirsc-images-seo.php:378
+#: adons/images-seo/class-sirsc-images-seo.php:383
 msgid "+ %1$d more sub-sizes"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:406
+#: adons/images-seo/class-sirsc-images-seo.php:411
 msgid "Attachment ID"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:406
+#: adons/images-seo/class-sirsc-images-seo.php:411
 msgid "New Title"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:429
-#: adons/images-seo/class-sirsc-images-seo.php:465
-#: adons/images-seo/class-sirsc-images-seo.php:478
-#: adons/images-seo/class-sirsc-images-seo.php:479
-#: inc/adons.php:158
+#: adons/images-seo/class-sirsc-images-seo.php:434
+#: adons/images-seo/class-sirsc-images-seo.php:470
+#: adons/images-seo/class-sirsc-images-seo.php:483
+#: adons/images-seo/class-sirsc-images-seo.php:484
+#: inc/adons.php:162
 msgid "Images SEO"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:451
+#: adons/images-seo/class-sirsc-images-seo.php:456
 msgid "You can rename this attachment files (including the generated sub-sizes) and other attributes."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:453
+#: adons/images-seo/class-sirsc-images-seo.php:458
 msgid "You can rename and update some attributes of the files uploaded or attached to this post."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:461
-#: adons/images-seo/class-sirsc-images-seo.php:516
-#: image-regenerate-select-crop.php:3169
-#: inc/plugin.php:43
+#: adons/images-seo/class-sirsc-images-seo.php:466
+#: adons/images-seo/class-sirsc-images-seo.php:521
+#: image-regenerate-select-crop.php:3245
+#: inc/plugin.php:27
 msgid "Settings"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:520
-#: adons/images-seo/parts/bulk-rename-output.php:23
+#: adons/images-seo/class-sirsc-images-seo.php:525
+#: adons/images-seo/parts/bulk-rename-output.php:27
 msgid "Bulk rename"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:525
-#: adons/images-seo/parts/rename-attachment.php:13
-#: adons/images-seo/parts/rename-attachment.php:21
-#: adons/images-seo/parts/rename-other.php:13
-#: adons/images-seo/parts/rename-other.php:21
+#: adons/images-seo/class-sirsc-images-seo.php:530
+#: adons/images-seo/parts/rename-attachment.php:17
+#: adons/images-seo/parts/rename-attachment.php:25
+#: adons/images-seo/parts/rename-other.php:17
+#: adons/images-seo/parts/rename-other.php:25
 msgid "Rename"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:601
-#: adons/images-seo/class-sirsc-images-seo.php:609
+#: adons/images-seo/class-sirsc-images-seo.php:606
+#: adons/images-seo/class-sirsc-images-seo.php:614
 msgid "Rename result"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:617
+#: adons/images-seo/class-sirsc-images-seo.php:622
 msgid "You must select an image."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:632
-#: adons/images-seo/class-sirsc-images-seo.php:659
-#: adons/images-seo/parts/bulk-rename-output.php:27
+#: adons/images-seo/class-sirsc-images-seo.php:637
+#: adons/images-seo/class-sirsc-images-seo.php:664
+#: adons/images-seo/parts/bulk-rename-output.php:31
 msgid "If you want to start the bulk rename of images, you have to select at least one post type."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:635
+#: adons/images-seo/class-sirsc-images-seo.php:640
 msgid "For performance and speed reasons it is reccommedned to use the wp-cli commands from your terminal, specially if you have a large set of files. When you run the wp-cli command it will prompt for you to enter the site id (or 1 if you are not using a multi-site) and the post type for which you want to bulk rename the files (separate with , if you have more)."
 msgstr ""
 
 #. Translators: %s - example.
-#: adons/images-seo/class-sirsc-images-seo.php:639
-#: inc/parts/admin-advanced.php:57
-#: inc/parts/admin-advanced.php:66
-#: inc/parts/admin-advanced.php:75
-#: inc/parts/admin-advanced.php:84
+#: adons/images-seo/class-sirsc-images-seo.php:644
+#: inc/parts/admin-advanced.php:61
+#: inc/parts/admin-advanced.php:70
+#: inc/parts/admin-advanced.php:79
+#: inc/parts/admin-advanced.php:88
 msgid "Ex: %s"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:644
+#: adons/images-seo/class-sirsc-images-seo.php:649
 msgid "Make sure you back up your files and database before running any bulk action, some changes cannot be reverted from the browser."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:680
+#: adons/images-seo/class-sirsc-images-seo.php:685
 msgid "No processing required."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:692
+#: adons/images-seo/class-sirsc-images-seo.php:697
 msgid "Processing"
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:706
-#: adons/images-seo/class-sirsc-images-seo.php:736
+#: adons/images-seo/class-sirsc-images-seo.php:711
+#: adons/images-seo/class-sirsc-images-seo.php:741
 msgid "The identified images were renamed."
 msgstr ""
 
 #. Translators: %1$d - count, %2$d - total.
-#: adons/images-seo/class-sirsc-images-seo.php:881
+#: adons/images-seo/class-sirsc-images-seo.php:886
 msgid "The SEO rename was processed for %1$d items of %2$d."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:916
+#: adons/images-seo/class-sirsc-images-seo.php:921
 msgid "The SEO rename is based on the post that is using the image as the featured image."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:941
+#: adons/images-seo/class-sirsc-images-seo.php:946
 msgid "The SEO rename is based on the product that is using the image as a gallery image."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:961
+#: adons/images-seo/class-sirsc-images-seo.php:966
 msgid "The SEO rename is based on the post parent of the image."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:971
+#: adons/images-seo/class-sirsc-images-seo.php:976
 msgid "The SEO rename is based on the attachment title."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:1024
+#: adons/images-seo/class-sirsc-images-seo.php:1029
 msgid "No ID provided."
 msgstr ""
 
-#: adons/images-seo/class-sirsc-images-seo.php:1036
-#: adons/images-seo/parts/bulk-rename-output.php:11
-#: adons/images-seo/parts/settings.php:13
+#: adons/images-seo/class-sirsc-images-seo.php:1041
+#: adons/images-seo/parts/bulk-rename-output.php:15
+#: adons/images-seo/parts/settings.php:17
 msgid "The SEO rename process (on upload, manual rename, bulk rename) uses the current settings (does not apply retroactively), and overrides the filenames and attributes in the database."
 msgstr ""
 
-#: adons/images-seo/parts/bulk-rename-output.php:12
+#: adons/images-seo/parts/bulk-rename-output.php:16
 msgid "The bulk rename process targets images set as <b>featured image</b> (for all post types selected that support the featured image feature) or attached as <b>media</b> (uploaded to that posts as children)."
 msgstr ""
 
-#: adons/images-seo/parts/bulk-rename-output.php:15
+#: adons/images-seo/parts/bulk-rename-output.php:19
 msgid "For products, the rename process targets also the <b>gallery images</b>."
 msgstr ""
 
-#: adons/images-seo/parts/rename-attachment.php:16
+#: adons/images-seo/parts/rename-attachment.php:20
 msgid "Change the title below to rename the attachment file, and the generated sub-sizes."
 msgstr ""
 
-#: adons/images-seo/parts/rename-attachment.php:27
+#: adons/images-seo/parts/rename-attachment.php:31
 msgid "Attachment image"
 msgstr ""
 
-#: adons/images-seo/parts/rename-attachment.php:39
-#: adons/images-seo/parts/rename-attachment.php:50
-#: adons/images-seo/parts/rename-other.php:39
-#: adons/images-seo/parts/rename-other.php:50
+#: adons/images-seo/parts/rename-attachment.php:43
+#: adons/images-seo/parts/rename-attachment.php:54
+#: adons/images-seo/parts/rename-other.php:43
+#: adons/images-seo/parts/rename-other.php:54
 msgid "Go to"
 msgstr ""
 
-#: adons/images-seo/parts/rename-other.php:16
+#: adons/images-seo/parts/rename-other.php:20
 msgid "Change the title below to rename the targeted images for this post, and their generated sub-sizes."
 msgstr ""
 
-#: adons/images-seo/parts/rename-other.php:27
+#: adons/images-seo/parts/rename-other.php:31
 msgid "Images attached to the post"
 msgstr ""
 
-#: adons/images-seo/parts/seo-log.php:13
+#: adons/images-seo/parts/seo-log.php:17
 msgid "Rename Log"
 msgstr ""
 
-#: adons/images-seo/parts/seo-log.php:14
-#: inc/debug.php:136
-#: inc/debug.php:148
-#: inc/parts/admin-reset.php:20
-#: inc/parts/admin-reset.php:22
+#: adons/images-seo/parts/seo-log.php:18
+#: inc/debug.php:140
+#: inc/debug.php:152
+#: inc/parts/admin-reset.php:24
+#: inc/parts/admin-reset.php:26
 msgid "Reset"
 msgstr ""
 
-#: adons/images-seo/parts/seo-log.php:18
+#: adons/images-seo/parts/seo-log.php:22
 msgid "The rename log shows the most recent events at the bottom of the list. This log will be reset if you run the wp-cli commands."
 msgstr ""
 
-#: adons/images-seo/parts/seo-log.php:21
+#: adons/images-seo/parts/seo-log.php:25
 msgid "Run the wp-cli command in your terminal to see more details."
 msgstr ""
 
-#: adons/images-seo/parts/seo-log.php:28
+#: adons/images-seo/parts/seo-log.php:32
 msgid "If you cannot run the wp-cli commands, you can use the data from this log to make your own find-replace script that replaces the old strings with new strings in your database, if you have hardcoded URLs for the images. Each line represents a string to be replaced, the first part before the comma is the old reference, the second part is the new reference."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:14
+#: adons/images-seo/parts/settings.php:18
 msgid "Enable the options you want to be used for images processing."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:22
+#: adons/images-seo/parts/settings.php:26
 msgid "rename the files"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:25
+#: adons/images-seo/parts/settings.php:29
 msgid "Rename the attachment files and the generated sub-sizes."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:31
+#: adons/images-seo/parts/settings.php:35
 msgid "track initial filename"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:34
+#: adons/images-seo/parts/settings.php:38
 msgid "Keep a record of the initial filename if the file is renamed."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:39
+#: adons/images-seo/parts/settings.php:43
 msgid "override the title"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:42
+#: adons/images-seo/parts/settings.php:46
 msgid "Override the attachment title with the inherited title."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:47
+#: adons/images-seo/parts/settings.php:51
 msgid "override the alternative text"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:50
+#: adons/images-seo/parts/settings.php:54
 msgid "Override the attachment alternative text with the inherited title."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:55
+#: adons/images-seo/parts/settings.php:59
 msgid "override the caption"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:58
+#: adons/images-seo/parts/settings.php:62
 msgid "Override the attachment caption (used by the gallery and image blocks) with the inherited title."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:63
+#: adons/images-seo/parts/settings.php:67
 msgid "override the permalink"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:66
+#: adons/images-seo/parts/settings.php:70
 msgid "Override the attachment permalink with the inherited title."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:72
+#: adons/images-seo/parts/settings.php:76
 msgid "Show the rename button"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:73
+#: adons/images-seo/parts/settings.php:77
 msgid "When you edit the selected post types, you will see the rename button in the sidebar."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:95
+#: adons/images-seo/parts/settings.php:99
 msgid "Rename on upload"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:96
+#: adons/images-seo/parts/settings.php:100
 msgid "Attempt to automatically rename the files when uploaded to the selected post types."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:114
+#: adons/images-seo/parts/settings.php:118
 msgid "Bulk rename for types"
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:115
+#: adons/images-seo/parts/settings.php:119
 msgid "Select the post types to make these available for the bulk rename process."
 msgstr ""
 
-#: adons/images-seo/parts/settings.php:134
-#: inc/parts/admin-advanced.php:244
-#: inc/parts/admin-post-types.php:17
+#: adons/images-seo/parts/settings.php:138
+#: inc/parts/admin-advanced.php:246
+#: inc/parts/admin-post-types.php:21
 msgid "Save Settings"
 msgstr ""
 
-#: adons/import-export/class-sirsc-import-export.php:122
+#: adons/import-export/class-sirsc-import-export.php:127
 msgid "The plugin settings have been imported successfully."
 msgstr ""
 
-#: adons/import-export/class-sirsc-import-export.php:140
+#: adons/import-export/class-sirsc-import-export.php:145
 msgid "The plugin settings were not imported, something went wrong."
 msgstr ""
 
-#: adons/import-export/class-sirsc-import-export.php:193
-#: adons/import-export/class-sirsc-import-export.php:194
-#: inc/adons.php:145
+#: adons/import-export/class-sirsc-import-export.php:198
+#: adons/import-export/class-sirsc-import-export.php:199
+#: inc/adons.php:149
 msgid "Import/Export"
 msgstr ""
 
-#: adons/import-export/parts/areas.php:14
+#: adons/import-export/parts/areas.php:18
 msgid "The settings import/export is related to the image sizes that are found on the instance, through the plugins and theme that are activated. After the import, you might need to adjust the settings manually."
 msgstr ""
 
-#: adons/import-export/parts/areas.php:19
+#: adons/import-export/parts/areas.php:23
 msgid "Export"
 msgstr ""
 
-#: adons/import-export/parts/areas.php:22
+#: adons/import-export/parts/areas.php:26
 msgid "Copy the JSON string with the current settings."
 msgstr ""
 
-#: adons/import-export/parts/areas.php:28
-#: adons/import-export/parts/areas.php:30
+#: adons/import-export/parts/areas.php:32
+#: adons/import-export/parts/areas.php:34
 msgid "Import"
 msgstr ""
 
-#: adons/import-export/parts/areas.php:33
+#: adons/import-export/parts/areas.php:37
 msgid "Paste here the JSON string and import the new settings."
 msgstr ""
 
-#: adons/import-export/parts/areas.php:40
+#: adons/import-export/parts/areas.php:44
 msgid "Registered Image Sizes"
 msgstr ""
 
-#: adons/import-export/parts/areas.php:42
+#: adons/import-export/parts/areas.php:46
 msgid "If you deactivate the plugin but still want to keep the image sizes you registered with this plugin, you can copy the code snippet in your theme functions.php file, or in a plugin."
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:84
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:140
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:181
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:317
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:89
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:145
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:186
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:322
 msgid "Refresh"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:112
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:224
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:117
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:229
 msgid "Summary"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:144
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:321
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:149
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:326
 msgid "Click to refresh the summary and details (if something was updated in the meanwhile, this will refresh the totals and counts)."
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:163
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:226
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:241
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:340
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:168
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:231
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:246
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:345
 msgid "Folder"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:167
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:229
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:256
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:344
-#: adons/uploads-inspector/parts/files-list.php:134
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:172
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:234
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:261
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:349
+#: adons/uploads-inspector/parts/files-list.php:138
 msgid "Size"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:170
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:230
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:261
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:347
-#: adons/uploads-inspector/parts/files-list.php:131
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:175
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:235
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:266
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:352
+#: adons/uploads-inspector/parts/files-list.php:135
 msgid "Bytes"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:173
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:227
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:246
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:350
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:178
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:232
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:251
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:355
 msgid "Subfolders"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:177
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:228
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:251
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:354
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:182
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:233
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:256
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:359
 msgid "Files"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:185
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:362
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:190
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:367
 msgid "Currenty, there is no info."
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:203
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:204
-#: inc/adons.php:171
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:208
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:209
+#: inc/adons.php:175
 msgid "Uploads Folder Info"
 msgstr ""
 
-#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:299
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:606
-#: inc/admin.php:324
-#: inc/adons.php:480
-#: inc/adons.php:492
+#: adons/uploads-folder-info/class-sirsc-uploads-folder-info.php:304
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:611
+#: inc/admin.php:329
+#: inc/adons.php:484
+#: inc/adons.php:496
 msgid "Details"
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:106
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:111
 msgid "List"
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:173
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:273
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:178
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:278
 msgid "Assess"
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:195
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:196
-#: inc/adons.php:184
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:200
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:201
+#: inc/adons.php:188
 msgid "Uploads Inspector"
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:281
-#: inc/cron.php:92
-#: inc/helper.php:2365
-#: inc/helper.php:2413
-#: inc/helper.php:2469
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:286
+#: inc/cron.php:96
+#: inc/helper.php:2371
+#: inc/helper.php:2419
+#: inc/helper.php:2475
 msgid "The cron task has been scheduled."
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:304
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:309
 msgid "Click to assess the files from uploads folder & refresh the info."
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:306
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:311
 msgid "This option will initiate the assessment of the uploads structure and contents, and will collect information that can be checked later."
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:323
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:328
 msgid "This option will also stop the assessment, if that is currently in progress."
 msgstr ""
 
 #. Translators: %s - folder name.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:485
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:490
 msgid "Processing the request for %s."
 msgstr ""
 
 #. Translators: %1$s - current page, %2$s - total pages.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:612
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:617
 msgid "The most recent files assessment was executed on %1$s."
 msgstr ""
 
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:616
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:621
 msgid "Click the files counts below to open the list of assessed items."
 msgstr ""
 
 #. Translators: %1$d - count products, %2$d - total.
-#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:806
+#: adons/uploads-inspector/class-sirsc-uploads-inspector.php:811
 msgid "There are %1$d items assessed out of %2$d."
 msgstr ""
 
 #. Translators: %1$s - current page, %2$s - total pages.
-#: adons/uploads-inspector/parts/files-list.php:49
+#: adons/uploads-inspector/parts/files-list.php:53
 msgid "Page %1$s of %2$s"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:93
-#: adons/uploads-inspector/parts/files-list.php:111
-#: inc/helper.php:1245
+#: adons/uploads-inspector/parts/files-list.php:97
+#: adons/uploads-inspector/parts/files-list.php:115
+#: inc/helper.php:1251
 msgid "File"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:94
-#: adons/uploads-inspector/parts/files-list.php:125
-#: adons/uploads-inspector/parts/info-list.php:19
-#: adons/uploads-inspector/parts/info-list.php:34
+#: adons/uploads-inspector/parts/files-list.php:98
+#: adons/uploads-inspector/parts/files-list.php:129
+#: adons/uploads-inspector/parts/info-list.php:24
+#: adons/uploads-inspector/parts/info-list.php:39
 msgid "MIME Type"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:95
-#: adons/uploads-inspector/parts/files-list.php:128
-#: inc/helper.php:316
-#: inc/helper.php:2086
+#: adons/uploads-inspector/parts/files-list.php:99
+#: adons/uploads-inspector/parts/files-list.php:132
+#: inc/helper.php:322
+#: inc/helper.php:2092
 msgid "File size"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:96
+#: adons/uploads-inspector/parts/files-list.php:100
 msgid "Image Size"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:97
-#: adons/uploads-inspector/parts/files-list.php:149
+#: adons/uploads-inspector/parts/files-list.php:101
+#: adons/uploads-inspector/parts/files-list.php:153
 msgid "Attachment"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:104
-#: adons/uploads-inspector/parts/files-list.php:105
-#: adons/uploads-inspector/parts/files-list.php:155
-#: adons/uploads-inspector/parts/info-list.php:25
+#: adons/uploads-inspector/parts/files-list.php:108
+#: adons/uploads-inspector/parts/files-list.php:109
+#: adons/uploads-inspector/parts/files-list.php:159
 #: adons/uploads-inspector/parts/info-list.php:30
-#: adons/uploads-inspector/parts/info-list.php:55
+#: adons/uploads-inspector/parts/info-list.php:35
 #: adons/uploads-inspector/parts/info-list.php:60
-#: adons/uploads-inspector/parts/info-list.php:85
+#: adons/uploads-inspector/parts/info-list.php:65
 #: adons/uploads-inspector/parts/info-list.php:90
-#: image-regenerate-select-crop.php:2386
+#: adons/uploads-inspector/parts/info-list.php:95
+#: image-regenerate-select-crop.php:2453
 msgid "unknown"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:108
+#: adons/uploads-inspector/parts/files-list.php:112
 msgid "Counter"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:121
+#: adons/uploads-inspector/parts/files-list.php:125
 msgid "In option"
 msgstr ""
 
-#: adons/uploads-inspector/parts/files-list.php:137
-#: inc/helper.php:96
-#: inc/parts/admin-advanced.php:129
+#: adons/uploads-inspector/parts/files-list.php:141
+#: inc/helper.php:102
+#: inc/parts/admin-advanced.php:133
 msgid "N/A"
 msgstr ""
 
-#: adons/uploads-inspector/parts/info-list.php:49
-#: adons/uploads-inspector/parts/info-list.php:64
-#: inc/admin.php:122
-#: inc/admin.php:123
+#: adons/uploads-inspector/parts/info-list.php:54
+#: adons/uploads-inspector/parts/info-list.php:69
+#: inc/admin.php:127
+#: inc/admin.php:128
 msgid "Image Sizes"
 msgstr ""
 
-#: adons/uploads-inspector/parts/info-list.php:79
-#: adons/uploads-inspector/parts/info-list.php:94
+#: adons/uploads-inspector/parts/info-list.php:84
+#: adons/uploads-inspector/parts/info-list.php:99
 msgid "Valid images"
 msgstr ""
 
-#: image-regenerate-select-crop.php:252
-#: image-regenerate-select-crop.php:255
-#: image-regenerate-select-crop.php:258
+#: image-regenerate-select-crop.php:282
+#: image-regenerate-select-crop.php:285
+#: image-regenerate-select-crop.php:288
 msgid "Left"
 msgstr ""
 
-#: image-regenerate-select-crop.php:252
-#: image-regenerate-select-crop.php:253
-#: image-regenerate-select-crop.php:254
+#: image-regenerate-select-crop.php:282
+#: image-regenerate-select-crop.php:283
+#: image-regenerate-select-crop.php:284
 msgid "Top"
 msgstr ""
 
-#: image-regenerate-select-crop.php:253
-#: image-regenerate-select-crop.php:255
-#: image-regenerate-select-crop.php:256
-#: image-regenerate-select-crop.php:257
-#: image-regenerate-select-crop.php:259
+#: image-regenerate-select-crop.php:283
+#: image-regenerate-select-crop.php:285
+#: image-regenerate-select-crop.php:286
+#: image-regenerate-select-crop.php:287
+#: image-regenerate-select-crop.php:289
 msgid "Center"
 msgstr ""
 
-#: image-regenerate-select-crop.php:254
-#: image-regenerate-select-crop.php:257
-#: image-regenerate-select-crop.php:260
+#: image-regenerate-select-crop.php:284
+#: image-regenerate-select-crop.php:287
+#: image-regenerate-select-crop.php:290
 msgid "Right"
 msgstr ""
 
-#: image-regenerate-select-crop.php:258
-#: image-regenerate-select-crop.php:259
-#: image-regenerate-select-crop.php:260
+#: image-regenerate-select-crop.php:288
+#: image-regenerate-select-crop.php:289
+#: image-regenerate-select-crop.php:290
 msgid "Bottom"
 msgstr ""
 
-#: image-regenerate-select-crop.php:676
-#: image-regenerate-select-crop.php:809
-#: image-regenerate-select-crop.php:925
-#: inc/admin.php:392
-#: inc/admin.php:875
-#: inc/admin.php:962
-#: inc/adons.php:600
-#: inc/calls.php:48
+#: image-regenerate-select-crop.php:688
+#: image-regenerate-select-crop.php:821
+#: image-regenerate-select-crop.php:937
+#: inc/admin.php:397
+#: inc/admin.php:916
+#: inc/admin.php:1003
+#: inc/adons.php:604
 #: inc/calls.php:52
-#: inc/debug.php:116
-#: inc/iterator.php:122
+#: inc/calls.php:56
+#: inc/debug.php:120
+#: inc/iterator.php:126
 msgid "Action not allowed."
 msgstr ""
 
-#: image-regenerate-select-crop.php:676
-#: image-regenerate-select-crop.php:809
-#: image-regenerate-select-crop.php:925
-#: inc/admin.php:875
-#: inc/calls.php:48
+#: image-regenerate-select-crop.php:688
+#: image-regenerate-select-crop.php:821
+#: image-regenerate-select-crop.php:937
+#: inc/admin.php:916
 #: inc/calls.php:52
-#: inc/iterator.php:122
+#: inc/calls.php:56
+#: inc/iterator.php:126
 msgid "Security Breach"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2325
-#: image-regenerate-select-crop.php:2346
-#: image-regenerate-select-crop.php:2366
-#: image-regenerate-select-crop.php:2507
+#: image-regenerate-select-crop.php:2392
+#: image-regenerate-select-crop.php:2413
+#: image-regenerate-select-crop.php:2433
+#: image-regenerate-select-crop.php:2574
 msgid "currently registered"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2366
+#: image-regenerate-select-crop.php:2433
 msgid "not registered anymore"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2391
+#: image-regenerate-select-crop.php:2458
 msgid "never registered"
 msgstr ""
 
-#: image-regenerate-select-crop.php:3170
-#: inc/plugin.php:42
+#: image-regenerate-select-crop.php:3246
+#: inc/plugin.php:26
 msgid "Plugin URL"
 msgstr ""
 
-#: inc/action.php:58
-#: inc/wp-cli.php:427
+#: inc/action.php:70
+#: inc/wp-cli.php:524
 msgid "was removed"
 msgstr ""
 
-#: inc/action.php:64
-#: inc/wp-cli.php:431
+#: inc/action.php:76
+#: inc/wp-cli.php:528
 msgid "Could not remove"
 msgstr ""
 
-#: inc/action.php:64
-#: inc/wp-cli.php:431
+#: inc/action.php:76
+#: inc/wp-cli.php:528
 msgid "The image is missing or it is the original file."
 msgstr ""
 
 #. Translators: %d - the attachment id.
-#: inc/action.php:69
+#: inc/action.php:81
 msgid "METADATA cleanup performed for %d."
 msgstr ""
 
-#: inc/admin.php:107
-#: inc/admin.php:108
-#: inc/adons.php:70
+#: inc/admin.php:112
+#: inc/admin.php:113
+#: inc/adons.php:74
 msgid "Advanced Rules"
 msgstr ""
 
-#: inc/admin.php:115
-#: inc/admin.php:116
+#: inc/admin.php:120
+#: inc/admin.php:121
 msgid "Media Settings"
 msgstr ""
 
-#: inc/admin.php:262
+#: inc/admin.php:267
 msgid "Cleanup all?"
 msgstr ""
 
-#: inc/admin.php:263
+#: inc/admin.php:268
 msgid "Regenerate all?"
 msgstr ""
 
-#: inc/admin.php:264
+#: inc/admin.php:269
 msgid "This operation might take a while, depending on how many images you have."
 msgstr ""
 
-#: inc/admin.php:265
+#: inc/admin.php:270
 msgid "The operation is irreversible!"
 msgstr ""
 
-#: inc/admin.php:266
-#: inc/helper.php:312
-#: inc/helper.php:2083
+#: inc/admin.php:271
+#: inc/helper.php:318
+#: inc/helper.php:2089
 msgid "Resolution"
 msgstr ""
 
-#: inc/admin.php:267
-#: inc/admin.php:1004
-#: inc/helper.php:1324
+#: inc/admin.php:272
+#: inc/admin.php:1043
+#: inc/helper.php:1330
 msgid "Details/Options"
 msgstr ""
 
-#: inc/admin.php:268
-#: inc/helper.php:1324
+#: inc/admin.php:273
+#: inc/helper.php:1330
 msgid "Image Details"
 msgstr ""
 
-#: inc/admin.php:269
-#: inc/helper.php:244
-#: inc/helper.php:1325
-#: inc/parts/admin-sizes-table.php:95
-#: inc/parts/admin-sizes-table.php:188
+#: inc/admin.php:274
+#: inc/helper.php:250
+#: inc/helper.php:1331
+#: inc/parts/admin-sizes-table.php:100
+#: inc/parts/admin-sizes-table.php:193
 msgid "Regenerate"
 msgstr ""
 
-#: inc/admin.php:270
-#: inc/helper.php:1329
+#: inc/admin.php:275
+#: inc/helper.php:1335
 msgid "Raw Cleanup"
 msgstr ""
 
-#: inc/admin.php:271
-#: inc/helper.php:1960
+#: inc/admin.php:276
+#: inc/helper.php:1966
 msgid "Regenerate Log"
 msgstr ""
 
-#: inc/admin.php:272
-#: inc/helper.php:1614
-#: inc/helper.php:1805
+#: inc/admin.php:277
+#: inc/helper.php:1620
+#: inc/helper.php:1811
 msgid "Cleanup Log"
 msgstr ""
 
-#: inc/admin.php:276
+#: inc/admin.php:281
 msgid "This action will remove all images generated for this attachment, except for the original file. Are you sure you want proceed?"
 msgstr ""
 
-#: inc/admin.php:433
+#: inc/admin.php:438
 msgid "Visit and update your settings here whenever you activate a new theme or plugins, so that the image sizes registered/adjusted/removed to be reflected also here, and in this way to assure the optimal behavior for the features provided by this plugin."
 msgstr ""
 
-#: inc/admin.php:433
-#: inc/admin.php:681
+#: inc/admin.php:438
+#: inc/admin.php:722
 msgid "Custom Settings"
 msgstr ""
 
-#: inc/admin.php:433
-#: inc/admin.php:761
+#: inc/admin.php:438
+#: inc/admin.php:802
 msgid "Custom Image Sizes"
 msgstr ""
 
-#: inc/admin.php:565
+#: inc/admin.php:571
 msgid "A huge thanks in advance!"
 msgstr ""
 
 #. Translators: %1$s - donate URL, %2$s - rating.
-#: inc/admin.php:571
+#: inc/admin.php:577
 msgid "If you find the plugin useful and would like to support my work, please consider making a <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">donation</a>. It would make me very happy if you would leave a %2$s rating."
 msgstr ""
 
-#: inc/admin.php:597
+#. Translators: %1$s - title, %2$s - version, %3$s - author.
+#: inc/admin.php:604
+msgid "%1$s version %2$s by %3$s"
+msgstr ""
+
+#: inc/admin.php:612
+msgid "Support"
+msgstr ""
+
+#: inc/admin.php:617
+msgid "Reviews"
+msgstr ""
+
+#: inc/admin.php:622
+msgid "Donate"
+msgstr ""
+
+#. Translators: %1$s - social link.
+#: inc/admin.php:626
+msgid "Follow me on <a href=\"%1$s\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>"
+msgstr ""
+
+#: inc/admin.php:638
 msgid "The plugin settings have been updated successfully."
 msgstr ""
 
-#: inc/admin.php:682
+#: inc/admin.php:723
 msgid "You can override the default crop for the medium and large size of the images. Please note that the crop will apply to the designated image size only if it has both width and height defined (as you know, when you set 0 to one of the sizes, the image will be scaled proportionally, hence, the crop cannot be applied)."
 msgstr ""
 
-#: inc/admin.php:688
-#: inc/admin.php:778
+#: inc/admin.php:729
+#: inc/admin.php:819
 msgid "Crop to exact dimensions"
 msgstr ""
 
-#: inc/admin.php:698
+#: inc/admin.php:739
 msgid "Medium size"
 msgstr ""
 
-#: inc/admin.php:708
+#: inc/admin.php:749
 msgid "Medium large size"
 msgstr ""
 
-#: inc/admin.php:718
+#: inc/admin.php:759
 msgid "Large size"
 msgstr ""
 
-#: inc/admin.php:728
+#: inc/admin.php:769
 msgid "Size in meta box"
 msgstr ""
 
-#: inc/admin.php:738
+#: inc/admin.php:779
 msgid "This setting allows you to change the post thumbnail size that is displayed in the meta box."
 msgstr ""
 
-#: inc/admin.php:738
+#: inc/admin.php:779
 msgid "Leave empty if you want to use the default size that is set by WordPress and your theme."
 msgstr ""
 
-#: inc/admin.php:763
+#: inc/admin.php:804
 msgid "If you decided it is absolutely necessary to have new custom image sizes, you can make the setup below and these will be registered programmatically in your application if you configured these correctly (you have to input the size name and at least the width or height)."
 msgstr ""
 
-#: inc/admin.php:764
+#: inc/admin.php:805
 msgid "However, please make sure you only define these below if you are sure this is really necessary, as, any additional image size registered in your application is decreasing the performance on the images upload processing and also creates extra physical files on your hosting."
 msgstr ""
 
-#: inc/admin.php:765
+#: inc/admin.php:806
 msgid "Also, please note that changing the image sizes names or width and height values is not recommended after these were defined and your application started to create images for these specifications."
 msgstr ""
 
-#: inc/admin.php:768
+#: inc/admin.php:809
 msgid "Use this feature wisely."
 msgstr ""
 
-#: inc/admin.php:769
+#: inc/admin.php:810
 msgid "Please consult with a front-end developer before deciding to define more image sizes below (and in general in the application), as most of the times just updating the native image sizes settings and updating the front-end code (the theme) is enough."
 msgstr ""
 
-#: inc/admin.php:775
-#: inc/admin.php:800
-#: inc/admin.php:832
+#: inc/admin.php:816
+#: inc/admin.php:841
+#: inc/admin.php:873
 msgid "Name"
 msgstr ""
 
-#: inc/admin.php:776
-#: inc/admin.php:806
-#: inc/admin.php:837
+#: inc/admin.php:817
+#: inc/admin.php:847
+#: inc/admin.php:878
 msgid "Max Width"
 msgstr ""
 
-#: inc/admin.php:777
-#: inc/admin.php:811
-#: inc/admin.php:842
+#: inc/admin.php:818
+#: inc/admin.php:852
+#: inc/admin.php:883
 msgid "Max Height"
 msgstr ""
 
-#: inc/admin.php:805
+#: inc/admin.php:846
 msgid "(leave empty to remove this image size)"
 msgstr ""
 
-#: inc/admin.php:816
-#: inc/admin.php:847
-#: inc/helper.php:219
-#: inc/helper.php:237
-#: inc/helper.php:240
-#: inc/helper.php:250
-#: inc/helper.php:259
+#: inc/admin.php:857
+#: inc/admin.php:888
+#: inc/helper.php:225
+#: inc/helper.php:243
+#: inc/helper.php:246
+#: inc/helper.php:256
+#: inc/helper.php:265
 msgid "Crop"
 msgstr ""
 
-#: inc/admin.php:835
+#: inc/admin.php:876
 msgid "New image size name"
 msgstr ""
 
-#: inc/adons.php:63
-#: inc/adons.php:268
-#: inc/parts/admin-general.php:16
+#: inc/adons.php:67
+#: inc/adons.php:272
+#: inc/parts/admin-general.php:19
 msgid "General Settings"
 msgstr ""
 
-#: inc/adons.php:78
-#: inc/debug.php:101
-#: inc/debug.php:102
+#: inc/adons.php:82
+#: inc/debug.php:105
+#: inc/debug.php:106
 msgid "Debug"
 msgstr ""
 
-#: inc/adons.php:86
-#: inc/adons.php:245
-#: inc/adons.php:246
+#: inc/adons.php:90
+#: inc/adons.php:249
+#: inc/adons.php:250
 msgid "Extensions"
 msgstr ""
 
-#: inc/adons.php:146
+#: inc/adons.php:150
 msgid "Export and import the plugin settings from one instance to another (general settings, advanced rules, media settings, additional image sizes managed with this plugin)."
 msgstr ""
 
-#: inc/adons.php:159
+#: inc/adons.php:163
 msgid "Rename the images files (bulk rename, individual rename or image rename on upload) and override the attachments attributes based on the settings."
 msgstr ""
 
-#: inc/adons.php:172
+#: inc/adons.php:176
 msgid "See details about your uploads folder: number of files and folders (including subfolders), the total size."
 msgstr ""
 
-#: inc/adons.php:185
+#: inc/adons.php:189
 msgid "Analyze the files from your uploads folder (including the orphaned files - not associated with attachment records in the database) and see details about the size, MIME type, attachment IDs, sub-sizes, etc."
 msgstr ""
 
-#: inc/adons.php:414
+#: inc/adons.php:418
 msgid "Disabled"
 msgstr ""
 
-#: inc/adons.php:421
+#: inc/adons.php:425
 msgid "Enabled"
 msgstr ""
 
-#: inc/adons.php:441
+#: inc/adons.php:445
 msgid "Purchase"
 msgstr ""
 
-#: inc/adons.php:460
+#: inc/adons.php:464
 msgid "License Key"
 msgstr ""
 
-#: inc/adons.php:461
+#: inc/adons.php:465
 msgid "Activate"
 msgstr ""
 
-#: inc/adons.php:510
+#: inc/adons.php:514
 msgid "Free"
 msgstr ""
 
 #. Translators: %1$s - adon price.
-#: inc/adons.php:514
+#: inc/adons.php:518
 msgid "&euro; %1$s / year"
 msgstr ""
 
-#: inc/adons.php:613
+#: inc/adons.php:617
 msgid "See the available extensions compatible with the installed plugin version."
 msgstr ""
 
-#: inc/adons.php:613
+#: inc/adons.php:617
 msgid "You can activate and deactivate these at any time."
 msgstr ""
 
-#: inc/adons.php:625
+#: inc/adons.php:629
 msgid "No extension available at the moment."
 msgstr ""
 
-#: inc/cron.php:108
-#: inc/cron.php:158
+#: inc/cron.php:112
+#: inc/cron.php:162
 msgid "Cron Task"
 msgstr ""
 
-#: inc/cron.php:117
+#: inc/cron.php:121
 msgid "The action has been scheduled and the cron task will run in the background."
 msgstr ""
 
-#: inc/cron.php:119
+#: inc/cron.php:123
 msgid "The action is currently in progress, the cron task runs in the background."
 msgstr ""
 
-#: inc/cron.php:122
+#: inc/cron.php:126
 msgid "You can close the dialog box."
 msgstr ""
 
-#: inc/cron.php:130
+#: inc/cron.php:134
 msgid "The cron task has been scheduled to run every minute, please be patient until the task finishes."
 msgstr ""
 
-#: inc/cron.php:130
+#: inc/cron.php:134
 msgid "If you want to cancel the remaining execution and unshedule the task, click the button below."
 msgstr ""
 
-#: inc/cron.php:133
-#: inc/iterator.php:185
-#: inc/parts/admin-cron.php:38
+#: inc/cron.php:137
+#: inc/iterator.php:189
+#: inc/parts/admin-cron.php:42
 msgid "Cancel"
 msgstr ""
 
-#: inc/cron.php:165
+#: inc/cron.php:169
 msgid "The scheduled task has been canceled."
 msgstr ""
 
-#: inc/cron.php:297
-msgid "Every minute"
-msgstr ""
-
-#: inc/cron.php:379
+#: inc/cron.php:382
 msgid "hours"
 msgstr ""
 
-#: inc/cron.php:382
+#: inc/cron.php:385
 msgid "minutes"
 msgstr ""
 
-#: inc/cron.php:385
+#: inc/cron.php:388
 msgid "seconds"
 msgstr ""
 
 #. Translators: %s - duration.
-#: inc/cron.php:393
+#: inc/cron.php:396
 msgid "The cron task has run for %s."
 msgstr ""
 
 #. Translators: %1$s - total.
-#: inc/cron.php:435
-#: inc/helper.php:2003
+#: inc/cron.php:437
+#: inc/helper.php:2009
 msgid "Items remaining to regenerate: %1$s."
 msgstr ""
 
 #. Translators: %1$s - total.
-#: inc/cron.php:449
-#: inc/cron.php:463
-#: inc/helper.php:1656
-#: inc/helper.php:1846
+#: inc/cron.php:451
+#: inc/cron.php:465
+#: inc/helper.php:1662
+#: inc/helper.php:1852
 msgid "Items remaining to cleanup: %1$s."
 msgstr ""
 
-#: inc/debug.php:126
+#: inc/debug.php:130
 msgid "You will see here the information collected while executing regenerate and cleanup actions. Please reset the logs periodically."
 msgstr ""
 
-#: inc/debug.php:135
+#: inc/debug.php:139
 msgid "Bulk actions log"
 msgstr ""
 
-#: inc/debug.php:138
+#: inc/debug.php:142
 msgid "The bulk actions execution results can be seen below, the most recent actions are shown at the top of the list."
 msgstr ""
 
-#: inc/debug.php:147
+#: inc/debug.php:151
 msgid "Tracer log"
 msgstr ""
 
-#: inc/debug.php:150
+#: inc/debug.php:154
 msgid "The tracer log can be seen below, the most recent events are shown at the top of the list."
 msgstr ""
 
-#: inc/debug.php:159
+#: inc/debug.php:163
 msgid "disable verbose mode"
 msgstr ""
 
-#: inc/debug.php:161
+#: inc/debug.php:165
 msgid "when enabling/disabling verbose mode, the current log will be reset"
 msgstr ""
 
-#: inc/debug.php:169
+#: inc/debug.php:173
 msgid "Actions log"
 msgstr ""
 
-#: inc/debug.php:171
+#: inc/debug.php:175
 msgid "The custom debug log for monitoring the events execution is not available currently, because your site configuration does not allow for writting files."
 msgstr ""
 
-#: inc/debug.php:245
+#: inc/debug.php:247
 msgid "Status/Debug"
 msgstr ""
 
-#: inc/debug.php:247
+#: inc/debug.php:249
 msgid "Here are some details about your current instance and the services versions. These are useful for troubleshooting."
 msgstr ""
 
-#: inc/helper.php:221
-#: inc/helper.php:252
-#: inc/helper.php:261
+#: inc/helper.php:227
+#: inc/helper.php:258
+#: inc/helper.php:267
 msgid "Scale"
 msgstr ""
 
-#: inc/helper.php:232
-#: inc/helper.php:2071
+#: inc/helper.php:238
+#: inc/helper.php:2077
 msgid "not found"
 msgstr ""
 
-#: inc/helper.php:246
+#: inc/helper.php:252
 msgid "Custom quality"
 msgstr ""
 
-#: inc/helper.php:255
+#: inc/helper.php:261
 msgid "must upscale to generate the expected size"
 msgstr ""
 
-#: inc/helper.php:264
+#: inc/helper.php:270
 msgid "The width and height of the original image are smaller than the requested image size."
 msgstr ""
 
-#: inc/helper.php:282
-#: inc/helper.php:1065
+#: inc/helper.php:288
+#: inc/helper.php:1071
 msgid "Cleanup the metadata"
 msgstr ""
 
-#: inc/helper.php:284
+#: inc/helper.php:290
 msgid "This image size shares the same file as the full size (the original image) and it cannot be altered."
 msgstr ""
 
-#: inc/helper.php:287
-#: inc/helper.php:1066
+#: inc/helper.php:293
+#: inc/helper.php:1072
 msgid "Delete"
 msgstr ""
 
-#: inc/helper.php:304
-#: inc/helper.php:2076
+#: inc/helper.php:310
+#: inc/helper.php:2082
 msgid "Info"
 msgstr ""
 
-#: inc/helper.php:326
+#: inc/helper.php:332
 msgid "Default quality"
 msgstr ""
 
-#: inc/helper.php:626
+#: inc/helper.php:632
 msgid "Skipping the regeneration of this file, the file already exists (as per settings)."
 msgstr ""
 
-#: inc/helper.php:902
-#: inc/helper.php:918
-#: inc/helper.php:1298
-#: inc/helper.php:1772
-#: inc/helper.php:1926
-#: inc/helper.php:2110
+#: inc/helper.php:908
+#: inc/helper.php:924
+#: inc/helper.php:1304
+#: inc/helper.php:1778
+#: inc/helper.php:1932
+#: inc/helper.php:2116
 msgid "Something went wrong!"
 msgstr ""
 
-#: inc/helper.php:945
-#: inc/helper.php:1303
-#: inc/helper.php:1764
-#: inc/helper.php:1918
-#: inc/helper.php:2103
+#: inc/helper.php:951
+#: inc/helper.php:1309
+#: inc/helper.php:1770
+#: inc/helper.php:1924
+#: inc/helper.php:2109
 msgid "Done!"
 msgstr ""
 
-#: inc/helper.php:1049
+#: inc/helper.php:1055
 msgid "You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore)."
 msgstr ""
 
-#: inc/helper.php:1053
+#: inc/helper.php:1059
 msgid "Nothing available."
 msgstr ""
 
-#: inc/helper.php:1061
-#: inc/helper.php:1166
-#: inc/helper.php:1276
+#: inc/helper.php:1067
+#: inc/helper.php:1172
+#: inc/helper.php:1282
 msgid "The file is missing!"
 msgstr ""
 
-#: inc/helper.php:1080
-#: inc/helper.php:1244
+#: inc/helper.php:1086
+#: inc/helper.php:1250
 msgid "file size"
 msgstr ""
 
-#: inc/helper.php:1233
+#: inc/helper.php:1239
 msgid "Image Details & Options"
 msgstr ""
 
-#: inc/helper.php:1242
+#: inc/helper.php:1248
 msgid "The original image"
 msgstr ""
 
-#: inc/helper.php:1249
+#: inc/helper.php:1255
 msgid "Sub-size info"
 msgstr ""
 
-#: inc/helper.php:1250
+#: inc/helper.php:1256
 msgid "Actions"
 msgstr ""
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1411
+#: inc/helper.php:1417
 msgid "<b>scale</b> to max width of <b>%s</b>px"
 msgstr ""
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1414
+#: inc/helper.php:1420
 msgid "<b>scale</b> to max height of <b>%s</b>px"
 msgstr ""
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1417
+#: inc/helper.php:1423
 msgid "<b>crop</b> of <b>%1$s</b>x<b>%2$s</b>px"
 msgstr ""
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1420
+#: inc/helper.php:1426
 msgid "<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px"
 msgstr ""
 
-#: inc/helper.php:1443
+#: inc/helper.php:1449
 msgid "Click to generate a crop of the image from this position"
 msgstr ""
 
-#: inc/helper.php:1460
+#: inc/helper.php:1466
 msgid "Default crop position from settings"
 msgstr ""
 
-#: inc/helper.php:1631
-#: inc/helper.php:1822
-#: inc/helper.php:1977
+#: inc/helper.php:1637
+#: inc/helper.php:1828
+#: inc/helper.php:1983
 msgid "Finishing up"
 msgstr ""
 
-#: inc/helper.php:1692
+#: inc/helper.php:1698
 msgid "The cleanup for this file will be skipped (it is the original file)."
 msgstr ""
 
-#: inc/helper.php:1702
+#: inc/helper.php:1708
 msgid "The cleanup for this file will be skipped (the size is registered)."
 msgstr ""
 
-#: inc/helper.php:1727
-#: inc/helper.php:1739
-#: inc/helper.php:1893
+#: inc/helper.php:1733
+#: inc/helper.php:1745
+#: inc/helper.php:1899
 msgid "has been deleted"
 msgstr ""
 
-#: inc/helper.php:1734
+#: inc/helper.php:1740
 msgid "could not be deleted"
 msgstr ""
 
 #. Translators: %1$s - id.
-#: inc/helper.php:1748
-#: inc/wp-cli.php:437
-#: inc/wp-cli.php:442
+#: inc/helper.php:1754
+#: inc/wp-cli.php:535
+#: inc/wp-cli.php:540
 msgid "No cleanup necessary for %1$s"
 msgstr ""
 
-#: inc/helper.php:1872
+#: inc/helper.php:1878
 msgid "could not be found"
 msgstr ""
 
-#: inc/helper.php:1887
+#: inc/helper.php:1893
 msgid "could not be deleted (it is the original file)"
 msgstr ""
 
-#: inc/helper.php:2028
+#: inc/helper.php:2034
 msgid "The regeneration of this file will be skipped (as per settings)."
 msgstr ""
 
-#: inc/helper.php:2034
-#: inc/helper.php:2050
+#: inc/helper.php:2040
+#: inc/helper.php:2056
 msgid "Could not be generated, the original is too small."
 msgstr ""
 
-#: inc/helper.php:2042
+#: inc/helper.php:2048
 msgid "The file was regenerated."
 msgstr ""
 
-#: inc/helper.php:2048
+#: inc/helper.php:2054
 msgid "Could not be generated, the original file is missing."
 msgstr ""
 
 #. Translators: %1$d - count products, %2$d - total.
-#: inc/helper.php:2327
+#: inc/helper.php:2333
 msgid "%1$d items assessed of %2$d."
 msgstr ""
 
-#: inc/helper.php:2377
-#: inc/helper.php:2380
-#: inc/parts/admin-sizes-table.php:91
-#: inc/parts/admin-sizes-table.php:185
+#: inc/helper.php:2383
+#: inc/helper.php:2386
+#: inc/parts/admin-sizes-table.php:96
+#: inc/parts/admin-sizes-table.php:190
 msgid "Cleanup"
 msgstr ""
 
-#: inc/helper.php:2428
-#: inc/iterator.php:180
+#: inc/helper.php:2434
+#: inc/iterator.php:184
 msgid "Resume"
 msgstr ""
 
-#: inc/helper.php:2436
+#: inc/helper.php:2442
 msgid "Regenerate All"
 msgstr ""
 
-#: inc/helper.php:2452
+#: inc/helper.php:2458
 msgid "Cleanup Unused"
 msgstr ""
 
-#: inc/helper.php:2453
+#: inc/helper.php:2459
 msgid "Cleanup Raw"
 msgstr ""
 
-#: inc/iterator.php:25
+#: inc/iterator.php:29
 msgid "Button"
 msgstr ""
 
-#: inc/iterator.php:170
+#: inc/iterator.php:174
 msgid "Start"
 msgstr ""
 
-#: inc/iterator.php:175
+#: inc/iterator.php:179
 msgid "Stop"
 msgstr ""
 
-#: inc/iterator.php:190
+#: inc/iterator.php:194
 msgid "Finish"
 msgstr ""
 
-#: inc/notice.php:48
+#: inc/notice.php:52
 msgid "Image Regenerate & Select Crop settings are not configured yet."
 msgstr ""
 
-#: inc/notice.php:94
+#: inc/notice.php:98
 msgid "the original filesize is too big and the server does not have enough resources to process it"
 msgstr ""
 
-#: inc/notice.php:104
+#: inc/notice.php:108
 msgid "the file you were trying to delete is the original file"
 msgstr ""
 
-#: inc/notice.php:105
+#: inc/notice.php:109
 msgid "the sub-size points to the original file and that should not be removed"
 msgstr ""
 
-#: inc/notice.php:106
+#: inc/notice.php:110
 msgid "the file is missing"
 msgstr ""
 
-#: inc/notice.php:108
+#: inc/notice.php:112
 msgid "the image from which the script is generating the specified sub-size does not have the proper size for resize/crop to a specific width and height"
 msgstr ""
 
-#: inc/notice.php:109
+#: inc/notice.php:113
 msgid "the attachment metadata is broken"
 msgstr ""
 
-#: inc/notice.php:110
+#: inc/notice.php:114
 msgid "the original file is missing"
 msgstr ""
 
-#: inc/notice.php:111
+#: inc/notice.php:115
 msgid "the image that is processed is very big (rezolution or size) and the allocated memory on the server is not enough to handle the request"
 msgstr ""
 
-#: inc/notice.php:112
+#: inc/notice.php:116
 msgid "the overall processing on your site is too intensive"
 msgstr ""
 
 #. Translators: %1$s - reasons, %2$s - separator, %3$s - server side error.
-#: inc/notice.php:117
+#: inc/notice.php:121
 msgid "<b>Unfortunately, there was an error</b>. Some of the execution was not successful. This can happen when: %1$s. %2$sSee the details: %3$s"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:13
+#: inc/parts/admin-advanced.php:17
 msgid "The advanced custom rules you configure below are global and will override all the other settings you set above."
 msgstr ""
 
-#: inc/parts/admin-advanced.php:13
+#: inc/parts/admin-advanced.php:17
 msgid "The custom rules will apply only if you set up the post to use one of the rules below, and only after that you upload images to that post."
 msgstr ""
 
-#: inc/parts/admin-advanced.php:16
+#: inc/parts/admin-advanced.php:20
 msgid "Advanced custom rules based on the post where the image will be uploaded"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:18
+#: inc/parts/admin-advanced.php:22
 msgid "The order in which the rules are checked and have priority is: unattached, post ID, post type, post format, post parent, post tags, post categories, other taxonomies. Any of the rules that match first (in this order) will apply for the images that are generated when you upload images to that post (and the rest of the rules will be ignored). You can suppress at any time any of the rules and then enable these back as it suits you."
 msgstr ""
 
-#: inc/parts/admin-advanced.php:36
+#: inc/parts/admin-advanced.php:40
 msgid "Unattached"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:37
+#: inc/parts/admin-advanced.php:41
 msgid "Post ID"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:38
+#: inc/parts/admin-advanced.php:42
 msgid "Post type"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:39
+#: inc/parts/admin-advanced.php:43
 msgid "Post parent ID"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:46
+#: inc/parts/admin-advanced.php:50
 msgid "Set below rules that would apply only for regenerating the featured image. An image becomes a \"Featured Image\" after the upload was already processed and when the post is saved, hence the rules set below can apply only when regenerating the image."
 msgstr ""
 
-#: inc/parts/admin-advanced.php:53
-#: inc/parts/admin-advanced.php:127
+#: inc/parts/admin-advanced.php:57
+#: inc/parts/admin-advanced.php:131
 msgid "The post has"
 msgstr ""
 
 #. Translators: %s - example.
-#: inc/parts/admin-advanced.php:57
+#: inc/parts/admin-advanced.php:61
 msgid "Categories"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:62
-#: inc/parts/admin-advanced.php:139
+#: inc/parts/admin-advanced.php:66
+#: inc/parts/admin-advanced.php:143
 msgid "Value"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:71
-#: inc/parts/admin-advanced.php:142
-#: inc/parts/admin-sizes-table.php:79
-#: inc/parts/admin-sizes-table.php:159
+#: inc/parts/admin-advanced.php:75
+#: inc/parts/admin-advanced.php:146
+#: inc/parts/admin-sizes-table.php:84
+#: inc/parts/admin-sizes-table.php:164
 msgid "Force original"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:80
-#: inc/parts/admin-advanced.php:154
+#: inc/parts/admin-advanced.php:84
+#: inc/parts/admin-advanced.php:158
 msgid "Generate only these image sizes for the rule"
 msgstr ""
 
-#: inc/parts/admin-advanced.php:89
-#: inc/parts/admin-advanced.php:240
+#: inc/parts/admin-advanced.php:93
+#: inc/parts/admin-advanced.php:242
 msgid "Suppress"
 msgstr ""
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:161
-#: inc/parts/admin-advanced.php:164
+#: inc/parts/admin-advanced.php:165
+#: inc/parts/admin-advanced.php:168
 msgid "This rule is %s"
 msgstr ""
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:161
+#: inc/parts/admin-advanced.php:165
 msgid "suppressed"
 msgstr ""
 
 #. Translators: %s - rule status.
-#: inc/parts/admin-advanced.php:164
+#: inc/parts/admin-advanced.php:168
 msgid "activated"
 msgstr ""
 
 #. Translators: %1$s type, %2$s value, %3$s only.
-#: inc/parts/admin-advanced.php:173
+#: inc/parts/admin-advanced.php:176
 msgid "uploading images to a post that has %1$s as %2$s will generate only the %3$s sizes."
 msgstr ""
 
 #. Translators: %1$s - subsize.
-#: inc/parts/admin-advanced.php:181
+#: inc/parts/admin-advanced.php:184
 msgid "uploading unattached images will generate only the %1$s sizes."
 msgstr ""
 
 #. Translators: %1$s type, %2$s value, %3$s original, %4$s only.
-#: inc/parts/admin-advanced.php:187
+#: inc/parts/admin-advanced.php:190
 msgid "uploading images to a post that has %1$s as %2$s will force the original image to %3$s size and will generate only the %4$s sizes."
 msgstr ""
 
-#: inc/parts/admin-advanced.php:220
+#: inc/parts/admin-advanced.php:222
 msgid "Rules that would apply only for regenerating the featured image"
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:16
+#: inc/parts/admin-cleanup.php:20
 msgid "General Cleanup"
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:19
+#: inc/parts/admin-cleanup.php:23
 msgid "It is recommended to run the cleanup using the command line tools."
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:19
+#: inc/parts/admin-cleanup.php:23
 msgid "However, if you do not have access to wp-cli on your server, you could run the cleanup actions by using the cron tasks, or, if you have a small set of images to cleanup, by using the plugin dialog."
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:24
+#: inc/parts/admin-cleanup.php:28
 msgid "Cleanup unused files and keep currently registered sizes files"
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:27
+#: inc/parts/admin-cleanup.php:31
 msgid "This type of cleanup is performed for all the attachments, and it removes any attachment unused file and keeps only the files associated with the currently registered image sizes. This action is also changing the attachment metadata in the database, and it is irreversible."
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:31
+#: inc/parts/admin-cleanup.php:35
 msgid "Keep only the original/full size files"
 msgstr ""
 
-#: inc/parts/admin-cleanup.php:34
+#: inc/parts/admin-cleanup.php:38
 msgid "This type of cleanup is performed for all the attachments, and it keeps only the file associated with the original/full size. This action is also changing the attachment metadata in the database, and it is irreversible. After this process is done, you need to regenerate the files for the desired image sizes."
 msgstr ""
 
-#: inc/parts/admin-cron.php:16
+#: inc/parts/admin-cron.php:20
 msgid "Cron Tasks"
 msgstr ""
 
-#: inc/parts/admin-cron.php:22
+#: inc/parts/admin-cron.php:26
 msgid "execute bulk actions using the WordPress cron tasks instead of the default interface"
 msgstr ""
 
-#: inc/parts/admin-cron.php:25
+#: inc/parts/admin-cron.php:29
 msgid "This option allows you to offload the execution of bulk actions to the WordPress cron tasks. This will run the intended actions as background tasks, instead of using the plugin default interface."
 msgstr ""
 
-#: inc/parts/admin-cron.php:25
+#: inc/parts/admin-cron.php:29
 msgid "You will have to adjust the batches size based on your server settings and limitations."
 msgstr ""
 
-#: inc/parts/admin-cron.php:25
+#: inc/parts/admin-cron.php:29
 msgid "If the batch size is big, the whole processing will finish faster, but it can fail if your server runs out of resources. Setting a small size for the batch will encrease the time required for the whole processing to finish, but is less resource intensive."
 msgstr ""
 
-#: inc/parts/admin-cron.php:31
+#: inc/parts/admin-cron.php:35
 msgid "the number of images to be regenerated at each cron task iteration"
 msgstr ""
 
-#: inc/parts/admin-cron.php:35
+#: inc/parts/admin-cron.php:39
 msgid "the number of images to be cleanup at each cron task iteration"
 msgstr ""
 
-#: inc/parts/admin-cron.php:39
+#: inc/parts/admin-cron.php:43
 msgid "Cancel all currently scheduled tasks that aim to regenerate or cleanup the images."
 msgstr ""
 
-#: inc/parts/admin-general.php:24
+#: inc/parts/admin-general.php:27
 msgid "allow actions for users with upload files capability"
 msgstr ""
 
-#: inc/parts/admin-general.php:29
+#: inc/parts/admin-general.php:32
 msgid "show small buttons in the media screen"
 msgstr ""
 
-#: inc/parts/admin-general.php:34
+#: inc/parts/admin-general.php:37
 msgid "show buttons in the media screen in grid mode"
 msgstr ""
 
-#: inc/parts/admin-general.php:39
+#: inc/parts/admin-general.php:42
 msgid "show attachment image sizes summary in the media screen"
 msgstr ""
 
-#: inc/parts/admin-general.php:46
+#: inc/parts/admin-general.php:49
 msgid "turn off the WooCommerce background thumbnails regenerate"
 msgstr ""
 
-#: inc/parts/admin-general.php:54
+#: inc/parts/admin-general.php:57
 msgid "sync ignored image sizes with EWWW Image Optimizer plugin"
 msgstr ""
 
-#: inc/parts/admin-general.php:57
+#: inc/parts/admin-general.php:60
 msgid "This option allows you to sync <em>disable creation</em> image sizes from <b>EWWW Image Optimizer</b> plugin with the <em>global ignore</em> image sizes from <b>Image Regenerate & Select Crop</b>. In this way, when you update the settings in one of the plugins, the settings will be synced in the other plugin."
 msgstr ""
 
-#: inc/parts/admin-general.php:63
+#: inc/parts/admin-general.php:66
 msgid "bulk regenerate/cleanup execution starts from the most recent files"
 msgstr ""
 
-#: inc/parts/admin-general.php:66
+#: inc/parts/admin-general.php:69
 msgid "This option allows you to run the bulk cleanup and bulk regenerate actions starting from the most recent files you have in the media library until the most old image is found. This is useful if you know when you can pause/stop the bulk actions, for example when you already run the bulk actions for older files and you only need to run this for more recent uploads.<hr>By default, the bulk actions will run from the oldest to the newest files."
 msgstr ""
 
-#: inc/parts/admin-general.php:71
+#: inc/parts/admin-general.php:74
 msgid "do not cleanup the settings after the plugin is deactivated"
 msgstr ""
 
-#: inc/parts/admin-general.php:77
+#: inc/parts/admin-general.php:80
 msgid "turn on the custom debug log for monitoring the events execution"
 msgstr ""
 
-#: inc/parts/admin-general.php:83
+#: inc/parts/admin-general.php:86
 msgid "filter and expose the image sizes available for the attachment display settings in the media dialog (any registered available size, even when there is no explicit filter applied)"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:16
+#: inc/parts/admin-other-settings.php:19
 msgid "Other Settings"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:22
+#: inc/parts/admin-other-settings.php:25
 msgid "These settings are targetting only the post type you selected above."
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:30
+#: inc/parts/admin-other-settings.php:33
 msgid "generate only perfect fit sizes"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:33
+#: inc/parts/admin-other-settings.php:36
 msgid "This option allows you to generate only images that match exactly the width and height of the crop/resize requirements, when the option is enabled. Otherwise, the script will generate anything possible for smaller images."
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:37
+#: inc/parts/admin-other-settings.php:40
 msgid "attempt to upscale when generating only perfect fit sizes"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:40
+#: inc/parts/admin-other-settings.php:43
 msgid "This option allows you to upscale the images when using the perfect fit option. This allows that images that have at least the original width close to the expected width or the original height close to the expected height (for example, the original image has 800x600 and the crop size 700x700) to be generated from a upscaled image."
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:44
+#: inc/parts/admin-other-settings.php:47
 msgid "regenerate only missing files"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:47
+#: inc/parts/admin-other-settings.php:50
 msgid "When using the bulk actions, this option allows you to regenerate only the images that do not exist, without overriding the existing ones."
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:51
+#: inc/parts/admin-other-settings.php:54
 msgid "regenerate/cleanup only featured images"
 msgstr ""
 
-#: inc/parts/admin-other-settings.php:54
+#: inc/parts/admin-other-settings.php:57
 msgid "When using the bulk actions, this option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts."
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:18
+#: inc/parts/admin-placeholder.php:22
 msgid "Option to Enable Placeholders"
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:26
+#: inc/parts/admin-placeholder.php:30
 msgid "no placeholder"
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:33
+#: inc/parts/admin-placeholder.php:37
 msgid "force global"
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:38
+#: inc/parts/admin-placeholder.php:42
 msgid "only missing images"
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:44
+#: inc/parts/admin-placeholder.php:48
 msgid "This option allows you to display placeholders for the front-side images called programmatically (the images that are not embedded in the content with their src, but exposed using WordPress native functions). If there is no placeholder set, then the WordPress default behavior would be to display the full-size image instead of a missing image size, hence your pages might load slower, and when using grids, the items would not look even."
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:47
+#: inc/parts/admin-placeholder.php:51
 msgid "This feature might not work properly, your placeholders folder is not writtable."
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:51
+#: inc/parts/admin-placeholder.php:55
 msgid "If you activate the \"force global\" option, all the images on the front-side that are related to posts will be replaced with the placeholders that mention the image size required. This is useful for debugging, to quickly identify the image sizes used for each layout and perhaps to help you regenerate the mission ones or decide what to keep or what to remove."
 msgstr ""
 
-#: inc/parts/admin-placeholder.php:51
+#: inc/parts/admin-placeholder.php:55
 msgid "If you activate the \"only missing images\" option, all the programmatically called images on the front-side that are related to posts and do not have the requested image size generated will be replaced with the placeholders that mention the image size required. This is useful for showing smaller images instead of the full-size images (as WordPress does by default), hence for speeding up the pages loading."
 msgstr ""
 
-#: inc/parts/admin-post-types.php:16
+#: inc/parts/admin-post-types.php:20
 msgid "Apply the settings below for the selected option"
 msgstr ""
 
-#: inc/parts/admin-post-types.php:20
+#: inc/parts/admin-post-types.php:24
 msgid "The options for which you made some settings are marked with * in the dropdown below."
 msgstr ""
 
-#: inc/parts/admin-post-types.php:20
+#: inc/parts/admin-post-types.php:24
 msgid "When you select a post type the general options will not be editable, only these that can apply to the images attached to a post will be available for updates."
 msgstr ""
 
-#: inc/parts/admin-post-types.php:30
+#: inc/parts/admin-post-types.php:34
 msgid "General settings (used as default for all images)"
 msgstr ""
 
-#: inc/parts/admin-post-types.php:35
+#: inc/parts/admin-post-types.php:39
 msgid "custom post type"
 msgstr ""
 
 #. Translators: %1$s - post type name.
-#: inc/parts/admin-post-types.php:40
+#: inc/parts/admin-post-types.php:44
 msgid "Settings for images attached to a %1$s"
 msgstr ""
 
-#: inc/parts/admin-post-types.php:52
+#: inc/parts/admin-post-types.php:56
 msgid "Select the general settings that applies to all, or only one of the post types if necessary."
 msgstr ""
 
-#: inc/parts/admin-reset.php:15
+#: inc/parts/admin-reset.php:19
 msgid "This plugin provides the option to select image sizes that will be excluded from generating sub-sizes. By default, all image sizes defined in the system will be allowed (these are programmatically registered by the themes and plugins you activate in your site, without you even knowing about these). You can set up a global configuration, or more specific configuration for all images attached to a particular post type. If no particular settings are made for a post type, then the default general settings will be used."
 msgstr ""
 
-#: inc/parts/admin-reset.php:18
+#: inc/parts/admin-reset.php:22
 msgid "Click the button to reset all settings for this plugin. The reset will not remove the custom registered image sizes, but only the settings."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:11
+#: inc/parts/admin-sizes-table.php:16
 msgid "This option allows you to exclude globally from the application some of the image sizes that are registered through various plugins and themes options, that you perhaps do not need at all in your application (these are just stored in your folders and database but not actually used/visible on the front-end)."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:11
+#: inc/parts/admin-sizes-table.php:16
 msgid "By excluding these, the unnecessary image sizes will not be generated at all."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:13
+#: inc/parts/admin-sizes-table.php:18
 msgid "The quality option is allowing you to control the quality of the generated sub-sizes, starting from the quality of the image you upload. This can be useful for performance."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:13
+#: inc/parts/admin-sizes-table.php:18
 msgid "Be careful not to change the quality of the full image or the quality of the sub-size that you set as the forced original."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:13
+#: inc/parts/admin-sizes-table.php:18
 msgid "Setting a lower quality is recommended for smaller sub-sizes, that are generated from the full/original file."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:15
+#: inc/parts/admin-sizes-table.php:20
 msgid "This option means that when uploading an image, the original image will be replaced completely by the image size you select (the image generated, scaled or cropped to a specific width and height will become the full size for that image going further)."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:15
+#: inc/parts/admin-sizes-table.php:20
 msgid "This can be very useful if you do not use the original image in any of the layouts at the full size, and this might save some storage space."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:15
+#: inc/parts/admin-sizes-table.php:20
 msgid "Leave \"nothing selected\" to keep the full/original image as the file you upload (default WordPress behavior)."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:17
+#: inc/parts/admin-sizes-table.php:22
 msgid "This option allows you to hide from the \"Image Regenerate & Select Crop Settings\" lightbox the details and options for the selected image sizes (when you or other admins are checking the image details, the hidden image sizes will not be shown)."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:17
+#: inc/parts/admin-sizes-table.php:22
 msgid "This is useful when you want to restrict from other users the functionality of crop or resize for particular image sizes, or to just hide the image sizes you added to global ignore."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:17
+#: inc/parts/admin-sizes-table.php:22
 msgid "If you set the image size as ignored or unavailable, this will not be listed in the media screen when the dropdown of image sizes will be shown."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:19
+#: inc/parts/admin-sizes-table.php:24
 msgid "This option allows you to set a default crop position for the images generated for a particular image size. This option will be applied when you chose to regenerate an individual image or all of these, and also when a new image is uploaded."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:21
+#: inc/parts/admin-sizes-table.php:26
 msgid "This option allows you to clean up all the image generated for a particular image size you already have in the application, and that you do not use or do not want to use anymore on the front-end."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:21
+#: inc/parts/admin-sizes-table.php:26
 msgid "Please be careful, once you click to remove the images for a selected image size, the action is irreversible, the images generated up this point will be deleted from your folders and database records."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:21
+#: inc/parts/admin-sizes-table.php:26
 msgid "You can regenerate these later if you click the Regenerate button."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:23
+#: inc/parts/admin-sizes-table.php:28
 msgid "This option allows you to regenerate the images for the selected image size."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:23
+#: inc/parts/admin-sizes-table.php:28
 msgid "Please be careful, once you click the button to regenerate the selected image size, the action is irreversible, the images already generated will be overwritten."
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:31
+#: inc/parts/admin-sizes-table.php:36
 msgid "Image Sizes Options"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:35
+#: inc/parts/admin-sizes-table.php:40
 msgid "ignore image size"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:39
+#: inc/parts/admin-sizes-table.php:44
 msgid "image quality"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:43
+#: inc/parts/admin-sizes-table.php:48
 msgid "force original option"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:47
+#: inc/parts/admin-sizes-table.php:52
 msgid "hide image preview from info view"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:51
+#: inc/parts/admin-sizes-table.php:56
 msgid "default crop position"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:55
+#: inc/parts/admin-sizes-table.php:60
 msgid "cleanup sub-sizes"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:59
+#: inc/parts/admin-sizes-table.php:64
 msgid "regenerate sub-sizes"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:67
-#: inc/parts/admin-sizes-table.php:133
+#: inc/parts/admin-sizes-table.php:72
+#: inc/parts/admin-sizes-table.php:138
 msgid "Ignore"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:68
+#: inc/parts/admin-sizes-table.php:73
 msgid "disable sub-size"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:71
-#: inc/parts/admin-sizes-table.php:139
+#: inc/parts/admin-sizes-table.php:76
+#: inc/parts/admin-sizes-table.php:144
 msgid "Image Size Info"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:72
+#: inc/parts/admin-sizes-table.php:77
 msgid "name, scale/crop, dimension"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:75
-#: inc/parts/admin-sizes-table.php:150
+#: inc/parts/admin-sizes-table.php:80
+#: inc/parts/admin-sizes-table.php:155
 msgid "Quality"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:76
+#: inc/parts/admin-sizes-table.php:81
 msgid "file compression"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:80
+#: inc/parts/admin-sizes-table.php:85
 msgid "use as original"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:83
-#: inc/parts/admin-sizes-table.php:165
+#: inc/parts/admin-sizes-table.php:88
+#: inc/parts/admin-sizes-table.php:170
 msgid "Hide Preview"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:84
+#: inc/parts/admin-sizes-table.php:89
 msgid "hide from views"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:87
-#: inc/parts/admin-sizes-table.php:176
+#: inc/parts/admin-sizes-table.php:92
+#: inc/parts/admin-sizes-table.php:181
 msgid "Default Crop"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:88
+#: inc/parts/admin-sizes-table.php:93
 msgid "initial position"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:92
+#: inc/parts/admin-sizes-table.php:97
 msgid "removal"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:96
+#: inc/parts/admin-sizes-table.php:101
 msgid "scale/crop"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:103
+#: inc/parts/admin-sizes-table.php:108
 msgid "reset to default quality"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:108
+#: inc/parts/admin-sizes-table.php:113
 msgid "nothing selected"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:136
+#: inc/parts/admin-sizes-table.php:141
 msgid "global ignore"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:153
+#: inc/parts/admin-sizes-table.php:158
 msgid "Please be aware that your are changing the quality of the images going further for this images size!"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:155
+#: inc/parts/admin-sizes-table.php:160
 msgid "quality"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:162
+#: inc/parts/admin-sizes-table.php:167
 msgid "force original"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:168
+#: inc/parts/admin-sizes-table.php:173
 msgid "hide"
 msgstr ""
 
-#: inc/parts/admin-sizes-table.php:173
+#: inc/parts/admin-sizes-table.php:178
 msgid "unavailable"
 msgstr ""
 
-#: inc/parts/media-template-2.php:125
-#: inc/parts/media-template-3.php:160
+#: inc/parts/media-template-2.php:128
+#: inc/parts/media-template-3.php:163
 msgid "Sub-sizes"
 msgstr ""
 
 #. Translators: %1$s - plugin name.
-#: inc/parts/notice-update.php:14
+#: inc/parts/notice-update.php:19
 msgid "%1$s plugin was activated!"
 msgstr ""
 
 #. Translators: %1$s - extensions URL.
-#: inc/parts/notice-update.php:20
+#: inc/parts/notice-update.php:25
 msgid "<a href=\"%1$s\" rel=\"noreferrer\">%2$s Premium extensions</a> are available for this plugin."
 msgstr ""
 
 #. Translators: %1$s - extensions URL.
-#: inc/parts/notice-update.php:27
+#: inc/parts/notice-update.php:32
 msgid "%5$sCheck out my other <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">%2$s free plugins</a> on WordPress.org and the <a href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s other extensions</a> available!"
 msgstr ""
 
-#: inc/parts/notice-update.php:47
+#: inc/parts/notice-update.php:52
 msgid "Dismiss this notice."
 msgstr ""
 
-#: inc/wp-cli.php:31
+#: inc/wp-cli.php:36
 msgid "Please specify the site id (1 if not multisite)."
 msgstr ""
 
-#: inc/wp-cli.php:199
+#: inc/wp-cli.php:281
 msgid "Could not generate, the original is too small."
 msgstr ""
 
-#: inc/wp-cli.php:204
+#: inc/wp-cli.php:286
 msgid "Could not generate, the original file is missing."
 msgstr ""
 
-#: inc/wp-cli.php:594
-#: inc/wp-cli.php:665
+#: inc/wp-cli.php:700
+#: inc/wp-cli.php:771
 msgid "Permalinks refresh"
 msgstr ""
 
-#: inc/wp-cli.php:596
-#: inc/wp-cli.php:667
+#: inc/wp-cli.php:702
+#: inc/wp-cli.php:773
 msgid "Cache refresh"
 msgstr ""
 
-#: inc/wp-cli.php:643
+#: inc/wp-cli.php:749
 msgid "Rename files for attachment"
 msgstr ""
 
-#: inc/wp-cli.php:650
+#: inc/wp-cli.php:756
 msgid "Find and replace database content for attachment files"
 msgstr ""

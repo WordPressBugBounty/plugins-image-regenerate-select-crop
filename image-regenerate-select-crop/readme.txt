@@ -3,8 +3,8 @@ Contributors: Iulia Cazan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
-Tested up to: 6.8
-Stable tag: 8.1.2
+Tested up to: 6.9
+Stable tag: 8.1.4
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,11 +67,14 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.1.2 =
-* PHP 8+ compatibility
-* Fixed the subsize orientation for images with EXIF orientation
-* Fixed deprecation warnings for `FILTER_SANITIZE_STRING`
-* Enhanced the compatibility with LiteSpeed Cache > 7.5
+= 8.1.4 =
+* Tested up to 6.9
+* PHP 8.4 compatibility
+* Admin assets load updates
+* Refactored the admin menu icon in order that the admin.css could be removed (kept for backward compatibility only)
+* Removed redundant code
+* Cleanup unused functions
+
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.
 

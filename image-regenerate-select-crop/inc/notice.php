@@ -8,6 +8,10 @@
 declare( strict_types=1 );
 namespace SIRSC;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 \add_action( 'admin_notices', __NAMESPACE__ . '\\admin_notices' );
 \add_action( 'wp_ajax_plugin-deactivate-notice-sirsc', __NAMESPACE__ . '\\admin_notices_cleanup' );
 

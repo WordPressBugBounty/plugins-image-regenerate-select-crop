@@ -6,16 +6,20 @@
  * @version 8.0.0
  */
 
-// phpcs:disable
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
+
+defined( 'ABSPATH' ) || exit;
+
 $page  = filter_input( INPUT_GET, 'page', FILTER_VALIDATE_INT );
 $page  = empty( $page ) ? 1 : abs( $page );
 $max   = filter_input( INPUT_GET, 'maxpage', FILTER_VALIDATE_INT );
-$size  = urlencode( filter_input( INPUT_GET, 'sizename', FILTER_DEFAULT ) );
-$mime  = urlencode( filter_input( INPUT_GET, 'mimetype', FILTER_DEFAULT ) );
+$size  = rawurlencode( filter_input( INPUT_GET, 'sizename', FILTER_DEFAULT ) );
+$mime  = rawurlencode( filter_input( INPUT_GET, 'mimetype', FILTER_DEFAULT ) );
 $valid = filter_input( INPUT_GET, 'valid', FILTER_VALIDATE_INT );
 $aid   = filter_input( INPUT_GET, 'aid', FILTER_DEFAULT );
 $title = filter_input( INPUT_GET, 'title', FILTER_DEFAULT );
-// phpcs:enable
 
 $args = [
 	'base'               => '%_%',

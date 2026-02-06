@@ -8,6 +8,11 @@
 declare( strict_types=1 );
 namespace SIRSC\Admin;
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+
+\defined( 'ABSPATH' ) || exit;
+
 the_info_text( 'info_global_ignore', \__( 'This option allows you to exclude globally from the application some of the image sizes that are registered through various plugins and themes options, that you perhaps do not need at all in your application (these are just stored in your folders and database but not actually used/visible on the front-end).', 'sirsc' ) . '<hr>' . \__( 'By excluding these, the unnecessary image sizes will not be generated at all.', 'sirsc' ) );
 
 the_info_text( 'info_default_quality', \__( 'The quality option is allowing you to control the quality of the generated sub-sizes, starting from the quality of the image you upload. This can be useful for performance.', 'sirsc' ) . '<hr><b>' . \__( 'Be careful not to change the quality of the full image or the quality of the sub-size that you set as the forced original.', 'sirsc' ) . '</b><hr>' . \__( 'Setting a lower quality is recommended for smaller sub-sizes, that are generated from the full/original file.', 'sirsc' ) );

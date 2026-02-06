@@ -5,6 +5,10 @@
  * @package sirsc
  */
 
+// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
+
+\defined( 'ABSPATH' ) || exit;
+
 /**
  * Adons class for SIRSC plugin.
  */
@@ -625,8 +629,6 @@ class SIRSC_Adons extends SIRSC_Image_Regenerate_Select_Crop {
 					<?php esc_html_e( 'No extension available at the moment.', 'sirsc' ); ?>
 				<?php endif; ?>
 			</div>
-
-			<?php \SIRSC\admin\show_donate_text(); ?>
 		</div>
 		<?php
 	}

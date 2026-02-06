@@ -5,7 +5,10 @@
  * @package sirsc
  */
 
+defined( 'ABSPATH' ) || exit;
+
 // phpcs:disable
+
 $alt_text_description = sprintf(
 	/* Translators: 1: Link to tutorial, 2: Additional link attributes, 3: Accessibility text. */
 	__( '<a href="%1$s" %2$s>Learn how to describe the purpose of the image%3$s</a>. Leave empty if the image is purely decorative.' ),

@@ -5,7 +5,7 @@
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.1.4
+ * Version:     8.1.5
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -34,8 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SIRSC_VER', 8.14 );
-define( 'SIRSC_VER_TEXT', '8.1.4' );
+define( 'SIRSC_VER', 8.15 );
+define( 'SIRSC_VER_TEXT', '8.1.5' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -226,7 +226,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	private function init() {
 		$called = get_called_class();
 
-		self::$settings = get_option( 'sirsc_settings' );
+		self::$settings = get_option( 'sirsc_settings', [] );
 		self::$use_cron = ! empty( self::$settings['cron_bulk_execution'] ) ? true : false;
 		self::$is_cron  = defined( 'DOING_CRON' ) && DOING_CRON ? true : false;
 
@@ -698,7 +698,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				} else {
 					// Save the general settings.
 					self::maybe_save_general_settings();
-					self::$settings = get_option( 'sirsc_settings' );
+					self::$settings = get_option( 'sirsc_settings', [] );
 				}
 			}
 
@@ -909,7 +909,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				update_option( 'sirsc_settings', $settings );
 			}
 
-			self::$settings = get_option( 'sirsc_settings' );
+			self::$settings = get_option( 'sirsc_settings', [] );
 			\SIRSC\mark_updated_settings();
 
 			\SIRSC\Placeholder\regenerate_all_placeholders();
@@ -1248,6 +1248,10 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param string $parent_type Attachment post parent type.
 	 */
 	public static function hook_upload_extra_rules( $id, $type = '', $parent_id = 0, $parent_type = '' ) {
+		if ( empty( self::$settings ) ) {
+			self::$settings = get_option( 'sirsc_settings', [] );
+		}
+
 		if ( ! isset( self::$settings['force_original_to'] ) ) {
 			self::$settings['force_original_to'] = '';
 		}
@@ -1445,7 +1449,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		$list    = self::common_settings();
-		$tmp_set = get_option( 'sirsc_settings' . $pt );
+		$tmp_set = get_option( 'sirsc_settings' . $pt, [] );
 		if ( ! empty( $tmp_set ) ) {
 			if ( ! empty( $list['values'] ) ) {
 				self::$settings = array_merge( $tmp_set, $list['values'] );

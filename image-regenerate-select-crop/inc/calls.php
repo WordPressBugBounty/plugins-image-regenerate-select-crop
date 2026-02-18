@@ -284,7 +284,7 @@ function refresh_log() {
 	$type  = filter_input( INPUT_GET, 'type', FILTER_DEFAULT );
 	$level = filter_input( INPUT_GET, 'level', FILTER_DEFAULT );
 	if ( ! empty( $level ) ) {
-		$settings = \get_option( 'sirsc_settings' );
+		$settings = \get_option( 'sirsc_settings', [] );
 		if ( 'on' === $level ) {
 			$settings['disable_verbose_log'] = true;
 		} else {

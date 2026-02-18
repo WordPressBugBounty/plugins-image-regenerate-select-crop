@@ -657,7 +657,7 @@ function skip_write_log( $text, $log = 'bulk' ) {
 		return false;
 	}
 
-	$settings   = \get_option( 'sirsc_settings' );
+	$settings   = \get_option( 'sirsc_settings', [] );
 	$is_verbose = empty( $settings['debug_log_verbose'] );
 	$last       = log_read_last( 'tracer' );
 

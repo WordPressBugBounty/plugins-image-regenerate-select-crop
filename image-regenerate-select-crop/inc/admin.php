@@ -587,9 +587,16 @@ function donate_text() {
 /**
  * Display footer links and plugin credits.
  *
- * @param string $original Original footer content.
+ * Note: $original is type-hinted as ?string to gracefully handle
+ * third-party plugins that incorrectly return null or non-string values
+ * to this filter.
+ *
+ * @see https://developer.wordpress.org/reference/hooks/admin_footer_text/
+ *
+ * @param  string|null $original Original footer content.
+ * @return string|null
  */
-function footer_text( string $original = '' ): string {
+function footer_text( ?string $original = '' ): ?string {
 	$screen = \get_current_screen();
 	if ( ! is_object( $screen ) || ( ! substr_count( $screen->base, 'image-regenerate-select-crop' ) && ! substr_count( $screen->base, 'sirsc' ) ) ) {
 		return $original;

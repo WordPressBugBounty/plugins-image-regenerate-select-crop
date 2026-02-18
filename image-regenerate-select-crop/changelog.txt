@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 8.1.4 =
+* Tested up to 6.9
+* PHP 8.4 compatibility
+* Admin assets load updates
+* Refactored the admin menu icon in order that the admin.css could be removed (kept for backward compatibility only)
+* Removed redundant code
+* Cleanup unused functions
+
 = 8.1.3 =
 * Tested up to 6.9
 * PHP 8.4 compatibility

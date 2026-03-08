@@ -104,6 +104,18 @@ function cleanup_attachment_all_sizes( $id, $wpcli = false, $verbose = false ) {
 	$list = \SIRSC::assess_files_for_attachment_original( $id, $meta );
 
 	$update_metadata = false;
+	if ( empty( $meta['width'] ) && empty( $meta['height'] ) && ! empty( $meta['file'] ) ) {
+		$upld = \wp_upload_dir();
+		$new  = \wp_getimagesize( \trailingslashit( $upld['basedir'] ) . $meta['file'] );
+		if ( isset( $new[0] ) && isset( $new[1] ) ) {
+			$update_metadata = true;
+			$meta['width']   = (int) $new[0];
+			$meta['height']  = (int) $new[1];
+
+			$list = \SIRSC::assess_files_for_attachment_original( $id, $meta );
+		}
+	}
+
 	if ( ! empty( $list['paths']['generated'] ) ) {
 		foreach ( $list['paths']['generated'] as $c => $removable ) {
 			handle_cleanup_removable_file( $id, $removable, $wpcli, $verbose );

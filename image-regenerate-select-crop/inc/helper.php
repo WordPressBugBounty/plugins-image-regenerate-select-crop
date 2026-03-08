@@ -1040,59 +1040,60 @@ function attachment_summary( $id, $image = [], $compute = [], $good = [] ) { // 
 	$summary = \SIRSC::general_sizes_and_files_match( $id, $image, $compute );
 	$count   = 0;
 	?>
-	<div class="bg-secondary">
-		<div class="summary-intro">
-			<?php \esc_html_e( 'You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore).', 'sirsc' ); ?>
-		</div>
-		<?php
-		if ( empty( $summary ) ) {
-			\esc_html_e( 'Nothing available.', 'sirsc' );
-		} else {
-			?>
-			<table width="100%" cellpadding="0" cellpadding="0" class="striped fixed sirsc-small-info-table">
-				<?php
-				foreach ( $summary as $k => $v ) {
-					$trid  = 'trsirsc-' . intval( $id ) . md5( '-' . $k . '-' . $v['size'] );
-					$fsize = ( empty( $v['fsize'] ) || 'N/A' === $v['filesize'] )
-						? '<span class="missing-file">' . \__( 'The file is missing!', 'sirsc' ) . '</span>'
-						: '';
-					$hint  = ( ! empty( $fsize ) ) ? ' missing-file' : '';
-					$delt  = ( ! empty( $fsize ) )
-						? \__( 'Cleanup the metadata', 'sirsc' )
-						: \__( 'Delete', 'sirsc' );
-					?>
-					<tr id="<?php echo \esc_attr( $trid ); ?>" class="<?php echo \esc_attr( $hint ); ?>">
-						<td width="50" nowrap="nowrap">
-							<span class="dashicons <?php echo \esc_attr( $v['icon'] ); ?>"></span>
-							<?php echo intval( ++$count ); ?>.
-						</td>
-						<td width="65"><?php echo \esc_attr( $v['hint'] ); ?></td>
-						<td>
-							<b><?php echo \esc_attr( $k ); ?></b>
-							<br><?php echo \esc_attr( str_replace( ',', ', ', $v['size'] ) ); ?> <?php echo \wp_kses_post( $fsize ); ?>
-							<div id="<?php echo \esc_attr( $trid ); ?>_rez"></div>
-						</td>
-						<td width="65" align="right">
-							<?php \esc_html_e( 'file size', 'sirsc' ); ?>
-							<br><?php echo \esc_attr( $v['filesize'] ); ?>
-						</td>
-						<td width="40" align="center">
-							<?php if ( ! substr_count( $v['icon'], 'is-full' ) && ! substr_count( $v['icon'], 'is-original' ) ) : ?>
-								<button onclick="sirscStartDeleteFile('<?php echo (int) $id; ?>', '<?php echo \esc_attr( $k ); ?>', '<?php echo \esc_attr( $v['size'] ); ?>', '<?php echo \esc_attr( $trid ); ?>');" class="button has-icon tiny" title="<?php echo \esc_attr( $delt ); ?>"><b class="dashicons dashicons-trash"></b></button>
-							<?php else : ?>
-								<b class="dashicons dashicons-trash"></b>
-							<?php endif; ?>
-						</td>
-					</tr>
-					<?php
-				}
-				?>
-			</table>
-			<?php
-		}
-		?>
+
+	<div class="summary-intro">
+		<?php \esc_html_e( 'You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore).', 'sirsc' ); ?>
 	</div>
 	<?php
+	if ( empty( $summary ) ) {
+		\esc_html_e( 'Nothing available.', 'sirsc' );
+	} else {
+		?>
+		<table width="100%" cellpadding="0" cellpadding="0" class="striped fixed sirsc-small-info-table">
+			<tr class="clear">
+				<td width="120" nowrap="nowrap" colspan="2"><?php \esc_html_e( 'Status', 'sirsc' ); ?></td>
+				<td><?php \esc_html_e( 'File', 'sirsc' ); ?> / <?php \esc_html_e( 'Sub-size info', 'sirsc' ); ?></td>
+				<td width="70" align="right"><?php \esc_html_e( 'File size', 'sirsc' ); ?></td>
+				<td width="46" align="center"></td>
+			</tr>
+
+			<?php
+			foreach ( $summary as $k => $v ) {
+				$trid  = 'trsirsc-' . intval( $id ) . md5( '-' . $k . '-' . $v['size'] );
+				$fsize = ( empty( $v['fsize'] ) || 'N/A' === $v['filesize'] )
+					? '<span class="missing-file">' . \__( 'The file is missing!', 'sirsc' ) . '</span>'
+					: '';
+				$hint  = ( ! empty( $fsize ) ) ? ' missing-file' : '';
+				$delt  = ( ! empty( $fsize ) )
+					? \__( 'Cleanup the metadata', 'sirsc' )
+					: \__( 'Delete', 'sirsc' );
+				?>
+				<tr id="<?php echo \esc_attr( $trid ); ?>" class="<?php echo \esc_attr( $hint ); ?>">
+					<td width="50" nowrap="nowrap">
+						<span class="dashicons <?php echo \esc_attr( $v['icon'] ); ?>"></span>
+						<?php echo intval( ++$count ); ?>.
+					</td>
+					<td width="65"><?php echo \esc_attr( $v['hint'] ); ?></td>
+					<td>
+						<b><?php echo \esc_attr( $k ); ?></b>
+						<br><?php echo \esc_attr( str_replace( ',', ', ', $v['size'] ) ); ?> <?php echo \wp_kses_post( $fsize ); ?>
+						<div id="<?php echo \esc_attr( $trid ); ?>_rez"></div>
+					</td>
+					<td width="70" align="right"><?php echo \esc_attr( $v['filesize'] ); ?></td>
+					<td width="46" align="center">
+						<?php if ( ! substr_count( $v['icon'], 'is-full' ) && ! substr_count( $v['icon'], 'is-original' ) ) : ?>
+							<button onclick="sirscStartDeleteFile('<?php echo (int) $id; ?>', '<?php echo \esc_attr( $k ); ?>', '<?php echo \esc_attr( $v['size'] ); ?>', '<?php echo \esc_attr( $trid ); ?>');" class="button has-icon tiny" title="<?php echo \esc_attr( $delt ); ?>"><b class="dashicons dashicons-trash"></b></button>
+						<?php else : ?>
+							<b class="dashicons dashicons-trash"></b>
+						<?php endif; ?>
+					</td>
+				</tr>
+				<?php
+			}
+			?>
+		</table>
+		<?php
+	}
 }
 
 /**
@@ -1218,7 +1219,6 @@ function attachment_sizes_lightbox( $id ) { // phpcs:ignore
 	\SIRSC::load_settings_for_post_id( $id );
 	$all_size = \SIRSC::get_all_image_sizes_plugin();
 	$compute  = compute_image_details( $id, '', \wp_upload_dir(), $all_size );
-
 	if ( ! empty( $compute->source ) && ! empty( $compute->source->name ) ) {
 		$source     = $compute->source;
 		$main_class = ( true === $source->exists ) ? '' : ' sirsc-message warning';
@@ -1260,7 +1260,7 @@ function attachment_sizes_lightbox( $id ) { // phpcs:ignore
 				++$count;
 				$cl = ( 1 === $count % 2 ) ? 'alternate' : '';
 				?>
-				<div id="sirsc-extra-info-footer-<?php echo (int) $id; ?>" class="as-target">
+				<div id="sirsc-extra-info-footer-<?php echo (int) $id; ?>" class="sirsc-lightbox__footer bg-secondary as-target">
 					<?php echo attachment_summary( $id, $compute->metadata, $compute, $good ); // phpcs:ignore ?>
 				</div>
 				<?php

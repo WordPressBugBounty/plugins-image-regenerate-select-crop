@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 8.1.5 =
+* Tested up to 6.9.1
+* PHP 8.4 compatibility
+* Type-hinted $original as ?string to gracefully handle third-party plugins that incorrectly return null or non-string values to `admin_footer_text` filter
+* Prepares the styles for core next standardized UI component heights
+
 = 8.1.4 =
 * Tested up to 6.9
 * PHP 8.4 compatibility

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
 Tested up to: 6.9
-Stable tag: 8.1.5
+Stable tag: 8.1.6
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,11 +67,11 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.1.5 =
+= 8.1.6 =
 * Tested up to 6.9.1
 * PHP 8.4 compatibility
-* Type-hinted $original as ?string to gracefully handle third-party plugins that incorrectly return null or non-string values to `admin_footer_text` filter
-* Prepares the styles for core next standardized UI component heights
+* Additional styles changes to prepares for core next standardized UI component heights
+* Update image metadata after raw cleanup action
 
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.

@@ -261,7 +261,7 @@ function load_assets() {
 	}
 
 	$ver = \SIRSC\get_build_ver();
-	if ( file_exists( SIRSC_DIR . 'build/index.js' ) ) {
+	if ( file_exists( SIRSC_DIR . 'build/index.js' ) && ! \wp_script_is( SIRSC_SLUG ) ) {
 		$upls = \wp_upload_dir();
 		\wp_register_script( SIRSC_SLUG, SIRSC_URL . 'build/index.js', [], $ver, true );
 		\wp_localize_script( SIRSC_SLUG, str_replace( '-', '', SIRSC_SLUG ) . 'Settings', [
@@ -288,7 +288,7 @@ function load_assets() {
 		\wp_enqueue_script( SIRSC_SLUG );
 	}
 
-	if ( file_exists( SIRSC_DIR . 'build/style-view.css' ) ) {
+	if ( file_exists( SIRSC_DIR . 'build/style-view.css' ) && ! \wp_style_is( SIRSC_SLUG ) ) {
 		\wp_enqueue_style( SIRSC_SLUG, SIRSC_URL . 'build/style-view.css', [], $ver, false );
 		\wp_add_inline_style( SIRSC_SLUG, make_preset_colors_tokens() );
 	}

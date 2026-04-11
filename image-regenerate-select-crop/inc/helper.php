@@ -899,9 +899,9 @@ function process_image_sizes_on_request( $id, $size, $position, $quality ) { // 
 		$post = \get_post( $id );
 		if ( ! empty( $post ) ) {
 			notify_doing_sirsc();
-			$size = ( ! empty( $size ) ) ? $size : 'all';
-			$crop = ( ! empty( $position ) ) ? $position : '';
-			$qual = ( ! empty( $quality ) ) ? $quality : 0;
+			$size = ! empty( $size ) ? $size : 'all';
+			$crop = ! empty( $position ) ? $position : '';
+			$qual = ! empty( $quality ) ? $quality : 0;
 			expose_image_after_processing( $id, $size, true, $crop, $qual );
 		}
 	} else {

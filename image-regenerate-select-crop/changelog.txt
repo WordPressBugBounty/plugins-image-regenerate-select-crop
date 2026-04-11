@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 8.1.6 =
+* Tested up to 6.9.1
+* PHP 8.4 compatibility
+* Additional styles changes to prepares for core next standardized UI component heights
+* Update image metadata after raw cleanup action
+
 = 8.1.5 =
 * Tested up to 6.9.1
 * PHP 8.4 compatibility

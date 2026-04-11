@@ -186,6 +186,15 @@ function image_downsize_placeholder_only_missing( $f, $id, $s ) { // phpcs:ignor
 		} catch ( ErrorException $e ) {
 			error_log( 'sirsc exception ' . print_r( $e, 1 ) ); // phpcs:ignore
 		}
+	} else {
+		$filename = \get_attached_file( $id );
+		$mime     = \get_post_mime_type( $id );
+		if ( substr_count( $mime, 'svg' ) ) {
+			if ( file_exists( $filename ) ) {
+				// SVGs that exist should not use placeholders.
+				return;
+			}
+		}
 	}
 
 	// Fallback.

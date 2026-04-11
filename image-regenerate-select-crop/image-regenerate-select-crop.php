@@ -5,7 +5,7 @@
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.1.6
+ * Version:     8.1.7
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -34,8 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SIRSC_VER', 8.16 );
-define( 'SIRSC_VER_TEXT', '8.1.6' );
+define( 'SIRSC_VER', 8.17 );
+define( 'SIRSC_VER_TEXT', '8.1.7' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -1775,7 +1775,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							}
 						}
 
-						if ( is_wp_error( $metadata ) ) {
+						if ( \is_wp_error( $metadata ) ) {
 							\SIRSC\Helper\debug( 'DO NOT UPDATE METADATA', true, true );
 							return;
 						}
@@ -1799,7 +1799,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 							unset( $saved['reused'] );
 						}
 						$metadata['sizes'][ $size_name ] = $saved;
-						wp_update_attachment_metadata( $id, $metadata );
+						\wp_update_attachment_metadata( $id, $metadata );
 						$initial_m = $metadata;
 					}
 				}
@@ -1808,7 +1808,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 		if ( $initial_m !== $metadata ) {
 			// If something changed, then save the metadata.
-			wp_update_attachment_metadata( $id, $metadata );
+			\wp_update_attachment_metadata( $id, $metadata );
 		}
 
 		if ( $the_diffs > 0 && ! $is_reused ) {

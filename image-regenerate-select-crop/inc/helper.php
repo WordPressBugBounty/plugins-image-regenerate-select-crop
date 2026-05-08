@@ -934,7 +934,7 @@ function expose_image_after_processing( $id, $size, $generate = false, $position
 			'all' === $sizes && ! empty( \SIRSC::$settings['regenerate_missing'] )
 			? false
 			: true;
-		make_images_if_not_exists( $id, $sizes, $position, $quality );
+		make_images_if_not_exists( $id, $sizes, $position, $quality, true );
 		\SIRSC::$action_on_demand = false;
 	}
 
@@ -958,8 +958,12 @@ function expose_image_after_processing( $id, $size, $generate = false, $position
  * @param array $selected_size The set of defined image sizes used by the site.
  * @param array $small_crop    The position of a potential crop (lt = left/top, lc = left/center, etc.).
  * @param int   $force_quality Maybe force a specific custom quality, not the default.
+ * @param bool  $force         Whether to force regeneration of sizes that already exist with correct
+ *                             dimensions. False (default) skips already-correct files so WP core
+ *                             generated thumbnails are not overwritten during upload. Pass true for
+ *                             explicit user-triggered regeneration actions.
  */
-function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '', $force_quality = 0 ) { // phpcs:ignore
+function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '', $force_quality = 0, $force = false ) { // phpcs:ignore
 	try {
 		notify_doing_sirsc();
 		debug( 'MAKE IMAGE ' . $id . '|' . $selected_size . '|' . $small_crop . '|' . $force_quality, true, true );
@@ -967,11 +971,11 @@ function make_images_if_not_exists( $id, $selected_size = 'all', $small_crop = '
 			$allowed_sizes = \SIRSC::get_all_image_sizes_plugin( '', true );
 			if ( ! empty( $allowed_sizes ) ) {
 				foreach ( $allowed_sizes as $size_name => $size_info ) {
-					\SIRSC::process_single_size_from_file( $id, $size_name, $size_info, $small_crop, $force_quality );
+					\SIRSC::process_single_size_from_file( $id, $size_name, $size_info, $small_crop, $force_quality, false, $force );
 				}
 			}
 		} else {
-			$res = \SIRSC::process_single_size_from_file( $id, $selected_size, [], $small_crop, $force_quality );
+			$res = \SIRSC::process_single_size_from_file( $id, $selected_size, [], $small_crop, $force_quality, false, $force );
 			if ( 'error-too-small' === $res ) {
 				return $res;
 			}
@@ -1710,7 +1714,7 @@ function raw_cleanup_on_request( $start, $type, $cpt ) {// phpcs:ignore
 									if ( true === $to_delete ) {
 										$removable = $upls['basedir'] . '/' . $name;
 										if ( file_exists( $removable ) ) {
-											@unlink( $removable );// phpcs:ignore
+											wp_delete_file( $removable );
 											if ( ! file_exists( $removable ) ) {
 												if ( ! empty( $info['match'] ) ) {
 													foreach ( $info['match'] as $size_name ) {
@@ -1891,7 +1895,7 @@ function cleanup_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ignore
 								// Make sure not to delete the original file.
 								\SIRSC::collect_regenerate_results( $id, $text, 'success', 'cleanup' );
 								$message = output_bulk_message( 'success', $text, $id, true );
-								@unlink( $image->size->path ); // phpcs:ignore
+								wp_delete_file( $image->size->path );
 
 								// Notify other scripts that the file was deleted.
 								\do_action( 'sirsc_image_file_deleted', $id, $image->size->path );
@@ -2025,7 +2029,7 @@ function regenerate_image_sizes_on_request( $start, $size, $cpt ) { // phpcs:ign
 								}
 								$message = output_bulk_message( 'warning', $text, $id, true );
 							} else {
-								$resp = make_images_if_not_exists( $id, $size );
+								$resp = make_images_if_not_exists( $id, $size, '', 0, true );
 								if ( 'error-too-small' === $resp ) {
 									$text = '<span>' . $info->expected->name . '</span> <em>' . \esc_html__( 'Could not be generated, the original is too small.', 'sirsc' ) . '</em>';
 

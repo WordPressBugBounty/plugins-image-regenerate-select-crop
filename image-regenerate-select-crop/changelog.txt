@@ -1,5 +1,12 @@
 == Changelog ==
 
+== Changelog ==
+= 8.1.7 =
+* Tested up to 7.0
+* PHP 8.4 compatibility
+* Additional styles changes to prepares for core next standardized UI component heights
+* Update placeholder for SVG
+
 = 8.1.6 =
 * Tested up to 6.9.1
 * PHP 8.4 compatibility

@@ -243,6 +243,15 @@ function hookup_tasks() {
 function run_task( $hook = '', $args = [] ) { // phpcs:ignore
 	ob_start();
 
+	// Prevent concurrent execution of the same task (e.g. when a batch takes > 60 s
+	// and the next cron tick fires before the previous one finishes).
+	$lock_key = 'sirsc_task_lock_' . md5( $hook );
+	if ( \get_transient( $lock_key ) ) {
+		ob_get_clean();
+		return;
+	}
+	\set_transient( $lock_key, 1, 5 * MINUTE_IN_SECONDS );
+
 	$run   = false;
 	$tasks = custom_list_of_tasks();
 	$name  = ! empty( $tasks[ $hook ]['name'] ) ? $tasks[ $hook ]['name'] : '';
@@ -285,6 +294,7 @@ function run_task( $hook = '', $args = [] ) { // phpcs:ignore
 		}
 	}
 
+	\delete_transient( $lock_key );
 	ob_get_clean();
 }
 
@@ -403,6 +413,9 @@ function trigger_task_unschedule( string $hook ) {
 
 	\wp_unschedule_hook( $hook );
 	\wp_clear_scheduled_hook( $hook );
+
+	// Release the overlap lock so the task can be rescheduled immediately.
+	\delete_transient( 'sirsc_task_lock_' . md5( $hook ) );
 }
 
 /**

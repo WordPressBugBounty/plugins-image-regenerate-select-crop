@@ -5,7 +5,7 @@
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.1.7
+ * Version:     8.2.0
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -34,8 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SIRSC_VER', 8.17 );
-define( 'SIRSC_VER_TEXT', '8.1.7' );
+define( 'SIRSC_VER', 8.20 );
+define( 'SIRSC_VER_TEXT', '8.2.0' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -202,6 +202,15 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static $action_on_demand = false;
 
 	/**
+	 * Tracks attachment IDs already processed on upload (WP 5.3+) to prevent
+	 * re-entrant calls to the missing-sizes generation triggered from within
+	 * the wp_generate_attachment_metadata filter.
+	 *
+	 * @var array
+	 */
+	public static $upload_processed = [];
+
+	/**
 	 * Get active object instance
 	 *
 	 * @return object
@@ -259,9 +268,16 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		}
 
 		// This is global, as the image sizes can be also registerd in the themes or other plugins.
-		add_filter( 'intermediate_image_sizes_advanced', [ $called, 'filter_ignore_global_image_sizes' ], 0, 2 );
+		// Accept the attachment ID as a 3rd arg (available since WP 5.3) so that
+		// filter_some_more_based_on_metadata can skip the WP_Query on modern WP.
+		add_filter( 'intermediate_image_sizes_advanced', [ $called, 'filter_ignore_global_image_sizes' ], 0, 3 );
 		add_filter( 'wp_generate_attachment_metadata', [ $called, 'wp_generate_attachment_metadata' ], 1, 2 );
-		add_action( 'added_post_meta', [ $called, 'process_filtered_attachments' ], 10, 4 );
+		if ( self::$wp_ver < 5.3 ) {
+			// On WP 5.3+, wp_create_image_subsizes saves metadata after each individual
+			// subsize, so added_post_meta fires mid-generation. For 5.3+ the missing-sizes
+			// pass is handled inside the wp_generate_attachment_metadata filter instead.
+			add_action( 'added_post_meta', [ $called, 'process_filtered_attachments' ], 10, 4 );
+		}
 		add_filter( 'big_image_size_threshold', [ $called, 'big_image_size_threshold_forced' ], 20, 4 );
 		add_action( 'delete_attachment', [ $called, 'on_delete_attachment' ] );
 		add_action( 'after_setup_theme', [ $called, 'maybe_register_custom_image_sizes' ] );
@@ -379,11 +395,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Exclude globally the image sizes selected in the settings from being generated on upload.
 	 *
-	 * @param array $sizes    The computed image sizes.
-	 * @param array $metadata The image metadata.
+	 * @param array $sizes         The computed image sizes.
+	 * @param array $metadata      The image metadata.
+	 * @param int   $attachment_id Attachment post ID (available since WP 5.3).
 	 * @return array
 	 */
-	public static function filter_ignore_global_image_sizes( $sizes, $metadata = [] ) {
+	public static function filter_ignore_global_image_sizes( $sizes, $metadata = [], $attachment_id = 0 ) {
 		$sizes = self::assess_all_wp_sizes();
 		if ( ! empty( self::$settings['complete_global_ignore'] ) ) {
 			foreach ( self::$settings['complete_global_ignore'] as $s ) {
@@ -398,25 +415,31 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 		}
 
-		// phpcs:disable WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize
-		$check_size = serialize( $sizes );
-		if ( ! substr_count( $check_size, 'width' ) && ! substr_count( $check_size, 'height' ) ) {
-			// Fail-fast here.
+		// Fail-fast: if none of the remaining sizes declare width or height, there is nothing to generate.
+		$has_dimensions = false;
+		foreach ( $sizes as $size_data ) {
+			if ( ! empty( $size_data['width'] ) || ! empty( $size_data['height'] ) ) {
+				$has_dimensions = true;
+				break;
+			}
+		}
+		if ( ! $has_dimensions ) {
 			return [];
 		}
 
-		$sizes = self::filter_some_more_based_on_metadata( $sizes, $metadata );
+		$sizes = self::filter_some_more_based_on_metadata( $sizes, $metadata, (int) $attachment_id );
 		return $sizes;
 	}
 
 	/**
 	 * Filter the sizes based on the metadata.
 	 *
-	 * @param array $sizes    Images sizes.
-	 * @param array $metadata Uploaded image metadata.
+	 * @param array $sizes         Images sizes.
+	 * @param array $metadata      Uploaded image metadata.
+	 * @param int   $attachment_id Attachment post ID (available since WP 5.3; 0 on older WP).
 	 * @return array
 	 */
-	public static function filter_some_more_based_on_metadata( $sizes, $metadata = [] ) {
+	public static function filter_some_more_based_on_metadata( $sizes, $metadata = [], $attachment_id = 0 ) {
 		if ( empty( $metadata['file'] ) ) {
 			// Fail-fast, no upload.
 			return $sizes;
@@ -434,30 +457,35 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			}
 		}
 
-		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_key
-		// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-		$args = [
-			'meta_key'       => '_wp_attached_file',
-			'meta_value'     => $metadata['file'],
-			'post_status'    => 'any',
-			'post_type'      => 'attachment',
-			'posts_per_page' => 1,
-			'fields'         => 'ids',
-		];
-		$post = new WP_Query( $args );
-		if ( ! empty( $post->posts[0] ) ) {
-			// The attachment was found.
-			self::load_settings_for_post_id( $post->posts[0] );
+		if ( $attachment_id > 0 ) {
+			// WP 5.3+: attachment ID is passed directly by core — no DB query needed.
+			self::load_settings_for_post_id( $attachment_id );
+		} else {
+			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			// phpcs:disable WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			$args = [
+				'meta_key'       => '_wp_attached_file',
+				'meta_value'     => $metadata['file'],
+				'post_status'    => 'any',
+				'post_type'      => 'attachment',
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+			];
+			$post = new WP_Query( $args );
+			if ( ! empty( $post->posts[0] ) ) {
+				$attachment_id = $post->posts[0];
+				self::load_settings_for_post_id( $attachment_id );
+			}
+			wp_reset_postdata();
+		}
 
-			if ( ! empty( self::$settings['restrict_sizes_to_these_only'] ) ) {
-				foreach ( $sizes as $s => $v ) {
-					if ( ! in_array( $s, self::$settings['restrict_sizes_to_these_only'], true ) ) {
-						unset( $sizes[ $s ] );
-					}
+		if ( ! empty( self::$settings['restrict_sizes_to_these_only'] ) ) {
+			foreach ( $sizes as $s => $v ) {
+				if ( ! in_array( $s, self::$settings['restrict_sizes_to_these_only'], true ) ) {
+					unset( $sizes[ $s ] );
 				}
 			}
 		}
-		wp_reset_postdata();
 
 		return $sizes;
 	}
@@ -472,49 +500,67 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	}
 
 	/**
+	 * Return `getimagesize()` result for a file, caching the result for the duration of the request.
+	 *
+	 * During a single upload all N subsizes call `image_editor()` with the same source file.
+	 * Caching by path avoids redundant disk reads; the cache is only request-scoped so there
+	 * is no risk of stale data across separate requests.
+	 *
+	 * @param  string $file Absolute path to the image file.
+	 * @return array|false
+	 */
+	public static function cached_getimagesize( string $file ) {
+		static $cache = [];
+		if ( ! isset( $cache[ $file ] ) ) {
+			$cache[ $file ] = @getimagesize( $file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		}
+		return $cache[ $file ];
+	}
+
+	/**
 	 * Returns an array of all the image sizes registered in the application.
+	 *
+	 * The full list is built once per request and cached in a static variable.
+	 * Image sizes are registered at init and do not change during a request.
 	 *
 	 * @param string $size Image size slug.
 	 */
 	public static function get_all_image_sizes( $size = '' ) {
 		global $_wp_additional_image_sizes;
-		$sizes = [];
 
-		$get_intermediate_image_sizes = get_intermediate_image_sizes();
-		// Create the full array with sizes and crop info.
-		foreach ( $get_intermediate_image_sizes as $_size ) {
-			if ( in_array( $_size, self::$wp_native_sizes, true ) ) {
-				$sizes[ $_size ]['width']  = get_option( $_size . '_size_w' );
-				$sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
-				$sizes[ $_size ]['crop']   = (bool) get_option( $_size . '_crop' );
-			} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
-				$sizes[ $_size ] = [
-					'width'  => $_wp_additional_image_sizes[ $_size ]['width'],
-					'height' => $_wp_additional_image_sizes[ $_size ]['height'],
-					'crop'   => $_wp_additional_image_sizes[ $_size ]['crop'],
-				];
-			}
-		}
-
-		if ( ! empty( $sizes ) ) {
-			$all = [];
-			foreach ( $sizes as $name => $details ) {
-				if ( ! empty( $name ) ) {
-					$all[ $name ] = $details;
+		static $all_sizes_cache = null;
+		if ( null === $all_sizes_cache ) {
+			$sizes = [];
+			// Create the full array with sizes and crop info.
+			foreach ( get_intermediate_image_sizes() as $_size ) {
+				if ( in_array( $_size, self::$wp_native_sizes, true ) ) {
+					$sizes[ $_size ]['width']  = get_option( $_size . '_size_w' );
+					$sizes[ $_size ]['height'] = get_option( $_size . '_size_h' );
+					$sizes[ $_size ]['crop']   = (bool) get_option( $_size . '_crop' );
+				} elseif ( isset( $_wp_additional_image_sizes[ $_size ] ) ) {
+					$sizes[ $_size ] = [
+						'width'  => $_wp_additional_image_sizes[ $_size ]['width'],
+						'height' => $_wp_additional_image_sizes[ $_size ]['height'],
+						'crop'   => $_wp_additional_image_sizes[ $_size ]['crop'],
+					];
 				}
 			}
-			$sizes = $all;
-		}
 
-		if ( ! empty( $size ) && is_scalar( $size ) ) { // Get only 1 size if found.
-			if ( ! empty( $sizes ) && isset( $sizes[ $size ] ) ) {
-				return $sizes[ $size ];
-			} else {
-				return false;
+			// Strip any entries with empty names (defensive).
+			$clean = [];
+			foreach ( $sizes as $name => $details ) {
+				if ( ! empty( $name ) ) {
+					$clean[ $name ] = $details;
+				}
 			}
+			$all_sizes_cache = $clean;
 		}
 
-		return $sizes;
+		if ( ! empty( $size ) && is_scalar( $size ) ) {
+			return $all_sizes_cache[ $size ] ?? false;
+		}
+
+		return $all_sizes_cache;
 	}
 
 	/**
@@ -1215,9 +1261,21 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Load the settings for a post ID (by parent post type).
 	 *
+	 * Within a single request, settings are stable per attachment ID. The
+	 * static guard prevents redundant option reads and filter calls when the
+	 * same attachment is processed multiple times (e.g., once per subsize).
+	 *
 	 * @param int $post_id The post ID.
 	 */
 	public static function load_settings_for_post_id( $post_id = 0 ) {
+		static $loaded_for = -1;
+		if ( $post_id > 0 && (int) $post_id === $loaded_for ) {
+			return;
+		}
+		if ( $post_id > 0 ) {
+			$loaded_for = (int) $post_id;
+		}
+
 		$post = get_post( $post_id );
 		if ( ! empty( $post->post_parent ) ) {
 			$pt = get_post_type( $post->post_parent );
@@ -1642,7 +1700,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$h = ! empty( $sval['height'] ) ? (int) $sval['height'] : 0;
 				$c = ! empty( $sval['crop'] ) ? $sval['crop'] : false;
 
-				$c_image_size = getimagesize( $file );
+				$c_image_size = self::cached_getimagesize( $file );
 
 				$ciw = (int) $c_image_size[0];
 				$cih = (int) $c_image_size[1];
@@ -1672,9 +1730,13 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 * @param  string $small_crop         Maybe a position for the content crop.
 	 * @param  int    $force_quality      Maybe a specified quality loss.
 	 * @param  bool   $first_time_replace Maybe it is the first time when the image is processed after upload.
+	 * @param  bool   $force_check        Whether to force regeneration even when a correct file already exists.
+	 *                                    Pass false when filling gaps after upload (make_images_if_not_exists)
+	 *                                    to avoid re-generating files WP core already created correctly.
+	 *                                    Defaults to true to preserve existing behaviour for all other callers.
 	 * @return mixed
 	 */
-	public static function process_single_size_from_file( $id, $size_name = '', $size_info = [], $small_crop = '', $force_quality = 0, $first_time_replace = false ) {
+	public static function process_single_size_from_file( $id, $size_name = '', $size_info = [], $small_crop = '', $force_quality = 0, $first_time_replace = false, $force_check = true ) {
 		if ( empty( $size_name ) ) {
 			return;
 		}
@@ -1741,7 +1803,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 				$allow_upscale = self::has_enable_perfect() && self::has_enable_upscale();
 
-				$execute = self::check_if_execute_size( $metadata, $size_name, $size_info, $from_file, true );
+				$execute = self::check_if_execute_size( $metadata, $size_name, $size_info, $from_file, $force_check );
 				if ( ! empty( $execute ) || $allow_upscale ) {
 					$generated = ! empty( $meta['sizes'][ $size_name ] ) ? $meta['sizes'][ $size_name ] : false;
 
@@ -1851,7 +1913,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			\SIRSC\Helper\debug( 'FORCED SIZE EDITOR PROCESSED IMAGE', true, true );
 			$saved_filename = $info['path'] . $saved['file'];
 
-			// phpcs:disable WordPress.WP.AlternativeFunctions.unlink_unlink
+			// phpcs:disable WordPress.WP.AlternativeFunctions.rename_rename
 			// phpcs:disable WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			// phpcs:disable WordPress.PHP.NoSilencedErrors.Discouraged
 			if ( wp_basename( $saved_filename ) !== $info['name'] ) {
@@ -1859,7 +1921,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				@copy( $saved_filename, $info['filename'] );
 
 				// Remove the image size.
-				@unlink( $saved_filename );
+				wp_delete_file( $saved_filename );
 
 				// Adjust the metadata to match the new set.
 				$metadata['width']    = $saved['width'];
@@ -2036,7 +2098,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$the_file = str_replace( $initial, $meta['sizes'][ $name ]['file'], $file );
 				if ( file_exists( $the_file ) ) {
 					// The file exists, no need to regenerate it.
-					$the_size = getimagesize( $the_file );
+					$the_size = self::cached_getimagesize( $the_file );
 					$saved    = [
 						'file'   => wp_basename( $the_file ),
 						'width'  => (int) $the_size[0],
@@ -2053,7 +2115,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$force_quality = self::editor_set_custom_quality( $name, $mime_type, 0 );
 		}
 
-		$image_size = getimagesize( $file );
+		$image_size = self::cached_getimagesize( $file );
 		if ( $is_swap ) {
 			$estimated = self::decide_estimated_size( $image_size, $name );
 		} else {
@@ -2092,7 +2154,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( ! empty( $meta['sizes'][ $name ]['file'] ) ) {
 					$the_file = trailingslashit( dirname( $file ) ) . $meta['sizes'][ $name ]['file'];
 					if ( file_exists( $the_file ) ) {
-						$the_size = getimagesize( $the_file );
+						$the_size = self::cached_getimagesize( $the_file );
 						rename( $the_file, $file );
 						return [
 							'file'   => wp_basename( $file ),
@@ -2160,7 +2222,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			$name = pathinfo( $filename, PATHINFO_FILENAME );
 			$path = pathinfo( $filename, PATHINFO_DIRNAME );
 			if ( file_exists( $filename ) ) {
-				$size = getimagesize( $filename );
+				$size = self::cached_getimagesize( $filename );
 			} else {
 				// This means that the image was probably moved in the previous iteration.
 				$size = [ $metadata['width'], $metadata['height'] ];
@@ -2184,7 +2246,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				// Remove the initial original file if that is not used by another attachment.
 				if ( file_exists( $info['path'] . $metadata['original_image'] )
 					&& $metadata['original_image'] !== $unique ) {
-					@unlink( $info['path'] . $metadata['original_image'] );
+					wp_delete_file( $info['path'] . $metadata['original_image'] );
 				}
 
 				// Rename the full size as the initial original file.
@@ -2692,7 +2754,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$gene_all = self::assess_files_for_attachment_original( $post_id );
 		if ( ! empty( $gene_all['paths']['generated'] ) ) {
 			foreach ( $gene_all['paths']['generated'] as $value ) {
-				@unlink( $value );
+				wp_delete_file( $value );
 			}
 		}
 	}
@@ -2831,6 +2893,32 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			update_post_meta( $attachment_id, '_wp_attachment_metadata', $metadata );
 		}
 
+		// On WP 5.3+, the added_post_meta hook is not registered (it fired too early,
+		// mid-generation). Generate any sizes that were filtered out by
+		// filter_ignore_global_image_sizes here instead — WP has now finished its own
+		// generation loop so there is no risk of double-writing files.
+		// $force = false so only truly missing/incorrect files are created; sizes that
+		// WP core already generated correctly are reused without being overwritten.
+		if ( self::$wp_ver >= 5.3 && ! in_array( $attachment_id, self::$upload_processed, true ) ) {
+			self::$upload_processed[] = $attachment_id;
+			self::load_settings_for_post_id( $attachment_id );
+
+			if ( ! empty( self::$settings['force_original_to'] ) ) {
+				$file    = get_attached_file( $attachment_id );
+				$fo_orig = self::$settings['force_original_to'];
+				$size    = self::get_all_image_sizes( $fo_orig );
+				self::swap_full_with_another_size( $attachment_id, $file, $fo_orig, $size['crop'], 0 );
+			}
+
+			\SIRSC\Helper\debug( 'START PROCESS ALL REMAINING SIZES FOR ' . $attachment_id, true, true );
+			\SIRSC\Helper\make_images_if_not_exists( $attachment_id, 'all', '', 0, false );
+			$metadata = wp_get_attachment_metadata( $attachment_id );
+		}
+
+		// On WP < 5.3 the _sirsc_attachment_metadata temporary meta was written by
+		// process_filtered_attachments (via added_post_meta) before this filter ran.
+		// Restore it as the authoritative metadata so the incremental saves made by
+		// that path are not discarded.
 		$sirsc_meta = get_post_meta( $attachment_id, '_sirsc_attachment_metadata', true );
 		if ( ! empty( $sirsc_meta ) ) {
 			$metadata = $sirsc_meta;
@@ -2861,6 +2949,18 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	/**
 	 * Maybe enforce quality on upload.
 	 *
+	 * On WP 5.3+ with regenerate_missing OFF, make_images_if_not_exists already
+	 * ran inside the wp_generate_attachment_metadata filter and applied per-size
+	 * quality via editor_set_custom_quality. Re-running quality enforcement here
+	 * would cause a redundant third write for every size with a custom quality.
+	 *
+	 * This method is therefore only needed when regenerate_missing is ON: in that
+	 * case make_images_if_not_exists skips existing files entirely (returns 'reused'),
+	 * so quality was never applied and we must enforce it here.
+	 *
+	 * On WP < 5.3 the old added_post_meta path is still in use; this method
+	 * continues to act as the quality safety-net for that path.
+	 *
 	 * @param  array $metadata Filtred metadata.
 	 * @param  int   $id       Attachment ID.
 	 * @return array
@@ -2868,6 +2968,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	public static function maybe_enforce_quality_on_upload( $metadata, $id ) {
 		if ( empty( $metadata ) || empty( $id ) ) {
 			// Fail-fast, return intial.
+			return $metadata;
+		}
+
+		// On WP 5.3+ with regenerate_missing OFF, quality was already applied by
+		// make_images_if_not_exists via editor_set_custom_quality. Skip to avoid a
+		// redundant third regeneration pass for each custom-quality size.
+		$needs_quality_pass = self::$wp_ver < 5.3 || ! empty( self::$settings['regenerate_missing'] );
+		if ( ! $needs_quality_pass ) {
 			return $metadata;
 		}
 
@@ -2924,7 +3032,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				if ( empty( $info['registered'] ) ) {
 					// Cleanup temp files.
 					if ( file_exists( $upload_dir['basedir'] . '/' . $file ) ) {
-						@unlink( $upload_dir['basedir'] . '/' . $file );
+						wp_delete_file( $upload_dir['basedir'] . '/' . $file );
 					}
 				}
 			}
@@ -2994,14 +3102,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 						$maybe = str_replace( '.', '-' . $size_info['width'] . 'x' . $size_info['height'] . '.', $filter_out['file'] );
 						$maybe = trailingslashit( $uploads['basedir'] ) . $maybe;
 						if ( file_exists( $maybe ) ) {
-							@unlink( $maybe );
+							wp_delete_file( $maybe );
 						}
 					}
 				}
 			}
 
 			if ( ! empty( $initial ) && file_exists( trailingslashit( $uploads['basedir'] ) . $initial ) ) {
-				@unlink( trailingslashit( $uploads['basedir'] ) . $initial );
+				wp_delete_file( trailingslashit( $uploads['basedir'] ) . $initial );
 			}
 
 			update_post_meta( $attachment_id, '_wp_attachment_metadata', $filter_out );
@@ -3070,39 +3178,14 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		\SIRSC\Helper\debug( 'FIRST METADATA SAVED ' . print_r( $meta_value, 1 ), true, true );
 
 		if ( ! empty( self::$settings['force_original_to'] ) ) {
-			/**
-			Legacy code.
-			if ( self::$wp_ver >= 5.3 ) {
-				// Maybe rename the full size with the original.
-				$info = self::assess_rename_original( $post_id );
-			} else {
-				// Maybe swap the forced size with the full.
-				$file    = get_attached_file( $post_id );
-				$fo_orig = self::$settings['force_original_to'];
-				$size    = self::get_all_image_sizes( $fo_orig );
-				self::swap_full_with_another_size( $post_id, $file, $fo_orig, $size['crop'], 0 );
-			}
-			*/
-
-			// Since wp 6.3 this should be run also.
 			$file    = get_attached_file( $post_id );
 			$fo_orig = self::$settings['force_original_to'];
 			$size    = self::get_all_image_sizes( $fo_orig );
 			self::swap_full_with_another_size( $post_id, $file, $fo_orig, $size['crop'], 0 );
 		}
 
-		if ( ! empty( $info ) && $info['dir'] . $info['name'] !== $meta_value['file'] ) {
-			// Brute update and notify other scripts of this.
-			$meta         = wp_get_attachment_metadata( $post_id );
-			$meta['file'] = $info['dir'] . $info['name'];
-			update_post_meta( $post_id, '_wp_attachment_metadata', $meta );
-			if ( ! defined( 'SIRSC_BRUTE_RENAME' ) ) {
-				define( 'SIRSC_BRUTE_RENAME', $meta['file'] );
-			}
-		}
-
 		\SIRSC\Helper\debug( 'START PROCESS ALL REMAINING SIZES FOR ' . $post_id, true, true );
-		\SIRSC\Helper\make_images_if_not_exists( $post_id, 'all' );
+		\SIRSC\Helper\make_images_if_not_exists( $post_id, 'all', '', 0, false );
 
 		$meta = wp_get_attachment_metadata( $post_id );
 		update_post_meta( $post_id, '_sirsc_attachment_metadata', $meta );

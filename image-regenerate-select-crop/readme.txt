@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 4.9.2
 Tested up to: 6.9
-Stable tag: 8.1.7
+Stable tag: 8.2.0
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,11 +67,14 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.1.7 =
+= 8.2.0 =
 * Tested up to 7.0
-* PHP 8.4 compatibility
-* Additional styles changes to prepares for core next standardized UI component heights
-* Update placeholder for SVG
+* Prevent cropped/scaled sizes being rewritten when already correct
+* Skip redundant quality 3rd pass
+* Cleanup redundant/obsolete code (that was initially intended for backard compatibility with core < 5.3)
+* Prevent concurrent execution of the same task if the next cron tick fires before the previous one finishes
+* Small performance improvements
+* Accept the attachment ID as a 3rd arg so that the code can skip the WP_Query on modern WP (removed core < 5.3 backward compatibility)
 
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.

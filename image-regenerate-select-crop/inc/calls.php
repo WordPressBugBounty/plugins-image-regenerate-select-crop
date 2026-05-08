@@ -239,10 +239,10 @@ function delete_image_file() {
 	$count    = filter_input( INPUT_GET, 'count', FILTER_VALIDATE_INT );
 	if ( ! empty( $id ) ) {
 		\SIRSC\Helper\delete_image_file_on_request( $id, $filename, $size, $wrap );
+
 		if ( substr_count( $size, ',' ) ) {
 			\SIRSC\Helper\the_document_ready_js( 'sirscExecuteGetRequest( \'action=sirsc_single_details&post-id=' . $id . '\', \'sirsc-lightbox\' );' );
 		} else {
-			\SIRSC\Helper\show_image_single_size_info( $id, $size, '', [], $count );
 			\SIRSC\Helper\the_document_ready_js( 'sirscRefreshSummary( \'' . $id . '\', \'' . $wrap . '\' );', true );
 		}
 	}

@@ -5,7 +5,7 @@
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.2.0
+ * Version:     8.2.1
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -34,8 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SIRSC_VER', 8.20 );
-define( 'SIRSC_VER_TEXT', '8.2.0' );
+define( 'SIRSC_VER', 8.21 );
+define( 'SIRSC_VER_TEXT', '8.2.1' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -3118,10 +3118,17 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		// Last size check and update.
 		$file = get_attached_file( (int) $attachment_id );
 		if ( ! empty( $file ) ) {
-			$imagesize              = wp_getimagesize( $file );
-			$filter_out['filesize'] = wp_filesize( $file );
-			$filter_out['width']    = $imagesize[0];
-			$filter_out['height']   = $imagesize[1];
+			$imagesize = function_exists( 'wp_getimagesize' )
+				? wp_getimagesize( $file )
+				: @getimagesize( $file );
+
+			$filesize = function_exists( 'wp_filesize' )
+				? wp_filesize( $file )
+				: ( file_exists( $file ) ? (int) filesize( $file ) : 0 );
+
+			$filter_out['filesize'] = $filesize;
+			$filter_out['width']    = $imagesize[0] ?? 0;
+			$filter_out['height']   = $imagesize[1] ?? 0;
 
 			update_post_meta( $attachment_id, '_wp_attachment_metadata', $filter_out );
 		}

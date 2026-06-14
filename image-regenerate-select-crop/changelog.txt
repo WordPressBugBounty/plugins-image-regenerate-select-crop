@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 8.2.0 =
+* Tested up to 7.0
+* Prevent cropped/scaled sizes being rewritten when already correct
+* Skip redundant quality 3rd pass
+* Cleanup redundant/obsolete code (that was initially intended for backard compatibility with core < 5.3)
+* Prevent concurrent execution of the same task if the next cron tick fires before the previous one finishes
+* Small performance improvements
+* Accept the attachment ID as a 3rd arg so that the code can skip the WP_Query on modern WP (removed core < 5.3 backward compatibility)
+
 == Changelog ==
 = 8.1.7 =
 * Tested up to 7.0

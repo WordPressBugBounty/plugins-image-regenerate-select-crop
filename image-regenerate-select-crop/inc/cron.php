@@ -318,10 +318,21 @@ function custom_cron_frequency( array $schedules ): array {
  * Cron sanity check.
  */
 function cron_sanity_check() {
-	$checked = \get_transient( 'sirsc_cron_sanity_check' );
-	if ( false === $checked ) {
-		maybe_schedule_tasks();
-		\set_transient( 'sirsc_cron_sanity_check', time(), 1 * HOUR_IN_SECONDS );
+	static $sanity_check;
+
+	if ( ! isset( $sanity_check ) ) {
+		$sanity_check = true;
+
+		if ( empty( \SIRSC::$settings['cron_bulk_execution'] ) ) {
+			// No need to continue, the cron bulk execution is not used.
+			return;
+		}
+
+		$checked = \get_transient( 'sirsc_cron_sanity_check' );
+		if ( false === $checked ) {
+			maybe_schedule_tasks();
+			\set_transient( 'sirsc_cron_sanity_check', time(), 1 * HOUR_IN_SECONDS );
+		}
 	}
 }
 

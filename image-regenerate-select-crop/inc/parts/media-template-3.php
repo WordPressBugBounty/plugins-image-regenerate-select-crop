@@ -22,7 +22,7 @@ $alt_text_description = sprintf(
 <script type="text/html" id="tmpl-attachment-details-two-column_custom">
 	<div class="attachment-media-view {{ data.orientation }}">
 		<?php
-		if ( isset( $_GET['error'] ) && 'deprecated' === $_GET['error'] ) {
+		if ( isset( $_GET['error'] ) && 'deprecated' === $_GET['error'] && function_exists( 'wp_admin_notice' ) ) {
 			wp_admin_notice(
 				__( 'The Edit Media screen is deprecated as of WordPress 6.3. Please use the Media Library instead.' ),
 				array(

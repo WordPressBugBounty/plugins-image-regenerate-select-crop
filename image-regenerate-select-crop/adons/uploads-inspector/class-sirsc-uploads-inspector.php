@@ -3,7 +3,7 @@
  * Uploads inspector extension.
  *
  * @package sirsc
- * @version 8.0.0
+ * @version 8.2.1
  */
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch
@@ -15,10 +15,10 @@ defined( 'ABSPATH' ) || exit;
  * Class for Image Regenerate & Select Crop plugin adon Uploads Inspector.
  */
 class SIRSC_Adons_Uploads_Inspector {
-	const PLUGIN_VER        = 8.0;
+	const PLUGIN_VER        = 8.2;
 	const PLUGIN_TRANS      = 'sirsc_adon_uploads_inspector';
 	const PLUGIN_TABLE      = 'sirsc_adon_uploads_inspector';
-	const PLUGIN_BATCH_SIZE = 20;
+	const PLUGIN_BATCH_SIZE = 50;
 	const ADON_PAGE_SLUG    = 'sirsc-adon-uploads-inspector';
 	const ADON_SLUG         = 'uploads-inspector';
 
@@ -523,7 +523,7 @@ class SIRSC_Adons_Uploads_Inspector {
 					}
 				}
 				?>
-			</div>
+			</ul>
 			<?php
 			if ( $count <= 1 && ! empty( $record ) ) {
 				// This means that maybe the folder was all processed.

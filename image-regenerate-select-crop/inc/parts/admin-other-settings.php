@@ -55,4 +55,11 @@ if ( ! empty( $_sirsc_post_types ) ) {
 		<?php the_info_icon( 'info_regenerate_only_featured' ); ?>
 	</label>
 	<?php the_info_text( 'info_regenerate_only_featured', \__( 'When using the bulk actions, this option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts.', 'sirsc' ) ); ?>
+
+	<label class="label-row">
+		<input type="checkbox" name="sirsc[enable_sharpen]" id="sirsc_enable_sharpen" <?php \checked( true, $settings['enable_sharpen'] ); ?> data-sirsc-autosubmit="change">
+		<?php \esc_html_e( 'sharpen generated sub-sizes', 'sirsc' ); ?>
+		<?php the_info_icon( 'info_enable_sharpen' ); ?>
+	</label>
+	<?php the_info_text( 'info_enable_sharpen', \__( 'This option applies WordPress\'s own unsharp mask to every generated sub-size that is left unsharpened (WordPress only sharpens JPEG output produced by the Imagick editor). This fills the gap for GD output and for PNG/WEBP on either editor, using the exact same recipe (requires the Imagick PHP extension).', 'sirsc' ) . '<hr>' . \__( 'This is not adjustable per sub-size, it matches what WordPress would use and it is meant to be left on or off.', 'sirsc' ) ); ?>
 </div>

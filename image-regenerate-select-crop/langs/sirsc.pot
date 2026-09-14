@@ -2,16 +2,16 @@
 # This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Image Regenerate & Select Crop 8.1.6\n"
+"Project-Id-Version: Image Regenerate & Select Crop 8.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/sirsc\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-08T17:28:10+00:00\n"
+"POT-Creation-Date: 2026-09-11T07:09:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: sirsc\n"
 
 #. Plugin Name of the plugin
@@ -70,17 +70,20 @@ msgstr ""
 
 #. Translators: %s - attribute.
 #: adons/images-seo/class-sirsc-images-seo.php:298
+#, php-format
 msgid "Updates: %s."
 msgstr ""
 
 #. Translators: %s - path.
 #: adons/images-seo/class-sirsc-images-seo.php:313
 #: adons/images-seo/class-sirsc-images-seo.php:334
+#, php-format
 msgid "No changes for %s."
 msgstr ""
 
 #. Translators: %1$d - sub-sizes replaced.
 #: adons/images-seo/class-sirsc-images-seo.php:383
+#, php-format
 msgid "+ %1$d more sub-sizes"
 msgstr ""
 
@@ -110,7 +113,7 @@ msgstr ""
 
 #: adons/images-seo/class-sirsc-images-seo.php:466
 #: adons/images-seo/class-sirsc-images-seo.php:521
-#: image-regenerate-select-crop.php:3233
+#: image-regenerate-select-crop.php:3340
 #: inc/plugin.php:27
 msgid "Settings"
 msgstr ""
@@ -153,6 +156,7 @@ msgstr ""
 #: inc/parts/admin-advanced.php:70
 #: inc/parts/admin-advanced.php:79
 #: inc/parts/admin-advanced.php:88
+#, php-format
 msgid "Ex: %s"
 msgstr ""
 
@@ -175,6 +179,7 @@ msgstr ""
 
 #. Translators: %1$d - count, %2$d - total.
 #: adons/images-seo/class-sirsc-images-seo.php:886
+#, php-format
 msgid "The SEO rename was processed for %1$d items of %2$d."
 msgstr ""
 
@@ -474,9 +479,9 @@ msgstr ""
 
 #: adons/uploads-inspector/class-sirsc-uploads-inspector.php:286
 #: inc/cron.php:96
-#: inc/helper.php:2361
-#: inc/helper.php:2409
-#: inc/helper.php:2465
+#: inc/helper.php:2365
+#: inc/helper.php:2413
+#: inc/helper.php:2469
 msgid "The cron task has been scheduled."
 msgstr ""
 
@@ -494,11 +499,13 @@ msgstr ""
 
 #. Translators: %s - folder name.
 #: adons/uploads-inspector/class-sirsc-uploads-inspector.php:490
+#, php-format
 msgid "Processing the request for %s."
 msgstr ""
 
 #. Translators: %1$s - current page, %2$s - total pages.
 #: adons/uploads-inspector/class-sirsc-uploads-inspector.php:617
+#, php-format
 msgid "The most recent files assessment was executed on %1$s."
 msgstr ""
 
@@ -508,18 +515,20 @@ msgstr ""
 
 #. Translators: %1$d - count products, %2$d - total.
 #: adons/uploads-inspector/class-sirsc-uploads-inspector.php:811
+#, php-format
 msgid "There are %1$d items assessed out of %2$d."
 msgstr ""
 
 #. Translators: %1$s - current page, %2$s - total pages.
 #: adons/uploads-inspector/parts/files-list.php:53
+#, php-format
 msgid "Page %1$s of %2$s"
 msgstr ""
 
 #: adons/uploads-inspector/parts/files-list.php:97
 #: adons/uploads-inspector/parts/files-list.php:115
-#: inc/helper.php:1055
-#: inc/helper.php:1241
+#: inc/helper.php:1059
+#: inc/helper.php:1245
 msgid "File"
 msgstr ""
 
@@ -533,8 +542,8 @@ msgstr ""
 #: adons/uploads-inspector/parts/files-list.php:99
 #: adons/uploads-inspector/parts/files-list.php:132
 #: inc/helper.php:322
-#: inc/helper.php:1056
-#: inc/helper.php:2082
+#: inc/helper.php:1060
+#: inc/helper.php:2086
 msgid "File size"
 msgstr ""
 
@@ -556,7 +565,7 @@ msgstr ""
 #: adons/uploads-inspector/parts/info-list.php:65
 #: adons/uploads-inspector/parts/info-list.php:90
 #: adons/uploads-inspector/parts/info-list.php:95
-#: image-regenerate-select-crop.php:2441
+#: image-regenerate-select-crop.php:2520
 msgid "unknown"
 msgstr ""
 
@@ -586,41 +595,41 @@ msgstr ""
 msgid "Valid images"
 msgstr ""
 
-#: image-regenerate-select-crop.php:282
-#: image-regenerate-select-crop.php:285
-#: image-regenerate-select-crop.php:288
+#: image-regenerate-select-crop.php:299
+#: image-regenerate-select-crop.php:302
+#: image-regenerate-select-crop.php:305
 msgid "Left"
 msgstr ""
 
-#: image-regenerate-select-crop.php:282
-#: image-regenerate-select-crop.php:283
-#: image-regenerate-select-crop.php:284
+#: image-regenerate-select-crop.php:299
+#: image-regenerate-select-crop.php:300
+#: image-regenerate-select-crop.php:301
 msgid "Top"
 msgstr ""
 
-#: image-regenerate-select-crop.php:283
-#: image-regenerate-select-crop.php:285
-#: image-regenerate-select-crop.php:286
-#: image-regenerate-select-crop.php:287
-#: image-regenerate-select-crop.php:289
+#: image-regenerate-select-crop.php:300
+#: image-regenerate-select-crop.php:302
+#: image-regenerate-select-crop.php:303
+#: image-regenerate-select-crop.php:304
+#: image-regenerate-select-crop.php:306
 msgid "Center"
 msgstr ""
 
-#: image-regenerate-select-crop.php:284
-#: image-regenerate-select-crop.php:287
-#: image-regenerate-select-crop.php:290
+#: image-regenerate-select-crop.php:301
+#: image-regenerate-select-crop.php:304
+#: image-regenerate-select-crop.php:307
 msgid "Right"
 msgstr ""
 
-#: image-regenerate-select-crop.php:288
-#: image-regenerate-select-crop.php:289
-#: image-regenerate-select-crop.php:290
+#: image-regenerate-select-crop.php:305
+#: image-regenerate-select-crop.php:306
+#: image-regenerate-select-crop.php:307
 msgid "Bottom"
 msgstr ""
 
-#: image-regenerate-select-crop.php:688
-#: image-regenerate-select-crop.php:821
-#: image-regenerate-select-crop.php:937
+#: image-regenerate-select-crop.php:735
+#: image-regenerate-select-crop.php:869
+#: image-regenerate-select-crop.php:985
 #: inc/admin.php:401
 #: inc/admin.php:927
 #: inc/admin.php:1014
@@ -632,9 +641,9 @@ msgstr ""
 msgid "Action not allowed."
 msgstr ""
 
-#: image-regenerate-select-crop.php:688
-#: image-regenerate-select-crop.php:821
-#: image-regenerate-select-crop.php:937
+#: image-regenerate-select-crop.php:735
+#: image-regenerate-select-crop.php:869
+#: image-regenerate-select-crop.php:985
 #: inc/admin.php:927
 #: inc/calls.php:52
 #: inc/calls.php:56
@@ -642,22 +651,22 @@ msgstr ""
 msgid "Security Breach"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2380
-#: image-regenerate-select-crop.php:2401
-#: image-regenerate-select-crop.php:2421
-#: image-regenerate-select-crop.php:2562
+#: image-regenerate-select-crop.php:2459
+#: image-regenerate-select-crop.php:2480
+#: image-regenerate-select-crop.php:2500
+#: image-regenerate-select-crop.php:2641
 msgid "currently registered"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2421
+#: image-regenerate-select-crop.php:2500
 msgid "not registered anymore"
 msgstr ""
 
-#: image-regenerate-select-crop.php:2446
+#: image-regenerate-select-crop.php:2525
 msgid "never registered"
 msgstr ""
 
-#: image-regenerate-select-crop.php:3234
+#: image-regenerate-select-crop.php:3341
 #: inc/plugin.php:26
 msgid "Plugin URL"
 msgstr ""
@@ -679,6 +688,7 @@ msgstr ""
 
 #. Translators: %d - the attachment id.
 #: inc/action.php:81
+#, php-format
 msgid "METADATA cleanup performed for %d."
 msgstr ""
 
@@ -711,42 +721,42 @@ msgstr ""
 
 #: inc/admin.php:274
 #: inc/helper.php:318
-#: inc/helper.php:2079
+#: inc/helper.php:2083
 msgid "Resolution"
 msgstr ""
 
 #: inc/admin.php:275
 #: inc/admin.php:1054
-#: inc/helper.php:1320
+#: inc/helper.php:1324
 msgid "Details/Options"
 msgstr ""
 
 #: inc/admin.php:276
-#: inc/helper.php:1320
+#: inc/helper.php:1324
 msgid "Image Details"
 msgstr ""
 
 #: inc/admin.php:277
 #: inc/helper.php:250
-#: inc/helper.php:1321
+#: inc/helper.php:1325
 #: inc/parts/admin-sizes-table.php:100
 #: inc/parts/admin-sizes-table.php:193
 msgid "Regenerate"
 msgstr ""
 
 #: inc/admin.php:278
-#: inc/helper.php:1325
+#: inc/helper.php:1329
 msgid "Raw Cleanup"
 msgstr ""
 
 #: inc/admin.php:279
-#: inc/helper.php:1956
+#: inc/helper.php:1960
 msgid "Regenerate Log"
 msgstr ""
 
 #: inc/admin.php:280
-#: inc/helper.php:1610
-#: inc/helper.php:1801
+#: inc/helper.php:1614
+#: inc/helper.php:1805
 msgid "Cleanup Log"
 msgstr ""
 
@@ -774,11 +784,13 @@ msgstr ""
 
 #. Translators: %1$s - donate URL, %2$s - rating.
 #: inc/admin.php:581
+#, php-format
 msgid "If you find the plugin useful and would like to support my work, please consider making a <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">donation</a>. It would make me very happy if you would leave a %2$s rating."
 msgstr ""
 
 #. Translators: %1$s - title, %2$s - version, %3$s - author.
 #: inc/admin.php:615
+#, php-format
 msgid "%1$s version %2$s by %3$s"
 msgstr ""
 
@@ -796,6 +808,7 @@ msgstr ""
 
 #. Translators: %1$s - social link.
 #: inc/admin.php:637
+#, php-format
 msgid "Follow me on <a href=\"%1$s\" target=\"_blank\" rel=\"noopener\">LinkedIn</a>"
 msgstr ""
 
@@ -952,6 +965,7 @@ msgstr ""
 
 #. Translators: %1$s - adon price.
 #: inc/adons.php:518
+#, php-format
 msgid "&euro; %1$s / year"
 msgstr ""
 
@@ -1002,34 +1016,37 @@ msgstr ""
 msgid "The scheduled task has been canceled."
 msgstr ""
 
-#: inc/cron.php:382
+#: inc/cron.php:403
 msgid "hours"
 msgstr ""
 
-#: inc/cron.php:385
+#: inc/cron.php:406
 msgid "minutes"
 msgstr ""
 
-#: inc/cron.php:388
+#: inc/cron.php:409
 msgid "seconds"
 msgstr ""
 
 #. Translators: %s - duration.
-#: inc/cron.php:396
+#: inc/cron.php:417
+#, php-format
 msgid "The cron task has run for %s."
 msgstr ""
 
 #. Translators: %1$s - total.
-#: inc/cron.php:437
-#: inc/helper.php:1999
+#: inc/cron.php:461
+#: inc/helper.php:2003
+#, php-format
 msgid "Items remaining to regenerate: %1$s."
 msgstr ""
 
 #. Translators: %1$s - total.
-#: inc/cron.php:451
-#: inc/cron.php:465
-#: inc/helper.php:1652
-#: inc/helper.php:1842
+#: inc/cron.php:475
+#: inc/cron.php:489
+#: inc/helper.php:1656
+#: inc/helper.php:1846
+#, php-format
 msgid "Items remaining to cleanup: %1$s."
 msgstr ""
 
@@ -1084,7 +1101,7 @@ msgid "Scale"
 msgstr ""
 
 #: inc/helper.php:238
-#: inc/helper.php:2067
+#: inc/helper.php:2071
 msgid "not found"
 msgstr ""
 
@@ -1101,7 +1118,7 @@ msgid "The width and height of the original image are smaller than the requested
 msgstr ""
 
 #: inc/helper.php:288
-#: inc/helper.php:1068
+#: inc/helper.php:1072
 msgid "Cleanup the metadata"
 msgstr ""
 
@@ -1110,12 +1127,12 @@ msgid "This image size shares the same file as the full size (the original image
 msgstr ""
 
 #: inc/helper.php:293
-#: inc/helper.php:1069
+#: inc/helper.php:1073
 msgid "Delete"
 msgstr ""
 
 #: inc/helper.php:310
-#: inc/helper.php:2072
+#: inc/helper.php:2076
 msgid "Info"
 msgstr ""
 
@@ -1129,170 +1146,176 @@ msgstr ""
 
 #: inc/helper.php:908
 #: inc/helper.php:924
-#: inc/helper.php:1294
-#: inc/helper.php:1768
-#: inc/helper.php:1922
-#: inc/helper.php:2106
+#: inc/helper.php:1298
+#: inc/helper.php:1772
+#: inc/helper.php:1926
+#: inc/helper.php:2110
 msgid "Something went wrong!"
 msgstr ""
 
 #: inc/helper.php:951
-#: inc/helper.php:1299
-#: inc/helper.php:1760
-#: inc/helper.php:1914
-#: inc/helper.php:2099
+#: inc/helper.php:1303
+#: inc/helper.php:1764
+#: inc/helper.php:1918
+#: inc/helper.php:2103
 msgid "Done!"
 msgstr ""
 
-#: inc/helper.php:1045
+#: inc/helper.php:1049
 msgid "You can see below some additional information about the files generated, recorded in the database, also files left behind from image sizes that are no longer registered in your site, or other image processing (but not linked in the database anymore, hence, probably no used anymore)."
 msgstr ""
 
-#: inc/helper.php:1049
+#: inc/helper.php:1053
 msgid "Nothing available."
 msgstr ""
 
-#: inc/helper.php:1054
+#: inc/helper.php:1058
 msgid "Status"
 msgstr ""
 
-#: inc/helper.php:1055
-#: inc/helper.php:1245
+#: inc/helper.php:1059
+#: inc/helper.php:1249
 msgid "Sub-size info"
 msgstr ""
 
-#: inc/helper.php:1064
-#: inc/helper.php:1163
-#: inc/helper.php:1272
+#: inc/helper.php:1068
+#: inc/helper.php:1167
+#: inc/helper.php:1276
 msgid "The file is missing!"
 msgstr ""
 
-#: inc/helper.php:1229
+#: inc/helper.php:1233
 msgid "Image Details & Options"
 msgstr ""
 
-#: inc/helper.php:1238
+#: inc/helper.php:1242
 msgid "The original image"
 msgstr ""
 
-#: inc/helper.php:1240
+#: inc/helper.php:1244
 msgid "file size"
 msgstr ""
 
-#: inc/helper.php:1246
+#: inc/helper.php:1250
 msgid "Actions"
 msgstr ""
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1407
+#: inc/helper.php:1411
+#, php-format
 msgid "<b>scale</b> to max width of <b>%s</b>px"
 msgstr ""
 
 #. Translators: %s - pixels size.
-#: inc/helper.php:1410
+#: inc/helper.php:1414
+#, php-format
 msgid "<b>scale</b> to max height of <b>%s</b>px"
 msgstr ""
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1413
+#: inc/helper.php:1417
+#, php-format
 msgid "<b>crop</b> of <b>%1$s</b>x<b>%2$s</b>px"
 msgstr ""
 
 #. Translators: %1$s - width pixels size, %2$s - height pixels size.
-#: inc/helper.php:1416
+#: inc/helper.php:1420
+#, php-format
 msgid "<b>scale</b> to max width of <b>%1$s</b>px or max height of <b>%2$s</b>px"
 msgstr ""
 
-#: inc/helper.php:1439
+#: inc/helper.php:1443
 msgid "Click to generate a crop of the image from this position"
 msgstr ""
 
-#: inc/helper.php:1456
+#: inc/helper.php:1460
 msgid "Default crop position from settings"
 msgstr ""
 
-#: inc/helper.php:1627
-#: inc/helper.php:1818
-#: inc/helper.php:1973
+#: inc/helper.php:1631
+#: inc/helper.php:1822
+#: inc/helper.php:1977
 msgid "Finishing up"
 msgstr ""
 
-#: inc/helper.php:1688
+#: inc/helper.php:1692
 msgid "The cleanup for this file will be skipped (it is the original file)."
 msgstr ""
 
-#: inc/helper.php:1698
+#: inc/helper.php:1702
 msgid "The cleanup for this file will be skipped (the size is registered)."
 msgstr ""
 
-#: inc/helper.php:1723
-#: inc/helper.php:1735
-#: inc/helper.php:1889
+#: inc/helper.php:1727
+#: inc/helper.php:1739
+#: inc/helper.php:1893
 msgid "has been deleted"
 msgstr ""
 
-#: inc/helper.php:1730
+#: inc/helper.php:1734
 msgid "could not be deleted"
 msgstr ""
 
 #. Translators: %1$s - id.
-#: inc/helper.php:1744
+#: inc/helper.php:1748
 #: inc/wp-cli.php:538
 #: inc/wp-cli.php:543
+#, php-format
 msgid "No cleanup necessary for %1$s"
 msgstr ""
 
-#: inc/helper.php:1868
+#: inc/helper.php:1872
 msgid "could not be found"
 msgstr ""
 
-#: inc/helper.php:1883
+#: inc/helper.php:1887
 msgid "could not be deleted (it is the original file)"
 msgstr ""
 
-#: inc/helper.php:2024
+#: inc/helper.php:2028
 msgid "The regeneration of this file will be skipped (as per settings)."
 msgstr ""
 
-#: inc/helper.php:2030
-#: inc/helper.php:2046
+#: inc/helper.php:2034
+#: inc/helper.php:2050
 msgid "Could not be generated, the original is too small."
 msgstr ""
 
-#: inc/helper.php:2038
+#: inc/helper.php:2042
 msgid "The file was regenerated."
 msgstr ""
 
-#: inc/helper.php:2044
+#: inc/helper.php:2048
 msgid "Could not be generated, the original file is missing."
 msgstr ""
 
 #. Translators: %1$d - count products, %2$d - total.
-#: inc/helper.php:2323
+#: inc/helper.php:2327
+#, php-format
 msgid "%1$d items assessed of %2$d."
 msgstr ""
 
-#: inc/helper.php:2373
-#: inc/helper.php:2376
+#: inc/helper.php:2377
+#: inc/helper.php:2380
 #: inc/parts/admin-sizes-table.php:96
 #: inc/parts/admin-sizes-table.php:190
 msgid "Cleanup"
 msgstr ""
 
-#: inc/helper.php:2424
+#: inc/helper.php:2428
 #: inc/iterator.php:184
 msgid "Resume"
 msgstr ""
 
-#: inc/helper.php:2432
+#: inc/helper.php:2436
 msgid "Regenerate All"
 msgstr ""
 
-#: inc/helper.php:2448
+#: inc/helper.php:2452
 msgid "Cleanup Unused"
 msgstr ""
 
-#: inc/helper.php:2449
+#: inc/helper.php:2453
 msgid "Cleanup Raw"
 msgstr ""
 
@@ -1354,6 +1377,7 @@ msgstr ""
 
 #. Translators: %1$s - reasons, %2$s - separator, %3$s - server side error.
 #: inc/notice.php:121
+#, php-format
 msgid "<b>Unfortunately, there was an error</b>. Some of the execution was not successful. This can happen when: %1$s. %2$sSee the details: %3$s"
 msgstr ""
 
@@ -1428,6 +1452,7 @@ msgstr ""
 #. Translators: %s - rule status.
 #: inc/parts/admin-advanced.php:165
 #: inc/parts/admin-advanced.php:168
+#, php-format
 msgid "This rule is %s"
 msgstr ""
 
@@ -1443,16 +1468,19 @@ msgstr ""
 
 #. Translators: %1$s type, %2$s value, %3$s only.
 #: inc/parts/admin-advanced.php:176
+#, php-format
 msgid "uploading images to a post that has %1$s as %2$s will generate only the %3$s sizes."
 msgstr ""
 
 #. Translators: %1$s - subsize.
 #: inc/parts/admin-advanced.php:184
+#, php-format
 msgid "uploading unattached images will generate only the %1$s sizes."
 msgstr ""
 
 #. Translators: %1$s type, %2$s value, %3$s original, %4$s only.
 #: inc/parts/admin-advanced.php:190
+#, php-format
 msgid "uploading images to a post that has %1$s as %2$s will force the original image to %3$s size and will generate only the %4$s sizes."
 msgstr ""
 
@@ -1608,6 +1636,18 @@ msgstr ""
 msgid "When using the bulk actions, this option allows you to regenerate/cleanup only the images that are set as featured image for any of the posts."
 msgstr ""
 
+#: inc/parts/admin-other-settings.php:61
+msgid "sharpen generated sub-sizes"
+msgstr ""
+
+#: inc/parts/admin-other-settings.php:64
+msgid "This option applies WordPress's own unsharp mask to every generated sub-size that is left unsharpened (WordPress only sharpens JPEG output produced by the Imagick editor). This fills the gap for GD output and for PNG/WEBP on either editor, using the exact same recipe (requires the Imagick PHP extension)."
+msgstr ""
+
+#: inc/parts/admin-other-settings.php:64
+msgid "This is not adjustable per sub-size, it matches what WordPress would use and it is meant to be left on or off."
+msgstr ""
+
 #: inc/parts/admin-placeholder.php:22
 msgid "Option to Enable Placeholders"
 msgstr ""
@@ -1662,6 +1702,7 @@ msgstr ""
 
 #. Translators: %1$s - post type name.
 #: inc/parts/admin-post-types.php:44
+#, php-format
 msgid "Settings for images attached to a %1$s"
 msgstr ""
 
@@ -1873,16 +1914,19 @@ msgstr ""
 
 #. Translators: %1$s - plugin name.
 #: inc/parts/notice-update.php:19
+#, php-format
 msgid "%1$s plugin was activated!"
 msgstr ""
 
 #. Translators: %1$s - extensions URL.
 #: inc/parts/notice-update.php:25
+#, php-format
 msgid "<a href=\"%1$s\" rel=\"noreferrer\">%2$s Premium extensions</a> are available for this plugin."
 msgstr ""
 
 #. Translators: %1$s - extensions URL.
 #: inc/parts/notice-update.php:32
+#, php-format
 msgid "%5$sCheck out my other <a href=\"%1$s\" target=\"_blank\" rel=\"noreferrer\">%2$s free plugins</a> on WordPress.org and the <a href=\"%3$s\" target=\"_blank\" rel=\"noreferrer\">%4$s other extensions</a> available!"
 msgstr ""
 

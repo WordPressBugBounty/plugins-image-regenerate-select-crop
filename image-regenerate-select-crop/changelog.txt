@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 8.2.1 =
+* Tested up to 7.0
+* Fixed command out of sync produced by old cron tasks
+* Updated the minimum compatibile version
+
 = 8.2.0 =
 * Tested up to 7.0
 * Prevent cropped/scaled sizes being rewritten when already correct

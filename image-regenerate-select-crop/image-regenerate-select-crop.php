@@ -5,7 +5,7 @@
  * Description: Regenerate and crop the images, see details and use additional actions for image sizes and generated sub-sizes, clean up, placeholders, custom rules, register new image sizes, crop medium settings, WP-CLI commands, optimize images.
  * Text Domain: sirsc
  * Domain Path: /langs
- * Version:     8.2.1
+ * Version:     8.2.2
  * Author:      Iulia Cazan
  * Author URI:  https://profiles.wordpress.org/iulia-cazan
  * Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
@@ -34,8 +34,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SIRSC_VER', 8.21 );
-define( 'SIRSC_VER_TEXT', '8.2.1' );
+define( 'SIRSC_VER', 8.22 );
+define( 'SIRSC_VER_TEXT', '8.2.2' );
 define( 'SIRSC_FILE', __FILE__ );
 define( 'SIRSC_DIR', \plugin_dir_path( __FILE__ ) );
 define( 'SIRSC_URL', \plugin_dir_url( __FILE__ ) );
@@ -52,6 +52,7 @@ require_once SIRSC_DIR . 'inc/notice.php';
 require_once SIRSC_DIR . 'inc/debug.php';
 require_once SIRSC_DIR . 'inc/action.php';
 require_once SIRSC_DIR . 'inc/editor.php';
+require_once SIRSC_DIR . 'inc/sharpen.php';
 require_once SIRSC_DIR . 'inc/helper.php';
 require_once SIRSC_DIR . 'inc/admin.php';
 require_once SIRSC_DIR . 'inc/iterator.php';
@@ -772,6 +773,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 			'default_quality'          => [],
 			'enable_perfect'           => false,
 			'enable_upscale'           => false,
+			'enable_sharpen'           => false,
 			'regenerate_missing'       => false,
 			'disable_woo_thregen'      => false,
 			'sync_settings_ewww'       => false,
@@ -931,7 +933,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				$settings['default_quality'] = $data['default_quality'];
 			}
 
-			$bool = [ 'enable_perfect', 'enable_upscale', 'regenerate_missing', 'regenerate_only_featured', 'bulk_actions_descending', 'disable_woo_thregen', 'sync_settings_ewww', 'listing_tiny_buttons', 'actions_for_upload_cap', 'media_grid_buttons', 'listing_show_summary', 'force_size_choose', 'leave_settings_behind', 'enable_debug_log' ];
+			$bool = [ 'enable_perfect', 'enable_upscale', 'enable_sharpen', 'regenerate_missing', 'regenerate_only_featured', 'bulk_actions_descending', 'disable_woo_thregen', 'sync_settings_ewww', 'listing_tiny_buttons', 'actions_for_upload_cap', 'media_grid_buttons', 'listing_show_summary', 'force_size_choose', 'leave_settings_behind', 'enable_debug_log' ];
 			foreach ( $bool as $opt ) {
 				$settings[ $opt ] = ! empty( $data[ $opt ] );
 			}
@@ -1973,6 +1975,12 @@ class SIRSC_Image_Regenerate_Select_Crop {
 		$tmp = wp_constrain_dimensions( $native[0] ?? 0, $native[1] ?? 0, $info['width'] ?? 0, $info['height'] ?? 0 );
 		$new = $tmp;
 
+		// Match core's own rounding for a scale (non-cropped) resize - see
+		// `image_resize_dimensions()`/`wp_constrain_dimensions()` in
+		// wp-includes/media.php, both of which use `round()`, never `ceil()`.
+		// This is only ever compared against dimensions those two functions
+		// actually produced elsewhere, so a `ceil()` estimate here could be
+		// 1px off and cause a wrong-size file to be matched/reused for a slot.
 		if ( $info['width'] >= $info['height'] ) {
 			// Expects a landscape.
 			if ( ! empty( $info['crop'] ) ) {
@@ -1981,7 +1989,7 @@ class SIRSC_Image_Regenerate_Select_Crop {
 				}
 			} elseif ( $tmp[0] < $info['width'] ) {
 				$new[0] = $info['width'];
-				$new[1] = ceil( $info['width'] * $native[1] / $native[0] );
+				$new[1] = (int) round( $info['width'] * $native[1] / $native[0] );
 			}
 		} elseif ( ! empty( $info['crop'] ) ) {
 			// Expects a portrait.
@@ -1991,11 +1999,11 @@ class SIRSC_Image_Regenerate_Select_Crop {
 
 			if ( $new[0] < $native ) {
 				$new[1] = $info['height'];
-				$new[0] = ceil( $info['height'] * $native[0] / $native[1] );
+				$new[0] = (int) round( $info['height'] * $native[0] / $native[1] );
 			}
 		} elseif ( $tmp[1] < $info['height'] ) {
 			$new[1] = $info['height'];
-			$new[0] = ceil( $info['height'] * $native[0] / $native[1] );
+			$new[0] = (int) round( $info['height'] * $native[0] / $native[1] );
 		}
 
 		return $new;
@@ -2017,6 +2025,15 @@ class SIRSC_Image_Regenerate_Select_Crop {
 	 */
 	public static function has_enable_upscale(): bool {
 		return ! empty( self::$settings['enable_upscale'] );
+	}
+
+	/**
+	 * Has enable sharpen.
+	 *
+	 * @return bool
+	 */
+	public static function has_enable_sharpen(): bool {
+		return ! empty( self::$settings['enable_sharpen'] );
 	}
 
 	/**

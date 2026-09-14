@@ -3,8 +3,8 @@ Contributors: Iulia Cazan
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JJA37EHZXWUTJ
 Tags: image optimization, crop, regenerate, cleanup, bulk regenerate
 Requires at least: 5.3
-Tested up to: 7.0
-Stable tag: 8.2.1
+Tested up to: 7.1
+Stable tag: 8.2.2
 Requires PHP: 7.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,10 +67,10 @@ https://youtu.be/3hRSXMx3dcU
 
 
 == Changelog ==
-= 8.2.1 =
-* Tested up to 7.0
-* Fixed command out of sync produced by old cron tasks
-* Updated the minimum compatibile version
+= 8.2.2 =
+* Tested up to 7.1.0
+* Added the sub-size sharpen option
+* Harmonized the rounding valued for sub-sizes
 
 
 See the [changelog](https://plugins.svn.wordpress.org/image-regenerate-select-crop/trunk/changelog.txt) for detailed information on changes made in the earlier versions.

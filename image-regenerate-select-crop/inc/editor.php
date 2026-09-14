@@ -87,6 +87,10 @@ function process_subsize_for_file( $post_id, $name, $file_w, $file_h, $pick_crop
 		// Reset custom global variable.
 		$sirsc_editor_overrides = [];
 
+		if ( ! \is_wp_error( $saved ) && \SIRSC::has_enable_sharpen() && ! empty( $saved['path'] ) ) {
+			\SIRSC\Sharpen\sharpen_saved_file( $saved['path'], $saved['mime-type'] ?? '', (int) $quality );
+		}
+
 		clean_attachment_cache( $post_id );
 
 		return $saved;
@@ -129,7 +133,12 @@ function calculate_dimensions_up( $ow, $oh, $ew, $eh ) {
 		$factor = max( $sw, $sh );
 	}
 
-	// Calculate the new dimensions.
+	// `ceil()` here is intentional, unlike everywhere else in this plugin -
+	// this is a "must cover" pre-scale (same idea as CSS `background-size:
+	// cover`), and its result is always cropped down to an exact target size
+	// right after (see `process_subsize_for_file()`), never used as a final
+	// dimension on its own. `round()` could round a dimension down by a
+	// fraction of a pixel and leave the source too small to cover the crop.
 	$size['width']  = ceil( $ow * $factor );
 	$size['height'] = ceil( $oh * $factor );
 
